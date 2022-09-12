@@ -14,6 +14,8 @@
     <main>
         <div class="contentLeft">
             <h3 class="hNoMarginLeft">Stats</h3>
+            <button type="button" class="collapsible">Character:</button>
+            <div class="collapseContent">
                 <div class="divLeft">
                     <div class="divVert">
                         <label class="head">Level:</label>
@@ -28,35 +30,43 @@
                         <p id="reqLevel">1</p>
                     </div>
                 </div>
-            <div class="divLeft">
-                <label class="name">Strength:</label>
-                <input type="range" id="str" min="25" max="100" value="25">
-                <label class="output" id="strOutput">25 (25 + 0)</label>
+                <select id="classSelect">
+                    <option data-name="noClass" data-exp="0" data-str="0" data-end="0" data-agi="0" data-acc="0" data-crit="0" data-rel="0" data-melee="0" data-pistol="0" data-rifle="0" data-shotgun="0" data-mg="0" data-explo="0">Please Select an Option</option>
+                    <optgroup></optgroup>
+                </select>
             </div>
-            <div class="divLeft">
-                <label class="name">Endurance:</label>
-                <input type="range" id="end" min="25" max="100" value="25">
-                <label class="output" id="endOutput">25 (25 + 0)</label>
-            </div>
-            <div class="divLeft">
-                <label class="name">Agility:</label>
-                <input type="range" id="agi" min="25" max="100" value="25">
-                <label class="output" id="agiOutput">25 (25 + 0)</label>
-            </div>
-            <div class="divLeft">
-                <label class="name">Accuracy:</label>
-                <input type="range" id="acc" min="25" max="100" value="25">
-                <label class="output" id="accOutput">25 (25 + 0)</label>
-            </div>
-            <div class="divLeft">
-                <label class="name">Critical:</label>
-                <input type="range" id="crit" min="25" max="100" value="25">
-                <label class="output" id="critOutput">25 (25 + 0)</label>
-            </div>
-            <div class="divLeft">
-                <label class="name">Reloading:</label>
-                <input type="range" id="rel" min="25" max="100" value="25">
-                <label class="output" id="relOutput">25 (25 + 0)</label>
+            <button type="button" class="collapsible">Stats:</button>
+            <div class="collapseContent">
+                <div class="divLeft">
+                    <label class="name">Strength:</label>
+                    <input type="range" id="str" min="25" max="100" value="25">
+                    <label class="output" id="strOutput">25 (25 + 0)</label>
+                </div>
+                <div class="divLeft">
+                    <label class="name">Endurance:</label>
+                    <input type="range" id="end" min="25" max="100" value="25">
+                    <label class="output" id="endOutput">25 (25 + 0)</label>
+                </div>
+                <div class="divLeft">
+                    <label class="name">Agility:</label>
+                    <input type="range" id="agi" min="25" max="100" value="25">
+                    <label class="output" id="agiOutput">25 (25 + 0)</label>
+                </div>
+                <div class="divLeft">
+                    <label class="name">Accuracy:</label>
+                    <input type="range" id="acc" min="25" max="100" value="25">
+                    <label class="output" id="accOutput">25 (25 + 0)</label>
+                </div>
+                <div class="divLeft">
+                    <label class="name">Critical:</label>
+                    <input type="range" id="crit" min="25" max="100" value="25">
+                    <label class="output" id="critOutput">25 (25 + 0)</label>
+                </div>
+                <div class="divLeft">
+                    <label class="name">Reloading:</label>
+                    <input type="range" id="rel" min="25" max="100" value="25">
+                    <label class="output" id="relOutput">25 (25 + 0)</label>
+                </div>
             </div>
             <button type="button" class="collapsible">Armor Bonuses:</button>
             <div class="collapseContentInline">

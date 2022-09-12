@@ -1,0 +1,10 @@
+[
+    {"name":"Production/Service", "exp":"0", "str":"0", "end":"0", "agi":"0", "acc":"0", "crit":"0", "rel":"0", "melee":"0", "pistol":"0", "rifle":"0", "shotgun":"0", "mg":"0", "explo":"0"},
+    {"name":"Roleplay", "exp":"30", "str":"0", "end":"0", "agi":"0", "acc":"0", "crit":"0", "rel":"0", "melee":"0", "pistol":"0", "rifle":"0", "shotgun":"0", "mg":"0", "explo":"0"},
+    {"name":"Boxer", "exp":"0", "str":"20", "end":"0", "agi":"0", "acc":"0", "crit":"0", "rel":"0", "melee":"10", "pistol":"0", "rifle":"0", "shotgun":"0", "mg":"0", "explo":"0"},
+    {"name":"Soldier", "exp":"-20", "str":"5", "end":"10", "agi":"0", "acc":"10", "crit":"0", "rel":"10", "melee":"0", "pistol":"0", "rifle":"0", "shotgun":"0", "mg":"10", "explo":"0"},
+    {"name":"Police Officer", "exp":"0", "str":"0", "end":"0", "agi":"0", "acc":"10", "crit":"0", "rel":"5", "melee":"0", "pistol":"10", "rifle":"0", "shotgun":"10", "mg":"0", "explo":"0"},
+    {"name":"Fireman", "exp":"0", "str":"0", "end":"20", "agi":"0", "acc":"0", "crit":"0", "rel":"0", "melee":"10", "pistol":"0", "rifle":"0", "shotgun":"0", "mg":"0", "explo":"0"},
+    {"name":"Athlete", "exp":"0", "str":"0", "end":"0", "agi":"25", "acc":"0", "crit":"0", "rel":"0", "melee":"0", "pistol":"0", "rifle":"0", "shotgun":"0", "mg":"0", "explo":"0"},
+    {"name":"Student", "exp":"22", "str":"1", "end":"2", "agi":"2", "acc":"0", "crit":"0", "rel":"0", "melee":"0", "pistol":"0", "rifle":"0", "shotgun":"0", "mg":"0", "explo":"0"}
+]
