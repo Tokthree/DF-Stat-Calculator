@@ -3,6 +3,7 @@ $(document).ready(function () {
     const rangeColl = document.querySelectorAll('input[type=range]');
     const numColl = document.querySelectorAll('input[type=number]');
     const pointsReqSel = document.getElementById('freePoints');
+    const pointsPReqSel = document.getElementById('freePPoints');
     const levelReqSel = document.getElementById('reqLevel');
     //#endregion
 
@@ -13,41 +14,50 @@ $(document).ready(function () {
     let statTotal = 150;
     let pointsTotal = 0;
     let pointsReq = 0;
-    //let strValue = 25;
+    let profTotal = 10;
+    let pointsPTotal = 0;
+    let pointsPReq = 0;
     let strBase = 25;
     let strBoost = 0;
     let strClass = 0;
-    //let endValue = 25;
     let endBase = 25;
     let endBoost = 0;
     let endClass = 0;
     let armEnd = 0;
-    //let agiValue = 25;
     let agiBase = 25;
     let agiBoost = 0;
     let agiClass = 0;
     let armAgi = 0;
-    //let accValue = 25;
     let accBase = 25;
     let accBoost = 0;
     let accClass = 0;
     let w1AccBoost = 0;
     let w2AccBoost = 0;
     let w3AccBoost = 0;
-    //let critValue = 25;
     let critBase = 25;
     let critBoost = 0;
     let critClass = 0;
     let w1CritBoost = 0;
     let w2CritBoost = 0;
     let w3CritBoost = 0;
-    //let relValue = 25;
     let relBase = 25;
     let relBoost = 0;
     let relClass = 0;
     let w1RelBoost = 0;
     let w2RelBoost = 0;
     let w3RelBoost = 0;
+    let meleeBase = 5;
+    let meleeBoost = 0;
+    let pistolBase = 5;
+    let pistolBoost = 0;
+    let rifleBase = 0;
+    let rifleBoost = 0;
+    let shotgunBase = 0;
+    let shotgunBoost = 0;
+    let mgBase = 0;
+    let mgBoost = 0;
+    let exploBase = 0;
+    let exploBoost = 0;
     //#endregion
 
     //#region Functions
@@ -103,6 +113,12 @@ $(document).ready(function () {
         accClass = parseInt(this.options[this.selectedIndex].dataset.acc);
         critClass = parseInt(this.options[this.selectedIndex].dataset.crit);
         relClass = parseInt(this.options[this.selectedIndex].dataset.rel);
+        meleeBoost = parseInt(this.options[this.selectedIndex].dataset.melee);
+        pistolBoost = parseInt(this.options[this.selectedIndex].dataset.pistol);
+        rifleBoost = parseInt(this.options[this.selectedIndex].dataset.rifle);
+        shotgunBoost = parseInt(this.options[this.selectedIndex].dataset.shotgun);
+        mgBoost = parseInt(this.options[this.selectedIndex].dataset.mg);
+        exploBoost = parseInt(this.options[this.selectedIndex].dataset.explo);
 
         strBoost = strClass;
         endBoost = endClass + armEnd;
@@ -110,8 +126,6 @@ $(document).ready(function () {
         accBoost = accClass + w1AccBoost + w2AccBoost + w3AccBoost;
         critBoost = critClass + w1CritBoost + w2CritBoost + w3RelBoost;
         relBoost = relClass + w1RelBoost + w2RelBoost + w3RelBoost;
-
-        console.log()
     };
 
     function displayUpdate () {
@@ -138,6 +152,24 @@ $(document).ready(function () {
             } else if (elem.id == "rel") {
                 boostValue = statValue + relBoost
                 content.textContent = boostValue+" ("+statValue+" + "+relBoost+")";
+            } else if (elem.id == "melee") {
+                boostValue = statValue + meleeBoost
+                content.textContent = boostValue+" ("+statValue+" + "+meleeBoost+")";
+            } else if (elem.id == "pistol") {
+                boostValue = statValue + pistolBoost
+                content.textContent = boostValue+" ("+statValue+" + "+pistolBoost+")";
+            } else if (elem.id == "rifle") {
+                boostValue = statValue + rifleBoost
+                content.textContent = boostValue+" ("+statValue+" + "+rifleBoost+")";
+            } else if (elem.id == "shotgun") {
+                boostValue = statValue + shotgunBoost
+                content.textContent = boostValue+" ("+statValue+" + "+shotgunBoost+")";
+            } else if (elem.id == "mg") {
+                boostValue = statValue + mgBoost
+                content.textContent = boostValue+" ("+statValue+" + "+mgBoost+")";
+            } else if (elem.id == "explo") {
+                boostValue = statValue + exploBoost
+                content.textContent = boostValue+" ("+statValue+" + "+exploBoost+")";
             };
         };
     };
@@ -146,74 +178,127 @@ $(document).ready(function () {
         const content = this.nextElementSibling;
         var statValue = parseInt(this.value);
         var boostValue;
-        var boostSValue;
         let maxAdjust;
         if (this.id == "str") {
             strBase = statValue;
-            boostValue = strBoost;
-            boostSValue = statValue + boostValue;
-            //strValue = boostSValue;
-            content.textContent = boostSValue+" ("+statValue+" + "+strBoost+")";
+            boostValue = statValue + strBoost;
+            if (strBoost > 0) {
+                maxAdjust = 100 - strBoost;
+                this.setAttribute("max", maxAdjust);
+            } else {
+                this.setAttribute("max", 100);
+            };
+            content.textContent = boostValue+" ("+statValue+" + "+strBoost+")";
         } else if (this.id == "end") {
             endBase = statValue;
-            boostValue = endBoost;
-            boostSValue = statValue + boostValue;
-            //endValue = boostSValue;
+            boostValue = statValue + endBoost;
             if (endBoost > 24) {
-                maxAdjust = 100 - (endBoost - 24)
+                maxAdjust = 100 - (endBoost - 24);
                 this.setAttribute("max", maxAdjust);
             } else {
                 this.setAttribute("max", 100);
             };
-            content.textContent = boostSValue+" ("+statValue+" + "+endBoost+")";
+            content.textContent = boostValue+" ("+statValue+" + "+endBoost+")";
         } else if (this.id == "agi") {
             agiBase = statValue;
-            boostValue = agiBoost;
-            boostSValue = statValue + boostValue;
-            //agiValue = boostSValue;
+            boostValue = statValue + agiBoost;
             if (agiBoost > 24) {
-                maxAdjust = 100 - (agiBoost - 24)
+                maxAdjust = 100 - (agiBoost - 24);
                 this.setAttribute("max", maxAdjust);
             } else {
                 this.setAttribute("max", 100);
             };
-            content.textContent = boostSValue+" ("+statValue+" + "+agiBoost+")";
+            content.textContent = boostValue+" ("+statValue+" + "+agiBoost+")";
         } else if (this.id == "acc") {
             accBase = statValue;
-            boostValue = accBoost;
-            boostSValue = statValue + boostValue;
-            //accValue = boostSValue;
+            boostValue = statValue + agiBoost;
             if (accBoost > 24) {
-                maxAdjust = 100 - (accBoost - 24)
+                maxAdjust = 100 - (accBoost - 24);
                 this.setAttribute("max", maxAdjust);
             } else {
                 this.setAttribute("max", 100);
             };
-            content.textContent = boostSValue+" ("+statValue+" + "+accBoost+")";
+            content.textContent = boostValue+" ("+statValue+" + "+accBoost+")";
         } else if (this.id == "crit") {
             critBase = statValue;
-            boostValue = critBoost;
-            boostSValue = statValue + boostValue;
-            //critValue = boostSValue;
+            boostValue = statValue + critBoost;
             if (critBoost > 24) {
-                maxAdjust = 100 - (critBoost - 24)
+                maxAdjust = 100 - (critBoost - 24);
                 this.setAttribute("max", maxAdjust);
             } else {
                 this.setAttribute("max", 100);
             };
-            content.textContent = boostSValue+" ("+statValue+" + "+critBoost+")";
+            content.textContent = boostValue+" ("+statValue+" + "+critBoost+")";
         } else if (this.id == "rel") {
             relBase = statValue;
-            boostValue = relBoost;
-            boostSValue = statValue + boostValue;
-            //relValue = boostSValue;
+            boostValue = statValue + relBoost;
             if (relBoost > 24) {
-                maxAdjust = 100 - (relBoost - 24)
+                maxAdjust = 100 - (relBoost - 24);
                 this.setAttribute("max", maxAdjust);
             } else {
                 this.setAttribute("max", 100);
             };
-            content.textContent = boostSValue+" ("+statValue+" + "+relBoost+")";
+            content.textContent = boostValue+" ("+statValue+" + "+relBoost+")";
+        } else if (this.id == "melee") {
+            meleeBase = statValue;
+            boostValue = statValue + meleeBoost;
+            if (meleeBoost > 0) {
+                maxAdjust = 120 - meleeBoost;
+                this.setAttribute("max", maxAdjust);
+            } else {
+                this.setAttribute("max", 120);
+            };
+            content.textContent = boostValue+" ("+statValue+" + "+meleeBoost+")";
+        } else if (this.id == "pistol") {
+            pistolBase = statValue;
+            boostValue = statValue + pistolBoost;
+            if (pistolBoost > 0) {
+                maxAdjust = 120 - pistolBoost;
+                this.setAttribute("max", maxAdjust);
+            } else {
+                this.setAttribute("max", 120);
+            };
+            content.textContent = boostValue+" ("+statValue+" + "+pistolBoost+")";
+        } else if (this.id == "rifle") {
+            rifleBase = statValue;
+            boostValue = statValue + rifleBoost;
+            if (rifleBoost > 0) {
+                maxAdjust = 120 - rifleBoost;
+                this.setAttribute("max", maxAdjust);
+            } else {
+                this.setAttribute("max", 120);
+            };
+            content.textContent = boostValue+" ("+statValue+" + "+rifleBoost+")";
+        } else if (this.id == "shotgun") {
+            shotgunBase = statValue;
+            boostValue = statValue + shotgunBoost;
+            if (shotgunBoost > 0) {
+                maxAdjust = 120 - shotgunBoost;
+                this.setAttribute("max", maxAdjust);
+            } else {
+                this.setAttribute("max", 120);
+            };
+            content.textContent = boostValue+" ("+statValue+" + "+shotgunBoost+")";
+        } else if (this.id == "mg") {
+            mgBase = statValue;
+            boostValue = statValue + mgBoost;
+            if (mgBoost > 0) {
+                maxAdjust = 120 - mgBoost;
+                this.setAttribute("max", maxAdjust);
+            } else {
+                this.setAttribute("max", 120);
+            };
+            content.textContent = boostValue+" ("+statValue+" + "+mgBoost+")";
+        } else if (this.id == "explo") {
+            exploBase = statValue;
+            boostValue = statValue + exploBoost;
+            if (exploBoost > 0) {
+                maxAdjust = 120 - exploBoost;
+                this.setAttribute("max", maxAdjust);
+            } else {
+                this.setAttribute("max", 120);
+            };
+            content.textContent = boostValue+" ("+statValue+" + "+exploBoost+")";
         };
         statTotal = strBase + endBase + agiBase + accBase + critBase + relBase;
         pointsReq = statTotal - 150;
@@ -226,19 +311,50 @@ $(document).ready(function () {
         } else {
             pointsTotal = 0;
         };
+        profTotal = meleeBase + pistolBase + rifleBase + shotgunBase + mgBase + exploBase;
+        pointsPReq = profTotal - 10;
+        if (level <= 50 && level > 0) {
+            pointsPTotal = (level - 1) * 5;
+        } else if (level <= 220 && level > 0) {
+            pointsPTotal = ((level - 50) * 2) + 245;
+        } else if (level <= 325) {
+            pointsPTotal = (level - 220) + 585;
+        } else {
+            pointsPTotal = 0;
+        };
         pointsTotal = pointsTotal - pointsReq;
         pointsReqSel.textContent = pointsTotal;
-        if (pointsReq <= 245 && pointsReq > 0) {
-            levelReq = Math.ceil((pointsReq / 5) + 1);
-            levelReqSel.textContent = levelReq;
-        } else if (pointsReq <= 415 && pointsReq > 0) {
-            levelReq = (pointsReq - 245) + 50;
-            levelReqSel.textContent = levelReq;
-        } else if (pointsReq > 415) {
-            levelReqSel.textContent = "Impossible";
-        } else {
-            levelReq = 1;
-            levelReqSel.textContent = levelReq;
+        pointsPTotal = pointsPTotal - pointsPReq;
+        pointsPReqSel.textContent = pointsPTotal;
+        if (pointsReq == pointsPReq || pointsReq > pointsPReq) {
+            if (pointsReq > 415 || pointsPReq > 690) {
+                levelReqSel.textContent = "Impossible";
+            } else if (pointsReq <= 245 && pointsReq > 0) {
+                levelReq = Math.ceil((pointsReq / 5) + 1);
+                levelReqSel.textContent = levelReq;
+            } else if (pointsReq <= 415 && pointsReq > 0) {
+                levelReq = (pointsReq - 245) + 50;
+                levelReqSel.textContent = levelReq;
+            } else {
+                levelReq = 1;
+                levelReqSel.textContent = levelReq;
+            };
+        } else if (pointsPReq > pointsReq) { 
+            if (pointsPReq > 690 || pointsReq > 415) {
+                levelReqSel.textContent = "Impossible";
+            } else if (pointsPReq <= 245 && pointsPReq > 0) {
+                levelReq = Math.ceil((pointsPReq / 5) + 1);
+                levelReqSel.textContent = levelReq;
+            } else if (pointsPReq <= 585 && pointsPReq > 0) {
+                levelReq = Math.ceil(((pointsPReq - 245) / 2) + 50);
+                levelReqSel.textContent = levelReq;
+            } else if (pointsPReq <= 690 && pointsPReq > 0) {
+                levelReq = (pointsPReq - 585) + 220;
+                levelReqSel.textContent = levelReq;
+            } else {
+                levelReq = 1;
+                levelReqSel.textContent = levelReq;
+            };
         };
     };
 
@@ -256,14 +372,19 @@ $(document).ready(function () {
             };
             if (level <= 50 && level > 0) {
                 pointsTotal = ((level - 1) * 5) - pointsReq;
+                pointsPTotal = ((level - 1) * 5) - pointsPReq;
             } else if (level <= 220 && level > 0) {
                 pointsTotal = ((level - 50) + 245) - pointsReq;
-            } else if (level > 220) {
+                pointsPTotal = (((level - 50) * 2) + 245) - pointsPReq;
+            } else if (level <= 325) {
                 pointsTotal = 415 - pointsReq;
+                pointsPTotal = ((level - 220) + 585) - pointsPReq;
             } else {
                 pointsTotal = 0 - pointsReq;
+                pointsPTotal = 0 - pointsReq;
             };
             pointsReqSel.textContent = pointsTotal;
+            pointsPReqSel.textContent = pointsPTotal;
         } else if (this.id == "armAgi") {
             if (inputValue > 24) {
                 this.value = 24;

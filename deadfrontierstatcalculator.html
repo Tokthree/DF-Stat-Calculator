@@ -22,8 +22,12 @@
                         <input type="number" id="level" min="1" max="325" placeholder="1 - 325">
                     </div>
                     <div class="divVert">
-                        <label class="head">Points:</label>
+                        <label class="head">Stat Points:</label>
                         <p id="freePoints">0</p>
+                    </div>
+                    <div class="divVert">
+                        <label class="head">Prof Points:</label>
+                        <p id="freePPoints">0</p>
                     </div>
                     <div class="divVert">
                         <label class="head">Level Req:</label>
@@ -66,6 +70,39 @@
                     <label class="name">Reloading:</label>
                     <input type="range" id="rel" min="25" max="100" value="25">
                     <label class="output" id="relOutput">25 (25 + 0)</label>
+                </div>
+            </div>
+            <button type="button" class="collapsible">Proficiencies:</button>
+            <div class="collapseContent">
+                <div class="divLeft">
+                    <label class="name">Melee:</label>
+                    <input type="range" id="melee" min="5" max="120" value="5">
+                    <label class="output" id="meleeOutput">5 (5 + 0)</label>
+                </div>
+                <div class="divLeft">
+                    <label class="name">Pistols:</label>
+                    <input type="range" id="pistol" min="5" max="120" value="5">
+                    <label class="output" id="pistolOutput">5 (5 + 0)</label>
+                </div>
+                <div class="divLeft">
+                    <label class="name">Rifles:</label>
+                    <input type="range" id="rifle" min="0" max="120" value="0">
+                    <label class="output" id="rifleOutput">0 (0 + 0)</label>
+                </div>
+                <div class="divLeft">
+                    <label class="name">Shotguns:</label>
+                    <input type="range" id="shotgun" min="0" max="120" value="0">
+                    <label class="output" id="shotgunOutput">0 (0 + 0)</label>
+                </div>
+                <div class="divLeft">
+                    <label class="name">Machineguns:</label>
+                    <input type="range" id="mg" min="0" max="120" value="0">
+                    <label class="output" id="mgOutput">0 (0 + 0)</label>
+                </div>
+                <div class="divLeft">
+                    <label class="name">Explosives:</label>
+                    <input type="range" id="explo" min="0" max="120" value="0">
+                    <label class="output" id="exploOutput">0 (0 + 0)</label>
                 </div>
             </div>
             <button type="button" class="collapsible">Armor Bonuses:</button>
