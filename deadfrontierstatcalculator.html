@@ -14,296 +14,342 @@
     <main>
         <div class="contentLeft">
             <h3 class="hNoMarginLeft">Stats</h3>
-            <button type="button" class="collapsible">Character:</button>
-            <div class="collapseContent">
-                <div class="divLeft">
+            <div class="contentLeftScroll">
+                <button type="button" class="collapsible">Character:</button>
+                <div class="collapseContent">
+                    <div class="divLeft">
+                        <div class="divVert">
+                            <label class="head">Level:</label>
+                            <input type="number" id="level" min="1" max="325" placeholder="1 - 325">
+                        </div>
+                        <div class="divVert">
+                            <label class="head">Stat Points:</label>
+                            <p id="freePoints">0</p>
+                        </div>
+                        <div class="divVert">
+                            <label class="head">Prof Points:</label>
+                            <p id="freePPoints">0</p>
+                        </div>
+                        <div class="divVert">
+                            <label class="head">Level Req:</label>
+                            <p id="reqLevel">1</p>
+                        </div>
+                    </div>
+                    <select id="classSelect">
+                        <option data-name="noClass" data-exp="0" data-str="0" data-end="0" data-agi="0" data-acc="0" data-crit="0" data-rel="0" data-melee="0" data-pistol="0" data-rifle="0" data-shotgun="0" data-mg="0" data-explo="0">Please Select an Option</option>
+                        <optgroup></optgroup>
+                    </select>
+                </div>
+                <button type="button" class="collapsible">Stats:</button>
+                <div class="collapseContent">
+                    <div class="divLeft">
+                        <label class="name">Strength:</label>
+                        <input type="range" id="str" min="25" max="100" value="25">
+                        <label class="output" id="strOutput">25 (25 + 0)</label>
+                    </div>
+                    <div class="divLeft">
+                        <label class="name">Endurance:</label>
+                        <input type="range" id="end" min="25" max="100" value="25">
+                        <label class="output" id="endOutput">25 (25 + 0)</label>
+                    </div>
+                    <div class="divLeft">
+                        <label class="name">Agility:</label>
+                        <input type="range" id="agi" min="25" max="100" value="25">
+                        <label class="output" id="agiOutput">25 (25 + 0)</label>
+                    </div>
+                    <div class="divLeft">
+                        <label class="name">Accuracy:</label>
+                        <input type="range" id="acc" min="25" max="100" value="25">
+                        <label class="output" id="accOutput">25 (25 + 0)</label>
+                    </div>
+                    <div class="divLeft">
+                        <label class="name">Critical:</label>
+                        <input type="range" id="crit" min="25" max="100" value="25">
+                        <label class="output" id="critOutput">25 (25 + 0)</label>
+                    </div>
+                    <div class="divLeft">
+                        <label class="name">Reloading:</label>
+                        <input type="range" id="rel" min="25" max="100" value="25">
+                        <label class="output" id="relOutput">25 (25 + 0)</label>
+                    </div>
+                </div>
+                <button type="button" class="collapsible">Proficiencies:</button>
+                <div class="collapseContent">
+                    <div class="divLeft">
+                        <label class="name">Melee:</label>
+                        <input type="range" id="melee" min="5" max="120" value="5">
+                        <label class="output" id="meleeOutput">5 (5 + 0)</label>
+                    </div>
+                    <div class="divLeft">
+                        <label class="name">Pistols:</label>
+                        <input type="range" id="pistol" min="5" max="120" value="5">
+                        <label class="output" id="pistolOutput">5 (5 + 0)</label>
+                    </div>
+                    <div class="divLeft">
+                        <label class="name">Rifles:</label>
+                        <input type="range" id="rifle" min="0" max="120" value="0">
+                        <label class="output" id="rifleOutput">0 (0 + 0)</label>
+                    </div>
+                    <div class="divLeft">
+                        <label class="name">Shotguns:</label>
+                        <input type="range" id="shotgun" min="0" max="120" value="0">
+                        <label class="output" id="shotgunOutput">0 (0 + 0)</label>
+                    </div>
+                    <div class="divLeft">
+                        <label class="name">Machineguns:</label>
+                        <input type="range" id="mg" min="0" max="120" value="0">
+                        <label class="output" id="mgOutput">0 (0 + 0)</label>
+                    </div>
+                    <div class="divLeft">
+                        <label class="name">Explosives:</label>
+                        <input type="range" id="explo" min="0" max="120" value="0">
+                        <label class="output" id="exploOutput">0 (0 + 0)</label>
+                    </div>
+                </div>
+                <button type="button" class="collapsible">Armor Bonuses:</button>
+                <div class="collapseContentInline">
                     <div class="divVert">
-                        <label class="head">Level:</label>
-                        <input type="number" id="level" min="1" max="325" placeholder="1 - 325">
+                        <label class="head">Agi:</label>
+                        <input type="number" id="armAgi" min="0" max="24" placeholder="0 - 24">
                     </div>
                     <div class="divVert">
-                        <label class="head">Stat Points:</label>
-                        <p id="freePoints">0</p>
+                        <label class="head">End:</label>
+                        <input type="number" id="armEnd" min="0" max="24" placeholder="0 - 24">
+                    </div>             
+                </div>
+                <button type="button" class="collapsible">Weapon 1 Bonuses:</button>
+                <div class="collapseContentInline">
+                    <div class="divVert">
+                        <label class="head">Acc:</label>
+                        <input type="number" id="w1Acc" min="0" max="8" placeholder="0 - 8">
                     </div>
                     <div class="divVert">
-                        <label class="head">Prof Points:</label>
-                        <p id="freePPoints">0</p>
+                        <label class="head">Rel:</label>
+                        <input type="number" id="w1Rel" min="0" max="8" placeholder="0 - 8">
                     </div>
                     <div class="divVert">
-                        <label class="head">Level Req:</label>
-                        <p id="reqLevel">1</p>
+                        <label class="head">Crit:</label>
+                        <input type="number" id="w1Crit" min="0" max="8" placeholder="0 - 8">
+                    </div>               
+                </div>
+                <button type="button" class="collapsible">Weapon 2 Bonuses:</button>
+                <div class="collapseContentInline">
+                    <div class="divVert">
+                        <label class="head">Acc:</label>
+                        <input type="number" id="w2Acc" min="0" max="8" placeholder="0 - 8">
                     </div>
+                    <div class="divVert">
+                        <label class="head">Rel:</label>
+                        <input type="number" id="w2Rel" min="0" max="8" placeholder="0 - 8">
+                    </div>
+                    <div class="divVert">
+                        <label class="head">Crit:</label>
+                        <input type="number" id="w2Crit" min="0" max="8" placeholder="0 - 8">
+                    </div>               
                 </div>
-                <select id="classSelect">
-                    <option data-name="noClass" data-exp="0" data-str="0" data-end="0" data-agi="0" data-acc="0" data-crit="0" data-rel="0" data-melee="0" data-pistol="0" data-rifle="0" data-shotgun="0" data-mg="0" data-explo="0">Please Select an Option</option>
-                    <optgroup></optgroup>
-                </select>
-            </div>
-            <button type="button" class="collapsible">Stats:</button>
-            <div class="collapseContent">
-                <div class="divLeft">
-                    <label class="name">Strength:</label>
-                    <input type="range" id="str" min="25" max="100" value="25">
-                    <label class="output" id="strOutput">25 (25 + 0)</label>
+                <button type="button" class="collapsible">Weapon 3 Bonuses:</button>
+                <div class="collapseContentInline">
+                    <div class="divVert">
+                        <label class="head">Acc:</label>
+                        <input type="number" id="w3Acc" min="0" max="8" placeholder="0 - 8">
+                    </div>
+                    <div class="divVert">
+                        <label class="head">Rel:</label>
+                        <input type="number" id="w3Rel" min="0" max="8" placeholder="0 - 8">
+                    </div>
+                    <div class="divVert">
+                        <label class="head">Crit:</label>
+                        <input type="number" id="w3Crit" min="0" max="8" placeholder="0 - 8">
+                    </div>               
                 </div>
-                <div class="divLeft">
-                    <label class="name">Endurance:</label>
-                    <input type="range" id="end" min="25" max="100" value="25">
-                    <label class="output" id="endOutput">25 (25 + 0)</label>
-                </div>
-                <div class="divLeft">
-                    <label class="name">Agility:</label>
-                    <input type="range" id="agi" min="25" max="100" value="25">
-                    <label class="output" id="agiOutput">25 (25 + 0)</label>
-                </div>
-                <div class="divLeft">
-                    <label class="name">Accuracy:</label>
-                    <input type="range" id="acc" min="25" max="100" value="25">
-                    <label class="output" id="accOutput">25 (25 + 0)</label>
-                </div>
-                <div class="divLeft">
-                    <label class="name">Critical:</label>
-                    <input type="range" id="crit" min="25" max="100" value="25">
-                    <label class="output" id="critOutput">25 (25 + 0)</label>
-                </div>
-                <div class="divLeft">
-                    <label class="name">Reloading:</label>
-                    <input type="range" id="rel" min="25" max="100" value="25">
-                    <label class="output" id="relOutput">25 (25 + 0)</label>
-                </div>
-            </div>
-            <button type="button" class="collapsible">Proficiencies:</button>
-            <div class="collapseContent">
-                <div class="divLeft">
-                    <label class="name">Melee:</label>
-                    <input type="range" id="melee" min="5" max="120" value="5">
-                    <label class="output" id="meleeOutput">5 (5 + 0)</label>
-                </div>
-                <div class="divLeft">
-                    <label class="name">Pistols:</label>
-                    <input type="range" id="pistol" min="5" max="120" value="5">
-                    <label class="output" id="pistolOutput">5 (5 + 0)</label>
-                </div>
-                <div class="divLeft">
-                    <label class="name">Rifles:</label>
-                    <input type="range" id="rifle" min="0" max="120" value="0">
-                    <label class="output" id="rifleOutput">0 (0 + 0)</label>
-                </div>
-                <div class="divLeft">
-                    <label class="name">Shotguns:</label>
-                    <input type="range" id="shotgun" min="0" max="120" value="0">
-                    <label class="output" id="shotgunOutput">0 (0 + 0)</label>
-                </div>
-                <div class="divLeft">
-                    <label class="name">Machineguns:</label>
-                    <input type="range" id="mg" min="0" max="120" value="0">
-                    <label class="output" id="mgOutput">0 (0 + 0)</label>
-                </div>
-                <div class="divLeft">
-                    <label class="name">Explosives:</label>
-                    <input type="range" id="explo" min="0" max="120" value="0">
-                    <label class="output" id="exploOutput">0 (0 + 0)</label>
-                </div>
-            </div>
-            <button type="button" class="collapsible">Armor Bonuses:</button>
-            <div class="collapseContentInline">
-                <div class="divVert">
-                    <label class="head">Agi:</label>
-                    <input type="number" id="armAgi" min="0" max="24" placeholder="0 - 24">
-                </div>
-                <div class="divVert">
-                    <label class="head">End:</label>
-                    <input type="number" id="armEnd" min="0" max="24" placeholder="0 - 24">
-                </div>             
-            </div>
-            <button type="button" class="collapsible">Weapon 1 Bonuses:</button>
-            <div class="collapseContentInline">
-                <div class="divVert">
-                    <label class="head">Acc:</label>
-                    <input type="number" id="w1Acc" min="0" max="8" placeholder="0 - 8">
-                </div>
-                <div class="divVert">
-                    <label class="head">Rel:</label>
-                    <input type="number" id="w1Rel" min="0" max="8" placeholder="0 - 8">
-                </div>
-                <div class="divVert">
-                    <label class="head">Crit:</label>
-                    <input type="number" id="w1Crit" min="0" max="8" placeholder="0 - 8">
-                </div>               
-            </div>
-            <button type="button" class="collapsible">Weapon 2 Bonuses:</button>
-            <div class="collapseContentInline">
-                <div class="divVert">
-                    <label class="head">Acc:</label>
-                    <input type="number" id="w2Acc" min="0" max="8" placeholder="0 - 8">
-                </div>
-                <div class="divVert">
-                    <label class="head">Rel:</label>
-                    <input type="number" id="w2Rel" min="0" max="8" placeholder="0 - 8">
-                </div>
-                <div class="divVert">
-                    <label class="head">Crit:</label>
-                    <input type="number" id="w2Crit" min="0" max="8" placeholder="0 - 8">
-                </div>               
-            </div>
-            <button type="button" class="collapsible">Weapon 3 Bonuses:</button>
-            <div class="collapseContentInline">
-                <div class="divVert">
-                    <label class="head">Acc:</label>
-                    <input type="number" id="w3Acc" min="0" max="8" placeholder="0 - 8">
-                </div>
-                <div class="divVert">
-                    <label class="head">Rel:</label>
-                    <input type="number" id="w3Rel" min="0" max="8" placeholder="0 - 8">
-                </div>
-                <div class="divVert">
-                    <label class="head">Crit:</label>
-                    <input type="number" id="w3Crit" min="0" max="8" placeholder="0 - 8">
-                </div>               
             </div>
         </div>
         <div class="contentCenter">
             <h3 class="hNoMarginCenter">Equipment</h3>
+            <div class="contentCenterScroll">
+                <button type="button" class="collapsible">Armor:</button>
+                <div class="collapseContent">
+                    <select id="armorSelect">
+                        <option data-name="noArmor">Please Select an Option</option>
+                        <optgroup></optgroup>
+                    </select>
+                </div>
+                <button type="button" class="collapsible">Weapon 1:</button>
+                <div class="collapseContent">
+                    <select id="weaponSelect1">
+                        <option data-name="noWeapon">Please Select an Option</option>
+                        <optgroup></optgroup>
+                    </select>
+                </div>
+                <button type="button" class="collapsible">Weapon 2:</button>
+                <div class="collapseContent">
+                    <select id="weaponSelect2">
+                        <option data-name="noWeapon">Please Select an Option</option>
+                        <optgroup></optgroup>
+                    </select>
+                </div>
+                <button type="button" class="collapsible">Weapon 3:</button>
+                <div class="collapseContent">
+                    <select id="weaponSelect3">
+                        <option data-name="noWeapon">Please Select an Option</option>
+                        <optgroup></optgroup>
+                    </select>
+                </div>
+            </div>
         </div>
         <div class="contentRight">
             <h3 class="hNoMarginRight">Totals</h3>
-            <button type="button" class="collapsible">Character:</button>
-            <div class="collapseContent">
-                <div class="divRight">
-                    <p class="title">Health:</p>
-                    <p class="value" id="healthValue">0</p>
+            <div class="contentRightScroll">
+                <button type="button" class="collapsible">Character:</button>
+                <div class="collapseContent">
+                    <div class="divRight">
+                        <p class="title">Health:</p>
+                        <p class="value" id="healthValue">50</p>
+                    </div>
+                    <div class="divRight">
+                        <p class="title">Walk Speed:</p>
+                        <p class="value" id="walkValue">3.1878</p>
+                    </div>
+                    <div class="divRight">
+                        <p class="title">Sprint Speed:</p>
+                        <p class="value" id="sprintValue">5.0715</p>
+                    </div>
+                    <div class="divRight">
+                        <p class="title">Sprint Duration:</p>
+                        <p class="value" id="durationValue">24 s</p>
+                    </div>
+                    <div class="divRight">
+                        <p class="title">Sprint Regen:</p>
+                        <p class="value" id="regenValue">24 s</p>
+                    </div>                
                 </div>
-                <div class="divRight">
-                    <p class="title">Walk Speed:</p>
-                    <p class="value" id="walkValue">0</p>
+                <button type="button" class="collapsible">Armor:</button>
+                <div class="collapseContent">
+                    <div class="divRight">
+                        <p class="title">Effective Durability:</p>
+                        <p class="value" id="durabilityValue">0</p>
+                    </div>
+                    <div class="divRight">
+                        <p class="title">Absorption:</p>
+                        <p class="value" id="absorptionValue">0%</p>
+                    </div>                
                 </div>
-                <div class="divRight">
-                    <p class="title">Sprint Speed:</p>
-                    <p class="value" id="sprintValue">0</p>
+                <button type="button" class="collapsible">Weapon 1:</button>
+                <div class="collapseContent">
+                    <div class="divRight">
+                        <p class="title">Damage per Hit:</p>
+                        <p class="value" id="w1DPHValue">0</p>
+                    </div>
+                    <div class="divRight">
+                        <p class="title">Damage per Pellet:</p>
+                        <p class="value" id="w1PDPHValue">0</p>
+                    </div>
+                    <div class="divRight">
+                        <p class="title">Pellets:</p>
+                        <p class="value" id="w1PelletValue">0</p>
+                    </div>
+                    <div class="divRight">
+                        <p class="title">Critical Damage:</p>
+                        <p class="value" id="w1CritValue">0</p>
+                    </div>
+                    <div class="divRight">
+                        <p class="title">Critical Pattern:</p>
+                        <p class="value" id="w1PatternValue">0</p>
+                    </div>
+                    <div class="divRight">
+                        <p class="title">Reload Duration:</p>
+                        <p class="value" id="w1ReloadValue">0 s</p>
+                    </div>
+                    <div class="divRight">
+                        <p class="title">Effective DPS:</p>
+                        <p class="value" id="w1DPSValue">0</p>
+                    </div>
+                    <div class="divRight">
+                        <p class="title">Accuracy:</p>
+                        <p class="value" id="w1AccuracyValue">0</p>
+                    </div>
+                    <div class="divRight">
+                        <p class="title">Pellet Spread:</p>
+                        <p class="value" id="w1SpreadValue">0&#xB0</p>
+                    </div>
                 </div>
-                <div class="divRight">
-                    <p class="title">Sprint Duration:</p>
-                    <p class="value" id="durationValue">0</p>
+                <button type="button" class="collapsible">Weapon 2:</button>
+                <div class="collapseContent">
+                    <div class="divRight">
+                        <p class="title">Damage per Hit:</p>
+                        <p class="value" id="w2DPHValue">0</p>
+                    </div>
+                    <div class="divRight">
+                        <p class="title">Damage per Pellet:</p>
+                        <p class="value" id="w2PDPHValue">0</p>
+                    </div>
+                    <div class="divRight">
+                        <p class="title">Pellets:</p>
+                        <p class="value" id="w2PelletValue">0</p>
+                    </div>
+                    <div class="divRight">
+                        <p class="title">Critical Damage:</p>
+                        <p class="value" id="w2CritValue">0</p>
+                    </div>
+                    <div class="divRight">
+                        <p class="title">Critical Pattern:</p>
+                        <p class="value" id="w2PatternValue">0</p>
+                    </div>
+                    <div class="divRight">
+                        <p class="title">Reload Duration:</p>
+                        <p class="value" id="w2ReloadValue">0 s</p>
+                    </div>
+                    <div class="divRight">
+                        <p class="title">Effective DPS:</p>
+                        <p class="value" id="w2DPSValue">0</p>
+                    </div>
+                    <div class="divRight">
+                        <p class="title">Accuracy:</p>
+                        <p class="value" id="w2AccuracyValue">0</p>
+                    </div>
+                    <div class="divRight">
+                        <p class="title">Pellet Spread:</p>
+                        <p class="value" id="w2SpreadValue">0&#xB0</p>
+                    </div>
                 </div>
-                <div class="divRight">
-                    <p class="title">Sprint Regen:</p>
-                    <p class="value" id="regenValue">0</p>
-                </div>                
-            </div>
-            <button type="button" class="collapsible">Armor:</button>
-            <div class="collapseContent">
-                <div class="divRight">
-                    <p class="title">Effective Durability:</p>
-                    <p class="value" id="durabilityValue">0</p>
-                </div>
-                <div class="divRight">
-                    <p class="title">Absorption:</p>
-                    <p class="value" id="absorptionValue">0</p>
-                </div>                
-            </div>
-            <button type="button" class="collapsible">Weapon 1:</button>
-            <div class="collapseContent">
-                <div class="divRight">
-                    <p class="title">Accuracy:</p>
-                    <p class="value" id="w1AccuracyValue">0</p>
-                </div>
-                <div class="divRight">
-                    <p class="title">Pellet Spread:</p>
-                    <p class="value" id="w1SpreadValue">0</p>
-                </div>
-                <div class="divRight">
-                    <p class="title">Damage per Hit:</p>
-                    <p class="value" id="w1DPHValue">0</p>
-                </div>
-                <div class="divRight">
-                    <p class="title">Pellets:</p>
-                    <p class="value" id="w1PelletValue">0</p>
-                </div>
-                <div class="divRight">
-                    <p class="title">Critical Damage:</p>
-                    <p class="value" id="w1CritValue">0</p>
-                </div>
-                <div class="divRight">
-                    <p class="title">Critical Pattern:</p>
-                    <p class="value" id="w1PatternValue">0</p>
-                </div>
-                <div class="divRight">
-                    <p class="title">Reload Duration:</p>
-                    <p class="value" id="w1ReloadValue">0</p>
-                </div>
-                <div class="divRight">
-                    <p class="title">Effective DPS:</p>
-                    <p class="value" id="w1DPSValue">0</p>
-                </div>                
-            </div>
-            <button type="button" class="collapsible">Weapon 2:</button>
-            <div class="collapseContent">
-                <div class="divRight">
-                    <p class="title">Accuracy:</p>
-                    <p class="value" id="w2AccuracyValue">0</p>
-                </div>
-                <div class="divRight">
-                    <p class="title">Pellet Spread:</p>
-                    <p class="value" id="w2SpreadValue">0</p>
-                </div>
-                <div class="divRight">
-                    <p class="title">Damage per Hit:</p>
-                    <p class="value" id="w2DPHValue">0</p>
-                </div>
-                <div class="divRight">
-                    <p class="title">Pellets:</p>
-                    <p class="value" id="w2PelletValue">0</p>
-                </div>
-                <div class="divRight">
-                    <p class="title">Critical Damage:</p>
-                    <p class="value" id="w2CritValue">0</p>
-                </div>
-                <div class="divRight">
-                    <p class="title">Critical Pattern:</p>
-                    <p class="value" id="w2PatternValue">0</p>
-                </div>
-                <div class="divRight">
-                    <p class="title">Reload Duration:</p>
-                    <p class="value" id="w2ReloadValue">0</p>
-                </div>
-                <div class="divRight">
-                    <p class="title">Effective DPS:</p>
-                    <p class="value" id="w2DPSValue">0</p>
-                </div>
-            </div>
-            <button type="button" class="collapsible">Weapon 3:</button>
-            <div class="collapseContent">
-                <div class="divRight">
-                    <p class="title">Accuracy:</p>
-                    <p class="value" id="w3AccuracyValue">0</p>
-                </div>
-                <div class="divRight">
-                    <p class="title">Pellet Spread:</p>
-                    <p class="value" id="w3SpreadValue">0</p>
-                </div>
-                <div class="divRight">
-                    <p class="title">Damage per Hit:</p>
-                    <p class="value" id="w3DPHValue">0</p>
-                </div>
-                <div class="divRight">
-                    <p class="title">Pellets:</p>
-                    <p class="value" id="w3PelletValue">0</p>
-                </div>
-                <div class="divRight">
-                    <p class="title">Critical Damage:</p>
-                    <p class="value" id="w3CritValue">0</p>
-                </div>
-                <div class="divRight">
-                    <p class="title">Critical Pattern:</p>
-                    <p class="value" id="w3PatternValue">0</p>
-                </div>
-                <div class="divRight">
-                    <p class="title">Reload Duration:</p>
-                    <p class="value" id="w3ReloadValue">0</p>
-                </div>
-                <div class="divRight">
-                    <p class="title">Effective DPS:</p>
-                    <p class="value" id="w3DPSValue">0</p>
+                <button type="button" class="collapsible">Weapon 3:</button>
+                <div class="collapseContent">
+                    <div class="divRight">
+                        <p class="title">Damage per Hit:</p>
+                        <p class="value" id="w3DPHValue">0</p>
+                    </div>
+                    <div class="divRight">
+                        <p class="title">Damage per Pellet:</p>
+                        <p class="value" id="w3PDPHValue">0</p>
+                    </div>
+                    <div class="divRight">
+                        <p class="title">Pellets:</p>
+                        <p class="value" id="w3PelletValue">0</p>
+                    </div>
+                    <div class="divRight">
+                        <p class="title">Critical Damage:</p>
+                        <p class="value" id="w3CritValue">0</p>
+                    </div>
+                    <div class="divRight">
+                        <p class="title">Critical Pattern:</p>
+                        <p class="value" id="w3PatternValue">0</p>
+                    </div>
+                    <div class="divRight">
+                        <p class="title">Reload Duration:</p>
+                        <p class="value" id="w3ReloadValue">0 s</p>
+                    </div>
+                    <div class="divRight">
+                        <p class="title">Effective DPS:</p>
+                        <p class="value" id="w3DPSValue">0</p>
+                    </div>
+                    <div class="divRight">
+                        <p class="title">Accuracy:</p>
+                        <p class="value" id="w3AccuracyValue">0</p>
+                    </div>
+                    <div class="divRight">
+                        <p class="title">Pellet Spread:</p>
+                        <p class="value" id="w3SpreadValue">0&#xB0</p>
+                    </div>
                 </div>
             </div>
         </div>
