@@ -2,6 +2,7 @@ $(document).ready(function () {
     //#region Selectors
     const rangeColl = document.querySelectorAll('input[type=range]');
     const numColl = document.querySelectorAll('input[type=number]');
+    const checkColl = document.querySelectorAll('input[type=checkbox]');
     const selectColl = document.querySelectorAll('select');
     const pointsReqSel = document.getElementById('freePoints');
     const pointsPReqSel = document.getElementById('freePPoints');
@@ -65,7 +66,6 @@ $(document).ready(function () {
     let mgBoost = 0;
     let exploBase = 0;
     let exploBoost = 0;
-
     let durability = 0;
     let absorption = 0;
     let w1Spread = "false";
@@ -120,7 +120,39 @@ $(document).ready(function () {
     let w3Pen = 0;
     let w3Dps = 0;
 
+    let imp1 = { exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0 };
+    let imp2 = { exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0 };
+    let imp3 = { exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0 };
+    let imp4 = { exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0 };
+    let imp5 = { exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0 };
+    let imp6 = { exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0 };
+    let imp7 = { exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0 };
+    let imp8 = { exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0 };
+    let imp9 = { exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0 };
+    let imp10 = { exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0 };
+    let imp11 = { exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0 };
+    let imp12 = { exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0 };
+    let imp13 = { exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0 };
+    let imp14 = { exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0 };
+    let imp15 = { exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0 };
+    let imp16 = { exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0 };
+    let ub = { exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0 };
+    let gm = { exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0 };
+    let clan = { exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0 };
+    let impBlock = { imp1: "none", imp2: "none", imp3: "none", imp4: "none", imp5: "none", imp6: "none", imp7: "none", imp8: "none", imp9: "none", imp10: "none", imp11: "none", imp12: "none", imp13: "none", imp14: "none", imp15: "none", imp16: "none" }
+    let impUBlock = { imp1: "false", imp2: "false", imp3: "false", imp4: "false", imp5: "false", imp6: "false", imp7: "false", imp8: "false", imp9: "false", imp10: "false", imp11: "false", imp12: "false", imp13: "false", imp14: "false", imp15: "false", imp16: "false" }
+
+    let expBoost = 0;
+    let pvpBoost = 0;
     let damageBoost = 0;
+    let speedBoost = 0;
+    let idrBoost = 0;
+    let weaponBoost = 0;
+    let armorBoost = 0;
+    let cashBoost = 0;
+    let ammoBoost = 0;
+    let sSpeedBoost = 0;
+    let spotsBoost = 0;
     //#endregion
 
     //#region Functions
@@ -231,9 +263,45 @@ $(document).ready(function () {
         };
     };
     
+    function parseOutImplantArray(data) //Weapons parse function (Credit to Awoo 4: Come Back When You're a Little Mmmm... Awooier!)
+    {
+        let jsonData = JSON.parse(data);
+        let mainSelect = document.querySelectorAll("[id^='implantSelect']");
+        for (i = 0; i < mainSelect.length; i++) {
+            jsonData.forEach((val) =>
+            {
+                let group = document.createElement("optgroup"); //Create <optgroup> elements
+                group.label = val["cat"];
+                mainSelect[i].appendChild(group);
+        
+                val["items"].forEach((val2) =>
+                {
+                    let option = document.createElement("option"); //Create <option> elements
+                    option.id = val2["name"];
+                    option.value = val2["name"];
+                    option.textContent = val2["name"];
+                    option.dataset.exp = val2["exp"];
+                    option.dataset.pvp = val2["pvp"];
+                    option.dataset.damage = val2["damage"];
+                    option.dataset.speed = val2["speed"];
+                    option.dataset.idr = val2["idr"];
+                    option.dataset.weapon = val2["weapon"];
+                    option.dataset.armor = val2["armor"];
+                    option.dataset.cash = val2["cash"];
+                    option.dataset.ammo = val2["ammo"];
+                    option.dataset.sSpeed = val2["sSpeed"];
+                    option.dataset.spots = val2["spots"];
+                    option.dataset.cantUse = val2["cantUse"];
+                    mainSelect[i].appendChild(option);
+                });
+            });
+        };
+    };
+    
     makeForeignRequest("classes.json", parseOutClassArray); //Pull JSON & parse
     makeForeignRequest("armors.json", parseOutArmorArray);
     makeForeignRequest("weapons.json", parseOutWeaponArray);
+    makeForeignRequest("implants.json", parseOutImplantArray);
 
     function selectUpdate() {
         for (i = 0; i < selectColl.length; i++) {
@@ -266,16 +334,16 @@ $(document).ready(function () {
                 let burst = elem.options[elem.selectedIndex].dataset.burst;
                 let sAngle = elem.options[elem.selectedIndex].dataset.sAngle;
                 let pellets = elem.options[elem.selectedIndex].dataset.pellets;
-                let pelletDph = elem.options[elem.selectedIndex].dataset.dph * (1 + damageBoost);
+                let pelletDph = elem.options[elem.selectedIndex].dataset.dph * (1 + (damageBoost / 100));
                 let dph = 0;
                 if (spread == "true") {
-                    dph = (elem.options[elem.selectedIndex].dataset.dph * pellets) * (1 + damageBoost);
+                    dph = (elem.options[elem.selectedIndex].dataset.dph * pellets) * (1 + (damageBoost / 100));
                 } else {
-                    dph = elem.options[elem.selectedIndex].dataset.dph * (1 + damageBoost);
+                    dph = elem.options[elem.selectedIndex].dataset.dph * (1 + (damageBoost / 100));
                 };
-                let dph1 = elem.options[elem.selectedIndex].dataset.dph1 * (1 + damageBoost);
-                let dph2 = elem.options[elem.selectedIndex].dataset.dph2 * (1 + damageBoost);
-                let dph3 = elem.options[elem.selectedIndex].dataset.dph3 * (1 + damageBoost);
+                let dph1 = elem.options[elem.selectedIndex].dataset.dph1 * (1 + (damageBoost / 100));
+                let dph2 = elem.options[elem.selectedIndex].dataset.dph2 * (1 + (damageBoost / 100));
+                let dph3 = elem.options[elem.selectedIndex].dataset.dph3 * (1 + (damageBoost / 100));
                 let shotTime = elem.options[elem.selectedIndex].dataset.shotTime;
                 let capacity = elem.options[elem.selectedIndex].dataset.capacity;
                 let weaponCrit = elem.options[elem.selectedIndex].dataset.weaponCrit;
@@ -384,6 +452,127 @@ $(document).ready(function () {
                     w3Pen = pen;
                     w3Dps = dps;
                 };
+            } else if (elem.id.includes("implantSelect")) {
+                let currSlot = elem.id;
+                let impName = elem.options[elem.selectedIndex].value;
+                let impExp = elem.options[elem.selectedIndex].dataset.exp;
+                let impPvp = elem.options[elem.selectedIndex].dataset.pvp;
+                let impDamage = elem.options[elem.selectedIndex].dataset.damage;
+                let impSpeed = elem.options[elem.selectedIndex].dataset.speed;
+                let impIdr = elem.options[elem.selectedIndex].dataset.idr;
+                let impWeapon = elem.options[elem.selectedIndex].dataset.weapon;
+                let impArmor = elem.options[elem.selectedIndex].dataset.armor;
+                let impCash = elem.options[elem.selectedIndex].dataset.cash;
+                let impAmmo = elem.options[elem.selectedIndex].dataset.ammo;
+                let impSSpeed = elem.options[elem.selectedIndex].dataset.sSpeed;
+                let impSpots = elem.options[elem.selectedIndex].dataset.spots;
+                let impCantUse = elem.options[elem.selectedIndex].dataset.cantUse;
+                let impUnique = elem.options[elem.selectedIndex].dataset.unique;
+                if (elem.id == "implantSelect1") {
+                    imp1 = {exp: impExp, pvp: impPvp, damage: impDamage, speed: impSpeed, idr: impIdr, weapon: impWeapon, armor: impArmor, cash: impCash, ammo: impAmmo, sSpeed: impSSpeed, spots: impSpots};
+                    impBlock["imp1"] = impCantUse;
+                    if (impUnique == "true") {
+                        impUBlock["imp1"] = impName;
+                    };
+                } else if (elem.id == "implantSelect2") {
+                    imp2 = {exp: impExp, pvp: impPvp, damage: impDamage, speed: impSpeed, idr: impIdr, weapon: impWeapon, armor: impArmor, cash: impCash, ammo: impAmmo, sSpeed: impSSpeed, spots: impSpots};
+                    impBlock["imp2"] = impCantUse;
+                    if (impUnique == "true") {
+                        impUBlock["imp2"] = impName;
+                    };
+                } else if (elem.id == "implantSelect3") {
+                    imp3 = {exp: impExp, pvp: impPvp, damage: impDamage, speed: impSpeed, idr: impIdr, weapon: impWeapon, armor: impArmor, cash: impCash, ammo: impAmmo, sSpeed: impSSpeed, spots: impSpots};
+                    impBlock["imp3"] = impCantUse;
+                    if (impUnique == "true") {
+                        impUBlock["imp3"] = impName;
+                    };
+                } else if (elem.id == "implantSelect4") {
+                    imp4 = {exp: impExp, pvp: impPvp, damage: impDamage, speed: impSpeed, idr: impIdr, weapon: impWeapon, armor: impArmor, cash: impCash, ammo: impAmmo, sSpeed: impSSpeed, spots: impSpots};
+                    impBlock["imp4"] = impCantUse;
+                    if (impUnique == "true") {
+                        impUBlock["imp4"] = impName;
+                    };
+                } else if (elem.id == "implantSelect5") {
+                    imp5 = {exp: impExp, pvp: impPvp, damage: impDamage, speed: impSpeed, idr: impIdr, weapon: impWeapon, armor: impArmor, cash: impCash, ammo: impAmmo, sSpeed: impSSpeed, spots: impSpots};
+                    impBlock["imp5"] = impCantUse;
+                    if (impUnique == "true") {
+                        impUBlock["imp5"] = impName;
+                    };
+                } else if (elem.id == "implantSelect6") {
+                    imp6 = {exp: impExp, pvp: impPvp, damage: impDamage, speed: impSpeed, idr: impIdr, weapon: impWeapon, armor: impArmor, cash: impCash, ammo: impAmmo, sSpeed: impSSpeed, spots: impSpots};
+                    impBlock["imp6"] = impCantUse;
+                    if (impUnique == "true") {
+                        impUBlock["imp6"] = impName;
+                    };
+                } else if (elem.id == "implantSelect7") {
+                    imp7 = {exp: impExp, pvp: impPvp, damage: impDamage, speed: impSpeed, idr: impIdr, weapon: impWeapon, armor: impArmor, cash: impCash, ammo: impAmmo, sSpeed: impSSpeed, spots: impSpots};
+                    impBlock["imp7"] = impCantUse;
+                    if (impUnique == "true") {
+                        impUBlock["imp7"] = impName;
+                    };
+                } else if (elem.id == "implantSelect8") {
+                    imp8 = {exp: impExp, pvp: impPvp, damage: impDamage, speed: impSpeed, idr: impIdr, weapon: impWeapon, armor: impArmor, cash: impCash, ammo: impAmmo, sSpeed: impSSpeed, spots: impSpots};
+                    impBlock["imp8"] = impCantUse;
+                    if (impUnique == "true") {
+                        impUBlock["imp8"] = impName;
+                    };
+                } else if (elem.id == "implantSelect9") {
+                    imp9 = {exp: impExp, pvp: impPvp, damage: impDamage, speed: impSpeed, idr: impIdr, weapon: impWeapon, armor: impArmor, cash: impCash, ammo: impAmmo, sSpeed: impSSpeed, spots: impSpots};
+                    impBlock["imp9"] = impCantUse;
+                    if (impUnique == "true") {
+                        impUBlock["imp9"] = impName;
+                    };
+                } else if (elem.id == "implantSelect10") {
+                    imp10 = {exp: impExp, pvp: impPvp, damage: impDamage, speed: impSpeed, idr: impIdr, weapon: impWeapon, armor: impArmor, cash: impCash, ammo: impAmmo, sSpeed: impSSpeed, spots: impSpots};
+                    impBlock["imp10"] = impCantUse;
+                    if (impUnique == "true") {
+                        impUBlock["imp10"] = impName;
+                    };
+                } else if (elem.id == "implantSelect11") {
+                    imp11 = {exp: impExp, pvp: impPvp, damage: impDamage, speed: impSpeed, idr: impIdr, weapon: impWeapon, armor: impArmor, cash: impCash, ammo: impAmmo, sSpeed: impSSpeed, spots: impSpots};
+                    impBlock["imp11"] = impCantUse;
+                    if (impUnique == "true") {
+                        impUBlock["imp11"] = impName;
+                    };
+                } else if (elem.id == "implantSelect12") {
+                    imp12 = {exp: impExp, pvp: impPvp, damage: impDamage, speed: impSpeed, idr: impIdr, weapon: impWeapon, armor: impArmor, cash: impCash, ammo: impAmmo, sSpeed: impSSpeed, spots: impSpots};
+                    impBlock["imp12"] = impCantUse;
+                    if (impUnique == "true") {
+                        impUBlock["imp12"] = impName;
+                    };
+                } else if (elem.id == "implantSelect13") {
+                    imp13 = {exp: impExp, pvp: impPvp, damage: impDamage, speed: impSpeed, idr: impIdr, weapon: impWeapon, armor: impArmor, cash: impCash, ammo: impAmmo, sSpeed: impSSpeed, spots: impSpots};
+                    impBlock["imp13"] = impCantUse;
+                    if (impUnique == "true") {
+                        impUBlock["imp13"] = impName;
+                    };
+                } else if (elem.id == "implantSelect14") {
+                    imp14 = {exp: impExp, pvp: impPvp, damage: impDamage, speed: impSpeed, idr: impIdr, weapon: impWeapon, armor: impArmor, cash: impCash, ammo: impAmmo, sSpeed: impSSpeed, spots: impSpots};
+                    impBlock["imp14"] = impCantUse;
+                    if (impUnique == "true") {
+                        impUBlock["imp14"] = impName;
+                    };
+                } else if (elem.id == "implantSelect15") {
+                    imp15 = {exp: impExp, pvp: impPvp, damage: impDamage, speed: impSpeed, idr: impIdr, weapon: impWeapon, armor: impArmor, cash: impCash, ammo: impAmmo, sSpeed: impSSpeed, spots: impSpots};
+                    impBlock["imp15"] = impCantUse;
+                    if (impUnique == "true") {
+                        impUBlock["imp15"] = impName;
+                    };
+                } else if (elem.id == "implantSelect16") {
+                    imp16 = {exp: impExp, pvp: impPvp, damage: impDamage, speed: impSpeed, idr: impIdr, weapon: impWeapon, armor: impArmor, cash: impCash, ammo: impAmmo, sSpeed: impSSpeed, spots: impSpots};
+                    impBlock["imp16"] = impCantUse;
+                    if (impUnique == "true") {
+                        impUBlock["imp16"] = impName;
+                    };
+                };
+                /* //Need to figure this out
+                if (impCantUse != "none") {
+                    document.querySelectorAll("[value=" + CSS.escape(impCantUse) + "]").forEach(element => element.disabled = true);
+                };
+                if (impUnique != "false") {
+                    document.querySelectorAll("[value=" + CSS.escape(impName) + "]").forEach(element => element.disabled = true);
+                };
+                */
             };
         };
     };
@@ -423,6 +612,17 @@ $(document).ready(function () {
         const w3DpsSelector = document.getElementById('w3DPSValue');
         const w3AccuracySelector = document.getElementById('w3AccuracyValue');
         const w3SpreadSelector = document.getElementById('w3SpreadValue');
+        const expSelector = document.getElementById('expValue');
+        const pvpSelector = document.getElementById('pvpValue');
+        const damageSelector = document.getElementById('damageValue');
+        const speedSelector = document.getElementById('speedValue');
+        const idrSelector = document.getElementById('idrValue');
+        const weaponSelector = document.getElementById('weaponValue');
+        const armorSelector = document.getElementById('armorValue');
+        const cashSelector = document.getElementById('cashValue');
+        const ammoSelector = document.getElementById('ammoValue');
+        const sSpeedSelector = document.getElementById('sSpeedValue');
+        const spotsSelector = document.getElementById('spotsValue');
         for (i = 0; i < rangeColl.length; i++) {
             let elem = rangeColl[i];
             const content = elem.nextElementSibling;
@@ -472,302 +672,321 @@ $(document).ready(function () {
                 content.textContent = boostValue+" ("+statValue+" + "+exploBoost+")";
             };
         };
+        expBoost = +imp1["exp"] + +imp2["exp"] + +imp3["exp"] + +imp4["exp"] + +imp5["exp"] + +imp6["exp"] + +imp7["exp"] + +imp8["exp"] + +imp9["exp"] + +imp10["exp"] + +imp11["exp"] + +imp12["exp"] + +imp13["exp"] + +imp14["exp"] + +imp15["exp"] + +imp16["exp"] + +ub["exp"] + +gm["exp"] + +clan["exp"];
+        expSelector.textContent = expBoost+"%";
+        pvpBoost = +imp1["pvp"] + +imp2["pvp"] + +imp3["pvp"] + +imp4["pvp"] + +imp5["pvp"] + +imp6["pvp"] + +imp7["pvp"] + +imp8["pvp"] + +imp9["pvp"] + +imp10["pvp"] + +imp11["pvp"] + +imp12["pvp"] + +imp13["pvp"] + +imp14["pvp"] + +imp15["pvp"] + +imp16["pvp"] + +ub["pvp"] + +gm["pvp"] + +clan["pvp"];
+        pvpSelector.textContent = pvpBoost+"%";
+        damageBoost = +imp1["damage"] + +imp2["damage"] + +imp3["damage"] + +imp4["damage"] + +imp5["damage"] + +imp6["damage"] + +imp7["damage"] + +imp8["damage"] + +imp9["damage"] + +imp10["damage"] + +imp11["damage"] + +imp12["damage"] + +imp13["damage"] + +imp14["damage"] + +imp15["damage"] + +imp16["damage"] + +ub["damage"] + +gm["damage"] + +clan["damage"];
+        damageSelector.textContent = damageBoost+"%";
+        speedBoost = +imp1["speed"] + +imp2["speed"] + +imp3["speed"] + +imp4["speed"] + +imp5["speed"] + +imp6["speed"] + +imp7["speed"] + +imp8["speed"] + +imp9["speed"] + +imp10["speed"] + +imp11["speed"] + +imp12["speed"] + +imp13["speed"] + +imp14["speed"] + +imp15["speed"] + +imp16["speed"] + +ub["speed"] + +gm["speed"] + +clan["speed"];
+        speedSelector.textContent = speedBoost+"%";
+        idrBoost = +imp1["idr"] + +imp2["idr"] + +imp3["idr"] + +imp4["idr"] + +imp5["idr"] + +imp6["idr"] + +imp7["idr"] + +imp8["idr"] + +imp9["idr"] + +imp10["idr"] + +imp11["idr"] + +imp12["idr"] + +imp13["idr"] + +imp14["idr"] + +imp15["idr"] + +imp16["idr"] + +ub["idr"] + +gm["idr"] + +clan["idr"];
+        idrSelector.textContent = idrBoost+"%";
+        weaponBoost = +imp1["weapon"] + +imp2["weapon"] + +imp3["weapon"] + +imp4["weapon"] + +imp5["weapon"] + +imp6["weapon"] + +imp7["weapon"] + +imp8["weapon"] + +imp9["weapon"] + +imp10["weapon"] + +imp11["weapon"] + +imp12["weapon"] + +imp13["weapon"] + +imp14["weapon"] + +imp15["weapon"] + +imp16["weapon"] + +ub["weapon"] + +gm["weapon"] + +clan["weapon"];
+        weaponSelector.textContent = weaponBoost+"%";
+        armorBoost = +imp1["armor"] + +imp2["armor"] + +imp3["armor"] + +imp4["armor"] + +imp5["armor"] + +imp6["armor"] + +imp7["armor"] + +imp8["armor"] + +imp9["armor"] + +imp10["armor"] + +imp11["armor"] + +imp12["armor"] + +imp13["armor"] + +imp14["armor"] + +imp15["armor"] + +imp16["armor"] + +ub["armor"] + +gm["armor"] + +clan["armor"];
+        armorSelector.textContent = armorBoost+"%";
+        cashBoost = +imp1["cash"] + +imp2["cash"] + +imp3["cash"] + +imp4["cash"] + +imp5["cash"] + +imp6["cash"] + +imp7["cash"] + +imp8["cash"] + +imp9["cash"] + +imp10["cash"] + +imp11["cash"] + +imp12["cash"] + +imp13["cash"] + +imp14["cash"] + +imp15["cash"] + +imp16["cash"] + +ub["cash"] + +gm["cash"] + +clan["cash"];
+        cashSelector.textContent = cashBoost+"%";
+        ammoBoost = +imp1["ammo"] + +imp2["ammo"] + +imp3["ammo"] + +imp4["ammo"] + +imp5["ammo"] + +imp6["ammo"] + +imp7["ammo"] + +imp8["ammo"] + +imp9["ammo"] + +imp10["ammo"] + +imp11["ammo"] + +imp12["ammo"] + +imp13["ammo"] + +imp14["ammo"] + +imp15["ammo"] + +imp16["ammo"] + +ub["ammo"] + +gm["ammo"] + +clan["ammo"];
+        ammoSelector.textContent = ammoBoost+"%";
+        sSpeedBoost = +imp1["sSpeed"] + +imp2["sSpeed"] + +imp3["sSpeed"] + +imp4["sSpeed"] + +imp5["sSpeed"] + +imp6["sSpeed"] + +imp7["sSpeed"] + +imp8["sSpeed"] + +imp9["sSpeed"] + +imp10["sSpeed"] + +imp11["sSpeed"] + +imp12["sSpeed"] + +imp13["sSpeed"] + +imp14["sSpeed"] + +imp15["sSpeed"] + +imp16["sSpeed"] + +ub["sSpeed"] + +gm["sSpeed"] + +clan["sSpeed"];
+        sSpeedSelector.textContent = sSpeedBoost+"%";
+        spotsBoost = +imp1["spots"] + +imp2["spots"] + +imp3["spots"] + +imp4["spots"] + +imp5["spots"] + +imp6["spots"] + +imp7["spots"] + +imp8["spots"] + +imp9["spots"] + +imp10["spots"] + +imp11["spots"] + +imp12["spots"] + +imp13["spots"] + +imp14["spots"] + +imp15["spots"] + +imp16["spots"] + +ub["spots"] + +gm["spots"] + +clan["spots"];
+        spotsSelector.textContent = spotsBoost+"%";
         healthSelector.textContent = endBase * 2;
-        walkSelector.textContent = ((2.2 * 1.2) * ((agiTotal * 0.0043) + 1.1)).toFixed(4);
-        sprintSelector.textContent = ((3.5 * 1.2) * ((agiTotal * 0.0043) + 1.1)).toFixed(4);
+        walkSelector.textContent = (((2.2 * 1.2) * ((agiTotal * 0.0043) + 1.1)) * (1 + (speedBoost / 100))).toFixed(4);
+        sprintSelector.textContent = (((3.5 * 1.2) * ((agiTotal * 0.0043) + 1.1)) * (1 + (speedBoost / 100))).toFixed(4);
         durationSelector.textContent = ((endTotal - 25) / 6.1875 + 24).toFixed(0)+" s";
         regenSelector.textContent = ((endTotal - 25) / 6.1875 + 24).toFixed(0)+" s";
-        //duraSelector.textContent = (durability + (durability * absorption))+" ("+durability+" + "+durability+" * "+absorption+")";
+        //duraSelector.textContent = (durability + (durability * absorption))+" ("+durability+" + "+durability+" * "+absorption+")"; //Need to figure this out
         if (document.getElementById("armorSelect").value != "Please Select an Option") {
             duraSelector.textContent = durability;
             absorbSelector.textContent = (absorption * 100)+"%";
         };
         if (document.getElementById("weaponSelect1").value != "Please Select an Option") {
-            w1PDphSelector.parentElement.style.display = "none";
-            w1PelletSelector.parentElement.style.display = "none";
-            w1CritDphSelector.parentElement.style.display = "inline-flex";
-            w1PatternSelector.parentElement.style.display = "inline-flex";
-            w1ReloadSelector.parentElement.style.display = "inline-flex";
-            w1AccuracySelector.parentElement.style.display = "inline-flex";
-            w1SpreadSelector.parentElement.style.display = "none";
             w1DphSelector.textContent = w1Dph;
             w1PDphSelector.textContent = w1PelletDph;
             w1PelletSelector.textContent = w1Pellets;
             w1CritDphSelector.textContent = (w1Dph * 5).toFixed(2);
-            w1PatternSelector.textContent = w1CritFail+" NC > "+w1CritSuccess+" C";
+            if (w1CritSuccess < 1) {
+                w1PatternSelector.textContent = w1CritFail+" NC";
+            } else {
+                w1PatternSelector.textContent = w1CritFail+" NC > "+w1CritSuccess+" C";
+            };
             w1ReloadSelector.textContent = w1ReloadTime.toFixed(2)+" s";
             w1DpsSelector.textContent = w1Dps.toFixed(2);
             if (w1Accuracy == "melee") {
-                w1AccuracySelector.parentElement.style.display = "none"
+                w1AccuracySelector.textContent = "Skill Issue";
             } else if (w1Accuracy == "1") {
                 if (accTotal < 124) {
-                    w1AccuracySelector.style.backgroundColor = "lightcoral"
-                    w1AccuracySelector.textContent = "Inaccurate"
+                    w1AccuracySelector.style.backgroundColor = "lightcoral";
+                    w1AccuracySelector.textContent = "Inaccurate";
                 } else if (accTotal >= 124) {
-                    w1AccuracySelector.style.backgroundColor = "khaki"
-                    w1AccuracySelector.textContent = "Reliable Onscreen"
+                    w1AccuracySelector.style.backgroundColor = "khaki";
+                    w1AccuracySelector.textContent = "Reliable Onscreen";
                 };
             } else if (w1Accuracy == "2") {
                 if (accTotal < 100) {
-                    w1AccuracySelector.style.backgroundColor = "lightcoral"
-                    w1AccuracySelector.textContent = "Inaccurate"
+                    w1AccuracySelector.style.backgroundColor = "lightcoral";
+                    w1AccuracySelector.textContent = "Inaccurate";
                 } else if (accTotal < 124) {
-                    w1AccuracySelector.style.backgroundColor = "khaki"
-                    w1AccuracySelector.textContent = "Reliable Onscreen"
+                    w1AccuracySelector.style.backgroundColor = "khaki";
+                    w1AccuracySelector.textContent = "Reliable Onscreen";
                 } else if (accTotal >= 124) {
-                    w1AccuracySelector.style.backgroundColor = "lightgreen"
-                    w1AccuracySelector.textContent = "Reliable Offscreen"
+                    w1AccuracySelector.style.backgroundColor = "lightgreen";
+                    w1AccuracySelector.textContent = "Reliable Offscreen";
                 };
             } else if (w1Accuracy == "3") {
                 if (accTotal < 80) {
-                    w1AccuracySelector.style.backgroundColor = "lightcoral"
-                    w1AccuracySelector.textContent = "Inaccurate"
+                    w1AccuracySelector.style.backgroundColor = "lightcoral";
+                    w1AccuracySelector.textContent = "Inaccurate";
                 } else if (accTotal < 100) {
-                    w1AccuracySelector.style.backgroundColor = "coral"
-                    w1AccuracySelector.textContent = "Reliable Onscreen"
+                    w1AccuracySelector.style.backgroundColor = "coral";
+                    w1AccuracySelector.textContent = "Reliable Onscreen";
                 } else if (accTotal < 119) {
-                    w1AccuracySelector.style.backgroundColor = "khaki"
-                    w1AccuracySelector.textContent = "Reliable Offscreen"
+                    w1AccuracySelector.style.backgroundColor = "khaki";
+                    w1AccuracySelector.textContent = "Reliable Offscreen";
                 } else if (accTotal >= 119) {
-                    w1AccuracySelector.style.backgroundColor = "lightgreen"
-                    w1AccuracySelector.textContent = "Pinpoint"
+                    w1AccuracySelector.style.backgroundColor = "lightgreen";
+                    w1AccuracySelector.textContent = "Pinpoint";
                 };
             } else if (w1Accuracy == "4") {
                 if (accTotal < 60) {
-                    w1AccuracySelector.style.backgroundColor = "lightcoral"
-                    w1AccuracySelector.textContent = "Inaccurate"
+                    w1AccuracySelector.style.backgroundColor = "lightcoral";
+                    w1AccuracySelector.textContent = "Inaccurate";
                 } else if (accTotal < 70) {
-                    w1AccuracySelector.style.backgroundColor = "coral"
-                    w1AccuracySelector.textContent = "Reliable Onscreen"
+                    w1AccuracySelector.style.backgroundColor = "coral";
+                    w1AccuracySelector.textContent = "Reliable Onscreen";
                 } else if (accTotal < 79) {
-                    w1AccuracySelector.style.backgroundColor = "khaki"
-                    w1AccuracySelector.textContent = "Reliable Offscreen"
+                    w1AccuracySelector.style.backgroundColor = "khaki";
+                    w1AccuracySelector.textContent = "Reliable Offscreen";
                 } else if (accTotal >= 79) {
-                    w1AccuracySelector.style.backgroundColor = "lightgreen"
-                    w1AccuracySelector.textContent = "Pinpoint"
+                    w1AccuracySelector.style.backgroundColor = "lightgreen";
+                    w1AccuracySelector.textContent = "Pinpoint";
                 };
             } else if (w1Accuracy == "5") {
                 if (accTotal < 35) {
-                    w1AccuracySelector.style.backgroundColor = "lightcoral"
-                    w1AccuracySelector.textContent = "Inaccurate"
+                    w1AccuracySelector.style.backgroundColor = "lightcoral";
+                    w1AccuracySelector.textContent = "Inaccurate";
                 } else if (accTotal < 40) {
-                    w1AccuracySelector.style.backgroundColor = "coral"
-                    w1AccuracySelector.textContent = "Reliable Onscreen"
+                    w1AccuracySelector.style.backgroundColor = "coral";
+                    w1AccuracySelector.textContent = "Reliable Onscreen";
                 } else if (accTotal < 44) {
-                    w1AccuracySelector.style.backgroundColor = "khaki"
-                    w1AccuracySelector.textContent = "Reliable Offscreen"
+                    w1AccuracySelector.style.backgroundColor = "khaki";
+                    w1AccuracySelector.textContent = "Reliable Offscreen";
                 } else if (accTotal >= 44) {
-                    w1AccuracySelector.style.backgroundColor = "lightgreen"
-                    w1AccuracySelector.textContent = "Pinpoint"
+                    w1AccuracySelector.style.backgroundColor = "lightgreen";
+                    w1AccuracySelector.textContent = "Pinpoint";
                 };
             };
-            w1SpreadSelector.textContent = w1sAngle+"\xB0"
+            w1SpreadSelector.textContent = w1sAngle+"\xB0";
             if (w1Spread == "true") {
-                w1PDphSelector.parentElement.style.display = "inline-flex";
-                w1PelletSelector.parentElement.style.display = "inline-flex";
-                w1SpreadSelector.parentElement.style.display = "inline-flex";
                 w1DphSelector.textContent = w1Dph.toFixed(2);
                 if (w1Crit == "false") {
-                    w1CritDphSelector.parentElement.style.display = "none";
-                    w1PatternSelector.parentElement.style.display = "none";
+                    w1CritDphSelector.textContent = "Can't Crit";
+                    w1PatternSelector.textContent = "Can't Crit";
                 };
-            } else if (w1Burst == "true") {
-                w1DphSelector.textContent = w1Dph1+" + "+w1Dph2+" + "+w1Dph3;
-                w1CritDphSelector.textContent = (w1Dph1 * 5).toFixed(2)+" + "+(w1Dph2 * 5).toFixed(2)+" + "+(w1Dph3 * 5).toFixed(2);
-            } else if (w1Accuracy == "melee") {
-                w1ReloadSelector.parentElement.style.display = "none";
+            } else {
+                w1PDphSelector.textContent = "No Pellets";
+                w1PelletSelector.textContent = "No Pellets";
+                w1SpreadSelector.textContent = "No Pellets";
+                if (w1Burst == "true") {
+                    w1DphSelector.textContent = w1Dph1+" + "+w1Dph2+" + "+w1Dph3;
+                    w1CritDphSelector.textContent = (w1Dph1 * 5).toFixed(2)+" + "+(w1Dph2 * 5).toFixed(2)+" + "+(w1Dph3 * 5).toFixed(2);
+                } else if (w1Accuracy == "melee") {
+                    w1ReloadSelector.textContent = "Doesn't Reload";
+                };
             };
         };
         if (document.getElementById("weaponSelect2").value != "Please Select an Option") {
-            w2PDphSelector.parentElement.style.display = "none";
-            w2PelletSelector.parentElement.style.display = "none";
-            w2CritDphSelector.parentElement.style.display = "inline-flex";
-            w2PatternSelector.parentElement.style.display = "inline-flex";
-            w2ReloadSelector.parentElement.style.display = "inline-flex";
-            w2AccuracySelector.parentElement.style.display = "inline-flex";
-            w2SpreadSelector.parentElement.style.display = "none";
             w2DphSelector.textContent = w2Dph;
             w2PDphSelector.textContent = w2PelletDph;
             w2PelletSelector.textContent = w2Pellets;
             w2CritDphSelector.textContent = (w2Dph * 5).toFixed(2);
-            w2PatternSelector.textContent = w2CritFail+" NC > "+w2CritSuccess+" C";
+            if (w2CritSuccess < 1) {
+                w2PatternSelector.textContent = w2CritFail+" NC";
+            } else {
+                w2PatternSelector.textContent = w2CritFail+" NC > "+w2CritSuccess+" C";
+            };
             w2ReloadSelector.textContent = w2ReloadTime.toFixed(2)+" s";
             w2DpsSelector.textContent = w2Dps.toFixed(2);
             if (w2Accuracy == "melee") {
-                w2AccuracySelector.parentElement.style.display = "none"
+                w2AccuracySelector.textContent = "Skill Issue";
             } else if (w2Accuracy == "1") {
                 if (accTotal < 124) {
-                    w2AccuracySelector.style.backgroundColor = "lightcoral"
-                    w2AccuracySelector.textContent = "Inaccurate"
+                    w2AccuracySelector.style.backgroundColor = "lightcoral";
+                    w2AccuracySelector.textContent = "Inaccurate";
                 } else if (accTotal >= 124) {
-                    w2AccuracySelector.style.backgroundColor = "khaki"
-                    w2AccuracySelector.textContent = "Reliable Onscreen"
+                    w2AccuracySelector.style.backgroundColor = "khaki";
+                    w2AccuracySelector.textContent = "Reliable Onscreen";
                 };
             } else if (w2Accuracy == "2") {
                 if (accTotal < 100) {
-                    w2AccuracySelector.style.backgroundColor = "lightcoral"
-                    w2AccuracySelector.textContent = "Inaccurate"
+                    w2AccuracySelector.style.backgroundColor = "lightcoral";
+                    w2AccuracySelector.textContent = "Inaccurate";
                 } else if (accTotal < 124) {
-                    w2AccuracySelector.style.backgroundColor = "khaki"
-                    w2AccuracySelector.textContent = "Reliable Onscreen"
+                    w2AccuracySelector.style.backgroundColor = "khaki";
+                    w2AccuracySelector.textContent = "Reliable Onscreen";
                 } else if (accTotal >= 124) {
-                    w2AccuracySelector.style.backgroundColor = "lightgreen"
-                    w2AccuracySelector.textContent = "Reliable Offscreen"
+                    w2AccuracySelector.style.backgroundColor = "lightgreen";
+                    w2AccuracySelector.textContent = "Reliable Offscreen";
                 };
             } else if (w2Accuracy == "3") {
                 if (accTotal < 80) {
-                    w2AccuracySelector.style.backgroundColor = "lightcoral"
-                    w2AccuracySelector.textContent = "Inaccurate"
+                    w2AccuracySelector.style.backgroundColor = "lightcoral";
+                    w2AccuracySelector.textContent = "Inaccurate";
                 } else if (accTotal < 100) {
-                    w2AccuracySelector.style.backgroundColor = "coral"
-                    w2AccuracySelector.textContent = "Reliable Onscreen"
+                    w2AccuracySelector.style.backgroundColor = "coral";
+                    w2AccuracySelector.textContent = "Reliable Onscreen";
                 } else if (accTotal < 119) {
-                    w2AccuracySelector.style.backgroundColor = "khaki"
-                    w2AccuracySelector.textContent = "Reliable Offscreen"
+                    w2AccuracySelector.style.backgroundColor = "khaki";
+                    w2AccuracySelector.textContent = "Reliable Offscreen";
                 } else if (accTotal >= 119) {
-                    w2AccuracySelector.style.backgroundColor = "lightgreen"
-                    w2AccuracySelector.textContent = "Pinpoint"
+                    w2AccuracySelector.style.backgroundColor = "lightgreen";
+                    w2AccuracySelector.textContent = "Pinpoint";
                 };
             } else if (w2Accuracy == "4") {
                 if (accTotal < 60) {
-                    w2AccuracySelector.style.backgroundColor = "lightcoral"
-                    w2AccuracySelector.textContent = "Inaccurate"
+                    w2AccuracySelector.style.backgroundColor = "lightcoral";
+                    w2AccuracySelector.textContent = "Inaccurate";
                 } else if (accTotal < 70) {
-                    w2AccuracySelector.style.backgroundColor = "coral"
-                    w2AccuracySelector.textContent = "Reliable Onscreen"
+                    w2AccuracySelector.style.backgroundColor = "coral";
+                    w2AccuracySelector.textContent = "Reliable Onscreen";
                 } else if (accTotal < 79) {
-                    w2AccuracySelector.style.backgroundColor = "khaki"
-                    w2AccuracySelector.textContent = "Reliable Offscreen"
+                    w2AccuracySelector.style.backgroundColor = "khaki";
+                    w2AccuracySelector.textContent = "Reliable Offscreen";
                 } else if (accTotal >= 79) {
-                    w2AccuracySelector.style.backgroundColor = "lightgreen"
-                    w2AccuracySelector.textContent = "Pinpoint"
+                    w2AccuracySelector.style.backgroundColor = "lightgreen";
+                    w2AccuracySelector.textContent = "Pinpoint";
                 };
             } else if (w2Accuracy == "5") {
                 if (accTotal < 35) {
-                    w2AccuracySelector.style.backgroundColor = "lightcoral"
-                    w2AccuracySelector.textContent = "Inaccurate"
+                    w2AccuracySelector.style.backgroundColor = "lightcoral";
+                    w2AccuracySelector.textContent = "Inaccurate";
                 } else if (accTotal < 40) {
-                    w2AccuracySelector.style.backgroundColor = "coral"
-                    w2AccuracySelector.textContent = "Reliable Onscreen"
+                    w2AccuracySelector.style.backgroundColor = "coral";
+                    w2AccuracySelector.textContent = "Reliable Onscreen";
                 } else if (accTotal < 44) {
-                    w2AccuracySelector.style.backgroundColor = "khaki"
-                    w2AccuracySelector.textContent = "Reliable Offscreen"
+                    w2AccuracySelector.style.backgroundColor = "khaki";
+                    w2AccuracySelector.textContent = "Reliable Offscreen";
                 } else if (accTotal >= 44) {
-                    w2AccuracySelector.style.backgroundColor = "lightgreen"
-                    w2AccuracySelector.textContent = "Pinpoint"
+                    w2AccuracySelector.style.backgroundColor = "lightgreen";
+                    w2AccuracySelector.textContent = "Pinpoint";
                 };
             };
-            w2SpreadSelector.textContent = w2sAngle+"\xB0"
+            w2SpreadSelector.textContent = w2sAngle+"\xB0";
             if (w2Spread == "true") {
-                w2PDphSelector.parentElement.style.display = "inline-flex";
-                w2PelletSelector.parentElement.style.display = "inline-flex";
-                w2SpreadSelector.parentElement.style.display = "inline-flex";
                 w2DphSelector.textContent = w2Dph.toFixed(2);
                 if (w2Crit == "false") {
-                    w2CritDphSelector.parentElement.style.display = "none";
-                    w2PatternSelector.parentElement.style.display = "none";
+                    w2CritDphSelector.textContent = "Can't Crit";
+                    w2PatternSelector.textContent = "Can't Crit";
                 };
-            } else if (w2Burst == "true") {
-                w2DphSelector.textContent = w2Dph1+" + "+w2Dph2+" + "+w2Dph3;
-                w2CritDphSelector.textContent = (w2Dph1 * 5).toFixed(2)+" + "+(w2Dph2 * 5).toFixed(2)+" + "+(w2Dph3 * 5).toFixed(2);
-            } else if (w2Accuracy == "melee") {
-                w2ReloadSelector.parentElement.style.display = "none";
+            } else {
+                w2PDphSelector.textContent = "No Pellets";
+                w2PelletSelector.textContent = "No Pellets";
+                w2SpreadSelector.textContent = "No Pellets";
+                if (w2Burst == "true") {
+                    w2DphSelector.textContent = w2Dph1+" + "+w2Dph2+" + "+w2Dph3;
+                    w2CritDphSelector.textContent = (w2Dph1 * 5).toFixed(2)+" + "+(w2Dph2 * 5).toFixed(2)+" + "+(w2Dph3 * 5).toFixed(2);
+                } else if (w2Accuracy == "melee") {
+                    w2ReloadSelector.textContent = "Doesn't Reload";
+                };
             };
         };
         if (document.getElementById("weaponSelect3").value != "Please Select an Option") {
-            w3PDphSelector.parentElement.style.display = "none";
-            w3PelletSelector.parentElement.style.display = "none";
-            w3CritDphSelector.parentElement.style.display = "inline-flex";
-            w3PatternSelector.parentElement.style.display = "inline-flex";
-            w3ReloadSelector.parentElement.style.display = "inline-flex";
-            w3AccuracySelector.parentElement.style.display = "inline-flex";
-            w3SpreadSelector.parentElement.style.display = "none";
             w3DphSelector.textContent = w3Dph;
             w3PDphSelector.textContent = w3PelletDph;
             w3PelletSelector.textContent = w3Pellets;
             w3CritDphSelector.textContent = (w3Dph * 5).toFixed(2);
-            w3PatternSelector.textContent = w3CritFail+" NC > "+w3CritSuccess+" C";
+            if (w3CritSuccess < 1) {
+                w3PatternSelector.textContent = w3CritFail+" NC";
+            } else {
+                w3PatternSelector.textContent = w3CritFail+" NC > "+w3CritSuccess+" C";
+            };
             w3ReloadSelector.textContent = w3ReloadTime.toFixed(2)+" s";
             w3DpsSelector.textContent = w3Dps.toFixed(2);
             if (w3Accuracy == "melee") {
-                w3AccuracySelector.parentElement.style.display = "none"
+                w3AccuracySelector.textContent = "Skill Issue";
             } else if (w3Accuracy == "1") {
                 if (accTotal < 124) {
-                    w3AccuracySelector.style.backgroundColor = "lightcoral"
-                    w3AccuracySelector.textContent = "Inaccurate"
+                    w3AccuracySelector.style.backgroundColor = "lightcoral";
+                    w3AccuracySelector.textContent = "Inaccurate";
                 } else if (accTotal >= 124) {
-                    w3AccuracySelector.style.backgroundColor = "khaki"
-                    w3AccuracySelector.textContent = "Reliable Onscreen"
+                    w3AccuracySelector.style.backgroundColor = "khaki";
+                    w3AccuracySelector.textContent = "Reliable Onscreen";
                 };
             } else if (w3Accuracy == "2") {
                 if (accTotal < 100) {
-                    w3AccuracySelector.style.backgroundColor = "lightcoral"
-                    w3AccuracySelector.textContent = "Inaccurate"
+                    w3AccuracySelector.style.backgroundColor = "lightcoral";
+                    w3AccuracySelector.textContent = "Inaccurate";
                 } else if (accTotal < 124) {
-                    w3AccuracySelector.style.backgroundColor = "khaki"
-                    w3AccuracySelector.textContent = "Reliable Onscreen"
+                    w3AccuracySelector.style.backgroundColor = "khaki";
+                    w3AccuracySelector.textContent = "Reliable Onscreen";
                 } else if (accTotal >= 124) {
-                    w3AccuracySelector.style.backgroundColor = "lightgreen"
-                    w3AccuracySelector.textContent = "Reliable Offscreen"
+                    w3AccuracySelector.style.backgroundColor = "lightgreen";
+                    w3AccuracySelector.textContent = "Reliable Offscreen";
                 };
             } else if (w3Accuracy == "3") {
                 if (accTotal < 80) {
-                    w3AccuracySelector.style.backgroundColor = "lightcoral"
-                    w3AccuracySelector.textContent = "Inaccurate"
+                    w3AccuracySelector.style.backgroundColor = "lightcoral";
+                    w3AccuracySelector.textContent = "Inaccurate";
                 } else if (accTotal < 100) {
-                    w3AccuracySelector.style.backgroundColor = "coral"
-                    w3AccuracySelector.textContent = "Reliable Onscreen"
+                    w3AccuracySelector.style.backgroundColor = "coral";
+                    w3AccuracySelector.textContent = "Reliable Onscreen";
                 } else if (accTotal < 119) {
-                    w3AccuracySelector.style.backgroundColor = "khaki"
-                    w3AccuracySelector.textContent = "Reliable Offscreen"
+                    w3AccuracySelector.style.backgroundColor = "khaki";
+                    w3AccuracySelector.textContent = "Reliable Offscreen";
                 } else if (accTotal >= 119) {
-                    w3AccuracySelector.style.backgroundColor = "lightgreen"
-                    w3AccuracySelector.textContent = "Pinpoint"
+                    w3AccuracySelector.style.backgroundColor = "lightgreen";
+                    w3AccuracySelector.textContent = "Pinpoint";
                 };
             } else if (w3Accuracy == "4") {
                 if (accTotal < 60) {
-                    w3AccuracySelector.style.backgroundColor = "lightcoral"
-                    w3AccuracySelector.textContent = "Inaccurate"
+                    w3AccuracySelector.style.backgroundColor = "lightcoral";
+                    w3AccuracySelector.textContent = "Inaccurate";
                 } else if (accTotal < 70) {
-                    w3AccuracySelector.style.backgroundColor = "coral"
-                    w3AccuracySelector.textContent = "Reliable Onscreen"
+                    w3AccuracySelector.style.backgroundColor = "coral";
+                    w3AccuracySelector.textContent = "Reliable Onscreen";
                 } else if (accTotal < 79) {
-                    w3AccuracySelector.style.backgroundColor = "khaki"
-                    w3AccuracySelector.textContent = "Reliable Offscreen"
+                    w3AccuracySelector.style.backgroundColor = "khaki";
+                    w3AccuracySelector.textContent = "Reliable Offscreen";
                 } else if (accTotal >= 79) {
-                    w3AccuracySelector.style.backgroundColor = "lightgreen"
-                    w3AccuracySelector.textContent = "Pinpoint"
+                    w3AccuracySelector.style.backgroundColor = "lightgreen";
+                    w3AccuracySelector.textContent = "Pinpoint";
                 };
             } else if (w3Accuracy == "5") {
                 if (accTotal < 35) {
-                    w3AccuracySelector.style.backgroundColor = "lightcoral"
-                    w3AccuracySelector.textContent = "Inaccurate"
+                    w3AccuracySelector.style.backgroundColor = "lightcoral";
+                    w3AccuracySelector.textContent = "Inaccurate";
                 } else if (accTotal < 40) {
-                    w3AccuracySelector.style.backgroundColor = "coral"
-                    w3AccuracySelector.textContent = "Reliable Onscreen"
+                    w3AccuracySelector.style.backgroundColor = "coral";
+                    w3AccuracySelector.textContent = "Reliable Onscreen";
                 } else if (accTotal < 44) {
-                    w3AccuracySelector.style.backgroundColor = "khaki"
-                    w3AccuracySelector.textContent = "Reliable Offscreen"
+                    w3AccuracySelector.style.backgroundColor = "khaki";
+                    w3AccuracySelector.textContent = "Reliable Offscreen";
                 } else if (accTotal >= 44) {
-                    w3AccuracySelector.style.backgroundColor = "lightgreen"
-                    w3AccuracySelector.textContent = "Pinpoint"
+                    w3AccuracySelector.style.backgroundColor = "lightgreen";
+                    w3AccuracySelector.textContent = "Pinpoint";
                 };
             };
-            w3SpreadSelector.textContent = w3sAngle+"\xB0"
+            w3SpreadSelector.textContent = w3sAngle+"\xB0";
             if (w3Spread == "true") {
-                w3PDphSelector.parentElement.style.display = "inline-flex";
-                w3PelletSelector.parentElement.style.display = "inline-flex";
-                w3SpreadSelector.parentElement.style.display = "inline-flex";
                 w3DphSelector.textContent = w3Dph.toFixed(2);
                 if (w3Crit == "false") {
-                    w3CritDphSelector.parentElement.style.display = "none";
-                    w3PatternSelector.parentElement.style.display = "none";
+                    w3CritDphSelector.textContent = "Can't Crit";
+                    w3PatternSelector.textContent = "Can't Crit";
                 };
-            } else if (w3Burst == "true") {
-                w3DphSelector.textContent = w3Dph1+" + "+w3Dph2+" + "+w3Dph3;
-                w3CritDphSelector.textContent = (w3Dph1 * 5).toFixed(2)+" + "+(w3Dph2 * 5).toFixed(2)+" + "+(w3Dph3 * 5).toFixed(2);
-            } else if (w3Accuracy == "melee") {
-                w3ReloadSelector.parentElement.style.display = "none";
+            } else {
+                w3PDphSelector.textContent = "No Pellets";
+                w3PelletSelector.textContent = "No Pellets";
+                w3SpreadSelector.textContent = "No Pellets";
+                if (w3Burst == "true") {
+                    w3DphSelector.textContent = w3Dph1+" + "+w3Dph2+" + "+w3Dph3;
+                    w3CritDphSelector.textContent = (w3Dph1 * 5).toFixed(2)+" + "+(w3Dph2 * 5).toFixed(2)+" + "+(w3Dph3 * 5).toFixed(2);
+                } else if (w3Accuracy == "melee") {
+                    w3ReloadSelector.textContent = "Doesn't Reload";
+                };
             };
         };
     };
@@ -1099,6 +1318,106 @@ $(document).ready(function () {
             } else {
                 w3CritBoost = inputValue;
             };
+        } else if (this.id == "clanEXP") {
+            if (inputValue > 10) {
+                this.value = 10;
+                clan["exp"] = 10
+            } else if (inputValue < 0) {
+                this.value = 0;
+                clan["exp"] = 0;
+            } else {
+                clan["exp"] = inputValue;
+            };
+        } else if (this.id == "clanPVP") {
+            if (inputValue > 10) {
+                this.value = 10;
+                clan["pvp"] = 10
+            } else if (inputValue < 0) {
+                this.value = 0;
+                clan["pvp"] = 0;
+            } else {
+                clan["pvp"] = inputValue;
+            };
+        } else if (this.id == "clanDamage") {
+            if (inputValue > 10) {
+                this.value = 10;
+                clan["damage"] = 10
+            } else if (inputValue < 0) {
+                this.value = 0;
+                clan["damage"] = 0;
+            } else {
+                clan["damage"] = inputValue;
+            };
+        } else if (this.id == "clanIDR") {
+            if (inputValue > 10) {
+                this.value = 10;
+                clan["idr"] = 10
+            } else if (inputValue < 0) {
+                this.value = 0;
+                clan["idr"] = 0;
+            } else {
+                clan["idr"] = inputValue;
+            };
+        } else if (this.id == "clanWeapon") {
+            if (inputValue > 30) {
+                this.value = 30;
+                clan["weapon"] = 30
+            } else if (inputValue < 0) {
+                this.value = 0;
+                clan["weapon"] = 0;
+            } else {
+                clan["weapon"] = inputValue;
+            };
+        } else if (this.id == "clanArmor") {
+            if (inputValue > 30) {
+                this.value = 30;
+                clan["armor"] = 30
+            } else if (inputValue < 0) {
+                this.value = 0;
+                clan["armor"] = 0;
+            } else {
+                clan["armor"] = inputValue;
+            };
+        } else if (this.id == "clanCash") {
+            if (inputValue > 50) {
+                this.value = 50;
+                clan["cash"] = 50
+            } else if (inputValue < 0) {
+                this.value = 0;
+                clan["cash"] = 0;
+            } else {
+                clan["cash"] = inputValue;
+            };
+        } else if (this.id == "clanAmmo") {
+            if (inputValue > 50) {
+                this.value = 50;
+                clan["ammo"] = 50
+            } else if (inputValue < 0) {
+                this.value = 0;
+                clan["ammo"] = 0;
+            } else {
+                clan["ammo"] = inputValue;
+            };
+        } else if (this.id == "clanSSpeed") {
+            if (inputValue > 15) {
+                this.value = 15;
+                clan["sSpeed"] = 15
+            } else if (inputValue < 0) {
+                this.value = 0;
+                clan["sSpeed"] = 0;
+            } else {
+                clan["sSpeed"] = inputValue;
+            };
+        } else if (this.id == "clanSpots") {
+            if (inputValue > 10) {
+                this.value = 10;
+                clan["spots"] = 10
+            } else if (inputValue < 0) {
+                this.value = 0;
+                clan["spots"] = 0;
+            } else {
+                clan["spots"] = inputValue;
+            };
         };
         agiBoost = agiClass + armAgi;
         endBoost = endClass + armEnd;
@@ -1132,11 +1451,23 @@ $(document).ready(function () {
         });
     };
 
-    /*
-    $("#classSelect").on('change', function() {
-        classUpdate.call(this);
-        displayUpdate();
-    });
-    */
+    for (i = 0; i < checkColl.length; i++) {
+        checkColl[i].addEventListener("change", function () {
+            if (this.id == "gmCheck") {
+                if (this.checked) {
+                    gm = { exp: 100, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 100, armor: 100, cash: 100, ammo: 100, sSpeed: 0, spots: 60 };
+                } else {
+                    gm = { exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0 };
+                };
+            } else if (this.id == "ubCheck") {
+                if (this.checked) {
+                    ub = { exp: 50, pvp: 0, damage: 35, speed: 35, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0 };
+                } else {
+                    ub = { exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0 };
+                };
+            };
+            displayUpdate();
+        });
+    };
     //#endregion
 });

@@ -6,352 +6,647 @@
     <script type="text/javascript" src="htmlmagic.js"></script>
 </head>
 <body>
-    <header>
-        <h2>Stat Calculator</h2>
-        <h3> - For Dead Frontier 3D</h3>
-        <h4>By Rebekah</h4>
-    </header>
-    <main>
-        <div class="contentLeft">
-            <h3 class="hNoMarginLeft">Stats</h3>
-            <div class="contentLeftScroll">
-                <button type="button" class="collapsible">Character:</button>
-                <div class="collapseContent">
-                    <div class="divLeft">
-                        <div class="divVert">
-                            <label class="head">Level:</label>
-                            <input type="number" id="level" min="1" max="325" placeholder="1 - 325">
-                        </div>
-                        <div class="divVert">
-                            <label class="head">Stat Points:</label>
-                            <p id="freePoints">0</p>
-                        </div>
-                        <div class="divVert">
-                            <label class="head">Prof Points:</label>
-                            <p id="freePPoints">0</p>
-                        </div>
-                        <div class="divVert">
-                            <label class="head">Level Req:</label>
-                            <p id="reqLevel">1</p>
-                        </div>
-                    </div>
-                    <select id="classSelect">
-                        <option data-name="noClass" data-exp="0" data-str="0" data-end="0" data-agi="0" data-acc="0" data-crit="0" data-rel="0" data-melee="0" data-pistol="0" data-rifle="0" data-shotgun="0" data-mg="0" data-explo="0">Please Select an Option</option>
-                        <optgroup></optgroup>
-                    </select>
-                </div>
-                <button type="button" class="collapsible">Stats:</button>
-                <div class="collapseContent">
-                    <div class="divLeft">
-                        <label class="name">Strength:</label>
-                        <input type="range" id="str" min="25" max="100" value="25">
-                        <label class="output" id="strOutput">25 (25 + 0)</label>
-                    </div>
-                    <div class="divLeft">
-                        <label class="name">Endurance:</label>
-                        <input type="range" id="end" min="25" max="100" value="25">
-                        <label class="output" id="endOutput">25 (25 + 0)</label>
-                    </div>
-                    <div class="divLeft">
-                        <label class="name">Agility:</label>
-                        <input type="range" id="agi" min="25" max="100" value="25">
-                        <label class="output" id="agiOutput">25 (25 + 0)</label>
-                    </div>
-                    <div class="divLeft">
-                        <label class="name">Accuracy:</label>
-                        <input type="range" id="acc" min="25" max="100" value="25">
-                        <label class="output" id="accOutput">25 (25 + 0)</label>
-                    </div>
-                    <div class="divLeft">
-                        <label class="name">Critical:</label>
-                        <input type="range" id="crit" min="25" max="100" value="25">
-                        <label class="output" id="critOutput">25 (25 + 0)</label>
-                    </div>
-                    <div class="divLeft">
-                        <label class="name">Reloading:</label>
-                        <input type="range" id="rel" min="25" max="100" value="25">
-                        <label class="output" id="relOutput">25 (25 + 0)</label>
-                    </div>
-                </div>
-                <button type="button" class="collapsible">Proficiencies:</button>
-                <div class="collapseContent">
-                    <div class="divLeft">
-                        <label class="name">Melee:</label>
-                        <input type="range" id="melee" min="5" max="120" value="5">
-                        <label class="output" id="meleeOutput">5 (5 + 0)</label>
-                    </div>
-                    <div class="divLeft">
-                        <label class="name">Pistols:</label>
-                        <input type="range" id="pistol" min="5" max="120" value="5">
-                        <label class="output" id="pistolOutput">5 (5 + 0)</label>
-                    </div>
-                    <div class="divLeft">
-                        <label class="name">Rifles:</label>
-                        <input type="range" id="rifle" min="0" max="120" value="0">
-                        <label class="output" id="rifleOutput">0 (0 + 0)</label>
-                    </div>
-                    <div class="divLeft">
-                        <label class="name">Shotguns:</label>
-                        <input type="range" id="shotgun" min="0" max="120" value="0">
-                        <label class="output" id="shotgunOutput">0 (0 + 0)</label>
-                    </div>
-                    <div class="divLeft">
-                        <label class="name">Machineguns:</label>
-                        <input type="range" id="mg" min="0" max="120" value="0">
-                        <label class="output" id="mgOutput">0 (0 + 0)</label>
-                    </div>
-                    <div class="divLeft">
-                        <label class="name">Explosives:</label>
-                        <input type="range" id="explo" min="0" max="120" value="0">
-                        <label class="output" id="exploOutput">0 (0 + 0)</label>
-                    </div>
-                </div>
-                <button type="button" class="collapsible">Armor Bonuses:</button>
-                <div class="collapseContentInline">
-                    <div class="divVert">
-                        <label class="head">Agi:</label>
-                        <input type="number" id="armAgi" min="0" max="24" placeholder="0 - 24">
-                    </div>
-                    <div class="divVert">
-                        <label class="head">End:</label>
-                        <input type="number" id="armEnd" min="0" max="24" placeholder="0 - 24">
-                    </div>             
-                </div>
-                <button type="button" class="collapsible">Weapon 1 Bonuses:</button>
-                <div class="collapseContentInline">
-                    <div class="divVert">
-                        <label class="head">Acc:</label>
-                        <input type="number" id="w1Acc" min="0" max="8" placeholder="0 - 8">
-                    </div>
-                    <div class="divVert">
-                        <label class="head">Rel:</label>
-                        <input type="number" id="w1Rel" min="0" max="8" placeholder="0 - 8">
-                    </div>
-                    <div class="divVert">
-                        <label class="head">Crit:</label>
-                        <input type="number" id="w1Crit" min="0" max="8" placeholder="0 - 8">
-                    </div>               
-                </div>
-                <button type="button" class="collapsible">Weapon 2 Bonuses:</button>
-                <div class="collapseContentInline">
-                    <div class="divVert">
-                        <label class="head">Acc:</label>
-                        <input type="number" id="w2Acc" min="0" max="8" placeholder="0 - 8">
-                    </div>
-                    <div class="divVert">
-                        <label class="head">Rel:</label>
-                        <input type="number" id="w2Rel" min="0" max="8" placeholder="0 - 8">
-                    </div>
-                    <div class="divVert">
-                        <label class="head">Crit:</label>
-                        <input type="number" id="w2Crit" min="0" max="8" placeholder="0 - 8">
-                    </div>               
-                </div>
-                <button type="button" class="collapsible">Weapon 3 Bonuses:</button>
-                <div class="collapseContentInline">
-                    <div class="divVert">
-                        <label class="head">Acc:</label>
-                        <input type="number" id="w3Acc" min="0" max="8" placeholder="0 - 8">
-                    </div>
-                    <div class="divVert">
-                        <label class="head">Rel:</label>
-                        <input type="number" id="w3Rel" min="0" max="8" placeholder="0 - 8">
-                    </div>
-                    <div class="divVert">
-                        <label class="head">Crit:</label>
-                        <input type="number" id="w3Crit" min="0" max="8" placeholder="0 - 8">
-                    </div>               
-                </div>
-            </div>
+    <div class="content">
+        <div class="contentHeader">
+            <h2 class="gridStart">Stat Calculator -</h2>
+            <h3 class="gridStart">For Dead Frontier 3D</h3>
+            <h4 class="gridEnd">By Rebekah</h4>
         </div>
-        <div class="contentCenter">
-            <h3 class="hNoMarginCenter">Equipment</h3>
-            <div class="contentCenterScroll">
-                <button type="button" class="collapsible">Armor:</button>
-                <div class="collapseContent">
-                    <select id="armorSelect">
-                        <option data-name="noArmor">Please Select an Option</option>
-                        <optgroup></optgroup>
-                    </select>
+        <div class="contentUpper">
+            <div class="contentUpperCol">
+                <div class="gridStart">
+                  <h3>Stats</h3>
                 </div>
-                <button type="button" class="collapsible">Weapon 1:</button>
-                <div class="collapseContent">
-                    <select id="weaponSelect1">
-                        <option data-name="noWeapon">Please Select an Option</option>
-                        <optgroup></optgroup>
-                    </select>
-                </div>
-                <button type="button" class="collapsible">Weapon 2:</button>
-                <div class="collapseContent">
-                    <select id="weaponSelect2">
-                        <option data-name="noWeapon">Please Select an Option</option>
-                        <optgroup></optgroup>
-                    </select>
-                </div>
-                <button type="button" class="collapsible">Weapon 3:</button>
-                <div class="collapseContent">
-                    <select id="weaponSelect3">
-                        <option data-name="noWeapon">Please Select an Option</option>
-                        <optgroup></optgroup>
-                    </select>
-                </div>
-            </div>
-        </div>
-        <div class="contentRight">
-            <h3 class="hNoMarginRight">Totals</h3>
-            <div class="contentRightScroll">
-                <button type="button" class="collapsible">Character:</button>
-                <div class="collapseContent">
-                    <div class="divRight">
-                        <p class="title">Health:</p>
-                        <p class="value" id="healthValue">50</p>
-                    </div>
-                    <div class="divRight">
-                        <p class="title">Walk Speed:</p>
-                        <p class="value" id="walkValue">3.1878</p>
-                    </div>
-                    <div class="divRight">
-                        <p class="title">Sprint Speed:</p>
-                        <p class="value" id="sprintValue">5.0715</p>
-                    </div>
-                    <div class="divRight">
-                        <p class="title">Sprint Duration:</p>
-                        <p class="value" id="durationValue">24 s</p>
-                    </div>
-                    <div class="divRight">
-                        <p class="title">Sprint Regen:</p>
-                        <p class="value" id="regenValue">24 s</p>
-                    </div>                
-                </div>
-                <button type="button" class="collapsible">Armor:</button>
-                <div class="collapseContent">
-                    <div class="divRight">
-                        <p class="title">Effective Durability:</p>
-                        <p class="value" id="durabilityValue">0</p>
-                    </div>
-                    <div class="divRight">
-                        <p class="title">Absorption:</p>
-                        <p class="value" id="absorptionValue">0%</p>
-                    </div>                
-                </div>
-                <button type="button" class="collapsible">Weapon 1:</button>
-                <div class="collapseContent">
-                    <div class="divRight">
-                        <p class="title">Damage per Hit:</p>
-                        <p class="value" id="w1DPHValue">0</p>
-                    </div>
-                    <div class="divRight">
-                        <p class="title">Damage per Pellet:</p>
-                        <p class="value" id="w1PDPHValue">0</p>
-                    </div>
-                    <div class="divRight">
-                        <p class="title">Pellets:</p>
-                        <p class="value" id="w1PelletValue">0</p>
-                    </div>
-                    <div class="divRight">
-                        <p class="title">Critical Damage:</p>
-                        <p class="value" id="w1CritValue">0</p>
-                    </div>
-                    <div class="divRight">
-                        <p class="title">Critical Pattern:</p>
-                        <p class="value" id="w1PatternValue">0</p>
-                    </div>
-                    <div class="divRight">
-                        <p class="title">Reload Duration:</p>
-                        <p class="value" id="w1ReloadValue">0 s</p>
-                    </div>
-                    <div class="divRight">
-                        <p class="title">Effective DPS:</p>
-                        <p class="value" id="w1DPSValue">0</p>
-                    </div>
-                    <div class="divRight">
-                        <p class="title">Accuracy:</p>
-                        <p class="value" id="w1AccuracyValue">0</p>
-                    </div>
-                    <div class="divRight">
-                        <p class="title">Pellet Spread:</p>
-                        <p class="value" id="w1SpreadValue">0&#xB0</p>
-                    </div>
-                </div>
-                <button type="button" class="collapsible">Weapon 2:</button>
-                <div class="collapseContent">
-                    <div class="divRight">
-                        <p class="title">Damage per Hit:</p>
-                        <p class="value" id="w2DPHValue">0</p>
-                    </div>
-                    <div class="divRight">
-                        <p class="title">Damage per Pellet:</p>
-                        <p class="value" id="w2PDPHValue">0</p>
-                    </div>
-                    <div class="divRight">
-                        <p class="title">Pellets:</p>
-                        <p class="value" id="w2PelletValue">0</p>
-                    </div>
-                    <div class="divRight">
-                        <p class="title">Critical Damage:</p>
-                        <p class="value" id="w2CritValue">0</p>
-                    </div>
-                    <div class="divRight">
-                        <p class="title">Critical Pattern:</p>
-                        <p class="value" id="w2PatternValue">0</p>
-                    </div>
-                    <div class="divRight">
-                        <p class="title">Reload Duration:</p>
-                        <p class="value" id="w2ReloadValue">0 s</p>
-                    </div>
-                    <div class="divRight">
-                        <p class="title">Effective DPS:</p>
-                        <p class="value" id="w2DPSValue">0</p>
-                    </div>
-                    <div class="divRight">
-                        <p class="title">Accuracy:</p>
-                        <p class="value" id="w2AccuracyValue">0</p>
-                    </div>
-                    <div class="divRight">
-                        <p class="title">Pellet Spread:</p>
-                        <p class="value" id="w2SpreadValue">0&#xB0</p>
-                    </div>
-                </div>
-                <button type="button" class="collapsible">Weapon 3:</button>
-                <div class="collapseContent">
-                    <div class="divRight">
-                        <p class="title">Damage per Hit:</p>
-                        <p class="value" id="w3DPHValue">0</p>
-                    </div>
-                    <div class="divRight">
-                        <p class="title">Damage per Pellet:</p>
-                        <p class="value" id="w3PDPHValue">0</p>
-                    </div>
-                    <div class="divRight">
-                        <p class="title">Pellets:</p>
-                        <p class="value" id="w3PelletValue">0</p>
-                    </div>
-                    <div class="divRight">
-                        <p class="title">Critical Damage:</p>
-                        <p class="value" id="w3CritValue">0</p>
-                    </div>
-                    <div class="divRight">
-                        <p class="title">Critical Pattern:</p>
-                        <p class="value" id="w3PatternValue">0</p>
-                    </div>
-                    <div class="divRight">
-                        <p class="title">Reload Duration:</p>
-                        <p class="value" id="w3ReloadValue">0 s</p>
-                    </div>
-                    <div class="divRight">
-                        <p class="title">Effective DPS:</p>
-                        <p class="value" id="w3DPSValue">0</p>
-                    </div>
-                    <div class="divRight">
-                        <p class="title">Accuracy:</p>
-                        <p class="value" id="w3AccuracyValue">0</p>
-                    </div>
-                    <div class="divRight">
-                        <p class="title">Pellet Spread:</p>
-                        <p class="value" id="w3SpreadValue">0&#xB0</p>
+                <div class="contentScroll">
+                    <div class="gridContentNoMarginMin">
+                        <div>
+                            <button type="button" class="collapsible">Character:</button>
+                            <div class="collapseContent">
+                                <div class="gridContent">
+                                    <label class="gridCenter" style="grid-area: 1 / 1">Level:</label>
+                                    <input class="gridCenter" type="number" id="level" min="1" max="325" placeholder="1 - 325" style="grid-area: 2 / 1">
+    
+                                    <label class="gridCenter" style="grid-area: 1 / 2">Stat Points:</label>
+                                    <p class="gridCenter" id="freePoints" style="grid-area: 2 / 2">0</p>
+    
+                                    <label class="gridCenter" style="grid-area: 1 / 3">Prof Points:</label>
+                                    <p class="gridCenter" id="freePPoints" style="grid-area: 2 / 3">0</p>
+    
+                                    <label class="gridCenter" style="grid-area: 1 / 4">Level Req:</label>
+                                    <p class="gridCenter" id="reqLevel" style="grid-area: 2 / 4">1</p>
+    
+                                    <select class="gridCenter" id="classSelect" style="grid-area: 3 / 1 / auto / 5">
+                                        <option data-name="noClass" data-exp="0" data-str="0" data-end="0" data-agi="0" data-acc="0" data-crit="0" data-rel="0" data-melee="0" data-pistol="0" data-rifle="0" data-shotgun="0" data-mg="0" data-explo="0">Please Select an Option</option>
+                                        <optgroup></optgroup>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="button" class="collapsible">Stats:</button>
+                            <div class="collapseContent">
+                                <div class="gridContent">
+                                        <label class="gridStart" style="grid-area: 1 / 1">Strength:</label>
+                                        <input class="gridCenter" type="range" id="str" min="25" max="100" value="25" style="grid-area: 1 / 2">
+                                        <label class="gridContentEnd" id="strOutput" style="grid-area: 1 / 3 ">25 (25 + 0)</label>
+    
+                                        <label class="gridStart" style="grid-area: 2 / 1 ;">Endurance:</label>
+                                        <input class="gridCenter" type="range" id="end" min="25" max="100" value="25" style="grid-area: 2 / 2 ;">
+                                        <label class="gridContentEnd" id="endOutput" style="grid-area: 2 / 3 ;">25 (25 + 0)</label>
+    
+                                        <label class="gridStart" style="grid-area: 3 / 1 ;">Agility:</label>
+                                        <input class="gridCenter" type="range" id="agi" min="25" max="100" value="25" style="grid-area: 3 / 2 ;">
+                                        <label class="gridContentEnd" id="agiOutput" style="grid-area: 3 / 3 ;">25 (25 + 0)</label>
+    
+                                        <label class="gridStart" style="grid-area: 4 / 1 ;">Accuracy:</label>
+                                        <input class="gridCenter" type="range" id="acc" min="25" max="100" value="25" style="grid-area: 4 / 2 ;">
+                                        <label class="gridContentEnd" id="accOutput" style="grid-area: 4 / 3 ;">25 (25 + 0)</label>
+    
+                                        <label class="gridStart" style="grid-area: 5 / 1 ;">Critical:</label>
+                                        <input class="gridCenter" type="range" id="crit" min="25" max="100" value="25" style="grid-area: 5 / 2 ;">
+                                        <label class="gridContentEnd" id="critOutput" style="grid-area: 5 / 3 ;">25 (25 + 0)</label>
+    
+                                        <label class="gridStart" style="grid-area: 6 / 1 ;">Reloading:</label>
+                                        <input class="gridCenter" type="range" id="rel" min="25" max="100" value="25" style="grid-area: 6 / 2 ;">
+                                        <label class="gridContentEnd" id="relOutput" style="grid-area: 6 / 3 ;">25 (25 + 0)</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="button" class="collapsible">Proficiencies:</button>
+                            <div class="collapseContent">
+                                <div class="gridContent">
+                                    <label class="gridStart" style="grid-area: 1 / 1">Melee:</label>
+                                    <input class="gridCenter" type="range" id="melee" min="5" max="120" value="5" style="grid-area: 1 / 2">
+                                    <label class="gridContentEnd" id="meleeOutput" style="grid-area: 1 / 3">5 (5 + 0)</label>
+                                    
+                                    <label class="gridStart" style="grid-area: 2 / 1">Pistols:</label>
+                                    <input class="gridCenter" type="range" id="pistol" min="5" max="120" value="5" style="grid-area: 2 / 2">
+                                    <label class="gridContentEnd" id="pistolOutput" style="grid-area: 2 / 3">5 (5 + 0)</label>
+                                    
+                                    <label class="gridStart" style="grid-area: 3 / 1">Rifles:</label>
+                                    <input class="gridCenter" type="range" id="rifle" min="0" max="120" value="0" style="grid-area: 3 / 2">
+                                    <label class="gridContentEnd" id="rifleOutput" style="grid-area: 3 / 3">0 (0 + 0)</label>
+                                    
+                                    <label class="gridStart" style="grid-area: 4 / 1">Shotguns:</label>
+                                    <input class="gridCenter" type="range" id="shotgun" min="0" max="120" value="0" style="grid-area: 4 / 2">
+                                    <label class="gridContentEnd" id="shotgunOutput" style="grid-area: 4 / 3">0 (0 + 0)</label>
+                                    
+                                    <label class="gridStart" style="grid-area: 5 / 1">Machineguns:</label>
+                                    <input class="gridCenter" type="range" id="mg" min="0" max="120" value="0" style="grid-area: 5 / 2">
+                                    <label class="gridContentEnd" id="mgOutput" style="grid-area: 5 / 3">0 (0 + 0)</label>
+    
+                                    <label class="gridStart" style="grid-area: 6 / 1">Explosives:</label>
+                                    <input class="gridCenter" type="range" id="explo" min="0" max="120" value="0" style="grid-area: 6 / 2">
+                                    <label class="gridContentEnd" id="exploOutput" style="grid-area: 6 / 3">0 (0 + 0)</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="button" class="collapsible">Armor Bonuses:</button>
+                            <div class="collapseContentInline">
+                                <div class="gridContentMax">
+                                    <label class="gridCenter" style="grid-area: 1 / 1">Agi:</label>
+                                    <input class="gridCenter" type="number" id="armAgi" min="0" max="24" placeholder="0 - 24" style="grid-area: 2 / 1">
+                                    
+                                    <label class="gridCenter" style="grid-area: 1 / 2">End:</label>
+                                    <input class="gridCenter" type="number" id="armEnd" min="0" max="24" placeholder="0 - 24" style="grid-area: 2 / 2">
+                                </div>             
+                            </div>
+                        </div>
+                        <div>
+                            <button type="button" class="collapsible">Weapon 1 Bonuses:</button>
+                            <div class="collapseContentInline">
+                                <div class="gridContentMax">
+                                    <label class="gridCenter" style="grid-area: 1 / 1">Acc:</label>
+                                    <input class="gridCenter" type="number" id="w1Acc" min="0" max="8" placeholder="0 - 8" style="grid-area: 2 / 1">
+                                    
+                                    <label class="gridCenter" style="grid-area: 1 / 2">Rel:</label>
+                                    <input class="gridCenter" type="number" id="w1Rel" min="0" max="8" placeholder="0 - 8" style="grid-area: 2 / 2">
+                                    
+                                    <label class="gridCenter" style="grid-area: 1 / 3">Crit:</label>
+                                    <input class="gridCenter" type="number" id="w1Crit" min="0" max="8" placeholder="0 - 8" style="grid-area: 2 / 3">
+                                </div>               
+                            </div>
+                        </div>
+                        <div>
+                            <button type="button" class="collapsible">Weapon 2 Bonuses:</button>
+                            <div class="collapseContentInline">
+                                <div class="gridContentMax">
+                                    <label class="gridCenter" style="grid-area: 1 / 1">Acc:</label>
+                                    <input class="gridCenter" type="number" id="w2Acc" min="0" max="8" placeholder="0 - 8" style="grid-area: 2 / 1">
+                                    
+                                    <label class="gridCenter" style="grid-area: 1 / 2">Rel:</label>
+                                    <input class="gridCenter" type="number" id="w2Rel" min="0" max="8" placeholder="0 - 8" style="grid-area: 2 / 2">
+                                    
+                                    <label class="gridCenter" style="grid-area: 1 / 3">Crit:</label>
+                                    <input class="gridCenter" type="number" id="w2Crit" min="0" max="8" placeholder="0 - 8" style="grid-area: 2 / 3">
+                                </div>               
+                            </div>
+                        </div>
+                        <div>
+                            <button type="button" class="collapsible">Weapon 3 Bonuses:</button>
+                            <div class="collapseContentInline">
+                                <div class="gridContentMax">
+                                    <label class="gridCenter" style="grid-area: 1 / 1">Acc:</label>
+                                    <input class="gridCenter" type="number" id="w3Acc" min="0" max="8" placeholder="0 - 8" style="grid-area: 2 / 1">
+                                    
+                                    <label class="gridCenter" style="grid-area: 1 / 2">Rel:</label>
+                                    <input class="gridCenter" type="number" id="w3Rel" min="0" max="8" placeholder="0 - 8" style="grid-area: 2 / 2">
+                                    
+                                    <label class="gridCenter" style="grid-area: 1 / 3">Crit:</label>
+                                    <input class="gridCenter" type="number" id="w3Crit" min="0" max="8" placeholder="0 - 8" style="grid-area: 2 / 3">
+                                </div>                 
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="contentUpperCol">
+                <div class="gridCenter">
+                    <h3>Equipment</h3>
+                </div>
+                <div class="contentScroll">
+                    <div class="gridContentNoMarginMin">
+                        <div>
+                            <button type="button" class="collapsible">Armor:</button>
+                            <div class="collapseContent">
+                                <div class="gridContent">
+                                    <select class="gridCenter" id="armorSelect">
+                                        <option data-name="noArmor">Please Select an Option</option>
+                                        <optgroup></optgroup>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="button" class="collapsible">Weapon 1:</button>
+                            <div class="collapseContent">
+                                <div class="gridContent">
+                                    <select class="gridCenter" id="weaponSelect1">
+                                        <option data-name="noWeapon">Please Select an Option</option>
+                                        <optgroup></optgroup>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="button" class="collapsible">Weapon 2:</button>
+                            <div class="collapseContent">
+                                <div class="gridContent">
+                                    <select class="gridCenter" id="weaponSelect2">
+                                        <option data-name="noWeapon">Please Select an Option</option>
+                                        <optgroup></optgroup>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="button" class="collapsible">Weapon 3:</button>
+                            <div class="collapseContent">
+                                <div class="gridContent">
+                                    <select class="gridCenter" id="weaponSelect3">
+                                        <option data-name="noWeapon">Please Select an Option</option>
+                                        <optgroup></optgroup>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contentUpperCol">
+                <div class="gridContentEnd">
+                    <h3>Totals</h3>                    
+                </div>
+                <div class="contentScroll">
+                    <div class="gridContentNoMarginMin">
+                        <div>
+                            <button type="button" class="collapsible">Character:</button>
+                            <div class="collapseContent">
+                                <div class="gridContent">
+                                    <div class="gridContentNoMargin" style="grid-area: 1 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Health:</p>
+                                        <p class="gridEnd" id="healthValue" style="grid-area: 1 / 2;">50</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 2 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Walk Speed:</p>
+                                        <p class="gridEnd" id="walkValue" style="grid-area: 1 / 2;">3.1878</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 3 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Sprint Speed:</p>
+                                        <p class="gridEnd" id="sprintValue" style="grid-area: 1 / 2;">5.0715</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 4 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Sprint Duration:</p>
+                                        <p class="gridEnd" id="durationValue" style="grid-area: 1 / 2;">24 s</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 5 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Sprint Regen:</p>
+                                        <p class="gridEnd" id="regenValue" style="grid-area: 1 / 2;">24 s</p>
+                                    </div>
+                                </div>              
+                            </div>
+                        </div>
+                        <div>
+                            <button type="button" class="collapsible">Armor:</button>
+                            <div class="collapseContent">
+                                <div class="gridContent">
+                                    <div class="gridContentNoMargin" style="grid-area: 1 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Effective Durability:</p>
+                                        <p class="gridEnd" id="durabilityValue" style="grid-area: 1 / 2;">0</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 2 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Absorption:</p>
+                                        <p class="gridEnd" id="absorptionValue" style="grid-area: 1 / 2;">0%</p>
+                                    </div>
+                                </div>              
+                            </div>
+                        </div>
+                        <div>
+                            <button type="button" class="collapsible">Weapon 1:</button>
+                            <div class="collapseContent">
+                                <div class="gridContent">
+                                    <div class="gridContentNoMargin" style="grid-area: 1 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Damage per Hit:</p>
+                                        <p class="gridEnd" id="w1DPHValue" style="grid-area: 1 / 2;">0</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 2 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Damage per Pellet:</p>
+                                        <p class="gridEnd" id="w1PDPHValue" style="grid-area: 1 / 2;">0</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 3 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Pellets:</p>
+                                        <p class="gridEnd" id="w1PelletValue" style="grid-area: 1 / 2;">0</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 4 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Critical Damage:</p>
+                                        <p class="gridEnd" id="w1CritValue" style="grid-area: 1 / 2;">0</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 5 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Critical Pattern:</p>
+                                        <p class="gridEnd" id="w1PatternValue" style="grid-area: 1 / 2;">0</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 6 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Reload Duration:</p>
+                                        <p class="gridEnd" id="w1ReloadValue" style="grid-area: 1 / 2;">0 s</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 7 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Effective DPS:</p>
+                                        <p class="gridEnd" id="w1DPSValue" style="grid-area: 1 / 2;">0</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 8 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Accuracy:</p>
+                                        <p class="gridEnd" id="w1AccuracyValue" style="grid-area: 1 / 2;">0</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 9 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Pellet Spread:</p>
+                                        <p class="gridEnd" id="w1SpreadValue" style="grid-area: 1 / 2;">0&#xB0</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="button" class="collapsible">Weapon 2:</button>
+                            <div class="collapseContent">
+                                <div class="gridContent">
+                                    <div class="gridContentNoMargin" style="grid-area: 1 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Damage per Hit:</p>
+                                        <p class="gridEnd" id="w2DPHValue" style="grid-area: 1 / 2;">0</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 2 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Damage per Pellet:</p>
+                                        <p class="gridEnd" id="w2PDPHValue" style="grid-area: 1 / 2;">0</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 3 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Pellets:</p>
+                                        <p class="gridEnd" id="w2PelletValue" style="grid-area: 1 / 2;">0</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 4 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Critical Damage:</p>
+                                        <p class="gridEnd" id="w2CritValue" style="grid-area: 1 / 2;">0</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 5 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Critical Pattern:</p>
+                                        <p class="gridEnd" id="w2PatternValue" style="grid-area: 1 / 2;">0</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 6 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Reload Duration:</p>
+                                        <p class="gridEnd" id="w2ReloadValue" style="grid-area: 1 / 2;">0 s</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 7 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Effective DPS:</p>
+                                        <p class="gridEnd" id="w2DPSValue" style="grid-area: 1 / 2;">0</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 8 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Accuracy:</p>
+                                        <p class="gridEnd" id="w2AccuracyValue" style="grid-area: 1 / 2;">0</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 9 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Pellet Spread:</p>
+                                        <p class="gridEnd" id="w2SpreadValue" style="grid-area: 1 / 2;">0&#xB0</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="button" class="collapsible">Weapon 3:</button>
+                            <div class="collapseContent">
+                                <div class="gridContent">
+                                    <div class="gridContentNoMargin" style="grid-area: 1 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Damage per Hit:</p>
+                                        <p class="gridEnd" id="w3DPHValue" style="grid-area: 1 / 2;">0</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 2 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Damage per Pellet:</p>
+                                        <p class="gridEnd" id="w3PDPHValue" style="grid-area: 1 / 2;">0</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 3 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Pellets:</p>
+                                        <p class="gridEnd" id="w3PelletValue" style="grid-area: 1 / 2;">0</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 4 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Critical Damage:</p>
+                                        <p class="gridEnd" id="w3CritValue" style="grid-area: 1 / 2;">0</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 5 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Critical Pattern:</p>
+                                        <p class="gridEnd" id="w3PatternValue" style="grid-area: 1 / 2;">0</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 6 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Reload Duration:</p>
+                                        <p class="gridEnd" id="w3ReloadValue" style="grid-area: 1 / 2;">0 s</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 7 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Effective DPS:</p>
+                                        <p class="gridEnd" id="w3DPSValue" style="grid-area: 1 / 2;">0</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 8 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Accuracy:</p>
+                                        <p class="gridEnd" id="w3AccuracyValue" style="grid-area: 1 / 2;">0</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 9 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Pellet Spread:</p>
+                                        <p class="gridEnd" id="w3SpreadValue" style="grid-area: 1 / 2;">0&#xB0</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </main>
+        <div class="contentLower">
+            <div class="contentLowerCol">
+                <div class="gridStart">
+                  <h3>Implants</h3>
+                </div>
+                <div class="gridContentNoMarginMin">
+                    <div class="gridContentNoMarginMin">
+                        <div class="gridContentNoMarginMin" style="grid-area: 1 / 1">
+                            <label class="gridCenter" style="grid-area: 1 / 1">Slot 1:</label>
+                            <select class="gridCenter" id="implantSelect1" style="grid-area: 2 / 1">
+                                <option value="No Implant" data-exp="0" data-pvp="0" data-damage="0" data-speed="0" data-idr="0" data-weapon="0" data-armor="0" data-cash="0" data-ammo="0" data-s-speed="0" data-spots="0" data-cant-use="none" data-unique="false">No Implant</option>
+                                <optgroup></optgroup>
+                            </select>
+                        </div>
+                        <div class="gridContentNoMarginMin" style="grid-area: 1 / 2">
+                            <label class="gridCenter" style="grid-area: 1 / 1">Slot 2:</label>
+                            <select class="gridCenter" id="implantSelect2" style="grid-area: 2 / 1">
+                                <option value="No Implant" data-exp="0" data-pvp="0" data-damage="0" data-speed="0" data-idr="0" data-weapon="0" data-armor="0" data-cash="0" data-ammo="0" data-s-speed="0" data-spots="0" data-cant-use="none" data-unique="false">No Implant</option>
+                                <optgroup></optgroup>
+                            </select>
+                        </div>
+                        <div class="gridContentNoMarginMin" style="grid-area: 1 / 3">
+                            <label class="gridCenter" style="grid-area: 1 / 1">Slot 3:</label>
+                            <select class="gridCenter" id="implantSelect3" style="grid-area: 2 / 1">
+                                <option value="No Implant" data-exp="0" data-pvp="0" data-damage="0" data-speed="0" data-idr="0" data-weapon="0" data-armor="0" data-cash="0" data-ammo="0" data-s-speed="0" data-spots="0" data-cant-use="none" data-unique="false">No Implant</option>
+                                <optgroup></optgroup>
+                            </select>
+                        </div>
+                        <div class="gridContentNoMarginMin" style="grid-area: 1 / 4">
+                            <label class="gridCenter" style="grid-area: 1 / 1">Slot 4:</label>
+                            <select class="gridCenter" id="implantSelect4" style="grid-area: 2 / 1">
+                                <option value="No Implant" data-exp="0" data-pvp="0" data-damage="0" data-speed="0" data-idr="0" data-weapon="0" data-armor="0" data-cash="0" data-ammo="0" data-s-speed="0" data-spots="0" data-cant-use="none" data-unique="false">No Implant</option>
+                                <optgroup></optgroup>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="gridContentNoMarginMin">
+                        <div class="gridContentNoMarginMin" style="grid-area: 1 / 1">
+                            <label class="gridCenter" style="grid-area: 1 / 1">Slot 5:</label>
+                            <select class="gridCenter" id="implantSelect5" style="grid-area: 2 / 1">
+                                <option value="No Implant" data-exp="0" data-pvp="0" data-damage="0" data-speed="0" data-idr="0" data-weapon="0" data-armor="0" data-cash="0" data-ammo="0" data-s-speed="0" data-spots="0" data-cant-use="none" data-unique="false">No Implant</option>
+                                <optgroup></optgroup>
+                            </select>
+                        </div>
+                        <div class="gridContentNoMarginMin" style="grid-area: 1 / 2">
+                            <label class="gridCenter" style="grid-area: 1 / 1">Slot 6:</label>
+                            <select class="gridCenter" id="implantSelect6" style="grid-area: 2 / 1">
+                                <option value="No Implant" data-exp="0" data-pvp="0" data-damage="0" data-speed="0" data-idr="0" data-weapon="0" data-armor="0" data-cash="0" data-ammo="0" data-s-speed="0" data-spots="0" data-cant-use="none" data-unique="false">No Implant</option>
+                                <optgroup></optgroup>
+                            </select>
+                        </div>
+                        <div class="gridContentNoMarginMin" style="grid-area: 1 / 3">
+                            <label class="gridCenter" style="grid-area: 1 / 1">Slot 7:</label>
+                            <select class="gridCenter" id="implantSelect7" style="grid-area: 2 / 1">
+                                <option value="No Implant" data-exp="0" data-pvp="0" data-damage="0" data-speed="0" data-idr="0" data-weapon="0" data-armor="0" data-cash="0" data-ammo="0" data-s-speed="0" data-spots="0" data-cant-use="none" data-unique="false">No Implant</option>
+                                <optgroup></optgroup>
+                            </select>
+                        </div>
+                        <div class="gridContentNoMarginMin" style="grid-area: 1 / 4">
+                            <label class="gridCenter" style="grid-area: 1 / 1">Slot 8:</label>
+                            <select class="gridCenter" id="implantSelect8" style="grid-area: 2 / 1">
+                                <option value="No Implant" data-exp="0" data-pvp="0" data-damage="0" data-speed="0" data-idr="0" data-weapon="0" data-armor="0" data-cash="0" data-ammo="0" data-s-speed="0" data-spots="0" data-cant-use="none" data-unique="false">No Implant</option>
+                                <optgroup></optgroup>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="gridContentNoMarginMin">
+                        <div class="gridContentNoMarginMin" style="grid-area: 1 / 1">
+                            <label class="gridCenter" style="grid-area: 1 / 1">Slot 9:</label>
+                            <select class="gridCenter" id="implantSelect9" style="grid-area: 2 / 1">
+                                <option value="No Implant" data-exp="0" data-pvp="0" data-damage="0" data-speed="0" data-idr="0" data-weapon="0" data-armor="0" data-cash="0" data-ammo="0" data-s-speed="0" data-spots="0" data-cant-use="none" data-unique="false">No Implant</option>
+                                <optgroup></optgroup>
+                            </select>
+                        </div>
+                        <div class="gridContentNoMarginMin" style="grid-area: 1 / 2">
+                            <label class="gridCenter" style="grid-area: 1 / 1">Slot 10:</label>
+                            <select class="gridCenter" id="implantSelect10" style="grid-area: 2 / 1">
+                                <option value="No Implant" data-exp="0" data-pvp="0" data-damage="0" data-speed="0" data-idr="0" data-weapon="0" data-armor="0" data-cash="0" data-ammo="0" data-s-speed="0" data-spots="0" data-cant-use="none" data-unique="false">No Implant</option>
+                                <optgroup></optgroup>
+                            </select>
+                        </div>
+                        <div class="gridContentNoMarginMin" style="grid-area: 1 / 3">
+                            <label class="gridCenter" style="grid-area: 1 / 1">Slot 11:</label>
+                            <select class="gridCenter" id="implantSelect11" style="grid-area: 2 / 1">
+                                <option value="No Implant" data-exp="0" data-pvp="0" data-damage="0" data-speed="0" data-idr="0" data-weapon="0" data-armor="0" data-cash="0" data-ammo="0" data-s-speed="0" data-spots="0" data-cant-use="none" data-unique="false">No Implant</option>
+                                <optgroup></optgroup>
+                            </select>
+                        </div>
+                        <div class="gridContentNoMarginMin" style="grid-area: 1 / 4">
+                            <label class="gridCenter" style="grid-area: 1 / 1">Slot 12:</label>
+                            <select class="gridCenter" id="implantSelect12" style="grid-area: 2 / 1">
+                                <option value="No Implant" data-exp="0" data-pvp="0" data-damage="0" data-speed="0" data-idr="0" data-weapon="0" data-armor="0" data-cash="0" data-ammo="0" data-s-speed="0" data-spots="0" data-cant-use="none" data-unique="false">No Implant</option>
+                                <optgroup></optgroup>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="gridContentNoMarginMin">
+                        <div class="gridContentNoMarginMin" style="grid-area: 1 / 1">
+                            <label class="gridCenter" style="grid-area: 1 / 1">Slot 13:</label>
+                            <select class="gridCenter" id="implantSelect13" style="grid-area: 2 / 1">
+                                <option value="No Implant" data-exp="0" data-pvp="0" data-damage="0" data-speed="0" data-idr="0" data-weapon="0" data-armor="0" data-cash="0" data-ammo="0" data-s-speed="0" data-spots="0" data-cant-use="none" data-unique="false">No Implant</option>
+                                <optgroup></optgroup>
+                            </select>
+                        </div>
+                        <div class="gridContentNoMarginMin" style="grid-area: 1 / 2">
+                            <label class="gridCenter" style="grid-area: 1 / 1">Slot 14:</label>
+                            <select class="gridCenter" id="implantSelect14" style="grid-area: 2 / 1">
+                                <option value="No Implant" data-exp="0" data-pvp="0" data-damage="0" data-speed="0" data-idr="0" data-weapon="0" data-armor="0" data-cash="0" data-ammo="0" data-s-speed="0" data-spots="0" data-cant-use="none" data-unique="false">No Implant</option>
+                                <optgroup></optgroup>
+                            </select>
+                        </div>
+                        <div class="gridContentNoMarginMin" style="grid-area: 1 / 3">
+                            <label class="gridCenter" style="grid-area: 1 / 1">Slot 15:</label>
+                            <select class="gridCenter" id="implantSelect15" style="grid-area: 2 / 1">
+                                <option value="No Implant" data-exp="0" data-pvp="0" data-damage="0" data-speed="0" data-idr="0" data-weapon="0" data-armor="0" data-cash="0" data-ammo="0" data-s-speed="0" data-spots="0" data-cant-use="none" data-unique="false">No Implant</option>
+                                <optgroup></optgroup>
+                            </select>
+                        </div>
+                        <div class="gridContentNoMarginMin" style="grid-area: 1 / 4">
+                            <label class="gridCenter" style="grid-area: 1 / 1">Slot 16:</label>
+                            <select class="gridCenter" id="implantSelect16" style="grid-area: 2 / 1">
+                                <option value="No Implant" data-exp="0" data-pvp="0" data-damage="0" data-speed="0" data-idr="0" data-weapon="0" data-armor="0" data-cash="0" data-ammo="0" data-s-speed="0" data-spots="0" data-cant-use="none" data-unique="false">No Implant</option>
+                                <optgroup></optgroup>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contentLowerCol">
+                <div class="contentScroll">
+                <div class="gridContentNoMarginMin">
+                    <div class="gridContentEnd">
+                        <h3>Boost Values</h3>                    
+                    </div>
+                    <div>
+                        <button type="button" class="collapsible">Special Boosts:</button>
+                        <div class="collapseContent">
+                            <div class="gridContent">
+                                <label class="gridCenter" style="grid-area: 1 / 1">GM:</label>
+                                <input class="gridCenter" type="checkbox" id="gmCheck" style="grid-area: 2 / 1">
+
+                                <label class="gridCenter" style="grid-area: 1 / 2">UB:</label>
+                                <input class="gridCenter" type="checkbox" id="ubCheck" style="grid-area: 2 / 2">
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button type="button" class="collapsible">Clan Boosts:</button>
+                        <div class="collapseContent">
+                            <div class="gridContent">
+                                <div class="gridContent">
+                                    <div class="gridContentNoMargin" style="grid-area: 1 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">EXP:</p>
+                                        <input class="gridEnd" type="number" id="clanEXP" min="1" max="10" placeholder="0 - 10" style="grid-area: 1 / 2;">
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 2 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">PvP Points:</p>
+                                        <input class="gridEnd" type="number" id="clanPVP" min="1" max="10" placeholder="0 - 10" style="grid-area: 1 / 2;">
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 3 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Damage:</p>
+                                        <input class="gridEnd" type="number" id="clanDamage" min="1" max="10" placeholder="0 - 10" style="grid-area: 1 / 2;">
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 4 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">IDR:</p>
+                                        <input class="gridEnd" type="number" id="clanIDR" min="1" max="10" placeholder="0 - 10" style="grid-area: 1 / 2;">
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 5 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Weapon Loot:</p>
+                                        <input class="gridEnd" type="number" id="clanWeapon" min="1" max="30" placeholder="0 - 30" style="grid-area: 1 / 2;">
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 6 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Armor Loot:</p>
+                                        <input class="gridEnd" type="number" id="clanArmor" min="1" max="30" placeholder="0 - 30" style="grid-area: 1 / 2;">
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 7 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Cash Loot:</p>
+                                        <input class="gridEnd" type="number" id="clanCash" min="1" max="50" placeholder="0 - 50" style="grid-area: 1 / 2;">
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 8 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Ammo Loot:</p>
+                                        <input class="gridEnd" type="number" id="clanAmmo" min="1" max="50" placeholder="0 - 50" style="grid-area: 1 / 2;">
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 9 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Search Speed:</p>
+                                        <input class="gridEnd" type="number" id="clanSSpeed" min="1" max="15" placeholder="0 - 15" style="grid-area: 1 / 2;">
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 10 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Loot Spots:</p>
+                                        <input class="gridEnd" type="number" id="clanSpots" min="1" max="10" placeholder="0 - 10" style="grid-area: 1 / 2;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button type="button" class="collapsible">Total Boosts:</button>
+                        <div class="collapseContent">
+                            <div class="gridContent">
+                                <div class="gridContent">
+                                    <div class="gridContentNoMargin" style="grid-area: 1 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">EXP:</p>
+                                        <p class="gridEnd" id="expValue" style="grid-area: 1 / 2;">0%</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 2 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">PvP Points:</p>
+                                        <p class="gridEnd" id="pvpValue" style="grid-area: 1 / 2;">0%</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 3 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Damage:</p>
+                                        <p class="gridEnd" id="damageValue" style="grid-area: 1 / 2;">0%</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 4 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Speed:</p>
+                                        <p class="gridEnd" id="speedValue" style="grid-area: 1 / 2;">0%</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 5 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">IDR:</p>
+                                        <p class="gridEnd" id="idrValue" style="grid-area: 1 / 2;">0%</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 6 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Weapon Loot:</p>
+                                        <p class="gridEnd" id="weaponValue" style="grid-area: 1 / 2;">0%</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 7 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Armor Loot:</p>
+                                        <p class="gridEnd" id="armorValue" style="grid-area: 1 / 2;">0%</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 8 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Cash Loot:</p>
+                                        <p class="gridEnd" id="cashValue" style="grid-area: 1 / 2;">0%</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 9 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Ammo Loot:</p>
+                                        <p class="gridEnd" id="ammoValue" style="grid-area: 1 / 2;">0%</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 10 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Search Speed:</p>
+                                        <p class="gridEnd" id="sSpeedValue" style="grid-area: 1 / 2;">0%</p>
+                                    </div>
+                                    <div class="gridContentNoMargin" style="grid-area: 11 / 1;">
+                                        <p class="gridStart" style="grid-area: 1 / 1;">Loot Spots:</p>
+                                        <p class="gridEnd" id="spotsValue" style="grid-area: 1 / 2;">0%</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
