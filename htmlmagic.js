@@ -4,6 +4,7 @@ $(document).ready(function () {
     let i;
     let buildOpen = false;
     let classOpen = false;
+    let dialogueOpen = "none";
 
     for (i = 0; i < collapseColl.length; i++) {
       collapseColl[i].addEventListener("click", function() {
@@ -45,6 +46,14 @@ $(document).ready(function () {
         } else if (this.id == "classHelpClose") {
           document.getElementById("classHelp").style.visibility = "collapse";
           classOpen = false;
+        } else if (this.id.includes("Reset")) {
+          dialogueOpen = toString(this.id);
+          document.getElementById("dialogue").style.visibility = "visible";
+        } else if (this.id == "dialogueCancel") {
+          document.getElementById("dialogue").style.visibility = "collapse";
+        } else if (this.id == "dialogueConfirm") {
+          document.getElementById("dialogue").style.visibility = "collapse";
+          //Call reset function.
         };
       });
     };
