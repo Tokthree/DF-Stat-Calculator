@@ -263,7 +263,7 @@ $(document).ready(function () {
         };
     };
     
-    function parseOutImplantArray(data) //Weapons parse function (Credit to Awoo 4: Come Back When You're a Little Mmmm... Awooier!)
+    function parseOutImplantArray(data) //Weapons parse function (Credit to Awoo 5: Come Back When You're a Little Mmmm... Awooier!)
     {
         let jsonData = JSON.parse(data);
         let mainSelect = document.querySelectorAll("[id^='implantSelect']");

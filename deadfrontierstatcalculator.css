@@ -2,7 +2,16 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    /* //To display all elements
+    border: 2px solid red;
+    */
 }
+
+/* //To display divs
+div {
+    border: 2px solid red;
+}
+*/
 
 html {
     background-color: black;
@@ -205,8 +214,23 @@ p {
 }
 
 input {
-    background-color: rgb(20, 20, 20);
+    background-color: rgb(30, 30, 30);
     color: white;
+    border: 2px solid rgb(40, 40, 40);
+}
+
+input[type=button] {
+    width: 22px;
+    height: 22px;
+}
+
+input[type=button]:hover {
+    background-color: rgb(30, 30, 30);
+    border: 2px solid rgb(50, 50, 50);
+}
+
+input[type=button]:active {
+    background-color: rgb(20, 20, 20);
     border: 2px solid rgb(30, 30, 30);
 }
 
