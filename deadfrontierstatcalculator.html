@@ -14,9 +14,10 @@
         </div>
         <div class="contentUpper">
             <div class="contentUpperCol">
-                <div class="gridStart">
+                <div style="grid-area: 1 / 1;">
                   <h3>Stats</h3>
                 </div>
+                <input class="gridContentEnd" id="statsReset" type="button" value="&#8635" title="Reset Stats" style="grid-area: 1 / 1; z-index: 1;">    
                 <div class="contentScroll">
                     <div class="gridContentNoMarginMin">
                         <div>
@@ -172,9 +173,10 @@
                 </div>
             </div>
             <div class="contentUpperCol" style="grid-area: 1 / 2;">
-                <div class="gridCenter">
+                <div style="grid-area: 1 / 1 ;">
                     <h3>Equipment</h3>
                 </div>
+                <input class="gridContentEnd" id="equipmentReset" type="button" value="&#8635" title="Reset Equipment" style="grid-area: 1 / 1; z-index: 1;">  
                 <div class="contentScroll">
                     <div class="gridContentNoMarginMin">
                         <div>
@@ -225,9 +227,10 @@
                 </div>
             </div>
             <div class="contentUpperCol" style="grid-area: 1 / 3;">
-                <div class="gridContentEnd">
+                <div style="grid-area: 1 / 1 ;">
                     <h3>Totals</h3>                    
                 </div>
+                <input class="gridContentEnd" id="allReset" type="button" value="&#8635" title="Reset Everything" style="grid-area: 1 / 1; z-index: 1;">
                 <div class="contentScroll">
                     <div class="gridContentNoMarginMin">
                         <div>
@@ -342,11 +345,11 @@
                     </div>
                 </div>
             </div>
-            <div class="contentUpperCol" id="buildHelp" style="grid-area: 1 / 2; z-index: 1; visibility: collapse;">
+            <div class="contentUpperCol" id="buildHelp" style="grid-area: 1 / 2 / auto / 4; z-index: 1; visibility: collapse;">
                 <div class="gridCenter" style="grid-area: 1 / 1;">
                     <h3>Build Help</h3>
                 </div>
-                <input class="gridEnd" id="buildHelpClose" type="button" value="X" style="grid-area: 1 / 1;">       
+                <input class="gridContentEnd" id="buildHelpClose" type="button" value="X" style="grid-area: 1 / 1;">       
                 <div class="contentScroll">
                     <div class="gridContentNoMarginMin">
                         <p class="buildHelpText">
@@ -359,7 +362,7 @@
                 <div class="gridCenter" style="grid-area: 1 / 1;">
                     <h3>Class Help</h3>
                 </div>
-                <input class="gridEnd" id="classHelpClose" type="button" value="X" style="grid-area: 1 / 1;">       
+                <input class="gridContentEnd" id="classHelpClose" type="button" value="X" style="grid-area: 1 / 1;">       
                 <div class="contentScroll">
                     <div class="gridContentNoMarginMin">
                         <p class="classHelpText">
@@ -371,9 +374,10 @@
         </div>
         <div class="contentLower">
             <div class="contentLowerCol">
-                <div class="gridStart">
+                <div style="grid-area: 1 / 1 ;">
                   <h3>Implants</h3>
                 </div>
+                <input class="gridContentEnd" id="impReset" type="button" value="&#8635" title="Reset Implants" style="grid-area: 1 / 1; z-index: 1;">  
                 <div class="gridContentNoMarginMin">
                     <label class="gridCenter" style="grid-area: 1 / 1">Slot 1:</label>
                     <select class="gridCenter" id="implantSelect1" style="grid-area: 2 / 1">
@@ -458,9 +462,10 @@
                 </div>
             </div>
             <div class="contentLowerCol">
-                <div class="gridContentEnd">
+                <div style="grid-area: 1 / 1 ;">
                     <h3>Boost Values</h3>                    
                 </div>
+                <input class="gridContentEnd" id="boostReset" type="button" value="&#8635" title="Reset Boosts" style="grid-area: 1 / 1; z-index: 1;">
                 <div class="contentScroll">
                     <div class="gridContentNoMarginMin">
                         <div>
