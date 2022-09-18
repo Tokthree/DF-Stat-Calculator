@@ -6,7 +6,20 @@
     <script type="text/javascript" src="htmlmagic.js"></script>
 </head>
 <body>
-    <div class="content">
+    <div class="contentDialogue" id="dialogue" style="visibility: collapse;">
+        <div class="dialogueBox">
+            <div class="dialogueHeader">
+                <p class="gridCenter">Reset [Element]?</p> <!--[Element] should reference what is being reset-->
+            </div>
+            <div class="dialogueContent">
+                <p class="gridCenter" style="grid-area: 1 / 1 / auto / 3">Please note that this will reset all values in [Element].</p> <!--[Element] should reference what is being reset-->
+                <p class="gridCenter" style="grid-area: 2 / 1 / auto / 3">Are you sure?</p>
+                <input class="gridCenter" id="dialogueConfirm" type="button" value="Confirm" style="grid-area: 3 / 1; padding: 5px; height: auto; width: auto;">
+                <input class="gridCenter" id="dialogueCancel" type="button" value="Cancel" style="grid-area: 3 / 2; padding: 5px; height: auto; width: auto;">
+            </div>
+        </div>
+    </div>
+    <div class="content" style="grid-area: 1 / 1;">
         <div class="contentHeader">
             <h2 class="gridStart">Stat Calculator -</h2>
             <h3 class="gridStart">For Dead Frontier 3D</h3>
@@ -15,7 +28,7 @@
         <div class="contentUpper">
             <div class="contentUpperCol">
                 <div style="grid-area: 1 / 1;">
-                  <h3>Stats</h3>
+                    <h3>Stats</h3>
                 </div>
                 <input class="gridContentEnd" id="statsReset" type="button" value="&#8635" title="Reset Stats" style="grid-area: 1 / 1; z-index: 1;">    
                 <div class="contentScroll">
@@ -56,29 +69,29 @@
                             <button type="button" class="collapsible">Stats:</button>
                             <div class="collapseContent">
                                 <div class="gridContent">
-                                        <label class="gridStart" style="grid-area: 1 / 1">Strength:</label>
-                                        <input class="gridCenter" type="range" id="str" min="25" max="100" value="25" style="grid-area: 1 / 2">
-                                        <label class="gridContentEnd" id="strOutput" style="grid-area: 1 / 3 ">25 (25 + 0)</label>
-    
-                                        <label class="gridStart" style="grid-area: 2 / 1 ;">Endurance:</label>
-                                        <input class="gridCenter" type="range" id="end" min="25" max="100" value="25" style="grid-area: 2 / 2 ;">
-                                        <label class="gridContentEnd" id="endOutput" style="grid-area: 2 / 3 ;">25 (25 + 0)</label>
-    
-                                        <label class="gridStart" style="grid-area: 3 / 1 ;">Agility:</label>
-                                        <input class="gridCenter" type="range" id="agi" min="25" max="100" value="25" style="grid-area: 3 / 2 ;">
-                                        <label class="gridContentEnd" id="agiOutput" style="grid-area: 3 / 3 ;">25 (25 + 0)</label>
-    
-                                        <label class="gridStart" style="grid-area: 4 / 1 ;">Accuracy:</label>
-                                        <input class="gridCenter" type="range" id="acc" min="25" max="100" value="25" style="grid-area: 4 / 2 ;">
-                                        <label class="gridContentEnd" id="accOutput" style="grid-area: 4 / 3 ;">25 (25 + 0)</label>
-    
-                                        <label class="gridStart" style="grid-area: 5 / 1 ;">Critical:</label>
-                                        <input class="gridCenter" type="range" id="crit" min="25" max="100" value="25" style="grid-area: 5 / 2 ;">
-                                        <label class="gridContentEnd" id="critOutput" style="grid-area: 5 / 3 ;">25 (25 + 0)</label>
-    
-                                        <label class="gridStart" style="grid-area: 6 / 1 ;">Reloading:</label>
-                                        <input class="gridCenter" type="range" id="rel" min="25" max="100" value="25" style="grid-area: 6 / 2 ;">
-                                        <label class="gridContentEnd" id="relOutput" style="grid-area: 6 / 3 ;">25 (25 + 0)</label>
+                                    <label class="gridStart" style="grid-area: 1 / 1">Strength:</label>
+                                    <input class="gridCenter" type="range" id="str" min="25" max="100" value="25" style="grid-area: 1 / 2">
+                                    <label class="gridContentEnd" id="strOutput" style="grid-area: 1 / 3 ">25 (25 + 0)</label>
+
+                                    <label class="gridStart" style="grid-area: 2 / 1 ;">Endurance:</label>
+                                    <input class="gridCenter" type="range" id="end" min="25" max="100" value="25" style="grid-area: 2 / 2 ;">
+                                    <label class="gridContentEnd" id="endOutput" style="grid-area: 2 / 3 ;">25 (25 + 0)</label>
+
+                                    <label class="gridStart" style="grid-area: 3 / 1 ;">Agility:</label>
+                                    <input class="gridCenter" type="range" id="agi" min="25" max="100" value="25" style="grid-area: 3 / 2 ;">
+                                    <label class="gridContentEnd" id="agiOutput" style="grid-area: 3 / 3 ;">25 (25 + 0)</label>
+
+                                    <label class="gridStart" style="grid-area: 4 / 1 ;">Accuracy:</label>
+                                    <input class="gridCenter" type="range" id="acc" min="25" max="100" value="25" style="grid-area: 4 / 2 ;">
+                                    <label class="gridContentEnd" id="accOutput" style="grid-area: 4 / 3 ;">25 (25 + 0)</label>
+
+                                    <label class="gridStart" style="grid-area: 5 / 1 ;">Critical:</label>
+                                    <input class="gridCenter" type="range" id="crit" min="25" max="100" value="25" style="grid-area: 5 / 2 ;">
+                                    <label class="gridContentEnd" id="critOutput" style="grid-area: 5 / 3 ;">25 (25 + 0)</label>
+
+                                    <label class="gridStart" style="grid-area: 6 / 1 ;">Reloading:</label>
+                                    <input class="gridCenter" type="range" id="rel" min="25" max="100" value="25" style="grid-area: 6 / 2 ;">
+                                    <label class="gridContentEnd" id="relOutput" style="grid-area: 6 / 3 ;">25 (25 + 0)</label>
                                 </div>
                             </div>
                         </div>
@@ -375,7 +388,7 @@
         <div class="contentLower">
             <div class="contentLowerCol">
                 <div style="grid-area: 1 / 1 ;">
-                  <h3>Implants</h3>
+                    <h3>Implants</h3>
                 </div>
                 <input class="gridContentEnd" id="impReset" type="button" value="&#8635" title="Reset Implants" style="grid-area: 1 / 1; z-index: 1;">  
                 <div class="gridContentNoMarginMin">

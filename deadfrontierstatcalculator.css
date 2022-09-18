@@ -20,6 +20,7 @@ html {
 }
 
 body {
+    display: grid;
     height: 100vh;
     padding: 20px;
 }
@@ -29,6 +30,31 @@ body {
     grid-template-rows: 60px 1fr 1fr;
     row-gap: 20px;
     height: 100%;
+}
+
+.contentDialogue {
+    display: grid; 
+    grid-area: 1 / 1; 
+    z-index: 2; 
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-items: center;
+    align-items: center;
+}
+
+.dialogueHeader {
+    display: grid;
+    padding: 5px;
+    background-color: rgb(16, 16, 16);
+    border: 2px solid rgb(30, 30, 30);
+}
+
+.dialogueContent {
+    display: grid;
+    padding: 10px;
+    row-gap: 20px;
+    background-color: rgb(20, 20, 20);
+    border: 2px solid rgb(30, 30, 30);
+    border-top: 0px;
 }
 
 .contentHeader {
