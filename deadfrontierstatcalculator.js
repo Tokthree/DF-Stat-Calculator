@@ -9,63 +9,11 @@ const levelReqSel = document.getElementById('reqLevel');
 //#endregion
 
 //#region Global Variables
-let level = 1;
-let levelReq = 1;
-let statTotal = 150;
-let pointsTotal = 0;
-let pointsReq = 0;
-let profTotal = 10;
-let pointsPTotal = 0;
-let pointsPReq = 0;
-let strTotal = 25;
-let strBase = 25;
-let strBoost = 0;
-let strClass = 0;
-let endTotal = 25;
-let endBase = 25;
-let endBoost = 0;
-let endClass = 0;
-let armEnd = 0;
-let agiTotal = 25;
-let agiBase = 25;
-let agiBoost = 0;
-let agiClass = 0;
-let armAgi = 0;
-let accTotal = 25;
-let accBase = 25;
-let accBoost = 0;
-let accClass = 0;
-let w1AccBoost = 0;
-let w2AccBoost = 0;
-let w3AccBoost = 0;
-let critTotal = 25;
-let critBase = 25;
-let critBoost = 0;
-let critClass = 0;
-let w1CritBoost = 0;
-let w2CritBoost = 0;
-let w3CritBoost = 0;
-let relTotal = 25;
-let relBase = 25;
-let relBoost = 0;
-let relClass = 0;
-let w1RelBoost = 0;
-let w2RelBoost = 0;
-let w3RelBoost = 0;
-let meleeBase = 5;
-let meleeBoost = 0;
-let pistolBase = 5;
-let pistolBoost = 0;
-let rifleBase = 0;
-let rifleBoost = 0;
-let shotgunBase = 0;
-let shotgunBoost = 0;
-let mgBase = 0;
-let mgBoost = 0;
-let exploBase = 0;
-let exploBoost = 0;
-let durability = 0;
-let absorption = 0;
+let charInfo = {level: 1, levelReq: 1, statTotal: 150, pointsTotal: 0, pointsReq: 0, profTotal: 10, pointsPTotal: 0, pointsPReq: 0};
+let stats = {strBase: 25, strBoost: 0, strClass: 0, strTotal: 25, endBase: 25, endBoost: 0, endClass: 0, endTotal: 25, agiBase: 25, agiBoost: 0, agiClass: 0, agiTotal: 25, accBase: 25, accBoost: 0, accClass: 0, accTotal: 25, critBase: 25, critBoost: 0, critClass: 0, critTotal: 25, relBase: 25, relBoost: 0, relClass: 0, relTotal: 25};
+let profs = {meleeBase: 5, meleeBoost: 0, pistolBase: 5, pistolBoost: 0, rifleBase: 0, rifleBoost: 0, shotgunBase: 0, shotgunBoost: 0, mgBase: 0, mgBoost: 0, exploBase: 0, exploBoost: 0};
+let bonus = {end: 0, agi: 0, w1Acc: 0, w1Crit: 0, w1Rel: 0, w2Acc: 0, w2Crit: 0, w2Rel: 0, w3Acc: 0, w3Crit: 0, w3Rel: 0,};
+let armor = {durability: 0, absoption: 0};
 let w1 = {spread: false, explosive: false, burst: false, crit: false, sAngle: 0, pellets: 0, pDph: 0, dph: 0, critF: 0, critS: 0, reload: 0, accuracy: 0, pen: 0, dps: 0};
 let w2 = {spread: false, explosive: false, burst: false, crit: false, sAngle: 0, pellets: 0, pDph: 0, dph: 0, critF: 0, critS: 0, reload: 0, accuracy: 0, pen: 0, dps: 0};
 let w3 = {spread: false, explosive: false, burst: false, crit: false, sAngle: 0, pellets: 0, pDph: 0, dph: 0, critF: 0, critS: 0, reload: 0, accuracy: 0, pen: 0, dps: 0};
@@ -90,17 +38,7 @@ let gm = {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash
 let clan = {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0};
 let impBlock = {imp1: "none", imp2: "none", imp3: "none", imp4: "none", imp5: "none", imp6: "none", imp7: "none", imp8: "none", imp9: "none", imp10: "none", imp11: "none", imp12: "none", imp13: "none", imp14: "none", imp15: "none", imp16: "none"}
 let impUBlock = {imp1: false, imp2: false, imp3: false, imp4: false, imp5: false, imp6: false, imp7: false, imp8: false, imp9: false, imp10: false, imp11: false, imp12: false, imp13: false, imp14: false, imp15: false, imp16: false}
-let expBoost = 0;
-let pvpBoost = 0;
-let damageBoost = 0;
-let speedBoost = 0;
-let idrBoost = 0;
-let weaponBoost = 0;
-let armorBoost = 0;
-let cashBoost = 0;
-let ammoBoost = 0;
-let sSpeedBoost = 0;
-let spotsBoost = 0;
+let boost = {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0};
 //#endregion
 
 //#region Functions
@@ -255,28 +193,28 @@ function selectUpdate()
         let elem = selectColl[i];
         if(elem.id == "classSelect")
         {
-            strClass = parseInt(elem.options[elem.selectedIndex].dataset.str); //Set values
-            endClass = parseInt(elem.options[elem.selectedIndex].dataset.end);
-            agiClass = parseInt(elem.options[elem.selectedIndex].dataset.agi);
-            accClass = parseInt(elem.options[elem.selectedIndex].dataset.acc);
-            critClass = parseInt(elem.options[elem.selectedIndex].dataset.crit);
-            relClass = parseInt(elem.options[elem.selectedIndex].dataset.rel);
-            meleeBoost = parseInt(elem.options[elem.selectedIndex].dataset.melee);
-            pistolBoost = parseInt(elem.options[elem.selectedIndex].dataset.pistol);
-            rifleBoost = parseInt(elem.options[elem.selectedIndex].dataset.rifle);
-            shotgunBoost = parseInt(elem.options[elem.selectedIndex].dataset.shotgun);
-            mgBoost = parseInt(elem.options[elem.selectedIndex].dataset.mg);
-            exploBoost = parseInt(elem.options[elem.selectedIndex].dataset.explo);
-            strBoost = strClass;
-            endBoost = endClass + armEnd;
-            agiBoost = agiClass + armAgi;
-            accBoost = accClass + w1AccBoost + w2AccBoost + w3AccBoost;
-            critBoost = critClass + w1CritBoost + w2CritBoost + w3RelBoost;
-            relBoost = relClass + w1RelBoost + w2RelBoost + w3RelBoost;
+            stats["strClass"] = parseInt(elem.options[elem.selectedIndex].dataset.str); //Set values
+            stats["endClass"] = parseInt(elem.options[elem.selectedIndex].dataset.end);
+            stats["agiClass"] = parseInt(elem.options[elem.selectedIndex].dataset.agi);
+            stats["accClass"] = parseInt(elem.options[elem.selectedIndex].dataset.acc);
+            stats["critClass"] = parseInt(elem.options[elem.selectedIndex].dataset.crit);
+            stats["relClass"] = parseInt(elem.options[elem.selectedIndex].dataset.rel);
+            profs["meleeBoost"] = parseInt(elem.options[elem.selectedIndex].dataset.melee);
+            profs["pistolBoost"] = parseInt(elem.options[elem.selectedIndex].dataset.pistol);
+            profs["rifleBoost"] = parseInt(elem.options[elem.selectedIndex].dataset.rifle);
+            profs["shotgunBoost"] = parseInt(elem.options[elem.selectedIndex].dataset.shotgun);
+            profs["mgBoost"] = parseInt(elem.options[elem.selectedIndex].dataset.mg);
+            profs["exploBoost"] = parseInt(elem.options[elem.selectedIndex].dataset.explo);
+            stats["strBoost"] = stats["strClass"];
+            stats["endBoost"] = stats["endClass"] + bonus["end"];
+            stats["agiBoost"] = stats["agiClass"] + bonus["agi"];
+            stats["accBoost"] = stats["accClass"] + bonus["w1Acc"] + bonus["w2Acc"] + bonus["w3Acc"];
+            stats["critBoost"] = stats["critClass"] + bonus["w1Crit"] + bonus["w2Crit"] + bonus["w3Rel"];
+            stats["relBoost"] = stats["relClass"] + bonus["w1Rel"] + bonus["w2Rel"] + bonus["w3Rel"];
         } else if(elem.id == "armorSelect")
         {
-            durability = parseInt(elem.options[elem.selectedIndex].dataset.durability);
-            absorption = parseFloat(elem.options[elem.selectedIndex].dataset.absorption);
+            armor["durability"] = parseInt(elem.options[elem.selectedIndex].dataset.durability);
+            armor["absorption"] = parseFloat(elem.options[elem.selectedIndex].dataset.absorption);
         } else if(elem.id.includes("weaponSelect") == true)
         {
             let spread = (elem.options[elem.selectedIndex].dataset.spread === "true");
@@ -284,19 +222,19 @@ function selectUpdate()
             let burst = (elem.options[elem.selectedIndex].dataset.burst === "true");
             let sAngle = elem.options[elem.selectedIndex].dataset.sAngle;
             let pellets = elem.options[elem.selectedIndex].dataset.pellets;
-            let pelletDph = elem.options[elem.selectedIndex].dataset.dph * (1 + (damageBoost / 100));
+            let pelletDph = elem.options[elem.selectedIndex].dataset.dph * (1 + (boost["damage"] / 100));
             let dph = 0;
             if(spread == true)
             {
-                dph = (elem.options[elem.selectedIndex].dataset.dph * pellets) * (1 + (damageBoost / 100));
+                dph = (elem.options[elem.selectedIndex].dataset.dph * pellets) * (1 + (boost["damage"] / 100));
             } else
             {
-                dph = elem.options[elem.selectedIndex].dataset.dph * (1 + (damageBoost / 100));
+                dph = elem.options[elem.selectedIndex].dataset.dph * (1 + (boost["damage"] / 100));
             };
             let shotTime = elem.options[elem.selectedIndex].dataset.shotTime;
             let capacity = elem.options[elem.selectedIndex].dataset.capacity;
             let weaponCrit = elem.options[elem.selectedIndex].dataset.weaponCrit;
-            let baseCrit = (5 + Math.round((critTotal - 25) / 2.5)) * weaponCrit;
+            let baseCrit = (5 + Math.round((stats["critTotal"] - 25) / 2.5)) * weaponCrit;
             if(baseCrit > 80)
             {
                 baseCrit = 80;
@@ -321,7 +259,7 @@ function selectUpdate()
             let critFail = Math.ceil((100 - baseCrit) / divisor);
             let critSuccess = Math.floor(baseCrit / divisor);
             let weaponReload = elem.options[elem.selectedIndex].dataset.weaponReload;
-            let reloadFrame = 15 + (((124 - relTotal) * weaponReload) / 100);
+            let reloadFrame = 15 + (((124 - stats["relTotal"]) * weaponReload) / 100);
             let reloadTime = reloadFrame / 60;
             let accuracy = elem.options[elem.selectedIndex].dataset.accuracy;
             let pen = parseInt(elem.options[elem.selectedIndex].dataset.pen);
@@ -581,92 +519,92 @@ function displayUpdate()
         var boostValue;
         if(elem.id == "str")
         {
-            boostValue = statValue + strBoost;
-            strTotal = boostValue;
-            content.textContent = boostValue + " (" + statValue + " + " + strBoost + ")";
+            boostValue = statValue + stats["strBoost"];
+            stats["strTotal"] = boostValue;
+            content.textContent = boostValue + " (" + statValue + " + " + stats["strBoost"] + ")";
         } else if(elem.id == "end")
         {
-            boostValue = statValue + endBoost;
-            endTotal = boostValue;
-            content.textContent = boostValue + " (" + statValue + " + " + endBoost + ")";
+            boostValue = statValue + stats["endBoost"];
+            stats["endTotal"] = boostValue;
+            content.textContent = boostValue + " (" + statValue + " + " + stats["endBoost"] + ")";
         } else if(elem.id == "agi")
         {
-            boostValue = statValue + agiBoost;
-            agiTotal = boostValue;
-            content.textContent = boostValue + " (" + statValue + " + " + agiBoost + ")";
+            boostValue = statValue + stats["agiBoost"];
+            stats["agiTotal"] = boostValue;
+            content.textContent = boostValue + " (" + statValue + " + " + stats["agiBoost"] + ")";
         } else if(elem.id == "acc")
         {
-            boostValue = statValue + accBoost;
-            accTotal = boostValue;
-            content.textContent = boostValue + " (" + statValue + " + " + accBoost + ")";
+            boostValue = statValue + stats["accBoost"];
+            stats["accTotal"] = boostValue;
+            content.textContent = boostValue + " (" + statValue + " + " + stats["accBoost"] + ")";
         } else if(elem.id == "crit")
         {
-            boostValue = statValue + critBoost;
-            critTotal = boostValue;
-            content.textContent = boostValue + " (" + statValue + " + " + critBoost + ")";
+            boostValue = statValue + stats["critBoost"];
+            stats["critTotal"] = boostValue;
+            content.textContent = boostValue + " (" + statValue + " + " + stats["critBoost"] + ")";
         } else if(elem.id == "rel")
         {
-            boostValue = statValue + relBoost;
-            relTotal = boostValue;
-            content.textContent = boostValue + " (" + statValue + " + " + relBoost + ")";
+            boostValue = statValue + stats["relBoost"];
+            stats["relTotal"] = boostValue;
+            content.textContent = boostValue + " (" + statValue + " + " + stats["relBoost"] + ")";
         } else if(elem.id == "melee")
         {
-            boostValue = statValue + meleeBoost;
-            content.textContent = boostValue + " (" + statValue + " + " + meleeBoost + ")";
+            boostValue = statValue + profs["meleeBoost"];
+            content.textContent = boostValue + " (" + statValue + " + " + profs["meleeBoost"] + ")";
         } else if(elem.id == "pistol")
         {
-            boostValue = statValue + pistolBoost;
-            content.textContent = boostValue + " (" + statValue + " + " + pistolBoost + ")";
+            boostValue = statValue + profs["pistolBoost"];
+            content.textContent = boostValue + " (" + statValue + " + " + profs["pistolBoost"] + ")";
         } else if(elem.id == "rifle")
         {
-            boostValue = statValue + rifleBoost;
-            content.textContent = boostValue + " (" + statValue + " + " + rifleBoost + ")";
+            boostValue = statValue + profs["rifleBoost"];
+            content.textContent = boostValue + " (" + statValue + " + " + profs["rifleBoost"] + ")";
         } else if(elem.id == "shotgun")
         {
-            boostValue = statValue + shotgunBoost;
-            content.textContent = boostValue + " (" + statValue + " + " + shotgunBoost + ")";
+            boostValue = statValue + profs["shotgunBoost"];
+            content.textContent = boostValue + " (" + statValue + " + " + profs["shotgunBoost"] + ")";
         } else if(elem.id == "mg")
         {
-            boostValue = statValue + mgBoost;
-            content.textContent = boostValue + " (" + statValue + " + " + mgBoost + ")";
+            boostValue = statValue + profs["mgBoost"];
+            content.textContent = boostValue + " (" + statValue + " + " + profs["mgBoost"] + ")";
         } else if(elem.id == "explo")
         {
-            boostValue = statValue + exploBoost;
-            content.textContent = boostValue + " (" + statValue + " + " + exploBoost + ")";
+            boostValue = statValue + profs["exploBoost"];
+            content.textContent = boostValue + " (" + statValue + " + " + profs["exploBoost"] + ")";
         };
     };
-    expBoost = +imp1["exp"] + +imp2["exp"] + +imp3["exp"] + +imp4["exp"] + +imp5["exp"] + +imp6["exp"] + +imp7["exp"] + +imp8["exp"] + +imp9["exp"] + +imp10["exp"] + +imp11["exp"] + +imp12["exp"] + +imp13["exp"] + +imp14["exp"] + +imp15["exp"] + +imp16["exp"] + +ub["exp"] + +gm["exp"] + +clan["exp"];
-    expSelector.textContent = expBoost + "%";
-    pvpBoost = +imp1["pvp"] + +imp2["pvp"] + +imp3["pvp"] + +imp4["pvp"] + +imp5["pvp"] + +imp6["pvp"] + +imp7["pvp"] + +imp8["pvp"] + +imp9["pvp"] + +imp10["pvp"] + +imp11["pvp"] + +imp12["pvp"] + +imp13["pvp"] + +imp14["pvp"] + +imp15["pvp"] + +imp16["pvp"] + +ub["pvp"] + +gm["pvp"] + +clan["pvp"];
-    pvpSelector.textContent = pvpBoost + "%";
-    damageBoost = +imp1["damage"] + +imp2["damage"] + +imp3["damage"] + +imp4["damage"] + +imp5["damage"] + +imp6["damage"] + +imp7["damage"] + +imp8["damage"] + +imp9["damage"] + +imp10["damage"] + +imp11["damage"] + +imp12["damage"] + +imp13["damage"] + +imp14["damage"] + +imp15["damage"] + +imp16["damage"] + +ub["damage"] + +gm["damage"] + +clan["damage"];
-    damageSelector.textContent = damageBoost + "%";
-    speedBoost = +imp1["speed"] + +imp2["speed"] + +imp3["speed"] + +imp4["speed"] + +imp5["speed"] + +imp6["speed"] + +imp7["speed"] + +imp8["speed"] + +imp9["speed"] + +imp10["speed"] + +imp11["speed"] + +imp12["speed"] + +imp13["speed"] + +imp14["speed"] + +imp15["speed"] + +imp16["speed"] + +ub["speed"] + +gm["speed"] + +clan["speed"];
-    speedSelector.textContent = speedBoost + "%";
-    idrBoost = +imp1["idr"] + +imp2["idr"] + +imp3["idr"] + +imp4["idr"] + +imp5["idr"] + +imp6["idr"] + +imp7["idr"] + +imp8["idr"] + +imp9["idr"] + +imp10["idr"] + +imp11["idr"] + +imp12["idr"] + +imp13["idr"] + +imp14["idr"] + +imp15["idr"] + +imp16["idr"] + +ub["idr"] + +gm["idr"] + +clan["idr"];
-    idrSelector.textContent = idrBoost + "%";
-    weaponBoost = +imp1["weapon"] + +imp2["weapon"] + +imp3["weapon"] + +imp4["weapon"] + +imp5["weapon"] + +imp6["weapon"] + +imp7["weapon"] + +imp8["weapon"] + +imp9["weapon"] + +imp10["weapon"] + +imp11["weapon"] + +imp12["weapon"] + +imp13["weapon"] + +imp14["weapon"] + +imp15["weapon"] + +imp16["weapon"] + +ub["weapon"] + +gm["weapon"] + +clan["weapon"];
-    weaponSelector.textContent = weaponBoost + "%";
-    armorBoost = +imp1["armor"] + +imp2["armor"] + +imp3["armor"] + +imp4["armor"] + +imp5["armor"] + +imp6["armor"] + +imp7["armor"] + +imp8["armor"] + +imp9["armor"] + +imp10["armor"] + +imp11["armor"] + +imp12["armor"] + +imp13["armor"] + +imp14["armor"] + +imp15["armor"] + +imp16["armor"] + +ub["armor"] + +gm["armor"] + +clan["armor"];
-    armorSelector.textContent = armorBoost + "%";
-    cashBoost = +imp1["cash"] + +imp2["cash"] + +imp3["cash"] + +imp4["cash"] + +imp5["cash"] + +imp6["cash"] + +imp7["cash"] + +imp8["cash"] + +imp9["cash"] + +imp10["cash"] + +imp11["cash"] + +imp12["cash"] + +imp13["cash"] + +imp14["cash"] + +imp15["cash"] + +imp16["cash"] + +ub["cash"] + +gm["cash"] + +clan["cash"];
-    cashSelector.textContent = cashBoost + "%";
-    ammoBoost = +imp1["ammo"] + +imp2["ammo"] + +imp3["ammo"] + +imp4["ammo"] + +imp5["ammo"] + +imp6["ammo"] + +imp7["ammo"] + +imp8["ammo"] + +imp9["ammo"] + +imp10["ammo"] + +imp11["ammo"] + +imp12["ammo"] + +imp13["ammo"] + +imp14["ammo"] + +imp15["ammo"] + +imp16["ammo"] + +ub["ammo"] + +gm["ammo"] + +clan["ammo"];
-    ammoSelector.textContent = ammoBoost + "%";
-    sSpeedBoost = +imp1["sSpeed"] + +imp2["sSpeed"] + +imp3["sSpeed"] + +imp4["sSpeed"] + +imp5["sSpeed"] + +imp6["sSpeed"] + +imp7["sSpeed"] + +imp8["sSpeed"] + +imp9["sSpeed"] + +imp10["sSpeed"] + +imp11["sSpeed"] + +imp12["sSpeed"] + +imp13["sSpeed"] + +imp14["sSpeed"] + +imp15["sSpeed"] + +imp16["sSpeed"] + +ub["sSpeed"] + +gm["sSpeed"] + +clan["sSpeed"];
-    sSpeedSelector.textContent = sSpeedBoost + "%";
-    spotsBoost = +imp1["spots"] + +imp2["spots"] + +imp3["spots"] + +imp4["spots"] + +imp5["spots"] + +imp6["spots"] + +imp7["spots"] + +imp8["spots"] + +imp9["spots"] + +imp10["spots"] + +imp11["spots"] + +imp12["spots"] + +imp13["spots"] + +imp14["spots"] + +imp15["spots"] + +imp16["spots"] + +ub["spots"] + +gm["spots"] + +clan["spots"];
-    spotsSelector.textContent = spotsBoost + "%";
-    healthSelector.textContent = endBase * 2;
-    walkSelector.textContent = (((2.2 * 1.2) * ((agiTotal * 0.0043) + 1.1)) * (1 + (speedBoost / 100))).toFixed(4);
-    sprintSelector.textContent = (((3.5 * 1.2) * ((agiTotal * 0.0043) + 1.1)) * (1 + (speedBoost / 100))).toFixed(4);
-    durationSelector.textContent = ((endTotal - 25) / 6.1875 + 24).toFixed(0) + " s";
-    regenSelector.textContent = ((endTotal - 25) / 6.1875 + 24).toFixed(0) + " s";
+    boost["exp"] = +imp1["exp"] + +imp2["exp"] + +imp3["exp"] + +imp4["exp"] + +imp5["exp"] + +imp6["exp"] + +imp7["exp"] + +imp8["exp"] + +imp9["exp"] + +imp10["exp"] + +imp11["exp"] + +imp12["exp"] + +imp13["exp"] + +imp14["exp"] + +imp15["exp"] + +imp16["exp"] + +ub["exp"] + +gm["exp"] + +clan["exp"];
+    expSelector.textContent = boost["exp"] + "%";
+    boost["pvp"] = +imp1["pvp"] + +imp2["pvp"] + +imp3["pvp"] + +imp4["pvp"] + +imp5["pvp"] + +imp6["pvp"] + +imp7["pvp"] + +imp8["pvp"] + +imp9["pvp"] + +imp10["pvp"] + +imp11["pvp"] + +imp12["pvp"] + +imp13["pvp"] + +imp14["pvp"] + +imp15["pvp"] + +imp16["pvp"] + +ub["pvp"] + +gm["pvp"] + +clan["pvp"];
+    pvpSelector.textContent = boost["pvp"] + "%";
+    boost["damage"] = +imp1["damage"] + +imp2["damage"] + +imp3["damage"] + +imp4["damage"] + +imp5["damage"] + +imp6["damage"] + +imp7["damage"] + +imp8["damage"] + +imp9["damage"] + +imp10["damage"] + +imp11["damage"] + +imp12["damage"] + +imp13["damage"] + +imp14["damage"] + +imp15["damage"] + +imp16["damage"] + +ub["damage"] + +gm["damage"] + +clan["damage"];
+    damageSelector.textContent = boost["damage"] + "%";
+    boost["speed"] = +imp1["speed"] + +imp2["speed"] + +imp3["speed"] + +imp4["speed"] + +imp5["speed"] + +imp6["speed"] + +imp7["speed"] + +imp8["speed"] + +imp9["speed"] + +imp10["speed"] + +imp11["speed"] + +imp12["speed"] + +imp13["speed"] + +imp14["speed"] + +imp15["speed"] + +imp16["speed"] + +ub["speed"] + +gm["speed"] + +clan["speed"];
+    speedSelector.textContent = boost["speed"] + "%";
+    boost["idr"] = +imp1["idr"] + +imp2["idr"] + +imp3["idr"] + +imp4["idr"] + +imp5["idr"] + +imp6["idr"] + +imp7["idr"] + +imp8["idr"] + +imp9["idr"] + +imp10["idr"] + +imp11["idr"] + +imp12["idr"] + +imp13["idr"] + +imp14["idr"] + +imp15["idr"] + +imp16["idr"] + +ub["idr"] + +gm["idr"] + +clan["idr"];
+    idrSelector.textContent = boost["idr"] + "%";
+    boost["weapon"] = +imp1["weapon"] + +imp2["weapon"] + +imp3["weapon"] + +imp4["weapon"] + +imp5["weapon"] + +imp6["weapon"] + +imp7["weapon"] + +imp8["weapon"] + +imp9["weapon"] + +imp10["weapon"] + +imp11["weapon"] + +imp12["weapon"] + +imp13["weapon"] + +imp14["weapon"] + +imp15["weapon"] + +imp16["weapon"] + +ub["weapon"] + +gm["weapon"] + +clan["weapon"];
+    weaponSelector.textContent = boost["weapon"] + "%";
+    boost["armor"] = +imp1["armor"] + +imp2["armor"] + +imp3["armor"] + +imp4["armor"] + +imp5["armor"] + +imp6["armor"] + +imp7["armor"] + +imp8["armor"] + +imp9["armor"] + +imp10["armor"] + +imp11["armor"] + +imp12["armor"] + +imp13["armor"] + +imp14["armor"] + +imp15["armor"] + +imp16["armor"] + +ub["armor"] + +gm["armor"] + +clan["armor"];
+    armorSelector.textContent = boost["armor"] + "%";
+    boost["cash"] = +imp1["cash"] + +imp2["cash"] + +imp3["cash"] + +imp4["cash"] + +imp5["cash"] + +imp6["cash"] + +imp7["cash"] + +imp8["cash"] + +imp9["cash"] + +imp10["cash"] + +imp11["cash"] + +imp12["cash"] + +imp13["cash"] + +imp14["cash"] + +imp15["cash"] + +imp16["cash"] + +ub["cash"] + +gm["cash"] + +clan["cash"];
+    cashSelector.textContent = boost["cash"] + "%";
+    boost["ammo"] = +imp1["ammo"] + +imp2["ammo"] + +imp3["ammo"] + +imp4["ammo"] + +imp5["ammo"] + +imp6["ammo"] + +imp7["ammo"] + +imp8["ammo"] + +imp9["ammo"] + +imp10["ammo"] + +imp11["ammo"] + +imp12["ammo"] + +imp13["ammo"] + +imp14["ammo"] + +imp15["ammo"] + +imp16["ammo"] + +ub["ammo"] + +gm["ammo"] + +clan["ammo"];
+    ammoSelector.textContent = boost["ammo"] + "%";
+    boost["sSpeed"] = +imp1["sSpeed"] + +imp2["sSpeed"] + +imp3["sSpeed"] + +imp4["sSpeed"] + +imp5["sSpeed"] + +imp6["sSpeed"] + +imp7["sSpeed"] + +imp8["sSpeed"] + +imp9["sSpeed"] + +imp10["sSpeed"] + +imp11["sSpeed"] + +imp12["sSpeed"] + +imp13["sSpeed"] + +imp14["sSpeed"] + +imp15["sSpeed"] + +imp16["sSpeed"] + +ub["sSpeed"] + +gm["sSpeed"] + +clan["sSpeed"];
+    sSpeedSelector.textContent = boost["sSpeed"] + "%";
+    boost["spots"] = +imp1["spots"] + +imp2["spots"] + +imp3["spots"] + +imp4["spots"] + +imp5["spots"] + +imp6["spots"] + +imp7["spots"] + +imp8["spots"] + +imp9["spots"] + +imp10["spots"] + +imp11["spots"] + +imp12["spots"] + +imp13["spots"] + +imp14["spots"] + +imp15["spots"] + +imp16["spots"] + +ub["spots"] + +gm["spots"] + +clan["spots"];
+    spotsSelector.textContent = boost["spots"] + "%";
+    healthSelector.textContent = stats["endBase"] * 2;
+    walkSelector.textContent = (((2.2 * 1.2) * ((stats["agiTotal"] * 0.0043) + 1.1)) * (1 + (boost["speed"] / 100))).toFixed(4);
+    sprintSelector.textContent = (((3.5 * 1.2) * ((stats["agiTotal"] * 0.0043) + 1.1)) * (1 + (boost["speed"] / 100))).toFixed(4);
+    durationSelector.textContent = ((stats["endTotal"] - 25) / 6.1875 + 24).toFixed(0) + " s";
+    regenSelector.textContent = ((stats["endTotal"] - 25) / 6.1875 + 24).toFixed(0) + " s";
     //duraSelector.textContent = (durability + (durability * absorption))+" ("+durability+" + "+durability+" * "+absorption+")"; //Need to figure this out
     if(document.getElementById("armorSelect").value != "Please Select an Option")
     {
-        duraSelector.textContent = durability;
-        absorbSelector.textContent = (absorption * 100) + "%";
+        duraSelector.textContent = armor["durability"];
+        absorbSelector.textContent = (armor["absoption"] * 100) + "%";
     };
     if(document.getElementById("weaponSelect1").value != "Please Select an Option")
     {
@@ -688,83 +626,83 @@ function displayUpdate()
             w1AccuracySelector.textContent = "Skill Issue";
         } else if(w1["accuracy"] == "1")
         {
-            if(accTotal < 124)
+            if(stats["accTotal"] < 124)
             {
                 w1AccuracySelector.style.backgroundColor = "lightcoral";
                 w1AccuracySelector.textContent = "Inaccurate";
-            } else if(accTotal >= 124)
+            } else if(stats["accTotal"] >= 124)
             {
                 w1AccuracySelector.style.backgroundColor = "khaki";
                 w1AccuracySelector.textContent = "Reliable Onscreen";
             };
         } else if(w1["accuracy"] == "2")
         {
-            if(accTotal < 100)
+            if(stats["accTotal"] < 100)
             {
                 w1AccuracySelector.style.backgroundColor = "lightcoral";
                 w1AccuracySelector.textContent = "Inaccurate";
-            } else if(accTotal < 124)
+            } else if(stats["accTotal"] < 124)
             {
                 w1AccuracySelector.style.backgroundColor = "khaki";
                 w1AccuracySelector.textContent = "Reliable Onscreen";
-            } else if(accTotal >= 124)
+            } else if(stats["accTotal"] >= 124)
             {
                 w1AccuracySelector.style.backgroundColor = "lightgreen";
                 w1AccuracySelector.textContent = "Reliable Offscreen";
             };
         } else if(w1["accuracy"] == "3")
         {
-            if(accTotal < 80)
+            if(stats["accTotal"] < 80)
             {
                 w1AccuracySelector.style.backgroundColor = "lightcoral";
                 w1AccuracySelector.textContent = "Inaccurate";
-            } else if(accTotal < 100)
+            } else if(stats["accTotal"] < 100)
             {
                 w1AccuracySelector.style.backgroundColor = "coral";
                 w1AccuracySelector.textContent = "Reliable Onscreen";
-            } else if(accTotal < 119)
+            } else if(stats["accTotal"] < 119)
             {
                 w1AccuracySelector.style.backgroundColor = "khaki";
                 w1AccuracySelector.textContent = "Reliable Offscreen";
-            } else if(accTotal >= 119)
+            } else if(stats["accTotal"] >= 119)
             {
                 w1AccuracySelector.style.backgroundColor = "lightgreen";
                 w1AccuracySelector.textContent = "Pinpoint";
             };
         } else if(w1["accuracy"] == "4")
         {
-            if(accTotal < 60)
+            if(stats["accTotal"] < 60)
             {
                 w1AccuracySelector.style.backgroundColor = "lightcoral";
                 w1AccuracySelector.textContent = "Inaccurate";
-            } else if(accTotal < 70)
+            } else if(stats["accTotal"] < 70)
             {
                 w1AccuracySelector.style.backgroundColor = "coral";
                 w1AccuracySelector.textContent = "Reliable Onscreen";
-            } else if(accTotal < 79)
+            } else if(stats["accTotal"] < 79)
             {
                 w1AccuracySelector.style.backgroundColor = "khaki";
                 w1AccuracySelector.textContent = "Reliable Offscreen";
-            } else if(accTotal >= 79)
+            } else if(stats["accTotal"] >= 79)
             {
                 w1AccuracySelector.style.backgroundColor = "lightgreen";
                 w1AccuracySelector.textContent = "Pinpoint";
             };
         } else if(w1["accuracy"] == "5")
         {
-            if(accTotal < 35)
+            if(stats["accTotal"] < 35)
             {
                 w1AccuracySelector.style.backgroundColor = "lightcoral";
                 w1AccuracySelector.textContent = "Inaccurate";
-            } else if(accTotal < 40)
+            } else if(stats["accTotal"] < 40)
             {
                 w1AccuracySelector.style.backgroundColor = "coral";
                 w1AccuracySelector.textContent = "Reliable Onscreen";
-            } else if(accTotal < 44)
+            } else if(stats["accTotal"] < 44)
             {
                 w1AccuracySelector.style.backgroundColor = "khaki";
                 w1AccuracySelector.textContent = "Reliable Offscreen";
-            } else if(accTotal >= 44)
+            } else if(stats["accTotal"] >= 44)
             {
                 w1AccuracySelector.style.backgroundColor = "lightgreen";
                 w1AccuracySelector.textContent = "Pinpoint";
@@ -1059,240 +997,241 @@ function statEntry()
     let maxAdjust;
     if(this.id == "str")
     {
-        if(strBoost > 0)
+        if(stats["strBoost"] > 0)
         {
-            maxAdjust = 100 - strBoost;
+            maxAdjust = 100 - stats["strBoost"];
             this.setAttribute("max", maxAdjust);
         } else
         {
             this.setAttribute("max", 100);
         };
-        strBase = statValue;
-        boostValue = statValue + strBoost;
-        strTotal = boostValue;
-        content.textContent = boostValue + " (" + statValue + " + " + strBoost + ")";
+        stats["strBase"] = statValue;
+        boostValue = statValue + stats["strBoost"];
+        stats["strTotal"] = boostValue;
+        content.textContent = boostValue + " (" + statValue + " + " + stats["strBoost"] + ")";
     } else if(this.id == "end")
     {
-        if(endBoost > 24)
+        if(stats["endBoost"] > 24)
         {
-            maxAdjust = 100 - (endBoost - 24);
+            maxAdjust = 100 - (stats["endBoost"] - 24);
             this.setAttribute("max", maxAdjust);
         } else
         {
             this.setAttribute("max", 100);
         };
-        endBase = statValue;
-        boostValue = statValue + endBoost;
-        endTotal = boostValue;
-        content.textContent = boostValue + " (" + statValue + " + " + endBoost + ")";
+        stats["endBase"] = statValue;
+        boostValue = statValue + stats["endBoost"];
+        stats["endTotal"] = boostValue;
+        content.textContent = boostValue + " (" + statValue + " + " + stats["endBoost"] + ")";
     } else if(this.id == "agi")
     {
-        if(agiBoost > 24)
+        if(stats["agiBoost"] > 24)
         {
-            maxAdjust = 100 - (agiBoost - 24);
+            maxAdjust = 100 - (stats["agiBoost"] - 24);
             this.setAttribute("max", maxAdjust);
         } else
         {
             this.setAttribute("max", 100);
         };
-        agiBase = statValue;
-        boostValue = statValue + agiBoost;
-        agiTotal = boostValue;
-        content.textContent = boostValue + " (" + statValue + " + " + agiBoost + ")";
+        stats["agiBase"] = statValue;
+        boostValue = statValue + stats["agiBoost"];
+        stats["agiTotal"] = boostValue;
+        content.textContent = boostValue + " (" + statValue + " + " + stats["agiBoost"] + ")";
     } else if(this.id == "acc")
     {
-        if(accBoost > 24)
+        if(stats["accBoost"] > 24)
         {
-            maxAdjust = 100 - (accBoost - 24);
+            maxAdjust = 100 - (stats["accBoost"] - 24);
             this.setAttribute("max", maxAdjust);
         } else
         {
             this.setAttribute("max", 100);
         };
-        accBase = statValue;
-        boostValue = statValue + agiBoost;
-        accTotal = boostValue;
-        content.textContent = boostValue + " (" + statValue + " + " + accBoost + ")";
+        stats["accBase"] = statValue;
+        boostValue = statValue + stats["accBoost"];
+        stats["accTotal"] = boostValue;
+        content.textContent = boostValue + " (" + statValue + " + " + stats["accBoost"] + ")";
     } else if(this.id == "crit")
     {
-        if(critBoost > 24)
+        if(stats["critBoost"] > 24)
         {
-            maxAdjust = 100 - (critBoost - 24);
+            maxAdjust = 100 - (stats["critBoost"] - 24);
             this.setAttribute("max", maxAdjust);
         } else
         {
             this.setAttribute("max", 100);
         };
-        critBase = statValue;
-        boostValue = statValue + critBoost;
-        critTotal = boostValue;
-        content.textContent = boostValue + " (" + statValue + " + " + critBoost + ")";
+        stats["critBase"] = statValue;
+        boostValue = statValue + stats["critBoost"];
+        stats["critTotal"] = boostValue;
+        content.textContent = boostValue + " (" + statValue + " + " + stats["critBoost"] + ")";
     } else if(this.id == "rel")
     {
-        if(relBoost > 24)
+        if(stats["relBoost"] > 24)
         {
-            maxAdjust = 100 - (relBoost - 24);
+            maxAdjust = 100 - (stats["relBoost"] - 24);
             this.setAttribute("max", maxAdjust);
         } else
         {
             this.setAttribute("max", 100);
         };
-        relBase = statValue;
-        boostValue = statValue + relBoost;
-        relTotal = boostValue;
-        content.textContent = boostValue + " (" + statValue + " + " + relBoost + ")";
+        stats["relBase"] = statValue;
+        boostValue = statValue + stats["relBoost"];
+        stats["relTotal"] = boostValue;
+        content.textContent = boostValue + " (" + statValue + " + " + stats["relBoost"] + ")";
     } else if(this.id == "melee")
     {
-        if(meleeBoost > 0)
+        if(profs["meleeBoost"] > 0)
         {
-            maxAdjust = 120 - meleeBoost;
+            maxAdjust = 120 - profs["meleeBoost"];
             this.setAttribute("max", maxAdjust);
         } else
         {
             this.setAttribute("max", 120);
         };
-        meleeBase = statValue;
-        boostValue = statValue + meleeBoost;
-        content.textContent = boostValue + " (" + statValue + " + " + meleeBoost + ")";
+        profs["meleeBase"] = statValue;
+        boostValue = statValue + profs["meleeBoost"];
+        content.textContent = boostValue + " (" + statValue + " + " + profs["meleeBoost"] + ")";
     } else if(this.id == "pistol")
     {
-        if(pistolBoost > 0)
+        if(profs["pistolBoost"] > 0)
         {
-            maxAdjust = 120 - pistolBoost;
+            maxAdjust = 120 - profs["pistolBoost"];
             this.setAttribute("max", maxAdjust);
         } else
         {
             this.setAttribute("max", 120);
         };
-        pistolBase = statValue;
-        boostValue = statValue + pistolBoost;
-        content.textContent = boostValue + " (" + statValue + " + " + pistolBoost + ")";
+        profs["pistolBase"] = statValue;
+        boostValue = statValue + profs["pistolBoost"];
+        content.textContent = boostValue + " (" + statValue + " + " + profs["pistolBoost"] + ")";
     } else if(this.id == "rifle")
     {
-        if(rifleBoost > 0)
+        if(profs["rifleBoost"] > 0)
         {
-            maxAdjust = 120 - rifleBoost;
+            maxAdjust = 120 - profs["rifleBoost"];
             this.setAttribute("max", maxAdjust);
         } else
         {
             this.setAttribute("max", 120);
         };
-        rifleBase = statValue;
-        boostValue = statValue + rifleBoost;
-        content.textContent = boostValue + " (" + statValue + " + " + rifleBoost + ")";
+        profs["rifleBase"] = statValue;
+        boostValue = statValue + profs["rifleBoost"];
+        content.textContent = boostValue + " (" + statValue + " + " + profs["rifleBoost"] + ")";
     } else if(this.id == "shotgun")
     {
-        if(shotgunBoost > 0)
+        if(profs["shotgunBoost"] > 0)
         {
-            maxAdjust = 120 - shotgunBoost;
+            maxAdjust = 120 - profs["shotgunBoost"];
             this.setAttribute("max", maxAdjust);
         } else
         {
             this.setAttribute("max", 120);
         };
-        shotgunBase = statValue;
-        boostValue = statValue + shotgunBoost;
-        content.textContent = boostValue + " (" + statValue + " + " + shotgunBoost + ")";
+        profs["shotgunBase"] = statValue;
+        boostValue = statValue + profs["shotgunBoost"];
+        content.textContent = boostValue + " (" + statValue + " + " + profs["shotgunBoost"] + ")";
     } else if(this.id == "mg")
     {
-        if(mgBoost > 0)
+        if(profs["mgBoost"] > 0)
         {
-            maxAdjust = 120 - mgBoost;
+            maxAdjust = 120 - profs["mgBoost"];
             this.setAttribute("max", maxAdjust);
         } else
         {
             this.setAttribute("max", 120);
         };
-        mgBase = statValue;
-        boostValue = statValue + mgBoost;
-        content.textContent = boostValue + " (" + statValue + " + " + mgBoost + ")";
+        profs["mgBase"] = statValue;
+        boostValue = statValue + profs["mgBoost"];
+        content.textContent = boostValue + " (" + statValue + " + " + profs["mgBoost"] + ")";
     } else if(this.id == "explo")
     {
-        if(exploBoost > 0)
+        if(profs["exploBoost"] > 0)
         {
-            maxAdjust = 120 - exploBoost;
+            maxAdjust = 120 - profs["exploBoost"];
             this.setAttribute("max", maxAdjust);
         } else
         {
             this.setAttribute("max", 120);
         };
-        exploBase = statValue;
-        boostValue = statValue + exploBoost;
-        content.textContent = boostValue + " (" + statValue + " + " + exploBoost + ")";
+        profs["exploBase"] = statValue;
+        boostValue = statValue + profs["exploBoost"];
+        content.textContent = boostValue + " (" + statValue + " + " + profs["exploBoost"] + ")";
     };
-    statTotal = strBase + endBase + agiBase + accBase + critBase + relBase;
-    pointsReq = statTotal - 150;
-    if(50 >= level > 0)
+    charInfo["statTotal"] = stats["strBase"] + stats["endBase"] + stats["agiBase"] + stats["accBase"] + stats["critBase"] + stats["relBase"];
+    charInfo["pointsReq"] = charInfo["statTotal"] - 150;
+    if(50 >= charInfo["level"] > 0)
     {
-        pointsTotal = (level - 1) * 5;
-    } else if(level <= 220 && level > 0)
+        charInfo["pointsTotal"] = (charInfo["level"] - 1) * 5;
+    } else if(charInfo["level"] <= 220 && charInfo["level"] > 0)
     {
-        pointsTotal = (level - 50) + 245;
-    } else if(level > 220)
+        charInfo["pointsTotal"] = (charInfo["level"] - 50) + 245;
+    } else if(charInfo["level"] > 220)
     {
-        pointsTotal = 415;
+        charInfo["pointsTotal"] = 415;
     } else
     {
-        pointsTotal = 0;
+        charInfo["pointsTotal"] = 0;
     };
-    profTotal = meleeBase + pistolBase + rifleBase + shotgunBase + mgBase + exploBase;
-    pointsPReq = profTotal - 10;
-    if(50 >= level > 0)
+    charInfo["profTotal"] = profs["meleeBase"] + profs["pistolBase"] + profs["rifleBase"] + profs["shotgunBase"] + profs["mgBase"] + profs["exploBase"];
+    charInfo["pointsPReq"] = charInfo["profTotal"] - 10;
+    if(50 >= charInfo["level"] > 0)
     {
-        pointsPTotal = (level - 1) * 5;
-    } else if(level <= 220 && level > 0)
+        charInfo["pointsPTotal"] = (charInfo["level"] - 1) * 5;
+    } else if(charInfo["level"] <= 220 && charInfo["level"] > 0)
     {
-        pointsPTotal = ((level - 50) * 2) + 245;
-    } else if(level <= 325)
+        charInfo["pointsPTotal"] = ((charInfo["level"] - 50) * 2) + 245;
+    } else if(charInfo["level"] <= 325)
     {
-        pointsPTotal = (level - 220) + 585;
+        charInfo["pointsPTotal"] = (charInfo["level"] - 220) + 585;
     } else
     {
-        pointsPTotal = 0;
+        charInfo["pointsPTotal"] = 0;
     };
-    pointsTotal = pointsTotal - pointsReq;
-    pointsReqSel.textContent = pointsTotal;
-    pointsPTotal = pointsPTotal - pointsPReq;
-    pointsPReqSel.textContent = pointsPTotal;
-    if(pointsReq == pointsPReq || pointsReq > pointsPReq)
+    console.log(charInfo["pointsPReq"]);
+    charInfo["pointsTotal"] = charInfo["pointsTotal"] - charInfo["pointsReq"];
+    pointsReqSel.textContent = charInfo["pointsTotal"];
+    charInfo["pointsPTotal"] = charInfo["pointsPTotal"] - charInfo["pointsPReq"];
+    pointsPReqSel.textContent = charInfo["pointsPTotal"];
+    if(charInfo["pointsReq"] == charInfo["pointsPReq"] || charInfo["pointsReq"] > charInfo["pointsPReq"])
     {
-        if(pointsReq > 415 || pointsPReq > 690)
+        if(charInfo["pointsReq"] > 415 || charInfo["pointsPReq"] > 690)
         {
             levelReqSel.textContent = "Impossible";
-        } else if(245 >= pointsReq > 0)
+        } else if(245 >= charInfo["pointsReq"] > 0)
         {
-            levelReq = Math.ceil((pointsReq / 5) + 1);
-            levelReqSel.textContent = levelReq;
-        } else if(pointsReq <= 415 && pointsReq > 0)
+            charInfo["levelReq"] = Math.ceil((charInfo["pointsReq"] / 5) + 1);
+            levelReqSel.textContent = charInfo["levelReq"];
+        } else if(charInfo["pointsReq"] <= 415 && charInfo["pointsReq"] > 0)
         {
-            levelReq = (pointsReq - 245) + 50;
-            levelReqSel.textContent = levelReq;
+            charInfo["levelReq"] = (charInfo["pointsReq"] - 245) + 50;
+            levelReqSel.textContent = charInfo["levelReq"];
         } else
         {
-            levelReq = 1;
-            levelReqSel.textContent = levelReq;
+            charInfo["levelReq"] = 1;
+            levelReqSel.textContent = charInfo["levelReq"];
         };
-    } else if(pointsPReq > pointsReq)
+    } else if(charInfo["pointsPReq"] > charInfo["pointsReq"])
     {
-        if(pointsPReq > 690 || pointsReq > 415)
+        if(charInfo["pointsPReq"] > 690 || charInfo["pointsReq"] > 415)
         {
             levelReqSel.textContent = "Impossible";
-        } else if(245 >= pointsPReq > 0)
+        } else if(245 >= charInfo["pointsPReq"] > 0)
         {
-            levelReq = Math.ceil((pointsPReq / 5) + 1);
-            levelReqSel.textContent = levelReq;
-        } else if(585 >= pointsPReq > 0)
+            charInfo["levelReq"] = Math.ceil((charInfo["pointsPReq"] / 5) + 1);
+            levelReqSel.textContent = charInfo["levelReq"];
+        } else if(585 >= charInfo["pointsPReq"] > 0)
         {
-            levelReq = Math.ceil(((pointsPReq - 245) / 2) + 50);
-            levelReqSel.textContent = levelReq;
-        } else if(690 >= pointsPReq > 0)
+            charInfo["levelReq"] = Math.ceil(((charInfo["pointsPReq"] - 245) / 2) + 50);
+            levelReqSel.textContent = charInfo["levelReq"];
+        } else if(690 >= charInfo["pointsPReq"] > 0)
         {
-            levelReq = (pointsPReq - 585) + 220;
-            levelReqSel.textContent = levelReq;
+            charInfo["levelReq"] = (charInfo["pointsPReq"] - 585) + 220;
+            levelReqSel.textContent = charInfo["levelReq"];
         } else
         {
-            levelReq = 1;
-            levelReqSel.textContent = levelReq;
+            charInfo["levelReq"] = 1;
+            levelReqSel.textContent = charInfo["levelReq"];
         };
     };
 };
@@ -1305,187 +1244,187 @@ function boostEntry()
         if(inputValue < 1)
         {
             this.value = 1;
-            level = 1;
+            charInfo["level"] = 1;
         } else if(inputValue > 325)
         {
             this.value = 325;
-            level = 325;
+            charInfo["level"] = 325;
         } else
         {
-            level = inputValue;
+            charInfo["level"] = inputValue;
         };
-        if(50 >= level > 0)
+        if(50 >= charInfo["level"] > 0)
         {
-            pointsTotal = ((level - 1) * 5) - pointsReq;
-            pointsPTotal = ((level - 1) * 5) - pointsPReq;
-        } else if(220 >= level > 0)
+            charInfo["pointsTotal"] = ((charInfo["level"] - 1) * 5) - charInfo["pointsReq"];
+            charInfo["pointsPTotal"] = ((charInfo["level"] - 1) * 5) - charInfo["pointsPReq"];
+        } else if(220 >= charInfo["level"] > 0)
         {
-            pointsTotal = ((level - 50) + 245) - pointsReq;
-            pointsPTotal = (((level - 50) * 2) + 245) - pointsPReq;
-        } else if(level <= 325)
+            charInfo["pointsTotal"] = ((charInfo["level"] - 50) + 245) - charInfo["pointsReq"];
+            charInfo["pointsPTotal"] = (((charInfo["level"] - 50) * 2) + 245) - charInfo["pointsPReq"];
+        } else if(charInfo["level"] <= 325)
         {
-            pointsTotal = 415 - pointsReq;
-            pointsPTotal = ((level - 220) + 585) - pointsPReq;
+            charInfo["pointsTotal"] = 415 - charInfo["pointsReq"];
+            charInfo["pointsPTotal"] = ((charInfo["level"] - 220) + 585) - charInfo["pointsPReq"];
         } else
         {
-            pointsTotal = 0 - pointsReq;
-            pointsPTotal = 0 - pointsReq;
+            charInfo["pointsTotal"] = 0 - charInfo["pointsReq"];
+            charInfo["pointsPTotal"] = 0 - charInfo["pointsPReq"];
         };
-        pointsReqSel.textContent = pointsTotal;
-        pointsPReqSel.textContent = pointsPTotal;
+        pointsReqSel.textContent = charInfo["pointsTotal"];
+        pointsPReqSel.textContent = charInfo["pointsPTotal"];
     } else if(this.id == "armAgi")
     {
         if(inputValue > 24)
         {
             this.value = 24;
-            armAgi = 24;
+            bonus["agi"] = 24;
         } else if(inputValue < 0)
         {
             this.value = 0;
-            armAgi = 0;
+            bonus["agi"] = 0;
         } else
         {
-            armAgi = inputValue;
+            bonus["agi"] = inputValue;
         };
     } else if(this.id == "armEnd")
     {
         if(inputValue > 24)
         {
             this.value = 24;
-            armEnd = 24;
+            bonus["end"] = 24;
         } else if(inputValue < 0)
         {
             this.value = 0;
-            armEnd = 0;
+            bonus["end"] = 0;
         } else
         {
-            armEnd = inputValue;
+            bonus["end"] = inputValue;
         };
     } else if(this.id == "w1Acc")
     {
         if(inputValue > 8)
         {
             this.value = 8;
-            w1AccBoost = 8;
+            bonus["w1Acc"] = 8;
         } else if(inputValue < 0)
         {
             this.value = 0;
-            w1AccBoost = 0;
+            bonus["w1Acc"] = 0;
         } else
         {
-            w1AccBoost = inputValue;
+            bonus["w1Acc"] = inputValue;
         };
     } else if(this.id == "w1Rel")
     {
         if(inputValue > 8)
         {
             this.value = 8;
-            w1RelBoost = 8;
+            bonus["w1Rel"] = 8;
         } else if(inputValue < 0)
         {
             this.value = 0;
-            w1RelBoost = 0;
+            bonus["w1Rel"] = 0;
         } else
         {
-            w1RelBoost = inputValue;
+            bonus["w1Rel"] = inputValue;
         };
     } else if(this.id == "w1Crit")
     {
         if(inputValue > 8)
         {
             this.value = 8;
-            w1CritBoost = 8;
+            bonus["w1Crit"] = 8;
         } else if(inputValue < 0)
         {
             this.value = 0;
-            w1CritBoost = 0;
+            bonus["w1Crit"] = 0;
         } else
         {
-            w1CritBoost = inputValue;
+            bonus["w1Crit"] = inputValue;
         };
     } else if(this.id == "w2Acc")
     {
         if(inputValue > 8)
         {
             this.value = 8;
-            w2AccBoost = 8;
+            bonus["w2Acc"] = 8;
         } else if(inputValue < 0)
         {
             this.value = 0;
-            w2AccBoost = 0;
+            bonus["w2Acc"] = 0;
         } else
         {
-            w2AccBoost = inputValue;
+            bonus["w2Acc"] = inputValue;
         };
     } else if(this.id == "w2Rel")
     {
         if(inputValue > 8)
         {
             this.value = 8;
-            w2RelBoost = 8;
+            bonus["w2Rel"] = 8;
         } else if(inputValue < 0)
         {
             this.value = 0;
-            w2RelBoost = 0;
+            bonus["w2Rel"] = 0;
         } else
         {
-            w2RelBoost = inputValue;
+            bonus["w2Rel"] = inputValue;
         };
     } else if(this.id == "w2Crit")
     {
         if(inputValue > 8)
         {
             this.value = 8;
-            w2CritBoost = 8;
+            bonus["w2Crit"] = 8;
         } else if(inputValue < 0)
         {
             this.value = 0;
-            w2CritBoost = 0;
+            bonus["w2Crit"] = 0;
         } else
         {
-            w2CritBoost = inputValue;
+            bonus["w2Crit"] = inputValue;
         };
     } else if(this.id == "w3Acc")
     {
         if(inputValue > 8)
         {
             this.value = 8;
-            w3AccBoost = 8;
+            bonus["w3Acc"] = 8;
         } else if(inputValue < 0)
         {
             this.value = 0;
-            w3AccBoost = 0;
+            bonus["w3Acc"] = 0;
         } else
         {
-            w3AccBoost = inputValue;
+            bonus["w3Acc"] = inputValue;
         };
     } else if(this.id == "w3Rel")
     {
         if(inputValue > 8)
         {
             this.value = 8;
-            w3RelBoost = 8;
+            bonus["w3Rel"] = 8;
         } else if(inputValue < 0)
         {
             this.value = 0;
-            w3RelBoost = 0;
+            bonus["w3Rel"] = 0;
         } else
         {
-            w3RelBoost = inputValue;
+            bonus["w3Rel"] = inputValue;
         };
     } else if(this.id == "w3Crit")
     {
         if(inputValue > 8)
         {
             this.value = 8;
-            w3CritBoost = 8;
+            bonus["w3Crit"] = 8;
         } else if(inputValue < 0)
         {
             this.value = 0;
-            w3CritBoost = 0;
+            bonus["w3Crit"] = 0;
         } else
         {
-            w3CritBoost = inputValue;
+            bonus["w3Crit"] = inputValue;
         };
     } else if(this.id == "clanEXP")
     {
@@ -1628,11 +1567,11 @@ function boostEntry()
             clan["spots"] = inputValue;
         };
     };
-    agiBoost = agiClass + armAgi;
-    endBoost = endClass + armEnd;
-    accBoost = accClass + w1AccBoost + w2AccBoost + w3AccBoost;
-    relBoost = relClass + w1RelBoost + w2RelBoost + w3RelBoost;
-    critBoost = critClass + w1CritBoost + w2CritBoost + w3CritBoost;
+    stats["agiBoost"] = stats["agiClass"] + bonus["agi"];
+    stats["endBoost"] = stats["endClass"] + bonus["end"];
+    stats["accBoost"] = stats["accClass"] + bonus["w1AccBoost"] + bonus["w2AccBoost"] + bonus["w3AccBoost"];
+    stats["relBoost"] = stats["relClass"] + bonus["w1RelBoost"] + bonus["w2RelBoost"] + bonus["w3RelBoost"];
+    stats["critBoost"] = stats["critClass"] + bonus["w1CritBoost"] + bonus["w2CritBoost"] + bonus["w3CritBoost"];
 };
 //#endregion
 
@@ -1666,7 +1605,7 @@ for(let i = 0; i < selectColl.length; i++)
     });
 };
 
-for(let i = 0; i < checkColl.length; i++)
+for(let i = 0; i < checkColl.length; i++) //Does not currently update the displayed values properly, needs to call selectUpdate.
 {
     checkColl[i].addEventListener("change", function()
     {
