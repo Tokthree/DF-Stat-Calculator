@@ -145,7 +145,7 @@ function parseOutWeaponArray(data) //Weapons parse function (Credit to Awoo 4: S
     };
 };
 
-function parseOutImplantArray(data) //Weapons parse function (Credit to Awoo 4: Come Back When You're a Little Mmmm... Awooier!)
+function parseOutImplantArray(data) //Weapons parse function (Credit to Awoo 5: Come Back When You're a Little Mmmm... Awooier!)
 {
     let jsonData = JSON.parse(data);
     let mainSelect = document.querySelectorAll("[id^='implantSelect']");
@@ -181,15 +181,127 @@ function parseOutImplantArray(data) //Weapons parse function (Credit to Awoo 4: 
     };
 };
 
+function parseOutBuildArray(data) //Build parse function (Credit to Awoo 6: Is this my code yet?)
+{
+    let jsonData = JSON.parse(data);
+    let mainSelect = document.getElementById("buildSelect");
+    jsonData.forEach((val) =>
+    {
+        let group = document.createElement("optgroup"); //Create <optgroup> elements
+        group.label = val["cat"];
+        mainSelect.appendChild(group);
+
+        val["items"].forEach((val2) =>
+        {
+            let option = document.createElement("option"); //Create <option> elements
+            option.id = val2["name"];
+            option.value = val2["name"];
+            option.textContent = val2["name"];
+            option.dataset.level = val2["level"];
+            option.dataset.class = val2["class"];
+            option.dataset.str = val2["str"];
+            option.dataset.end = val2["end"];
+            option.dataset.agi = val2["agi"];
+            option.dataset.acc = val2["acc"];
+            option.dataset.crit = val2["crit"];
+            option.dataset.rel = val2["rel"];
+            option.dataset.melee = val2["melee"];
+            option.dataset.pistol = val2["pistol"];
+            option.dataset.rifle = val2["rifle"];
+            option.dataset.shotgun = val2["shotgun"];
+            option.dataset.mg = val2["mg"];
+            option.dataset.explo = val2["explo"];
+            option.dataset.armEnd = val2["armEnd"];
+            option.dataset.armAgi = val2["armAgi"];
+            option.dataset.w1Acc = val2["w1Acc"];
+            option.dataset.w1Crit = val2["w1Crit"];
+            option.dataset.w1Rel = val2["w1Rel"];
+            option.dataset.w2Acc = val2["w2Acc"];
+            option.dataset.w2Crit = val2["w2Crit"];
+            option.dataset.w2Rel = val2["w2Rel"];
+            option.dataset.w3Acc = val2["w3Acc"];
+            option.dataset.w3Crit = val2["w3Crit"];
+            option.dataset.w3Rel = val2["w3Rel"];
+            option.dataset.desc = val2["desc"];
+            mainSelect.appendChild(option);
+        });
+    });
+};
+
 makeForeignRequest("classes.json", parseOutClassArray); //Pull JSON & parse
 makeForeignRequest("armors.json", parseOutArmorArray);
 makeForeignRequest("weapons.json", parseOutWeaponArray);
 makeForeignRequest("implants.json", parseOutImplantArray);
+makeForeignRequest("builds.json", parseOutBuildArray);
+
+function buildUpdate()
+{
+    if(this.id == "buildSelect") //Partially working, does not update the values correctly.
+    {
+        const request = new XMLHttpRequest(); //Needs to be moved so it runs once the page loads.
+        request.open("GET","description.json", false);
+        request.send(null);
+        const descArr = JSON.parse(request.responseText);
+
+        let level = parseInt(this.options[this.selectedIndex].dataset.level);
+        let profession = parseInt(this.options[this.selectedIndex].dataset.class);
+        let str = parseInt(this.options[this.selectedIndex].dataset.str);
+        let end = parseInt(this.options[this.selectedIndex].dataset.end);
+        let agi = parseInt(this.options[this.selectedIndex].dataset.agi);
+        let acc = parseInt(this.options[this.selectedIndex].dataset.acc);
+        let crit = parseInt(this.options[this.selectedIndex].dataset.crit);
+        let rel = parseInt(this.options[this.selectedIndex].dataset.rel);
+        let melee = parseInt(this.options[this.selectedIndex].dataset.melee);
+        let pistol = parseInt(this.options[this.selectedIndex].dataset.pistol);
+        let rifle = parseInt(this.options[this.selectedIndex].dataset.rifle);
+        let shotgun = parseInt(this.options[this.selectedIndex].dataset.shotgun);
+        let mg = parseInt(this.options[this.selectedIndex].dataset.mg);
+        let explo = parseInt(this.options[this.selectedIndex].dataset.explo);
+        let armEnd = parseInt(this.options[this.selectedIndex].dataset.armEnd);
+        let armAgi = parseInt(this.options[this.selectedIndex].dataset.armAgi);
+        let w1Acc = parseInt(this.options[this.selectedIndex].dataset.w1Acc);
+        let w1Crit = parseInt(this.options[this.selectedIndex].dataset.w1Crit);
+        let w1Rel = parseInt(this.options[this.selectedIndex].dataset.w1Rel);
+        let w2Acc = parseInt(this.options[this.selectedIndex].dataset.w2Acc);
+        let w2Crit = parseInt(this.options[this.selectedIndex].dataset.w2Crit);
+        let w2Rel = parseInt(this.options[this.selectedIndex].dataset.w2Rel);
+        let w3Acc = parseInt(this.options[this.selectedIndex].dataset.w3Acc);
+        let w3Crit = parseInt(this.options[this.selectedIndex].dataset.w3Crit);
+        let w3Rel = parseInt(this.options[this.selectedIndex].dataset.w3Rel);
+        let desc = parseInt(this.options[this.selectedIndex].dataset.desc);
+        document.getElementById("level").value = level; //Does not update stat/prof points.
+        document.getElementById("classSelect").selectedIndex = profession; //Does not update class boosts correctly.
+        document.getElementById("str").value = str;
+        document.getElementById("end").value = end;
+        document.getElementById("agi").value = agi;
+        document.getElementById("acc").value = acc;
+        document.getElementById("crit").value = crit;
+        document.getElementById("rel").value = rel;
+        document.getElementById("melee").value = melee;
+        document.getElementById("pistol").value = pistol;
+        document.getElementById("rifle").value = rifle;
+        document.getElementById("shotgun").value = shotgun;
+        document.getElementById("mg").value = mg;
+        document.getElementById("explo").value = explo;
+        document.getElementById("armEnd").value = armEnd;
+        document.getElementById("armAgi").value = armAgi;
+        document.getElementById("w1Acc").value = w1Acc;
+        document.getElementById("w1Crit").value = w1Crit;
+        document.getElementById("w1Rel").value = w1Rel;
+        document.getElementById("w2Acc").value = w2Acc;
+        document.getElementById("w2Crit").value = w2Crit;
+        document.getElementById("w2Rel").value = w2Rel;
+        document.getElementById("w3Acc").value = w3Acc;
+        document.getElementById("w3Crit").value = w3Crit;
+        document.getElementById("w3Rel").value = w3Rel;
+        document.getElementById("buildHelpText").innerText = descArr[0][desc];
+    };
+};
 
 function selectUpdate()
 {
     for(let i = 0; i < selectColl.length; i++)
-    {
+    { 
         let elem = selectColl[i];
         if(elem.id == "classSelect")
         {
@@ -1177,7 +1289,6 @@ function statEntry()
     {
         charInfo["pointsPTotal"] = 0;
     };
-    console.log(charInfo["pointsPReq"]);
     charInfo["pointsTotal"] = charInfo["pointsTotal"] - charInfo["pointsReq"];
     pointsReqSel.textContent = charInfo["pointsTotal"];
     charInfo["pointsPTotal"] = charInfo["pointsPTotal"] - charInfo["pointsPReq"];
@@ -1227,340 +1338,348 @@ function statEntry()
 
 function bonusEntry()
 {
-    var inputValue = parseInt(this.value);
-    if(this.id == "level")
+    for (let i = 0; i < numColl.length; i++)
     {
-        if(inputValue < 1)
+        let elem = numColl[i];
+        var inputValue = parseInt(elem.value);
+        if(isNaN(inputValue)) //Default value issues, yay.
         {
-            this.value = 1;
-            charInfo["level"] = 1;
-        } else if(inputValue > 325)
-        {
-            this.value = 325;
-            charInfo["level"] = 325;
-        } else
-        {
-            charInfo["level"] = inputValue;
+            inputValue = 0;
         };
-        if(50 >= charInfo["level"] > 0)
-        {
-            charInfo["pointsTotal"] = ((charInfo["level"] - 1) * 5) - charInfo["pointsReq"];
-            charInfo["pointsPTotal"] = ((charInfo["level"] - 1) * 5) - charInfo["pointsPReq"];
-        } else if(220 >= charInfo["level"] > 0)
-        {
-            charInfo["pointsTotal"] = ((charInfo["level"] - 50) + 245) - charInfo["pointsReq"];
-            charInfo["pointsPTotal"] = (((charInfo["level"] - 50) * 2) + 245) - charInfo["pointsPReq"];
-        } else if(charInfo["level"] <= 325)
-        {
-            charInfo["pointsTotal"] = 415 - charInfo["pointsReq"];
-            charInfo["pointsPTotal"] = ((charInfo["level"] - 220) + 585) - charInfo["pointsPReq"];
-        } else
-        {
-            charInfo["pointsTotal"] = 0 - charInfo["pointsReq"];
-            charInfo["pointsPTotal"] = 0 - charInfo["pointsPReq"];
-        };
-        pointsReqSel.textContent = charInfo["pointsTotal"];
-        pointsPReqSel.textContent = charInfo["pointsPTotal"];
-    } else if(this.id == "armAgi")
-    {
-        if(inputValue > 24)
-        {
-            this.value = 24;
-            bonus["agi"] = 24;
-        } else if(inputValue < 0)
-        {
-            this.value = 0;
-            bonus["agi"] = 0;
-        } else
-        {
-            bonus["agi"] = inputValue;
-        };
-    } else if(this.id == "armEnd")
-    {
-        if(inputValue > 24)
-        {
-            this.value = 24;
-            bonus["end"] = 24;
-        } else if(inputValue < 0)
-        {
-            this.value = 0;
-            bonus["end"] = 0;
-        } else
-        {
-            bonus["end"] = inputValue;
-        };
-    } else if(this.id == "w1Acc")
-    {
-        if(inputValue > 8)
-        {
-            this.value = 8;
-            bonus["w1Acc"] = 8;
-        } else if(inputValue < 0)
-        {
-            this.value = 0;
-            bonus["w1Acc"] = 0;
-        } else
-        {
-            bonus["w1Acc"] = inputValue;
-        };
-    } else if(this.id == "w1Rel")
-    {
-        if(inputValue > 8)
-        {
-            this.value = 8;
-            bonus["w1Rel"] = 8;
-        } else if(inputValue < 0)
-        {
-            this.value = 0;
-            bonus["w1Rel"] = 0;
-        } else
-        {
-            bonus["w1Rel"] = inputValue;
-        };
-    } else if(this.id == "w1Crit")
-    {
-        if(inputValue > 8)
-        {
-            this.value = 8;
-            bonus["w1Crit"] = 8;
-        } else if(inputValue < 0)
-        {
-            this.value = 0;
-            bonus["w1Crit"] = 0;
-        } else
-        {
-            bonus["w1Crit"] = inputValue;
-        };
-    } else if(this.id == "w2Acc")
-    {
-        if(inputValue > 8)
-        {
-            this.value = 8;
-            bonus["w2Acc"] = 8;
-        } else if(inputValue < 0)
-        {
-            this.value = 0;
-            bonus["w2Acc"] = 0;
-        } else
-        {
-            bonus["w2Acc"] = inputValue;
-        };
-    } else if(this.id == "w2Rel")
-    {
-        if(inputValue > 8)
-        {
-            this.value = 8;
-            bonus["w2Rel"] = 8;
-        } else if(inputValue < 0)
-        {
-            this.value = 0;
-            bonus["w2Rel"] = 0;
-        } else
-        {
-            bonus["w2Rel"] = inputValue;
-        };
-    } else if(this.id == "w2Crit")
-    {
-        if(inputValue > 8)
-        {
-            this.value = 8;
-            bonus["w2Crit"] = 8;
-        } else if(inputValue < 0)
-        {
-            this.value = 0;
-            bonus["w2Crit"] = 0;
-        } else
-        {
-            bonus["w2Crit"] = inputValue;
-        };
-    } else if(this.id == "w3Acc")
-    {
-        if(inputValue > 8)
-        {
-            this.value = 8;
-            bonus["w3Acc"] = 8;
-        } else if(inputValue < 0)
-        {
-            this.value = 0;
-            bonus["w3Acc"] = 0;
-        } else
-        {
-            bonus["w3Acc"] = inputValue;
-        };
-    } else if(this.id == "w3Rel")
-    {
-        if(inputValue > 8)
-        {
-            this.value = 8;
-            bonus["w3Rel"] = 8;
-        } else if(inputValue < 0)
-        {
-            this.value = 0;
-            bonus["w3Rel"] = 0;
-        } else
-        {
-            bonus["w3Rel"] = inputValue;
-        };
-    } else if(this.id == "w3Crit")
-    {
-        if(inputValue > 8)
-        {
-            this.value = 8;
-            bonus["w3Crit"] = 8;
-        } else if(inputValue < 0)
-        {
-            this.value = 0;
-            bonus["w3Crit"] = 0;
-        } else
-        {
-            bonus["w3Crit"] = inputValue;
-        };
-    } else if(this.id == "clanEXP")
-    {
-        if(inputValue > 10)
-        {
-            this.value = 10;
-            clan["exp"] = 10
-        } else if(inputValue < 0)
-        {
-            this.value = 0;
-            clan["exp"] = 0;
-        } else
-        {
-            clan["exp"] = inputValue;
-        };
-    } else if(this.id == "clanPVP")
-    {
-        if(inputValue > 10)
-        {
-            this.value = 10;
-            clan["pvp"] = 10
-        } else if(inputValue < 0)
-        {
-            this.value = 0;
-            clan["pvp"] = 0;
-        } else
-        {
-            clan["pvp"] = inputValue;
-        };
-    } else if(this.id == "clanDamage")
-    {
-        if(inputValue > 10)
-        {
-            this.value = 10;
-            clan["damage"] = 10
-        } else if(inputValue < 0)
-        {
-            this.value = 0;
-            clan["damage"] = 0;
-        } else
-        {
-            clan["damage"] = inputValue;
-        };
-    } else if(this.id == "clanIDR")
-    {
-        if(inputValue > 10)
-        {
-            this.value = 10;
-            clan["idr"] = 10
-        } else if(inputValue < 0)
-        {
-            this.value = 0;
-            clan["idr"] = 0;
-        } else
-        {
-            clan["idr"] = inputValue;
-        };
-    } else if(this.id == "clanWeapon")
-    {
-        if(inputValue > 30)
-        {
-            this.value = 30;
-            clan["weapon"] = 30
-        } else if(inputValue < 0)
-        {
-            this.value = 0;
-            clan["weapon"] = 0;
-        } else
-        {
-            clan["weapon"] = inputValue;
-        };
-    } else if(this.id == "clanArmor")
-    {
-        if(inputValue > 30)
-        {
-            this.value = 30;
-            clan["armor"] = 30
-        } else if(inputValue < 0)
-        {
-            this.value = 0;
-            clan["armor"] = 0;
-        } else
-        {
-            clan["armor"] = inputValue;
-        };
-    } else if(this.id == "clanCash")
-    {
-        if(inputValue > 50)
-        {
-            this.value = 50;
-            clan["cash"] = 50
-        } else if(inputValue < 0)
-        {
-            this.value = 0;
-            clan["cash"] = 0;
-        } else
-        {
-            clan["cash"] = inputValue;
-        };
-    } else if(this.id == "clanAmmo")
-    {
-        if(inputValue > 50)
-        {
-            this.value = 50;
-            clan["ammo"] = 50
-        } else if(inputValue < 0)
-        {
-            this.value = 0;
-            clan["ammo"] = 0;
-        } else
-        {
-            clan["ammo"] = inputValue;
-        };
-    } else if(this.id == "clanSSpeed")
-    {
-        if(inputValue > 15)
-        {
-            this.value = 15;
-            clan["sSpeed"] = 15
-        } else if(inputValue < 0)
-        {
-            this.value = 0;
-            clan["sSpeed"] = 0;
-        } else
-        {
-            clan["sSpeed"] = inputValue;
-        };
-    } else if(this.id == "clanSpots")
-    {
-        if(inputValue > 10)
-        {
-            this.value = 10;
-            clan["spots"] = 10
-        } else if(inputValue < 0)
-        {
-            this.value = 0;
-            clan["spots"] = 0;
-        } else
-        {
-            clan["spots"] = inputValue;
+        if(elem.id == "level")
+        {
+            if(inputValue < 1)
+            {
+                elem.value = 1;
+                charInfo["level"] = 1;
+            } else if(inputValue > 325)
+            {
+                elem.value = 325;
+                charInfo["level"] = 325;
+            } else
+            {
+                charInfo["level"] = inputValue;
+            };
+            if(50 >= charInfo["level"] > 0)
+            {
+                charInfo["pointsTotal"] = ((charInfo["level"] - 1) * 5) - charInfo["pointsReq"];
+                charInfo["pointsPTotal"] = ((charInfo["level"] - 1) * 5) - charInfo["pointsPReq"];
+            } else if(220 >= charInfo["level"] > 0)
+            {
+                charInfo["pointsTotal"] = ((charInfo["level"] - 50) + 245) - charInfo["pointsReq"];
+                charInfo["pointsPTotal"] = (((charInfo["level"] - 50) * 2) + 245) - charInfo["pointsPReq"];
+            } else if(charInfo["level"] <= 325)
+            {
+                charInfo["pointsTotal"] = 415 - charInfo["pointsReq"];
+                charInfo["pointsPTotal"] = ((charInfo["level"] - 220) + 585) - charInfo["pointsPReq"];
+            } else
+            {
+                charInfo["pointsTotal"] = 0 - charInfo["pointsReq"];
+                charInfo["pointsPTotal"] = 0 - charInfo["pointsPReq"];
+            };
+            pointsReqSel.textContent = charInfo["pointsTotal"];
+            pointsPReqSel.textContent = charInfo["pointsPTotal"];
+        } else if(elem.id == "armAgi")
+        {
+            if(inputValue > 24)
+            {
+                elem.value = 24;
+                bonus["agi"] = 24;
+            } else if(inputValue < 0)
+            {
+                elem.value = 0;
+                bonus["agi"] = 0;
+            } else
+            {
+                bonus["agi"] = inputValue;
+            };
+        } else if(elem.id == "armEnd")
+        {
+            if(inputValue > 24)
+            {
+                elem.value = 24;
+                bonus["end"] = 24;
+            } else if(inputValue < 0)
+            {
+                elem.value = 0;
+                bonus["end"] = 0;
+            } else
+            {
+                bonus["end"] = inputValue;
+            };
+        } else if(elem.id == "w1Acc")
+        {
+            if(inputValue > 8)
+            {
+                elem.value = 8;
+                bonus["w1Acc"] = 8;
+            } else if(inputValue < 0)
+            {
+                elem.value = 0;
+                bonus["w1Acc"] = 0;
+            } else
+            {
+                bonus["w1Acc"] = inputValue;
+            };
+        } else if(elem.id == "w1Rel")
+        {
+            if(inputValue > 8)
+            {
+                elem.value = 8;
+                bonus["w1Rel"] = 8;
+            } else if(inputValue < 0)
+            {
+                elem.value = 0;
+                bonus["w1Rel"] = 0;
+            } else
+            {
+                bonus["w1Rel"] = inputValue;
+            };
+        } else if(elem.id == "w1Crit")
+        {
+            if(inputValue > 8)
+            {
+                elem.value = 8;
+                bonus["w1Crit"] = 8;
+            } else if(inputValue < 0)
+            {
+                elem.value = 0;
+                bonus["w1Crit"] = 0;
+            } else
+            {
+                bonus["w1Crit"] = inputValue;
+            };
+        } else if(elem.id == "w2Acc")
+        {
+            if(inputValue > 8)
+            {
+                elem.value = 8;
+                bonus["w2Acc"] = 8;
+            } else if(inputValue < 0)
+            {
+                elem.value = 0;
+                bonus["w2Acc"] = 0;
+            } else
+            {
+                bonus["w2Acc"] = inputValue;
+            };
+        } else if(elem.id == "w2Rel")
+        {
+            if(inputValue > 8)
+            {
+                elem.value = 8;
+                bonus["w2Rel"] = 8;
+            } else if(inputValue < 0)
+            {
+                elem.value = 0;
+                bonus["w2Rel"] = 0;
+            } else
+            {
+                bonus["w2Rel"] = inputValue;
+            };
+        } else if(elem.id == "w2Crit")
+        {
+            if(inputValue > 8)
+            {
+                elem.value = 8;
+                bonus["w2Crit"] = 8;
+            } else if(inputValue < 0)
+            {
+                elem.value = 0;
+                bonus["w2Crit"] = 0;
+            } else
+            {
+                bonus["w2Crit"] = inputValue;
+            };
+        } else if(elem.id == "w3Acc")
+        {
+            if(inputValue > 8)
+            {
+                elem.value = 8;
+                bonus["w3Acc"] = 8;
+            } else if(inputValue < 0)
+            {
+                elem.value = 0;
+                bonus["w3Acc"] = 0;
+            } else
+            {
+                bonus["w3Acc"] = inputValue;
+            };
+        } else if(elem.id == "w3Rel")
+        {
+            if(inputValue > 8)
+            {
+                elem.value = 8;
+                bonus["w3Rel"] = 8;
+            } else if(inputValue < 0)
+            {
+                elem.value = 0;
+                bonus["w3Rel"] = 0;
+            } else
+            {
+                bonus["w3Rel"] = inputValue;
+            };
+        } else if(elem.id == "w3Crit")
+        {
+            if(inputValue > 8)
+            {
+                elem.value = 8;
+                bonus["w3Crit"] = 8;
+            } else if(inputValue < 0)
+            {
+                elem.value = 0;
+                bonus["w3Crit"] = 0;
+            } else
+            {
+                bonus["w3Crit"] = inputValue;
+            };
+        } else if(elem.id == "clanEXP")
+        {
+            if(inputValue > 10)
+            {
+                elem.value = 10;
+                clan["exp"] = 10
+            } else if(inputValue < 0)
+            {
+                elem.value = 0;
+                clan["exp"] = 0;
+            } else
+            {
+                clan["exp"] = inputValue;
+            };
+        } else if(elem.id == "clanPVP")
+        {
+            if(inputValue > 10)
+            {
+                elem.value = 10;
+                clan["pvp"] = 10
+            } else if(inputValue < 0)
+            {
+                elem.value = 0;
+                clan["pvp"] = 0;
+            } else
+            {
+                clan["pvp"] = inputValue;
+            };
+        } else if(elem.id == "clanDamage")
+        {
+            if(inputValue > 10)
+            {
+                elem.value = 10;
+                clan["damage"] = 10
+            } else if(inputValue < 0)
+            {
+                elem.value = 0;
+                clan["damage"] = 0;
+            } else
+            {
+                clan["damage"] = inputValue;
+            };
+        } else if(elem.id == "clanIDR")
+        {
+            if(inputValue > 10)
+            {
+                elem.value = 10;
+                clan["idr"] = 10
+            } else if(inputValue < 0)
+            {
+                elem.value = 0;
+                clan["idr"] = 0;
+            } else
+            {
+                clan["idr"] = inputValue;
+            };
+        } else if(elem.id == "clanWeapon")
+        {
+            if(inputValue > 30)
+            {
+                elem.value = 30;
+                clan["weapon"] = 30
+            } else if(inputValue < 0)
+            {
+                elem.value = 0;
+                clan["weapon"] = 0;
+            } else
+            {
+                clan["weapon"] = inputValue;
+            };
+        } else if(elem.id == "clanArmor")
+        {
+            if(inputValue > 30)
+            {
+                elem.value = 30;
+                clan["armor"] = 30
+            } else if(inputValue < 0)
+            {
+                elem.value = 0;
+                clan["armor"] = 0;
+            } else
+            {
+                clan["armor"] = inputValue;
+            };
+        } else if(elem.id == "clanCash")
+        {
+            if(inputValue > 50)
+            {
+                elem.value = 50;
+                clan["cash"] = 50
+            } else if(inputValue < 0)
+            {
+                elem.value = 0;
+                clan["cash"] = 0;
+            } else
+            {
+                clan["cash"] = inputValue;
+            };
+        } else if(elem.id == "clanAmmo")
+        {
+            if(inputValue > 50)
+            {
+                elem.value = 50;
+                clan["ammo"] = 50
+            } else if(inputValue < 0)
+            {
+                elem.value = 0;
+                clan["ammo"] = 0;
+            } else
+            {
+                clan["ammo"] = inputValue;
+            };
+        } else if(elem.id == "clanSSpeed")
+        {
+            if(inputValue > 15)
+            {
+                elem.value = 15;
+                clan["sSpeed"] = 15
+            } else if(inputValue < 0)
+            {
+                elem.value = 0;
+                clan["sSpeed"] = 0;
+            } else
+            {
+                clan["sSpeed"] = inputValue;
+            };
+        } else if(elem.id == "clanSpots")
+        {
+            if(inputValue > 10)
+            {
+                elem.value = 10;
+                clan["spots"] = 10
+            } else if(inputValue < 0)
+            {
+                elem.value = 0;
+                clan["spots"] = 0;
+            } else
+            {
+                clan["spots"] = inputValue;
+            };
         };
     };
-    stats["agiBoost"] = stats["agiClass"] + bonus["agi"];
     stats["endBoost"] = stats["endClass"] + bonus["end"];
-    stats["accBoost"] = stats["accClass"] + bonus["w1AccBoost"] + bonus["w2AccBoost"] + bonus["w3AccBoost"];
-    stats["relBoost"] = stats["relClass"] + bonus["w1RelBoost"] + bonus["w2RelBoost"] + bonus["w3RelBoost"];
-    stats["critBoost"] = stats["critClass"] + bonus["w1CritBoost"] + bonus["w2CritBoost"] + bonus["w3CritBoost"];
+    stats["agiBoost"] = stats["agiClass"] + bonus["agi"];
+    stats["accBoost"] = stats["accClass"] + bonus["w1Acc"] + bonus["w2Acc"] + bonus["w3Acc"];
+    stats["critBoost"] = stats["critClass"] + bonus["w1Crit"] + bonus["w2Crit"] + bonus["w3Crit"];
+    stats["relBoost"] = stats["relClass"] + bonus["w1Rel"] + bonus["w2Rel"] + bonus["w3Rel"];
 };
 
 function boostUpdate() 
@@ -1594,7 +1713,7 @@ for(let i = 0; i < numColl.length; i++)
 {
     numColl[i].addEventListener("input", function()
     {
-        bonusEntry.call(this);
+        bonusEntry();
         selectUpdate();
         displayUpdate();
     });
@@ -1604,7 +1723,9 @@ for(let i = 0; i < selectColl.length; i++)
 {
     selectColl[i].addEventListener("change", function()
     {
+        buildUpdate.call(this);
         selectUpdate();
+        bonusEntry();
         displayUpdate();
     });
 };
