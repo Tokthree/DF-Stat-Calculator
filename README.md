@@ -10,9 +10,9 @@ Current Implemented Features:
   - Implant, GM, UB and Clan Boost selection/entry.
   - Total boost display.
   - Real-time calculation of all displayed values.
-  - Weapon Penetration stat display.
 
 Current Missing & Planned Features:
+  - Real-time stat display update based on boost values.
   - Armor Effective Durability display based on IDR and Absorption (currently only base durability is shown).
   - DPH stat for Explosive weapons when hitting max targets.
   - Cleave information for Melee weapons.
