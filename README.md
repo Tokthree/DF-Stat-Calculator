@@ -18,6 +18,7 @@ Current Missing & Planned Features:
   - DPH stat for Explosive weapons when hitting max targets.
   - Cleave information for Melee weapons.
   - Implant Slot hiding based on entered Level.
+  - Ability to "unlock" implant slots if a user just wants to calculate their boosts.
   - Implant Selection based on exclusivity of Selected Implants (e.g. no Versatility with Jack of All, no duplicates of Unique Implants).
   
 Current Best Implementation Features:
