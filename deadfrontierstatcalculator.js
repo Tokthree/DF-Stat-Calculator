@@ -573,27 +573,16 @@ function displayUpdate()
             content.textContent = boostValue + " (" + statValue + " + " + profs["exploBoost"] + ")";
         };
     };
-    boost["exp"] = +imp1["exp"] + +imp2["exp"] + +imp3["exp"] + +imp4["exp"] + +imp5["exp"] + +imp6["exp"] + +imp7["exp"] + +imp8["exp"] + +imp9["exp"] + +imp10["exp"] + +imp11["exp"] + +imp12["exp"] + +imp13["exp"] + +imp14["exp"] + +imp15["exp"] + +imp16["exp"] + +ub["exp"] + +gm["exp"] + +clan["exp"];
     expSelector.textContent = boost["exp"] + "%";
-    boost["pvp"] = +imp1["pvp"] + +imp2["pvp"] + +imp3["pvp"] + +imp4["pvp"] + +imp5["pvp"] + +imp6["pvp"] + +imp7["pvp"] + +imp8["pvp"] + +imp9["pvp"] + +imp10["pvp"] + +imp11["pvp"] + +imp12["pvp"] + +imp13["pvp"] + +imp14["pvp"] + +imp15["pvp"] + +imp16["pvp"] + +ub["pvp"] + +gm["pvp"] + +clan["pvp"];
     pvpSelector.textContent = boost["pvp"] + "%";
-    boost["damage"] = +imp1["damage"] + +imp2["damage"] + +imp3["damage"] + +imp4["damage"] + +imp5["damage"] + +imp6["damage"] + +imp7["damage"] + +imp8["damage"] + +imp9["damage"] + +imp10["damage"] + +imp11["damage"] + +imp12["damage"] + +imp13["damage"] + +imp14["damage"] + +imp15["damage"] + +imp16["damage"] + +ub["damage"] + +gm["damage"] + +clan["damage"];
     damageSelector.textContent = boost["damage"] + "%";
-    boost["speed"] = +imp1["speed"] + +imp2["speed"] + +imp3["speed"] + +imp4["speed"] + +imp5["speed"] + +imp6["speed"] + +imp7["speed"] + +imp8["speed"] + +imp9["speed"] + +imp10["speed"] + +imp11["speed"] + +imp12["speed"] + +imp13["speed"] + +imp14["speed"] + +imp15["speed"] + +imp16["speed"] + +ub["speed"] + +gm["speed"] + +clan["speed"];
     speedSelector.textContent = boost["speed"] + "%";
-    boost["idr"] = +imp1["idr"] + +imp2["idr"] + +imp3["idr"] + +imp4["idr"] + +imp5["idr"] + +imp6["idr"] + +imp7["idr"] + +imp8["idr"] + +imp9["idr"] + +imp10["idr"] + +imp11["idr"] + +imp12["idr"] + +imp13["idr"] + +imp14["idr"] + +imp15["idr"] + +imp16["idr"] + +ub["idr"] + +gm["idr"] + +clan["idr"];
     idrSelector.textContent = boost["idr"] + "%";
-    boost["weapon"] = +imp1["weapon"] + +imp2["weapon"] + +imp3["weapon"] + +imp4["weapon"] + +imp5["weapon"] + +imp6["weapon"] + +imp7["weapon"] + +imp8["weapon"] + +imp9["weapon"] + +imp10["weapon"] + +imp11["weapon"] + +imp12["weapon"] + +imp13["weapon"] + +imp14["weapon"] + +imp15["weapon"] + +imp16["weapon"] + +ub["weapon"] + +gm["weapon"] + +clan["weapon"];
     weaponSelector.textContent = boost["weapon"] + "%";
-    boost["armor"] = +imp1["armor"] + +imp2["armor"] + +imp3["armor"] + +imp4["armor"] + +imp5["armor"] + +imp6["armor"] + +imp7["armor"] + +imp8["armor"] + +imp9["armor"] + +imp10["armor"] + +imp11["armor"] + +imp12["armor"] + +imp13["armor"] + +imp14["armor"] + +imp15["armor"] + +imp16["armor"] + +ub["armor"] + +gm["armor"] + +clan["armor"];
     armorSelector.textContent = boost["armor"] + "%";
-    boost["cash"] = +imp1["cash"] + +imp2["cash"] + +imp3["cash"] + +imp4["cash"] + +imp5["cash"] + +imp6["cash"] + +imp7["cash"] + +imp8["cash"] + +imp9["cash"] + +imp10["cash"] + +imp11["cash"] + +imp12["cash"] + +imp13["cash"] + +imp14["cash"] + +imp15["cash"] + +imp16["cash"] + +ub["cash"] + +gm["cash"] + +clan["cash"];
     cashSelector.textContent = boost["cash"] + "%";
-    boost["ammo"] = +imp1["ammo"] + +imp2["ammo"] + +imp3["ammo"] + +imp4["ammo"] + +imp5["ammo"] + +imp6["ammo"] + +imp7["ammo"] + +imp8["ammo"] + +imp9["ammo"] + +imp10["ammo"] + +imp11["ammo"] + +imp12["ammo"] + +imp13["ammo"] + +imp14["ammo"] + +imp15["ammo"] + +imp16["ammo"] + +ub["ammo"] + +gm["ammo"] + +clan["ammo"];
     ammoSelector.textContent = boost["ammo"] + "%";
-    boost["sSpeed"] = +imp1["sSpeed"] + +imp2["sSpeed"] + +imp3["sSpeed"] + +imp4["sSpeed"] + +imp5["sSpeed"] + +imp6["sSpeed"] + +imp7["sSpeed"] + +imp8["sSpeed"] + +imp9["sSpeed"] + +imp10["sSpeed"] + +imp11["sSpeed"] + +imp12["sSpeed"] + +imp13["sSpeed"] + +imp14["sSpeed"] + +imp15["sSpeed"] + +imp16["sSpeed"] + +ub["sSpeed"] + +gm["sSpeed"] + +clan["sSpeed"];
     sSpeedSelector.textContent = boost["sSpeed"] + "%";
-    boost["spots"] = +imp1["spots"] + +imp2["spots"] + +imp3["spots"] + +imp4["spots"] + +imp5["spots"] + +imp6["spots"] + +imp7["spots"] + +imp8["spots"] + +imp9["spots"] + +imp10["spots"] + +imp11["spots"] + +imp12["spots"] + +imp13["spots"] + +imp14["spots"] + +imp15["spots"] + +imp16["spots"] + +ub["spots"] + +gm["spots"] + +clan["spots"];
     spotsSelector.textContent = boost["spots"] + "%";
     healthSelector.textContent = stats["endBase"] * 2;
     walkSelector.textContent = (((2.2 * 1.2) * ((stats["agiTotal"] * 0.0043) + 1.1)) * (1 + (boost["speed"] / 100))).toFixed(4);
@@ -608,8 +597,8 @@ function displayUpdate()
     };
     if(document.getElementById("weaponSelect1").value != "Please Select an Option")
     {
-        w1DphSelector.textContent = w1["dph"];
-        w1PDphSelector.textContent = w1["pDph"];
+        w1DphSelector.textContent = w1["dph"].toFixed(2);
+        w1PDphSelector.textContent = w1["pDph"].toFixed(2);
         w1PelletSelector.textContent = w1["pellets"];
         w1CritDphSelector.textContent = (w1["dph"] * 5).toFixed(2);
         if(w1["critS"] < 1)
@@ -735,8 +724,8 @@ function displayUpdate()
     };
     if(document.getElementById("weaponSelect2").value != "Please Select an Option")
     {
-        w2DphSelector.textContent = w2["dph"];
-        w2PDphSelector.textContent = w2["pDph"];
+        w2DphSelector.textContent = w2["dph"].toFixed(2);
+        w2PDphSelector.textContent = w2["pDph"].toFixed(2);
         w2PelletSelector.textContent = w2["pellets"];
         w2CritDphSelector.textContent = (w2["dph"] * 5).toFixed(2);
         if(w2["critS"] < 1)
@@ -753,83 +742,83 @@ function displayUpdate()
             w2AccuracySelector.textContent = "Skill Issue";
         } else if(w2["accuracy"] == "1")
         {
-            if(accTotal < 124)
+            if(stats["accTotal"] < 124)
             {
                 w2AccuracySelector.style.backgroundColor = "lightcoral";
                 w2AccuracySelector.textContent = "Inaccurate";
-            } else if(accTotal >= 124)
+            } else if(stats["accTotal"] >= 124)
             {
                 w2AccuracySelector.style.backgroundColor = "khaki";
                 w2AccuracySelector.textContent = "Reliable Onscreen";
             };
         } else if(w2["accuracy"] == "2")
         {
-            if(accTotal < 100)
+            if(stats["accTotal"] < 100)
             {
                 w2AccuracySelector.style.backgroundColor = "lightcoral";
                 w2AccuracySelector.textContent = "Inaccurate";
-            } else if(accTotal < 124)
+            } else if(stats["accTotal"] < 124)
             {
                 w2AccuracySelector.style.backgroundColor = "khaki";
                 w2AccuracySelector.textContent = "Reliable Onscreen";
-            } else if(accTotal >= 124)
+            } else if(stats["accTotal"] >= 124)
             {
                 w2AccuracySelector.style.backgroundColor = "lightgreen";
                 w2AccuracySelector.textContent = "Reliable Offscreen";
             };
         } else if(w2["accuracy"] == "3")
         {
-            if(accTotal < 80)
+            if(stats["accTotal"] < 80)
             {
                 w2AccuracySelector.style.backgroundColor = "lightcoral";
                 w2AccuracySelector.textContent = "Inaccurate";
-            } else if(accTotal < 100)
+            } else if(stats["accTotal"] < 100)
             {
                 w2AccuracySelector.style.backgroundColor = "coral";
                 w2AccuracySelector.textContent = "Reliable Onscreen";
-            } else if(accTotal < 119)
+            } else if(stats["accTotal"] < 119)
             {
                 w2AccuracySelector.style.backgroundColor = "khaki";
                 w2AccuracySelector.textContent = "Reliable Offscreen";
-            } else if(accTotal >= 119)
+            } else if(stats["accTotal"] >= 119)
             {
                 w2AccuracySelector.style.backgroundColor = "lightgreen";
                 w2AccuracySelector.textContent = "Pinpoint";
             };
         } else if(w2["accuracy"] == "4")
         {
-            if(accTotal < 60)
+            if(stats["accTotal"] < 60)
             {
                 w2AccuracySelector.style.backgroundColor = "lightcoral";
                 w2AccuracySelector.textContent = "Inaccurate";
-            } else if(accTotal < 70)
+            } else if(stats["accTotal"] < 70)
             {
                 w2AccuracySelector.style.backgroundColor = "coral";
                 w2AccuracySelector.textContent = "Reliable Onscreen";
-            } else if(accTotal < 79)
+            } else if(stats["accTotal"] < 79)
             {
                 w2AccuracySelector.style.backgroundColor = "khaki";
                 w2AccuracySelector.textContent = "Reliable Offscreen";
-            } else if(accTotal >= 79)
+            } else if(stats["accTotal"] >= 79)
             {
                 w2AccuracySelector.style.backgroundColor = "lightgreen";
                 w2AccuracySelector.textContent = "Pinpoint";
             };
         } else if(w2["accuracy"] == "5")
         {
-            if(accTotal < 35)
+            if(stats["accTotal"] < 35)
             {
                 w2AccuracySelector.style.backgroundColor = "lightcoral";
                 w2AccuracySelector.textContent = "Inaccurate";
-            } else if(accTotal < 40)
+            } else if(stats["accTotal"] < 40)
             {
                 w2AccuracySelector.style.backgroundColor = "coral";
                 w2AccuracySelector.textContent = "Reliable Onscreen";
-            } else if(accTotal < 44)
+            } else if(stats["accTotal"] < 44)
             {
                 w2AccuracySelector.style.backgroundColor = "khaki";
                 w2AccuracySelector.textContent = "Reliable Offscreen";
-            } else if(accTotal >= 44)
+            } else if(stats["accTotal"] >= 44)
             {
                 w2AccuracySelector.style.backgroundColor = "lightgreen";
                 w2AccuracySelector.textContent = "Pinpoint";
@@ -862,8 +851,8 @@ function displayUpdate()
     };
     if(document.getElementById("weaponSelect3").value != "Please Select an Option")
     {
-        w3DphSelector.textContent = w3["dph"];
-        w3PDphSelector.textContent = w3["pDph"];
+        w3DphSelector.textContent = w3["dph"].toFixed(2);
+        w3PDphSelector.textContent = w3["pDph"].toFixed(2);
         w3PelletSelector.textContent = w3["pellets"];
         w3CritDphSelector.textContent = (w3["dph"] * 5).toFixed(2);
         if(w3["critS"] < 1)
@@ -880,83 +869,83 @@ function displayUpdate()
             w3AccuracySelector.textContent = "Skill Issue";
         } else if(w3["accuracy"] == "1")
         {
-            if(accTotal < 124)
+            if(stats["accTotal"] < 124)
             {
                 w3AccuracySelector.style.backgroundColor = "lightcoral";
                 w3AccuracySelector.textContent = "Inaccurate";
-            } else if(accTotal >= 124)
+            } else if(stats["accTotal"] >= 124)
             {
                 w3AccuracySelector.style.backgroundColor = "khaki";
                 w3AccuracySelector.textContent = "Reliable Onscreen";
             };
         } else if(w3["accuracy"] == "2")
         {
-            if(accTotal < 100)
+            if(stats["accTotal"] < 100)
             {
                 w3AccuracySelector.style.backgroundColor = "lightcoral";
                 w3AccuracySelector.textContent = "Inaccurate";
-            } else if(accTotal < 124)
+            } else if(stats["accTotal"] < 124)
             {
                 w3AccuracySelector.style.backgroundColor = "khaki";
                 w3AccuracySelector.textContent = "Reliable Onscreen";
-            } else if(accTotal >= 124)
+            } else if(stats["accTotal"] >= 124)
             {
                 w3AccuracySelector.style.backgroundColor = "lightgreen";
                 w3AccuracySelector.textContent = "Reliable Offscreen";
             };
         } else if(w3["accuracy"] == "3")
         {
-            if(accTotal < 80)
+            if(stats["accTotal"] < 80)
             {
                 w3AccuracySelector.style.backgroundColor = "lightcoral";
                 w3AccuracySelector.textContent = "Inaccurate";
-            } else if(accTotal < 100)
+            } else if(stats["accTotal"] < 100)
             {
                 w3AccuracySelector.style.backgroundColor = "coral";
                 w3AccuracySelector.textContent = "Reliable Onscreen";
-            } else if(accTotal < 119)
+            } else if(stats["accTotal"] < 119)
             {
                 w3AccuracySelector.style.backgroundColor = "khaki";
                 w3AccuracySelector.textContent = "Reliable Offscreen";
-            } else if(accTotal >= 119)
+            } else if(stats["accTotal"] >= 119)
             {
                 w3AccuracySelector.style.backgroundColor = "lightgreen";
                 w3AccuracySelector.textContent = "Pinpoint";
             };
         } else if(w3["accuracy"] == "4")
         {
-            if(accTotal < 60)
+            if(stats["accTotal"] < 60)
             {
                 w3AccuracySelector.style.backgroundColor = "lightcoral";
                 w3AccuracySelector.textContent = "Inaccurate";
-            } else if(accTotal < 70)
+            } else if(stats["accTotal"] < 70)
             {
                 w3AccuracySelector.style.backgroundColor = "coral";
                 w3AccuracySelector.textContent = "Reliable Onscreen";
-            } else if(accTotal < 79)
+            } else if(stats["accTotal"] < 79)
             {
                 w3AccuracySelector.style.backgroundColor = "khaki";
                 w3AccuracySelector.textContent = "Reliable Offscreen";
-            } else if(accTotal >= 79)
+            } else if(stats["accTotal"] >= 79)
             {
                 w3AccuracySelector.style.backgroundColor = "lightgreen";
                 w3AccuracySelector.textContent = "Pinpoint";
             };
         } else if(w3["accuracy"] == "5")
         {
-            if(accTotal < 35)
+            if(stats["accTotal"] < 35)
             {
                 w3AccuracySelector.style.backgroundColor = "lightcoral";
                 w3AccuracySelector.textContent = "Inaccurate";
-            } else if(accTotal < 40)
+            } else if(stats["accTotal"] < 40)
             {
                 w3AccuracySelector.style.backgroundColor = "coral";
                 w3AccuracySelector.textContent = "Reliable Onscreen";
-            } else if(accTotal < 44)
+            } else if(stats["accTotal"] < 44)
             {
                 w3AccuracySelector.style.backgroundColor = "khaki";
                 w3AccuracySelector.textContent = "Reliable Offscreen";
-            } else if(accTotal >= 44)
+            } else if(stats["accTotal"] >= 44)
             {
                 w3AccuracySelector.style.backgroundColor = "lightgreen";
                 w3AccuracySelector.textContent = "Pinpoint";
@@ -1236,7 +1225,7 @@ function statEntry()
     };
 };
 
-function boostEntry()
+function bonusEntry()
 {
     var inputValue = parseInt(this.value);
     if(this.id == "level")
@@ -1573,6 +1562,21 @@ function boostEntry()
     stats["relBoost"] = stats["relClass"] + bonus["w1RelBoost"] + bonus["w2RelBoost"] + bonus["w3RelBoost"];
     stats["critBoost"] = stats["critClass"] + bonus["w1CritBoost"] + bonus["w2CritBoost"] + bonus["w3CritBoost"];
 };
+
+function boostUpdate() 
+{
+    boost["exp"] = +imp1["exp"] + +imp2["exp"] + +imp3["exp"] + +imp4["exp"] + +imp5["exp"] + +imp6["exp"] + +imp7["exp"] + +imp8["exp"] + +imp9["exp"] + +imp10["exp"] + +imp11["exp"] + +imp12["exp"] + +imp13["exp"] + +imp14["exp"] + +imp15["exp"] + +imp16["exp"] + +ub["exp"] + +gm["exp"] + +clan["exp"];
+    boost["pvp"] = +imp1["pvp"] + +imp2["pvp"] + +imp3["pvp"] + +imp4["pvp"] + +imp5["pvp"] + +imp6["pvp"] + +imp7["pvp"] + +imp8["pvp"] + +imp9["pvp"] + +imp10["pvp"] + +imp11["pvp"] + +imp12["pvp"] + +imp13["pvp"] + +imp14["pvp"] + +imp15["pvp"] + +imp16["pvp"] + +ub["pvp"] + +gm["pvp"] + +clan["pvp"];
+    boost["damage"] = +imp1["damage"] + +imp2["damage"] + +imp3["damage"] + +imp4["damage"] + +imp5["damage"] + +imp6["damage"] + +imp7["damage"] + +imp8["damage"] + +imp9["damage"] + +imp10["damage"] + +imp11["damage"] + +imp12["damage"] + +imp13["damage"] + +imp14["damage"] + +imp15["damage"] + +imp16["damage"] + +ub["damage"] + +gm["damage"] + +clan["damage"];
+    boost["speed"] = +imp1["speed"] + +imp2["speed"] + +imp3["speed"] + +imp4["speed"] + +imp5["speed"] + +imp6["speed"] + +imp7["speed"] + +imp8["speed"] + +imp9["speed"] + +imp10["speed"] + +imp11["speed"] + +imp12["speed"] + +imp13["speed"] + +imp14["speed"] + +imp15["speed"] + +imp16["speed"] + +ub["speed"] + +gm["speed"] + +clan["speed"];
+    boost["idr"] = +imp1["idr"] + +imp2["idr"] + +imp3["idr"] + +imp4["idr"] + +imp5["idr"] + +imp6["idr"] + +imp7["idr"] + +imp8["idr"] + +imp9["idr"] + +imp10["idr"] + +imp11["idr"] + +imp12["idr"] + +imp13["idr"] + +imp14["idr"] + +imp15["idr"] + +imp16["idr"] + +ub["idr"] + +gm["idr"] + +clan["idr"];
+    boost["weapon"] = +imp1["weapon"] + +imp2["weapon"] + +imp3["weapon"] + +imp4["weapon"] + +imp5["weapon"] + +imp6["weapon"] + +imp7["weapon"] + +imp8["weapon"] + +imp9["weapon"] + +imp10["weapon"] + +imp11["weapon"] + +imp12["weapon"] + +imp13["weapon"] + +imp14["weapon"] + +imp15["weapon"] + +imp16["weapon"] + +ub["weapon"] + +gm["weapon"] + +clan["weapon"];
+    boost["armor"] = +imp1["armor"] + +imp2["armor"] + +imp3["armor"] + +imp4["armor"] + +imp5["armor"] + +imp6["armor"] + +imp7["armor"] + +imp8["armor"] + +imp9["armor"] + +imp10["armor"] + +imp11["armor"] + +imp12["armor"] + +imp13["armor"] + +imp14["armor"] + +imp15["armor"] + +imp16["armor"] + +ub["armor"] + +gm["armor"] + +clan["armor"];
+    boost["cash"] = +imp1["cash"] + +imp2["cash"] + +imp3["cash"] + +imp4["cash"] + +imp5["cash"] + +imp6["cash"] + +imp7["cash"] + +imp8["cash"] + +imp9["cash"] + +imp10["cash"] + +imp11["cash"] + +imp12["cash"] + +imp13["cash"] + +imp14["cash"] + +imp15["cash"] + +imp16["cash"] + +ub["cash"] + +gm["cash"] + +clan["cash"];
+    boost["ammo"] = +imp1["ammo"] + +imp2["ammo"] + +imp3["ammo"] + +imp4["ammo"] + +imp5["ammo"] + +imp6["ammo"] + +imp7["ammo"] + +imp8["ammo"] + +imp9["ammo"] + +imp10["ammo"] + +imp11["ammo"] + +imp12["ammo"] + +imp13["ammo"] + +imp14["ammo"] + +imp15["ammo"] + +imp16["ammo"] + +ub["ammo"] + +gm["ammo"] + +clan["ammo"];
+    boost["sSpeed"] = +imp1["sSpeed"] + +imp2["sSpeed"] + +imp3["sSpeed"] + +imp4["sSpeed"] + +imp5["sSpeed"] + +imp6["sSpeed"] + +imp7["sSpeed"] + +imp8["sSpeed"] + +imp9["sSpeed"] + +imp10["sSpeed"] + +imp11["sSpeed"] + +imp12["sSpeed"] + +imp13["sSpeed"] + +imp14["sSpeed"] + +imp15["sSpeed"] + +imp16["sSpeed"] + +ub["sSpeed"] + +gm["sSpeed"] + +clan["sSpeed"];
+    boost["spots"] = +imp1["spots"] + +imp2["spots"] + +imp3["spots"] + +imp4["spots"] + +imp5["spots"] + +imp6["spots"] + +imp7["spots"] + +imp8["spots"] + +imp9["spots"] + +imp10["spots"] + +imp11["spots"] + +imp12["spots"] + +imp13["spots"] + +imp14["spots"] + +imp15["spots"] + +imp16["spots"] + +ub["spots"] + +gm["spots"] + +clan["spots"];
+};
 //#endregion
 
 //#region Listeners
@@ -1590,7 +1594,7 @@ for(let i = 0; i < numColl.length; i++)
 {
     numColl[i].addEventListener("input", function()
     {
-        boostEntry.call(this);
+        bonusEntry.call(this);
         selectUpdate();
         displayUpdate();
     });
@@ -1611,23 +1615,25 @@ for(let i = 0; i < checkColl.length; i++) //Does not currently update the displa
     {
         if(this.id == "gmCheck")
         {
-            if(this.checked)
+            if(this.checked == true)
             {
                 gm = {exp: 100, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 100, armor: 100, cash: 100, ammo: 100, sSpeed: 0, spots: 60};
-            } else
+            } else if(this.checked == false)
             {
                 gm = {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0};
             };
         } else if(this.id == "ubCheck")
         {
-            if(this.checked)
+            if(this.checked == true)
             {
                 ub = {exp: 50, pvp: 0, damage: 35, speed: 35, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0};
-            } else
+            } else if(this.checked == false)
             {
                 ub = {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0};
             };
         };
+        boostUpdate();
+        selectUpdate();
         displayUpdate();
     });
 };

@@ -12,7 +12,6 @@ Current Implemented Features:
   - Real-time calculation of all displayed values.
 
 Current Missing & Planned Features:
-  - Real-time stat display update based on boost values.
   - Armor Effective Durability display based on IDR and Absorption (currently only base durability is shown).
   - DPH stat for Explosive weapons when hitting max targets.
   - Cleave information for Melee weapons.
@@ -20,4 +19,4 @@ Current Missing & Planned Features:
   - Implant Selection based on exclusivity of Selected Implants (e.g. no Versatility with Jack of All, no duplicates of Unique Implants).
   
 Current Best Implementation Features:
-  - DPS for Burst Weapons (no publically available formulae for how it is calculated, currently assuming it is calculated the same as normal Weapons).
+  - DPS for Burst Weapons (no publically available formulae for how it is calculated, currently assuming it is calculated the same as normal Weapons. Aware of the burst_duration stat on the allstats page, but not sure how to add it to the formulae).
