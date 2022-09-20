@@ -1609,7 +1609,7 @@ for(let i = 0; i < selectColl.length; i++)
     });
 };
 
-for(let i = 0; i < checkColl.length; i++) //Does not currently update the displayed values properly, needs to call selectUpdate.
+for(let i = 0; i < checkColl.length; i++)
 {
     checkColl[i].addEventListener("change", function()
     {
