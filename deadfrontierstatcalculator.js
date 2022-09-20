@@ -236,7 +236,7 @@ makeForeignRequest("builds.json", parseOutBuildArray);
 
 function buildUpdate()
 {
-    if(this.id == "buildSelect") //Partially working, does not update the values correctly.
+    if(this.id == "buildSelect")
     {
         const request = new XMLHttpRequest(); //Needs to be moved so it runs once the page loads.
         request.open("GET","description.json", false);
@@ -269,8 +269,8 @@ function buildUpdate()
         let w3Crit = parseInt(this.options[this.selectedIndex].dataset.w3Crit);
         let w3Rel = parseInt(this.options[this.selectedIndex].dataset.w3Rel);
         let desc = parseInt(this.options[this.selectedIndex].dataset.desc);
-        document.getElementById("level").value = level; //Does not update stat/prof points.
-        document.getElementById("classSelect").selectedIndex = profession; //Does not update class boosts correctly.
+        document.getElementById("level").value = level;
+        document.getElementById("classSelect").selectedIndex = profession;
         document.getElementById("str").value = str;
         document.getElementById("end").value = end;
         document.getElementById("agi").value = agi;
@@ -1092,168 +1092,171 @@ function displayUpdate()
 
 function statEntry()
 {
-    const content = this.nextElementSibling;
-    var statValue = parseInt(this.value);
+    for(let i = 0; i < rangeColl.length; i++)
+    {
+        let elem = rangeColl[i];
+    const content = elem.nextElementSibling;
+    var statValue = parseInt(elem.value);
     var boostValue;
     let maxAdjust;
-    if(this.id == "str")
+    if(elem.id == "str")
     {
         if(stats["strBoost"] > 0)
         {
             maxAdjust = 100 - stats["strBoost"];
-            this.setAttribute("max", maxAdjust);
+            elem.setAttribute("max", maxAdjust);
         } else
         {
-            this.setAttribute("max", 100);
+            elem.setAttribute("max", 100);
         };
         stats["strBase"] = statValue;
         boostValue = statValue + stats["strBoost"];
         stats["strTotal"] = boostValue;
         content.textContent = boostValue + " (" + statValue + " + " + stats["strBoost"] + ")";
-    } else if(this.id == "end")
+    } else if(elem.id == "end")
     {
         if(stats["endBoost"] > 24)
         {
             maxAdjust = 100 - (stats["endBoost"] - 24);
-            this.setAttribute("max", maxAdjust);
+            elem.setAttribute("max", maxAdjust);
         } else
         {
-            this.setAttribute("max", 100);
+            elem.setAttribute("max", 100);
         };
         stats["endBase"] = statValue;
         boostValue = statValue + stats["endBoost"];
         stats["endTotal"] = boostValue;
         content.textContent = boostValue + " (" + statValue + " + " + stats["endBoost"] + ")";
-    } else if(this.id == "agi")
+    } else if(elem.id == "agi")
     {
         if(stats["agiBoost"] > 24)
         {
             maxAdjust = 100 - (stats["agiBoost"] - 24);
-            this.setAttribute("max", maxAdjust);
+            elem.setAttribute("max", maxAdjust);
         } else
         {
-            this.setAttribute("max", 100);
+            elem.setAttribute("max", 100);
         };
         stats["agiBase"] = statValue;
         boostValue = statValue + stats["agiBoost"];
         stats["agiTotal"] = boostValue;
         content.textContent = boostValue + " (" + statValue + " + " + stats["agiBoost"] + ")";
-    } else if(this.id == "acc")
+    } else if(elem.id == "acc")
     {
         if(stats["accBoost"] > 24)
         {
             maxAdjust = 100 - (stats["accBoost"] - 24);
-            this.setAttribute("max", maxAdjust);
+            elem.setAttribute("max", maxAdjust);
         } else
         {
-            this.setAttribute("max", 100);
+            elem.setAttribute("max", 100);
         };
         stats["accBase"] = statValue;
         boostValue = statValue + stats["accBoost"];
         stats["accTotal"] = boostValue;
         content.textContent = boostValue + " (" + statValue + " + " + stats["accBoost"] + ")";
-    } else if(this.id == "crit")
+    } else if(elem.id == "crit")
     {
         if(stats["critBoost"] > 24)
         {
             maxAdjust = 100 - (stats["critBoost"] - 24);
-            this.setAttribute("max", maxAdjust);
+            elem.setAttribute("max", maxAdjust);
         } else
         {
-            this.setAttribute("max", 100);
+            elem.setAttribute("max", 100);
         };
         stats["critBase"] = statValue;
         boostValue = statValue + stats["critBoost"];
         stats["critTotal"] = boostValue;
         content.textContent = boostValue + " (" + statValue + " + " + stats["critBoost"] + ")";
-    } else if(this.id == "rel")
+    } else if(elem.id == "rel")
     {
         if(stats["relBoost"] > 24)
         {
             maxAdjust = 100 - (stats["relBoost"] - 24);
-            this.setAttribute("max", maxAdjust);
+            elem.setAttribute("max", maxAdjust);
         } else
         {
-            this.setAttribute("max", 100);
+            elem.setAttribute("max", 100);
         };
         stats["relBase"] = statValue;
         boostValue = statValue + stats["relBoost"];
         stats["relTotal"] = boostValue;
         content.textContent = boostValue + " (" + statValue + " + " + stats["relBoost"] + ")";
-    } else if(this.id == "melee")
+    } else if(elem.id == "melee")
     {
         if(profs["meleeBoost"] > 0)
         {
             maxAdjust = 120 - profs["meleeBoost"];
-            this.setAttribute("max", maxAdjust);
+            elem.setAttribute("max", maxAdjust);
         } else
         {
-            this.setAttribute("max", 120);
+            elem.setAttribute("max", 120);
         };
         profs["meleeBase"] = statValue;
         boostValue = statValue + profs["meleeBoost"];
         content.textContent = boostValue + " (" + statValue + " + " + profs["meleeBoost"] + ")";
-    } else if(this.id == "pistol")
+    } else if(elem.id == "pistol")
     {
         if(profs["pistolBoost"] > 0)
         {
             maxAdjust = 120 - profs["pistolBoost"];
-            this.setAttribute("max", maxAdjust);
+            elem.setAttribute("max", maxAdjust);
         } else
         {
-            this.setAttribute("max", 120);
+            elem.setAttribute("max", 120);
         };
         profs["pistolBase"] = statValue;
         boostValue = statValue + profs["pistolBoost"];
         content.textContent = boostValue + " (" + statValue + " + " + profs["pistolBoost"] + ")";
-    } else if(this.id == "rifle")
+    } else if(elem.id == "rifle")
     {
         if(profs["rifleBoost"] > 0)
         {
             maxAdjust = 120 - profs["rifleBoost"];
-            this.setAttribute("max", maxAdjust);
+            elem.setAttribute("max", maxAdjust);
         } else
         {
-            this.setAttribute("max", 120);
+            elem.setAttribute("max", 120);
         };
         profs["rifleBase"] = statValue;
         boostValue = statValue + profs["rifleBoost"];
         content.textContent = boostValue + " (" + statValue + " + " + profs["rifleBoost"] + ")";
-    } else if(this.id == "shotgun")
+    } else if(elem.id == "shotgun")
     {
         if(profs["shotgunBoost"] > 0)
         {
             maxAdjust = 120 - profs["shotgunBoost"];
-            this.setAttribute("max", maxAdjust);
+            elem.setAttribute("max", maxAdjust);
         } else
         {
-            this.setAttribute("max", 120);
+            elem.setAttribute("max", 120);
         };
         profs["shotgunBase"] = statValue;
         boostValue = statValue + profs["shotgunBoost"];
         content.textContent = boostValue + " (" + statValue + " + " + profs["shotgunBoost"] + ")";
-    } else if(this.id == "mg")
+    } else if(elem.id == "mg")
     {
         if(profs["mgBoost"] > 0)
         {
             maxAdjust = 120 - profs["mgBoost"];
-            this.setAttribute("max", maxAdjust);
+            elem.setAttribute("max", maxAdjust);
         } else
         {
-            this.setAttribute("max", 120);
+            elem.setAttribute("max", 120);
         };
         profs["mgBase"] = statValue;
         boostValue = statValue + profs["mgBoost"];
         content.textContent = boostValue + " (" + statValue + " + " + profs["mgBoost"] + ")";
-    } else if(this.id == "explo")
+    } else if(elem.id == "explo")
     {
         if(profs["exploBoost"] > 0)
         {
             maxAdjust = 120 - profs["exploBoost"];
-            this.setAttribute("max", maxAdjust);
+            elem.setAttribute("max", maxAdjust);
         } else
         {
-            this.setAttribute("max", 120);
+            elem.setAttribute("max", 120);
         };
         profs["exploBase"] = statValue;
         boostValue = statValue + profs["exploBoost"];
@@ -1333,6 +1336,7 @@ function statEntry()
             charInfo["levelReq"] = 1;
             levelReqSel.textContent = charInfo["levelReq"];
         };
+    };
     };
 };
 
@@ -1675,6 +1679,7 @@ function bonusEntry()
             };
         };
     };
+    stats["strBoost"] = stats["strClass"];
     stats["endBoost"] = stats["endClass"] + bonus["end"];
     stats["agiBoost"] = stats["agiClass"] + bonus["agi"];
     stats["accBoost"] = stats["accClass"] + bonus["w1Acc"] + bonus["w2Acc"] + bonus["w3Acc"];
@@ -1703,8 +1708,8 @@ for(let i = 0; i < rangeColl.length; i++)
 {
     rangeColl[i].addEventListener("input", function()
     {
-        statEntry.call(this);
         selectUpdate();
+        statEntry();
         displayUpdate();
     });
 };
@@ -1713,8 +1718,8 @@ for(let i = 0; i < numColl.length; i++)
 {
     numColl[i].addEventListener("input", function()
     {
-        bonusEntry();
         selectUpdate();
+        bonusEntry();
         displayUpdate();
     });
 };
@@ -1726,6 +1731,7 @@ for(let i = 0; i < selectColl.length; i++)
         buildUpdate.call(this);
         selectUpdate();
         bonusEntry();
+        statEntry();
         displayUpdate();
     });
 };

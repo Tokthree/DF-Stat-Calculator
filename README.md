@@ -10,6 +10,8 @@ Current Implemented Features:
   - Implant, GM, UB and Clan Boost selection/entry.
   - Total boost display.
   - Real-time calculation of all displayed values.
+  - Build selection, allowing the user to select from a range of pre-made builds submitted by the community.
+  - Build guides which provide an explaination for the stats the user sees when using a build.
 
 Current Missing & Planned Features:
   - Armor Effective Durability display based on IDR and Absorption (currently only base durability is shown).
