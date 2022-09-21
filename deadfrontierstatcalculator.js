@@ -14,9 +14,9 @@ let stats = {strBase: 25, strBoost: 0, strClass: 0, strTotal: 25, endBase: 25, e
 let profs = {meleeBase: 5, meleeBoost: 0, pistolBase: 5, pistolBoost: 0, rifleBase: 0, rifleBoost: 0, shotgunBase: 0, shotgunBoost: 0, mgBase: 0, mgBoost: 0, exploBase: 0, exploBoost: 0};
 let bonus = {end: 0, agi: 0, w1Acc: 0, w1Crit: 0, w1Rel: 0, w2Acc: 0, w2Crit: 0, w2Rel: 0, w3Acc: 0, w3Crit: 0, w3Rel: 0,};
 let armor = {durability: 0, absoption: 0};
-let w1 = {spread: false, explosive: false, burst: false, crit: false, sAngle: 0, pellets: 0, pDph: 0, dph: 0, critF: 0, critS: 0, reload: 0, accuracy: 0, pen: 0, dps: 0};
-let w2 = {spread: false, explosive: false, burst: false, crit: false, sAngle: 0, pellets: 0, pDph: 0, dph: 0, critF: 0, critS: 0, reload: 0, accuracy: 0, pen: 0, dps: 0};
-let w3 = {spread: false, explosive: false, burst: false, crit: false, sAngle: 0, pellets: 0, pDph: 0, dph: 0, critF: 0, critS: 0, reload: 0, accuracy: 0, pen: 0, dps: 0};
+let w1 = {spread: false, explosive: false, burst: false, crit: false, sAngle: 0, pellets: 0, cleave: 0, pDph: 0, dph: 0, exploDph: 0, cleaveDph: 0, critF: 0, critS: 0, reload: 0, accuracy: 0, pen: 0, dps: 0, exploDps: 0, cleaveDps: 0};
+let w2 = {spread: false, explosive: false, burst: false, crit: false, sAngle: 0, pellets: 0, cleave: 0, pDph: 0, dph: 0, exploDph: 0, cleaveDph: 0, critF: 0, critS: 0, reload: 0, accuracy: 0, pen: 0, dps: 0, exploDps: 0, cleaveDps: 0};
+let w3 = {spread: false, explosive: false, burst: false, crit: false, sAngle: 0, pellets: 0, cleave: 0, pDph: 0, dph: 0, exploDph: 0, cleaveDph: 0, critF: 0, critS: 0, reload: 0, accuracy: 0, pen: 0, dps: 0, exploDps: 0, cleaveDps: 0};
 let imp1 = {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0};
 let imp2 = {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0};
 let imp3 = {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0};
@@ -139,6 +139,8 @@ function parseOutWeaponArray(data) //Weapons parse function (Credit to Awoo 4: S
                 option.dataset.weaponReload = val2["weaponReload"];
                 option.dataset.accuracy = val2["accuracy"];
                 option.dataset.pen = val2["pen"];
+                option.dataset.cleave = val2["cleave"];
+                option.dataset.cleaveMod = val2["cleaveMod"];
                 mainSelect[i].appendChild(option);
             });
         });
@@ -334,14 +336,23 @@ function selectUpdate()
             let burst = (elem.options[elem.selectedIndex].dataset.burst === "true");
             let sAngle = elem.options[elem.selectedIndex].dataset.sAngle;
             let pellets = elem.options[elem.selectedIndex].dataset.pellets;
+            let cleave = parseInt(elem.options[elem.selectedIndex].dataset.cleave);
             let pelletDph = elem.options[elem.selectedIndex].dataset.dph * (1 + (boost["damage"] / 100));
+            let rawDph = parseFloat(elem.options[elem.selectedIndex].dataset.dph)
             let dph = 0;
             if(spread == true)
             {
-                dph = (elem.options[elem.selectedIndex].dataset.dph * pellets) * (1 + (boost["damage"] / 100));
+                dph = (rawDph * pellets) * (1 + (boost["damage"] / 100));
             } else
             {
-                dph = elem.options[elem.selectedIndex].dataset.dph * (1 + (boost["damage"] / 100));
+                dph = rawDph * (1 + (boost["damage"] / 100));
+            };
+            let exploDph = (rawDph * 5) * (1 + (boost["damage"] / 100));
+            let cleaveDph = 0;
+            if(cleave > 0)
+            {
+                let cleaveMod = parseFloat(elem.options[elem.selectedIndex].dataset.cleaveMod);
+                cleaveDph = (rawDph + ((rawDph * cleaveMod) * cleave)) * (1 + (boost["damage"] / 100));
             };
             let shotTime = elem.options[elem.selectedIndex].dataset.shotTime;
             let capacity = elem.options[elem.selectedIndex].dataset.capacity;
@@ -387,6 +398,20 @@ function selectUpdate()
                 let magTime = (capacity * shotTime) / 60;
                 dps = critDps * (magTime / (magTime + reloadTime));
             };
+            let exploDps = 0;
+            if(explosive == true)
+            {
+                let baseDps = exploDph * (60 / shotTime);
+                let critDps = baseDps * ((critFail + (critSuccess * 5)) / (critFail + critSuccess));
+                let magTime = (capacity * shotTime) / 60;
+                exploDps = critDps * (magTime / (magTime + reloadTime));
+            }
+            let cleaveDps = 0;
+            if(cleave > 0)
+            {
+                let baseDps = cleaveDph * (60 / shotTime);
+                cleaveDps = baseDps * ((critFail + (critSuccess * 5)) / (critFail + critSuccess));
+            };
             let w;
             if(elem.id == "weaponSelect1") {
                 w = w1;
@@ -407,14 +432,19 @@ function selectUpdate()
             };
             w["sAngle"] = sAngle;
             w["pellets"] = pellets;
+            w["cleave"] = cleave;
             w["pDph"] = pelletDph;
             w["dph"] = dph;
+            w["cleaveDph"] = cleaveDph;
+            w["exploDph"] = exploDph;
             w["critF"] = critFail;
             w["critS"] = critSuccess;
             w["reload"] = reloadTime;
             w["accuracy"] = accuracy;
             w["pen"] = pen;
             w["dps"] = dps;
+            w["exploDps"] = exploDps;
+            w["cleaveDps"] = cleaveDps;
         } else if(elem.id.includes("implantSelect"))
         {
             let currSlot = elem.id;
@@ -583,32 +613,50 @@ function displayUpdate()
     const duraSelector = document.getElementById('durabilityValue');
     const absorbSelector = document.getElementById('absorptionValue');
     const w1DphSelector = document.getElementById('w1DPHValue');
+    const w1ExploDphSelector = document.getElementById('w1ExploDPHValue');
+    const w1CleaveDphSelector = document.getElementById('w1CleaveDPHValue');
     const w1PDphSelector = document.getElementById('w1PDPHValue');
     const w1PelletSelector = document.getElementById('w1PelletValue');
+    const w1CleaveSelector = document.getElementById('w1CleaveValue');
     const w1CritDphSelector = document.getElementById('w1CritValue');
+    const w1CleaveCritDphSelector = document.getElementById('w1CleaveCritValue');
     const w1PatternSelector = document.getElementById('w1PatternValue');
     const w1ReloadSelector = document.getElementById('w1ReloadValue');
     const w1DpsSelector = document.getElementById('w1DPSValue');
+    const w1ExploDpsSelector = document.getElementById('w1ExploDPSValue');
+    const w1CleaveDpsSelector = document.getElementById('w1CleaveDPSValue');
     const w1AccuracySelector = document.getElementById('w1AccuracyValue');
     const w1SpreadSelector = document.getElementById('w1SpreadValue');
     const w1PenSelector = document.getElementById('w1PenValue');
     const w2DphSelector = document.getElementById('w2DPHValue');
+    const w2ExploDphSelector = document.getElementById('w2ExploDPHValue');
+    const w2CleaveDphSelector = document.getElementById('w2CleaveDPHValue');
     const w2PDphSelector = document.getElementById('w2PDPHValue');
     const w2PelletSelector = document.getElementById('w2PelletValue');
+    const w2CleaveSelector = document.getElementById('w2CleaveValue');
     const w2CritDphSelector = document.getElementById('w2CritValue');
+    const w2CleaveCritDphSelector = document.getElementById('w2CleaveCritValue');
     const w2PatternSelector = document.getElementById('w2PatternValue');
     const w2ReloadSelector = document.getElementById('w2ReloadValue');
     const w2DpsSelector = document.getElementById('w2DPSValue');
+    const w2ExploDpsSelector = document.getElementById('w2ExploDPSValue');
+    const w2CleaveDpsSelector = document.getElementById('w2CleaveDPSValue');
     const w2AccuracySelector = document.getElementById('w2AccuracyValue');
     const w2SpreadSelector = document.getElementById('w2SpreadValue');
     const w2PenSelector = document.getElementById('w2PenValue');
     const w3DphSelector = document.getElementById('w3DPHValue');
+    const w3ExploDphSelector = document.getElementById('w3ExploDPHValue');
+    const w3CleaveDphSelector = document.getElementById('w3CleaveDPHValue');
     const w3PDphSelector = document.getElementById('w3PDPHValue');
     const w3PelletSelector = document.getElementById('w3PelletValue');
+    const w3CleaveSelector = document.getElementById('w3CleaveValue');
     const w3CritDphSelector = document.getElementById('w3CritValue');
+    const w3CleaveCritDphSelector = document.getElementById('w3CleaveCritValue');
     const w3PatternSelector = document.getElementById('w3PatternValue');
     const w3ReloadSelector = document.getElementById('w3ReloadValue');
     const w3DpsSelector = document.getElementById('w3DPSValue');
+    const w3ExploDpsSelector = document.getElementById('w3ExploDPSValue');
+    const w3CleaveDpsSelector = document.getElementById('w3CleaveDPSValue');
     const w3AccuracySelector = document.getElementById('w3AccuracyValue');
     const w3SpreadSelector = document.getElementById('w3SpreadValue');
     const w3PenSelector = document.getElementById('w3PenValue');
@@ -710,9 +758,13 @@ function displayUpdate()
     if(document.getElementById("weaponSelect1").value != "Please Select an Option")
     {
         w1DphSelector.textContent = w1["dph"].toFixed(2);
+        w1ExploDphSelector.textContent = "Not Explosive"
+        w1CleaveDphSelector.textContent = "Not Melee"
         w1PDphSelector.textContent = w1["pDph"].toFixed(2);
         w1PelletSelector.textContent = w1["pellets"];
+        w1CleaveSelector.textContent = "Not Melee"
         w1CritDphSelector.textContent = (w1["dph"] * 5).toFixed(2);
+        w1CleaveCritDphSelector.textContent = "Not Melee";
         if(w1["critS"] < 1)
         {
             w1PatternSelector.textContent = w1["critF"] + " NC";
@@ -722,6 +774,8 @@ function displayUpdate()
         };
         w1ReloadSelector.textContent = w1["reload"].toFixed(2) + " s";
         w1DpsSelector.textContent = w1["dps"].toFixed(2);
+        w1ExploDpsSelector.textContent = "Not Explosive"
+        w1CleaveDpsSelector.textContent = "Not Melee"
         if(w1["accuracy"] == "melee")
         {
             w1AccuracySelector.textContent = "Skill Issue";
@@ -818,6 +872,25 @@ function displayUpdate()
                 w1CritDphSelector.textContent = "Can't Crit";
                 w1PatternSelector.textContent = "Can't Crit";
             };
+        } else if(w1["explosive"] == true)
+        {
+            w1CritDphSelector.textContent = "Can't Crit";
+            w1PatternSelector.textContent = "Can't Crit";
+            w1PDphSelector.textContent = "No Pellets";
+            w1PelletSelector.textContent = "No Pellets";
+            w1SpreadSelector.textContent = "No Pellets";
+            w1ExploDphSelector.textContent = w1["exploDph"].toFixed(2)
+            w1ExploDpsSelector.textContent = w1["exploDps"].toFixed(2)
+        } else if(w1["cleave"] > 0)
+        {
+            w1PDphSelector.textContent = "No Pellets";
+            w1PelletSelector.textContent = "No Pellets";
+            w1SpreadSelector.textContent = "No Pellets";
+            w1ReloadSelector.textContent = "Doesn't Reload";
+            w1CleaveDphSelector.textContent = w1["cleaveDph"].toFixed(2);
+            w1CleaveCritDphSelector.textContent = (w1["cleaveDph"] * 5).toFixed(2);
+            w1CleaveDpsSelector.textContent = w1["cleaveDps"].toFixed(2);
+            w1CleaveSelector.textContent = w1["cleave"];
         } else
         {
             w1PDphSelector.textContent = "No Pellets";
@@ -827,9 +900,6 @@ function displayUpdate()
             {
                 w1DphSelector.textContent = (w1["dph"] * 0.12).toFixed(2) + " + " + (w1["dph"] * 0.28).toFixed(2) + " + " + (w1["dph"] * 0.60).toFixed(2);
                 w1CritDphSelector.textContent = ((w1["dph"] * 0.12) * 5).toFixed(2) + " + " + ((w1["dph"] * 0.28) * 5).toFixed(2) + " + " + ((w1["dph"] * 0.60) * 5).toFixed(2);
-            } else if(w1["accuracy"] == "melee")
-            {
-                w1ReloadSelector.textContent = "Doesn't Reload";
             };
         };
         w1PenSelector.textContent = w1["pen"] + "%";
@@ -837,9 +907,13 @@ function displayUpdate()
     if(document.getElementById("weaponSelect2").value != "Please Select an Option")
     {
         w2DphSelector.textContent = w2["dph"].toFixed(2);
+        w2ExploDphSelector.textContent = "Not Explosive"
+        w2CleaveDphSelector.textContent = "Not Melee"
         w2PDphSelector.textContent = w2["pDph"].toFixed(2);
         w2PelletSelector.textContent = w2["pellets"];
+        w2CleaveSelector.textContent = "Not Melee"
         w2CritDphSelector.textContent = (w2["dph"] * 5).toFixed(2);
+        w2CleaveCritDphSelector.textContent = "Not Melee";
         if(w2["critS"] < 1)
         {
             w2PatternSelector.textContent = w2["critF"] + " NC";
@@ -849,6 +923,8 @@ function displayUpdate()
         };
         w2ReloadSelector.textContent = w2["reload"].toFixed(2) + " s";
         w2DpsSelector.textContent = w2["dps"].toFixed(2);
+        w2ExploDpsSelector.textContent = "Not Explosive"
+        w2CleaveDpsSelector.textContent = "Not Melee"
         if(w2["accuracy"] == "melee")
         {
             w2AccuracySelector.textContent = "Skill Issue";
@@ -945,6 +1021,25 @@ function displayUpdate()
                 w2CritDphSelector.textContent = "Can't Crit";
                 w2PatternSelector.textContent = "Can't Crit";
             };
+        } else if(w2["explosive"] == true)
+        {
+            w2CritDphSelector.textContent = "Can't Crit";
+            w2PatternSelector.textContent = "Can't Crit";
+            w2PDphSelector.textContent = "No Pellets";
+            w2PelletSelector.textContent = "No Pellets";
+            w2SpreadSelector.textContent = "No Pellets";
+            w2ExploDphSelector.textContent = w2["exploDph"].toFixed(2)
+            w2ExploDpsSelector.textContent = w2["exploDps"].toFixed(2)
+        } else if(w2["cleave"] > 0)
+        {
+            w2PDphSelector.textContent = "No Pellets";
+            w2PelletSelector.textContent = "No Pellets";
+            w2SpreadSelector.textContent = "No Pellets";
+            w2ReloadSelector.textContent = "Doesn't Reload";
+            w2CleaveDphSelector.textContent = w2["cleaveDph"].toFixed(2);
+            w2CleaveCritDphSelector.textContent = (w2["cleaveDph"] * 5).toFixed(2);
+            w2CleaveDpsSelector.textContent = w2["cleaveDps"].toFixed(2);
+            w2CleaveSelector.textContent = w2["cleave"];
         } else
         {
             w2PDphSelector.textContent = "No Pellets";
@@ -954,9 +1049,6 @@ function displayUpdate()
             {
                 w2DphSelector.textContent = (w2["dph"] * 0.12).toFixed(2) + " + " + (w2["dph"] * 0.28).toFixed(2) + " + " + (w2["dph"] * 0.60).toFixed(2);
                 w2CritDphSelector.textContent = ((w2["dph"] * 0.12) * 5).toFixed(2) + " + " + ((w2["dph"] * 0.28) * 5).toFixed(2) + " + " + ((w2["dph"] * 0.60) * 5).toFixed(2);
-            } else if(w2["accuracy"] == "melee")
-            {
-                w2ReloadSelector.textContent = "Doesn't Reload";
             };
         };
         w2PenSelector.textContent = w2["pen"] + "%";
@@ -964,9 +1056,13 @@ function displayUpdate()
     if(document.getElementById("weaponSelect3").value != "Please Select an Option")
     {
         w3DphSelector.textContent = w3["dph"].toFixed(2);
+        w3ExploDphSelector.textContent = "Not Explosive"
+        w3CleaveDphSelector.textContent = "Not Melee"
         w3PDphSelector.textContent = w3["pDph"].toFixed(2);
         w3PelletSelector.textContent = w3["pellets"];
+        w3CleaveSelector.textContent = "Not Melee"
         w3CritDphSelector.textContent = (w3["dph"] * 5).toFixed(2);
+        w3CleaveCritDphSelector.textContent = "Not Melee";
         if(w3["critS"] < 1)
         {
             w3PatternSelector.textContent = w3["critF"] + " NC";
@@ -976,6 +1072,8 @@ function displayUpdate()
         };
         w3ReloadSelector.textContent = w3["reload"].toFixed(2) + " s";
         w3DpsSelector.textContent = w3["dps"].toFixed(2);
+        w3ExploDpsSelector.textContent = "Not Explosive"
+        w3CleaveDpsSelector.textContent = "Not Melee"
         if(w3["accuracy"] == "melee")
         {
             w3AccuracySelector.textContent = "Skill Issue";
@@ -1072,6 +1170,25 @@ function displayUpdate()
                 w3CritDphSelector.textContent = "Can't Crit";
                 w3PatternSelector.textContent = "Can't Crit";
             };
+        } else if(w3["explosive"] == true)
+        {
+            w3CritDphSelector.textContent = "Can't Crit";
+            w3PatternSelector.textContent = "Can't Crit";
+            w3PDphSelector.textContent = "No Pellets";
+            w3PelletSelector.textContent = "No Pellets";
+            w3SpreadSelector.textContent = "No Pellets";
+            w3ReloadSelector.textContent = "Doesn't Reload";
+            w3ExploDphSelector.textContent = w3["exploDph"].toFixed(2)
+            w3ExploDpsSelector.textContent = w3["exploDps"].toFixed(2)
+        } else if(w3["cleave"] > 0)
+        {
+            w3PDphSelector.textContent = "No Pellets";
+            w3PelletSelector.textContent = "No Pellets";
+            w3SpreadSelector.textContent = "No Pellets";
+            w3CleaveDphSelector.textContent = w3["cleaveDph"].toFixed(2);
+            w3CleaveCritDphSelector.textContent = (w3["cleaveDph"] * 5).toFixed(2);
+            w3CleaveDpsSelector.textContent = w3["cleaveDps"].toFixed(2);
+            w3CleaveSelector.textContent = w3["cleave"];
         } else
         {
             w3PDphSelector.textContent = "No Pellets";
@@ -1081,9 +1198,6 @@ function displayUpdate()
             {
                 w3DphSelector.textContent = (w3["dph"] * 0.12).toFixed(2) + " + " + (w3["dph"] * 0.28).toFixed(2) + " + " + (w3["dph"] * 0.60).toFixed(2);
                 w3CritDphSelector.textContent = ((w3["dph"] * 0.12) * 5).toFixed(2) + " + " + ((w3["dph"] * 0.28) * 5).toFixed(2) + " + " + ((w3["dph"] * 0.60) * 5).toFixed(2);
-            } else if(w3["accuracy"] == "melee")
-            {
-                w3ReloadSelector.textContent = "Doesn't Reload";
             };
         };
         w3PenSelector.textContent = w3["pen"] + "%";
@@ -1737,8 +1851,8 @@ for(let i = 0; i < numColl.length; i++)
 {
     numColl[i].addEventListener("input", function()
     {
-        selectUpdate();
         bonusEntry();
+        selectUpdate();
         displayUpdate();
     });
 };

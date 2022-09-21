@@ -7,6 +7,8 @@ Current Implemented Features:
   - Stat Point, Proficiency Point and Level Requirement display.
   - Armor and Weapon selection.
   - Detailed information regarding Character, Armor and Weapon statistics (Health, Speed, DPS, etc.)
+  - DPH stat for Explosive weapons when hitting max targets.
+  - Cleave information for Melee weapons.
   - Implant, GM, UB and Clan Boost selection/entry.
   - Implant Slot hiding based on entered Level.
   - Ability to "unlock" implant slots if a user just wants to calculate their boosts.
@@ -17,8 +19,6 @@ Current Implemented Features:
 
 Current Missing & Planned Features:
   - Armor Effective Durability display based on IDR and Absorption (currently only base durability is shown).
-  - DPH stat for Explosive weapons when hitting max targets.
-  - Cleave information for Melee weapons.
   - Implant Selection based on exclusivity of Selected Implants (e.g. no Versatility with Jack of All, no duplicates of Unique Implants).
   - Removal of implant bonuses when slot disabled.
   

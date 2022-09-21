@@ -278,26 +278,38 @@
                             <button type="button" class="collapsible">Weapon 1:</button>
                             <div class="collapseContent">
                                 <div class="gridContent">
-                                    <p class="gridStart" style="grid-area: 1 / 1;">Damage per Hit:</p>
+                                    <p class="gridStart" title="Base damage per hit" style="grid-area: 1 / 1;">Damage per Hit:</p>
                                     <p class="gridEnd" id="w1DPHValue" style="grid-area: 1 / 2;">0</p>
-                                    <p class="gridStart" style="grid-area: 2 / 1;">Damage per Pellet:</p>
-                                    <p class="gridEnd" id="w1PDPHValue" style="grid-area: 2 / 2;">0</p>
-                                    <p class="gridStart" style="grid-area: 3 / 1;">Pellets:</p>
-                                    <p class="gridEnd" id="w1PelletValue" style="grid-area: 3 / 2;">0</p>
-                                    <p class="gridStart" style="grid-area: 4 / 1;">Critical Damage:</p>
-                                    <p class="gridEnd" id="w1CritValue" style="grid-area: 4 / 2;">0</p>
-                                    <p class="gridStart" style="grid-area: 5 / 1;">Critical Pattern:</p>
-                                    <p class="gridEnd" id="w1PatternValue" style="grid-area: 5 / 2;">0</p>
-                                    <p class="gridStart" style="grid-area: 6 / 1;">Effective DPS:</p>
-                                    <p class="gridEnd" id="w1DPSValue" style="grid-area: 6 / 2;">0</p>
-                                    <p class="gridStart" style="grid-area: 7 / 1;">Armor Penetration:</p>
-                                    <p class="gridEnd" id="w1PenValue" style="grid-area: 7 / 2;">0%</p>
-                                    <p class="gridStart" style="grid-area: 8 / 1;">Reload Duration:</p>
-                                    <p class="gridEnd" id="w1ReloadValue" style="grid-area: 8 / 2;">0 s</p>
-                                    <p class="gridStart" style="grid-area: 9 / 1;">Accuracy:</p>
-                                    <p class="gridEnd" id="w1AccuracyValue" style="grid-area: 9 / 2;">0</p>
-                                    <p class="gridStart" style="grid-area: 10 / 1;">Pellet Spread:</p>
-                                    <p class="gridEnd" id="w1SpreadValue" style="grid-area: 10 / 2;">0&#xB0</p>
+                                    <p class="gridStart" title="Total DPH when hitting 5+ enemies with an explosive weapon" style="grid-area: 2 / 1;">Explosion max DPH:</p>
+                                    <p class="gridEnd" id="w1ExploDPHValue" style="grid-area: 2 / 2;">0</p>
+                                    <p class="gridStart" title="Total DPH when hitting all melee cleave targets" style="grid-area: 3 / 1;">Melee max DPH:</p>
+                                    <p class="gridEnd" id="w1CleaveDPHValue" style="grid-area: 3 / 2;">0</p>
+                                    <p class="gridStart" title="Base damage per pellet" style="grid-area: 4 / 1;">Damage per Pellet:</p>
+                                    <p class="gridEnd" id="w1PDPHValue" style="grid-area: 4 / 2;">0</p>
+                                    <p class="gridStart" title="Number of pellets in the spread" style="grid-area: 5 / 1;">Pellets:</p>
+                                    <p class="gridEnd" id="w1PelletValue" style="grid-area: 5 / 2;">0</p>
+                                    <p class="gridStart" title="Additional cleave targets when using melee" style="grid-area: 6 / 1;">Cleave max Targets:</p>
+                                    <p class="gridEnd" id="w1CleaveValue" style="grid-area: 6 / 2;">0</p>
+                                    <p class="gridStart" title="Base damage per hit on critical" style="grid-area: 7 / 1;">Critical Damage:</p>
+                                    <p class="gridEnd" id="w1CritValue" style="grid-area: 7 / 2;">0</p>
+                                    <p class="gridStart" title="Total crit DPH when hitting all melee cleave targets" style="grid-area: 8 / 1;">Melee max Crit:</p>
+                                    <p class="gridEnd" id="w1CleaveCritValue" style="grid-area: 8 / 2;">0</p>
+                                    <p class="gridStart" title="Critical pattern, pattern follows a cycle of Non-Crit (NC) then Crit (C)" style="grid-area: 9 / 1;">Critical Pattern:</p>
+                                    <p class="gridEnd" id="w1PatternValue" style="grid-area: 9 / 2;">0</p>
+                                    <p class="gridStart" title="Effective DPS on a single target, accounting for crits and reloads" style="grid-area: 10 / 1;">Effective DPS:</p>
+                                    <p class="gridEnd" id="w1DPSValue" style="grid-area: 10 / 2;">0</p>
+                                    <p class="gridStart" title="Total DPS when hitting 5+ enemies with an explosive weapon, accounting for reloads" style="grid-area: 11 / 1;">Explosion max DPS:</p>
+                                    <p class="gridEnd" id="w1ExploDPSValue" style="grid-area: 11 / 2;">0</p>
+                                    <p class="gridStart" title="Total DPS when hitting all melee cleave targets" style="grid-area: 12 / 1;">Melee max DPS:</p>
+                                    <p class="gridEnd" id="w1CleaveDPSValue" style="grid-area: 12 / 2;">0</p>
+                                    <p class="gridStart" title="Percentage of damage which will completely ignore any armor and hit health directly" style="grid-area: 13 / 1;">Armor Penetration:</p>
+                                    <p class="gridEnd" id="w1PenValue" style="grid-area: 13 / 2;">0%</p>
+                                    <p class="gridStart" title="Amount of time it takes to complete a reload" style="grid-area: 14 / 1;">Reload Duration:</p>
+                                    <p class="gridEnd" id="w1ReloadValue" style="grid-area: 14 / 2;">0 s</p>
+                                    <p class="gridStart" title="Rough indication of how frequently shots will land where you aim" style="grid-area: 15 / 1;">Accuracy:</p>
+                                    <p class="gridEnd" id="w1AccuracyValue" style="grid-area: 15 / 2;">0</p>
+                                    <p class="gridStart" title="Angle of pellet spread in degrees" style="grid-area: 16 / 1;">Pellet Spread:</p>
+                                    <p class="gridEnd" id="w1SpreadValue" style="grid-area: 16 / 2;">0&#xB0</p>
                                 </div>
                             </div>
                         </div>
@@ -305,26 +317,38 @@
                             <button type="button" class="collapsible">Weapon 2:</button>
                             <div class="collapseContent">
                                 <div class="gridContent">
-                                    <p class="gridStart" style="grid-area: 1 / 1;">Damage per Hit:</p>
+                                    <p class="gridStart" title="Base damage per hit" style="grid-area: 1 / 1;">Damage per Hit:</p>
                                     <p class="gridEnd" id="w2DPHValue" style="grid-area: 1 / 2;">0</p>
-                                    <p class="gridStart" style="grid-area: 2 / 1;">Damage per Pellet:</p>
-                                    <p class="gridEnd" id="w2PDPHValue" style="grid-area: 2 / 2;">0</p>
-                                    <p class="gridStart" style="grid-area: 3 / 1;">Pellets:</p>
-                                    <p class="gridEnd" id="w2PelletValue" style="grid-area: 3 / 2;">0</p>
-                                    <p class="gridStart" style="grid-area: 4 / 1;">Critical Damage:</p>
-                                    <p class="gridEnd" id="w2CritValue" style="grid-area: 4 / 2;">0</p>
-                                    <p class="gridStart" style="grid-area: 5 / 1;">Critical Pattern:</p>
-                                    <p class="gridEnd" id="w2PatternValue" style="grid-area: 5 / 2;">0</p>
-                                    <p class="gridStart" style="grid-area: 6 / 1;">Effective DPS:</p>
-                                    <p class="gridEnd" id="w2DPSValue" style="grid-area: 6 / 2;">0</p>
-                                    <p class="gridStart" style="grid-area: 7 / 1;">Armor Penetration:</p>
-                                    <p class="gridEnd" id="w2PenValue" style="grid-area: 7 / 2;">0%</p>
-                                    <p class="gridStart" style="grid-area: 8 / 1;">Reload Duration:</p>
-                                    <p class="gridEnd" id="w2ReloadValue" style="grid-area: 8 / 2;">0 s</p>
-                                    <p class="gridStart" style="grid-area: 9 / 1;">Accuracy:</p>
-                                    <p class="gridEnd" id="w2AccuracyValue" style="grid-area: 9 / 2;">0</p>
-                                    <p class="gridStart" style="grid-area: 10 / 1;">Pellet Spread:</p>
-                                    <p class="gridEnd" id="w2SpreadValue" style="grid-area: 10 / 2;">0&#xB0</p>
+                                    <p class="gridStart" title="Total DPH when hitting 5+ enemies with an explosive weapon" style="grid-area: 2 / 1;">Explosion max DPH:</p>
+                                    <p class="gridEnd" id="w2ExploDPHValue" style="grid-area: 2 / 2;">0</p>
+                                    <p class="gridStart" title="Total DPH when hitting all melee cleave targets" style="grid-area: 3 / 1;">Melee max DPH:</p>
+                                    <p class="gridEnd" id="w2CleaveDPHValue" style="grid-area: 3 / 2;">0</p>
+                                    <p class="gridStart" title="Base damage per pellet" style="grid-area: 4 / 1;">Damage per Pellet:</p>
+                                    <p class="gridEnd" id="w2PDPHValue" style="grid-area: 4 / 2;">0</p>
+                                    <p class="gridStart" title="Number of pellets in the spread" style="grid-area: 5 / 1;">Pellets:</p>
+                                    <p class="gridEnd" id="w2PelletValue" style="grid-area: 5 / 2;">0</p>
+                                    <p class="gridStart" title="Additional cleave targets when using melee" style="grid-area: 6 / 1;">Cleave max Targets:</p>
+                                    <p class="gridEnd" id="w2CleaveValue" style="grid-area: 6 / 2;">0</p>
+                                    <p class="gridStart" title="Base damage per hit on critical" style="grid-area: 7 / 1;">Critical Damage:</p>
+                                    <p class="gridEnd" id="w2CritValue" style="grid-area: 7 / 2;">0</p>
+                                    <p class="gridStart" title="Total crit DPH when hitting all melee cleave targets" style="grid-area: 8 / 1;">Melee max Crit:</p>
+                                    <p class="gridEnd" id="w2CleaveCritValue" style="grid-area: 8 / 2;">0</p>
+                                    <p class="gridStart" title="Critical pattern, pattern follows a cycle of Non-Crit (NC) then Crit (C)" style="grid-area: 9 / 1;">Critical Pattern:</p>
+                                    <p class="gridEnd" id="w2PatternValue" style="grid-area: 9 / 2;">0</p>
+                                    <p class="gridStart" title="Effective DPS on a single target, accounting for crits and reloads" style="grid-area: 10 / 1;">Effective DPS:</p>
+                                    <p class="gridEnd" id="w2DPSValue" style="grid-area: 10 / 2;">0</p>
+                                    <p class="gridStart" title="Total DPS when hitting 5+ enemies with an explosive weapon, accounting for reloads" style="grid-area: 11 / 1;">Explosion max DPS:</p>
+                                    <p class="gridEnd" id="w2ExploDPSValue" style="grid-area: 11 / 2;">0</p>
+                                    <p class="gridStart" title="Total DPS when hitting all melee cleave targets" style="grid-area: 12 / 1;">Melee max DPS:</p>
+                                    <p class="gridEnd" id="w2CleaveDPSValue" style="grid-area: 12 / 2;">0</p>
+                                    <p class="gridStart" title="Percentage of damage which will completely ignore any armor and hit health directly" style="grid-area: 13 / 1;">Armor Penetration:</p>
+                                    <p class="gridEnd" id="w2PenValue" style="grid-area: 13 / 2;">0%</p>
+                                    <p class="gridStart" title="Amount of time it takes to complete a reload" style="grid-area: 14 / 1;">Reload Duration:</p>
+                                    <p class="gridEnd" id="w2ReloadValue" style="grid-area: 14 / 2;">0 s</p>
+                                    <p class="gridStart" title="Rough indication of how frequently shots will land where you aim" style="grid-area: 15 / 1;">Accuracy:</p>
+                                    <p class="gridEnd" id="w2AccuracyValue" style="grid-area: 15 / 2;">0</p>
+                                    <p class="gridStart" title="Angle of pellet spread in degrees" style="grid-area: 16 / 1;">Pellet Spread:</p>
+                                    <p class="gridEnd" id="w2SpreadValue" style="grid-area: 16 / 2;">0&#xB0</p>
                                 </div>
                             </div>
                         </div>
@@ -332,26 +356,38 @@
                             <button type="button" class="collapsible">Weapon 3:</button>
                             <div class="collapseContent">
                                 <div class="gridContent">
-                                    <p class="gridStart" style="grid-area: 1 / 1;">Damage per Hit:</p>
+                                    <p class="gridStart" title="Base damage per hit" style="grid-area: 1 / 1;">Damage per Hit:</p>
                                     <p class="gridEnd" id="w3DPHValue" style="grid-area: 1 / 2;">0</p>
-                                    <p class="gridStart" style="grid-area: 2 / 1;">Damage per Pellet:</p>
-                                    <p class="gridEnd" id="w3PDPHValue" style="grid-area: 2 / 2;">0</p>
-                                    <p class="gridStart" style="grid-area: 3 / 1;">Pellets:</p>
-                                    <p class="gridEnd" id="w3PelletValue" style="grid-area: 3 / 2;">0</p>
-                                    <p class="gridStart" style="grid-area: 4 / 1;">Critical Damage:</p>
-                                    <p class="gridEnd" id="w3CritValue" style="grid-area: 4 / 2;">0</p>
-                                    <p class="gridStart" style="grid-area: 5 / 1;">Critical Pattern:</p>
-                                    <p class="gridEnd" id="w3PatternValue" style="grid-area: 5 / 2;">0</p>
-                                    <p class="gridStart" style="grid-area: 6 / 1;">Effective DPS:</p>
-                                    <p class="gridEnd" id="w3DPSValue" style="grid-area: 6 / 2;">0</p>
-                                    <p class="gridStart" style="grid-area: 7 / 1;">Armor Penetration:</p>
-                                    <p class="gridEnd" id="w3PenValue" style="grid-area: 7 / 2;">0%</p>
-                                    <p class="gridStart" style="grid-area: 8 / 1;">Reload Duration:</p>
-                                    <p class="gridEnd" id="w3ReloadValue" style="grid-area: 8 / 2;">0 s</p>
-                                    <p class="gridStart" style="grid-area: 9 / 1;">Accuracy:</p>
-                                    <p class="gridEnd" id="w3AccuracyValue" style="grid-area: 9 / 2;">0</p>
-                                    <p class="gridStart" style="grid-area: 10 / 1;">Pellet Spread:</p>
-                                    <p class="gridEnd" id="w3SpreadValue" style="grid-area: 10 / 2;">0&#xB0</p>
+                                    <p class="gridStart" title="Total DPH when hitting 5+ enemies with an explosive weapon" style="grid-area: 2 / 1;">Explosion max DPH:</p>
+                                    <p class="gridEnd" id="w3ExploDPHValue" style="grid-area: 2 / 2;">0</p>
+                                    <p class="gridStart" title="Total DPH when hitting all melee cleave targets" style="grid-area: 3 / 1;">Melee max DPH:</p>
+                                    <p class="gridEnd" id="w3CleaveDPHValue" style="grid-area: 3 / 2;">0</p>
+                                    <p class="gridStart" title="Base damage per pellet" style="grid-area: 4 / 1;">Damage per Pellet:</p>
+                                    <p class="gridEnd" id="w3PDPHValue" style="grid-area: 4 / 2;">0</p>
+                                    <p class="gridStart" title="Number of pellets in the spread" style="grid-area: 5 / 1;">Pellets:</p>
+                                    <p class="gridEnd" id="w3PelletValue" style="grid-area: 5 / 2;">0</p>
+                                    <p class="gridStart" title="Additional cleave targets when using melee" style="grid-area: 6 / 1;">Cleave max Targets:</p>
+                                    <p class="gridEnd" id="w3CleaveValue" style="grid-area: 6 / 2;">0</p>
+                                    <p class="gridStart" title="Base damage per hit on critical" style="grid-area: 7 / 1;">Critical Damage:</p>
+                                    <p class="gridEnd" id="w3CritValue" style="grid-area: 7 / 2;">0</p>
+                                    <p class="gridStart" title="Total crit DPH when hitting all melee cleave targets" style="grid-area: 8 / 1;">Melee max Crit:</p>
+                                    <p class="gridEnd" id="w3CleaveCritValue" style="grid-area: 8 / 2;">0</p>
+                                    <p class="gridStart" title="Critical pattern, pattern follows a cycle of Non-Crit (NC) then Crit (C)" style="grid-area: 9 / 1;">Critical Pattern:</p>
+                                    <p class="gridEnd" id="w3PatternValue" style="grid-area: 9 / 2;">0</p>
+                                    <p class="gridStart" title="Effective DPS on a single target, accounting for crits and reloads" style="grid-area: 10 / 1;">Effective DPS:</p>
+                                    <p class="gridEnd" id="w3DPSValue" style="grid-area: 10 / 2;">0</p>
+                                    <p class="gridStart" title="Total DPS when hitting 5+ enemies with an explosive weapon, accounting for reloads" style="grid-area: 11 / 1;">Explosion max DPS:</p>
+                                    <p class="gridEnd" id="w3ExploDPSValue" style="grid-area: 11 / 2;">0</p>
+                                    <p class="gridStart" title="Total DPS when hitting all melee cleave targets" style="grid-area: 12 / 1;">Melee max DPS:</p>
+                                    <p class="gridEnd" id="w3CleaveDPSValue" style="grid-area: 12 / 2;">0</p>
+                                    <p class="gridStart" title="Percentage of damage which will completely ignore any armor and hit health directly" style="grid-area: 13 / 1;">Armor Penetration:</p>
+                                    <p class="gridEnd" id="w3PenValue" style="grid-area: 13 / 2;">0%</p>
+                                    <p class="gridStart" title="Amount of time it takes to complete a reload" style="grid-area: 14 / 1;">Reload Duration:</p>
+                                    <p class="gridEnd" id="w3ReloadValue" style="grid-area: 14 / 2;">0 s</p>
+                                    <p class="gridStart" title="Rough indication of how frequently shots will land where you aim" style="grid-area: 15 / 1;">Accuracy:</p>
+                                    <p class="gridEnd" id="w3AccuracyValue" style="grid-area: 15 / 2;">0</p>
+                                    <p class="gridStart" title="Angle of pellet spread in degrees" style="grid-area: 16 / 1;">Pellet Spread:</p>
+                                    <p class="gridEnd" id="w3SpreadValue" style="grid-area: 16 / 2;">0&#xB0</p>
                                 </div>
                             </div>
                         </div>

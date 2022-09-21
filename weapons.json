@@ -13,7 +13,9 @@
                 "weaponCrit": 0.1,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Poker/Baseball",
@@ -26,7 +28,9 @@
                 "weaponCrit": 2,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Pen/Hunting Knife",
@@ -39,7 +43,9 @@
                 "weaponCrit": 3,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Chef Knife",
@@ -52,7 +58,9 @@
                 "weaponCrit": 3,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Cricket Bat",
@@ -65,7 +73,9 @@
                 "weaponCrit": 2,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Golf Club",
@@ -78,7 +88,9 @@
                 "weaponCrit": 2,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Fire Axe",
@@ -91,7 +103,9 @@
                 "weaponCrit": 3,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Combat Knife",
@@ -104,7 +118,9 @@
                 "weaponCrit": 3,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Bowie Knife",
@@ -117,7 +133,9 @@
                 "weaponCrit": 3,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Iron Pipe",
@@ -130,7 +148,9 @@
                 "weaponCrit": 2,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Nail Bat",
@@ -143,7 +163,9 @@
                 "weaponCrit": 2,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Razor",
@@ -156,7 +178,9 @@
                 "weaponCrit": 3,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Crowbar",
@@ -169,7 +193,9 @@
                 "weaponCrit": 2,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Scalpel",
@@ -182,7 +208,9 @@
                 "weaponCrit": 3,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Kris",
@@ -195,7 +223,9 @@
                 "weaponCrit": 3,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Shovel",
@@ -208,7 +238,9 @@
                 "weaponCrit": 3,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Trench Knife",
@@ -221,7 +253,9 @@
                 "weaponCrit": 3,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Wood Axe/Machete",
@@ -234,7 +268,9 @@
                 "weaponCrit": 3,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Kukri",
@@ -247,7 +283,9 @@
                 "weaponCrit": 3,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Sabre",
@@ -260,7 +298,9 @@
                 "weaponCrit": 3,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Sledge Hammer",
@@ -273,7 +313,9 @@
                 "weaponCrit": 3,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Battle Axe/Katana",
@@ -286,7 +328,9 @@
                 "weaponCrit": 3,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Amputator",
@@ -299,7 +343,9 @@
                 "weaponCrit": 3,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Doom Cane",
@@ -312,7 +358,9 @@
                 "weaponCrit": 2,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Wakizashi",
@@ -325,7 +373,9 @@
                 "weaponCrit": 3,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Titanium Blades",
@@ -338,7 +388,9 @@
                 "weaponCrit": 3,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Nodachi",
@@ -351,7 +403,9 @@
                 "weaponCrit": 3,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Corpse Crusher",
@@ -364,7 +418,9 @@
                 "weaponCrit": 3,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Spiker",
@@ -377,7 +433,9 @@
                 "weaponCrit": 3,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Dusk Razor",
@@ -390,7 +448,9 @@
                 "weaponCrit": 3,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Dusk Kris",
@@ -403,7 +463,9 @@
                 "weaponCrit": 3,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Sharktail",
@@ -416,7 +478,9 @@
                 "weaponCrit": 3,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Dual Blade",
@@ -429,7 +493,9 @@
                 "weaponCrit": 3,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "X-Dusk Kris",
@@ -442,7 +508,9 @@
                 "weaponCrit": 3,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "X-Dusk Razor",
@@ -455,7 +523,9 @@
                 "weaponCrit": 3,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Gut Splitter",
@@ -468,7 +538,9 @@
                 "weaponCrit": 3,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Santa's Slayer",
@@ -481,7 +553,9 @@
                 "weaponCrit": 3,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "X-Hammer",
@@ -494,7 +568,9 @@
                 "weaponCrit": 3,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Dawn Kris",
@@ -507,7 +583,9 @@
                 "weaponCrit": 3,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Dawn Blade",
@@ -520,7 +598,9 @@
                 "weaponCrit": 3,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Bloody Machete",
@@ -533,7 +613,9 @@
                 "weaponCrit": 3,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Harvester of Sorrow",
@@ -546,7 +628,9 @@
                 "weaponCrit": 3,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 5,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Inquisitor",
@@ -559,7 +643,9 @@
                 "weaponCrit": 3,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             },
             {
                 "name": "Eggsterminator",
@@ -572,7 +658,9 @@
                 "weaponCrit": 3,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.125
             }
         ]
     },
@@ -594,7 +682,9 @@
                 "weaponCrit": 2,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.05
             },
             {
                 "name": "Ronan Pro",
@@ -607,7 +697,9 @@
                 "weaponCrit": 2,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.05
             },
             {
                 "name": "STEEL MS800",
@@ -620,7 +712,9 @@
                 "weaponCrit": 2,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.05
             },
             {
                 "name": "Grinder",
@@ -633,7 +727,9 @@
                 "weaponCrit": 2,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.05
             },
             {
                 "name": "Steel 090",
@@ -646,7 +742,9 @@
                 "weaponCrit": 2,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.05
             },
             {
                 "name": "Corpse/Dusk/Ripsaw",
@@ -659,7 +757,9 @@
                 "weaponCrit": 2,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.05
             },
             {
                 "name": "Buzzblade",
@@ -672,7 +772,9 @@
                 "weaponCrit": 2,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.05
             },
             {
                 "name": "Goretooth 44G",
@@ -685,7 +787,9 @@
                 "weaponCrit": 2,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.05
             },
             {
                 "name": "X-Dusk Saw/X3",
@@ -698,7 +802,9 @@
                 "weaponCrit": 2,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.05
             },
             {
                 "name": "Sharktooth Ripper",
@@ -711,7 +817,9 @@
                 "weaponCrit": 2,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.05
             },
             {
                 "name": "Dawn Saw",
@@ -724,7 +832,9 @@
                 "weaponCrit": 2,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.05
             },
             {
                 "name": "Haresplitter",
@@ -737,7 +847,9 @@
                 "weaponCrit": 2,
                 "weaponReload": 0,
                 "accuracy": "melee",
-                "pen": 100
+                "pen": 100,
+                "cleave": 2,
+                "cleaveMod": 0.05
             }
         ]
     },
