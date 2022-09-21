@@ -8,6 +8,8 @@ Current Implemented Features:
   - Armor and Weapon selection.
   - Detailed information regarding Character, Armor and Weapon statistics (Health, Speed, DPS, etc.)
   - Implant, GM, UB and Clan Boost selection/entry.
+  - Implant Slot hiding based on entered Level.
+  - Ability to "unlock" implant slots if a user just wants to calculate their boosts.
   - Total boost display.
   - Real-time calculation of all displayed values.
   - Build selection, allowing the user to select from a range of pre-made builds submitted by the community.
@@ -17,9 +19,8 @@ Current Missing & Planned Features:
   - Armor Effective Durability display based on IDR and Absorption (currently only base durability is shown).
   - DPH stat for Explosive weapons when hitting max targets.
   - Cleave information for Melee weapons.
-  - Implant Slot hiding based on entered Level.
-  - Ability to "unlock" implant slots if a user just wants to calculate their boosts.
   - Implant Selection based on exclusivity of Selected Implants (e.g. no Versatility with Jack of All, no duplicates of Unique Implants).
+  - Removal of implant bonuses when slot disabled.
   
 Current Best Implementation Features:
   - DPS for Burst Weapons (no publically available formulae for how it is calculated, currently assuming it is calculated the same as normal Weapons. Aware of the burst_duration stat on the allstats page, but not sure how to add it to the formulae).
