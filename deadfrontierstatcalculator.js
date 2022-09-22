@@ -17,27 +17,33 @@ let armor = {durability: 0, absoption: 0};
 let w1 = {spread: false, explosive: false, burst: false, crit: false, sAngle: 0, pellets: 0, cleave: 0, pDph: 0, dph: 0, exploDph: 0, cleaveDph: 0, critF: 0, critS: 0, reload: 0, accuracy: 0, pen: 0, dps: 0, exploDps: 0, cleaveDps: 0};
 let w2 = {spread: false, explosive: false, burst: false, crit: false, sAngle: 0, pellets: 0, cleave: 0, pDph: 0, dph: 0, exploDph: 0, cleaveDph: 0, critF: 0, critS: 0, reload: 0, accuracy: 0, pen: 0, dps: 0, exploDps: 0, cleaveDps: 0};
 let w3 = {spread: false, explosive: false, burst: false, crit: false, sAngle: 0, pellets: 0, cleave: 0, pDph: 0, dph: 0, exploDph: 0, cleaveDph: 0, critF: 0, critS: 0, reload: 0, accuracy: 0, pen: 0, dps: 0, exploDps: 0, cleaveDps: 0};
-let imp1 = {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0};
-let imp2 = {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0};
-let imp3 = {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0};
-let imp4 = {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0};
-let imp5 = {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0};
-let imp6 = {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0};
-let imp7 = {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0};
-let imp8 = {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0};
-let imp9 = {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0};
-let imp10 = {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0};
-let imp11 = {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0};
-let imp12 = {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0};
-let imp13 = {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0};
-let imp14 = {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0};
-let imp15 = {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0};
-let imp16 = {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0};
+let imp = 
+[
+    {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0},
+    {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0},
+    {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0},
+    {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0},
+    {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0},
+    {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0},
+    {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0},
+    {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0},
+    {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0},
+    {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0},
+    {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0},
+    {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0},
+    {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0},
+    {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0},
+    {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0},
+    {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0},
+];
+let impBlock =
+[
+    ["none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none"],
+    ["none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none"]
+];
 let ub = {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0};
 let gm = {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0};
 let clan = {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0};
-let impBlock = {imp1: "none", imp2: "none", imp3: "none", imp4: "none", imp5: "none", imp6: "none", imp7: "none", imp8: "none", imp9: "none", imp10: "none", imp11: "none", imp12: "none", imp13: "none", imp14: "none", imp15: "none", imp16: "none"}
-let impUBlock = {imp1: false, imp2: false, imp3: false, imp4: false, imp5: false, imp6: false, imp7: false, imp8: false, imp9: false, imp10: false, imp11: false, imp12: false, imp13: false, imp14: false, imp15: false, imp16: false}
 let boost = {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0};
 //#endregion
 
@@ -177,6 +183,7 @@ function parseOutImplantArray(data) //Weapons parse function (Credit to Awoo 5: 
                 option.dataset.sSpeed = val2["sSpeed"];
                 option.dataset.spots = val2["spots"];
                 option.dataset.cantUse = val2["cantUse"];
+                option.dataset.unique = val2["unique"];
                 mainSelect[i].appendChild(option);
             });
         });
@@ -329,7 +336,7 @@ function selectUpdate()
         {
             armor["durability"] = parseInt(elem.options[elem.selectedIndex].dataset.durability);
             armor["absorption"] = parseFloat(elem.options[elem.selectedIndex].dataset.absorption);
-        } else if(elem.id.includes("weaponSelect") == true)
+        } else if(elem.id.includes("weaponSelect"))
         {
             let spread = (elem.options[elem.selectedIndex].dataset.spread === "true");
             let explosive = (elem.options[elem.selectedIndex].dataset.explosive === "true");
@@ -445,10 +452,23 @@ function selectUpdate()
             w["dps"] = dps;
             w["exploDps"] = exploDps;
             w["cleaveDps"] = cleaveDps;
-        } else if(elem.id.includes("implantSelect"))
+        };
+    };
+};
+
+function impUpdate()
+{
+    for(let i = 0; i < impSlots.length; i++)
+    {
+        impSlots[i].querySelectorAll("option").forEach(element => element.disabled = false);
+    };
+    for(let i = 0; i < selectColl.length; i++)
+    { 
+        let elem = selectColl[i];
+        if(elem.id.includes("implantSelect"))
         {
             let currSlot = elem.id;
-            let impName = elem.options[elem.selectedIndex].value;
+            let impName = elem.value;
             let impExp = elem.options[elem.selectedIndex].dataset.exp;
             let impPvp = elem.options[elem.selectedIndex].dataset.pvp;
             let impDamage = elem.options[elem.selectedIndex].dataset.damage;
@@ -461,147 +481,47 @@ function selectUpdate()
             let impSSpeed = elem.options[elem.selectedIndex].dataset.sSpeed;
             let impSpots = elem.options[elem.selectedIndex].dataset.spots;
             let impCantUse = elem.options[elem.selectedIndex].dataset.cantUse;
-            let impUnique = elem.options[elem.selectedIndex].dataset.unique;
-            if(elem.id == "implantSelect1")
+            let impUnique = (elem.options[elem.selectedIndex].dataset.unique === "true");
+            let slot;
+            if(currSlot.slice(-2) > 9)
             {
-                imp1 = {exp: impExp, pvp: impPvp, damage: impDamage, speed: impSpeed, idr: impIdr, weapon: impWeapon, armor: impArmor, cash: impCash, ammo: impAmmo, sSpeed: impSSpeed, spots: impSpots};
-                impBlock["imp1"] = impCantUse;
-                if(impUnique == true)
-                {
-                    impUBlock["imp1"] = impName;
-                };
-            } else if(elem.id == "implantSelect2")
+                slot = (currSlot.slice(-2) - 1);
+            } else
             {
-                imp2 = {exp: impExp, pvp: impPvp, damage: impDamage, speed: impSpeed, idr: impIdr, weapon: impWeapon, armor: impArmor, cash: impCash, ammo: impAmmo, sSpeed: impSSpeed, spots: impSpots};
-                impBlock["imp2"] = impCantUse;
-                if(impUnique == true)
-                {
-                    impUBlock["imp2"] = impName;
-                };
-            } else if(elem.id == "implantSelect3")
+                slot = (currSlot.slice(-1) - 1);
+            };
+            if(elem.disabled == true)
             {
-                imp3 = {exp: impExp, pvp: impPvp, damage: impDamage, speed: impSpeed, idr: impIdr, weapon: impWeapon, armor: impArmor, cash: impCash, ammo: impAmmo, sSpeed: impSSpeed, spots: impSpots};
-                impBlock["imp3"] = impCantUse;
-                if(impUnique == true)
-                {
-                    impUBlock["imp3"] = impName;
-                };
-            } else if(elem.id == "implantSelect4")
+                imp[slot] = {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0};
+            } else
             {
-                imp4 = {exp: impExp, pvp: impPvp, damage: impDamage, speed: impSpeed, idr: impIdr, weapon: impWeapon, armor: impArmor, cash: impCash, ammo: impAmmo, sSpeed: impSSpeed, spots: impSpots};
-                impBlock["imp4"] = impCantUse;
-                if(impUnique == true)
-                {
-                    impUBlock["imp4"] = impName;
-                };
-            } else if(elem.id == "implantSelect5")
+                imp[slot] = {exp: impExp, pvp: impPvp, damage: impDamage, speed: impSpeed, idr: impIdr, weapon: impWeapon, armor: impArmor, cash: impCash, ammo: impAmmo, sSpeed: impSSpeed, spots: impSpots};
+            };
+            impBlock[0][slot] = impCantUse;
+            if(impUnique == true)
             {
-                imp5 = {exp: impExp, pvp: impPvp, damage: impDamage, speed: impSpeed, idr: impIdr, weapon: impWeapon, armor: impArmor, cash: impCash, ammo: impAmmo, sSpeed: impSSpeed, spots: impSpots};
-                impBlock["imp5"] = impCantUse;
-                if(impUnique == true)
-                {
-                    impUBlock["imp5"] = impName;
-                };
-            } else if(elem.id == "implantSelect6")
+                impBlock[1][slot] = impName;
+            } else
             {
-                imp6 = {exp: impExp, pvp: impPvp, damage: impDamage, speed: impSpeed, idr: impIdr, weapon: impWeapon, armor: impArmor, cash: impCash, ammo: impAmmo, sSpeed: impSSpeed, spots: impSpots};
-                impBlock["imp6"] = impCantUse;
-                if(impUnique == true)
-                {
-                    impUBlock["imp6"] = impName;
-                };
-            } else if(elem.id == "implantSelect7")
+                impBlock[1][slot] = "none";
+            };
+            for(let i = 0; i < impSlots.length; i++)
             {
-                imp7 = {exp: impExp, pvp: impPvp, damage: impDamage, speed: impSpeed, idr: impIdr, weapon: impWeapon, armor: impArmor, cash: impCash, ammo: impAmmo, sSpeed: impSSpeed, spots: impSpots};
-                impBlock["imp7"] = impCantUse;
-                if(impUnique == true)
+                if(i !== slot)
                 {
-                    impUBlock["imp7"] = impName;
-                };
-            } else if(elem.id == "implantSelect8")
-            {
-                imp8 = {exp: impExp, pvp: impPvp, damage: impDamage, speed: impSpeed, idr: impIdr, weapon: impWeapon, armor: impArmor, cash: impCash, ammo: impAmmo, sSpeed: impSSpeed, spots: impSpots};
-                impBlock["imp8"] = impCantUse;
-                if(impUnique == true)
-                {
-                    impUBlock["imp8"] = impName;
-                };
-            } else if(elem.id == "implantSelect9")
-            {
-                imp9 = {exp: impExp, pvp: impPvp, damage: impDamage, speed: impSpeed, idr: impIdr, weapon: impWeapon, armor: impArmor, cash: impCash, ammo: impAmmo, sSpeed: impSSpeed, spots: impSpots};
-                impBlock["imp9"] = impCantUse;
-                if(impUnique == true)
-                {
-                    impUBlock["imp9"] = impName;
-                };
-            } else if(elem.id == "implantSelect10")
-            {
-                imp10 = {exp: impExp, pvp: impPvp, damage: impDamage, speed: impSpeed, idr: impIdr, weapon: impWeapon, armor: impArmor, cash: impCash, ammo: impAmmo, sSpeed: impSSpeed, spots: impSpots};
-                impBlock["imp10"] = impCantUse;
-                if(impUnique == true)
-                {
-                    impUBlock["imp10"] = impName;
-                };
-            } else if(elem.id == "implantSelect11")
-            {
-                imp11 = {exp: impExp, pvp: impPvp, damage: impDamage, speed: impSpeed, idr: impIdr, weapon: impWeapon, armor: impArmor, cash: impCash, ammo: impAmmo, sSpeed: impSSpeed, spots: impSpots};
-                impBlock["imp11"] = impCantUse;
-                if(impUnique == true)
-                {
-                    impUBlock["imp11"] = impName;
-                };
-            } else if(elem.id == "implantSelect12")
-            {
-                imp12 = {exp: impExp, pvp: impPvp, damage: impDamage, speed: impSpeed, idr: impIdr, weapon: impWeapon, armor: impArmor, cash: impCash, ammo: impAmmo, sSpeed: impSSpeed, spots: impSpots};
-                impBlock["imp12"] = impCantUse;
-                if(impUnique == true)
-                {
-                    impUBlock["imp12"] = impName;
-                };
-            } else if(elem.id == "implantSelect13")
-            {
-                imp13 = {exp: impExp, pvp: impPvp, damage: impDamage, speed: impSpeed, idr: impIdr, weapon: impWeapon, armor: impArmor, cash: impCash, ammo: impAmmo, sSpeed: impSSpeed, spots: impSpots};
-                impBlock["imp13"] = impCantUse;
-                if(impUnique == true)
-                {
-                    impUBlock["imp13"] = impName;
-                };
-            } else if(elem.id == "implantSelect14")
-            {
-                imp14 = {exp: impExp, pvp: impPvp, damage: impDamage, speed: impSpeed, idr: impIdr, weapon: impWeapon, armor: impArmor, cash: impCash, ammo: impAmmo, sSpeed: impSSpeed, spots: impSpots};
-                impBlock["imp14"] = impCantUse;
-                if(impUnique == true)
-                {
-                    impUBlock["imp14"] = impName;
-                };
-            } else if(elem.id == "implantSelect15")
-            {
-                imp15 = {exp: impExp, pvp: impPvp, damage: impDamage, speed: impSpeed, idr: impIdr, weapon: impWeapon, armor: impArmor, cash: impCash, ammo: impAmmo, sSpeed: impSSpeed, spots: impSpots};
-                impBlock["imp15"] = impCantUse;
-                if(impUnique == true)
-                {
-                    impUBlock["imp15"] = impName;
-                };
-            } else if(elem.id == "implantSelect16")
-            {
-                imp16 = {exp: impExp, pvp: impPvp, damage: impDamage, speed: impSpeed, idr: impIdr, weapon: impWeapon, armor: impArmor, cash: impCash, ammo: impAmmo, sSpeed: impSSpeed, spots: impSpots};
-                impBlock["imp16"] = impCantUse;
-                if(impUnique == true)
-                {
-                    impUBlock["imp16"] = impName;
+                    if(impBlock[0][slot] != "none")
+                    {
+                        impSlots[i].querySelector("#" + CSS.escape(impBlock[0][slot])).disabled = true;
+                    };
+                    if(impBlock[1][slot] != "none")
+                    {
+                        impSlots[i].querySelector("#" + CSS.escape(impBlock[1][slot])).disabled = true;
+                    };
                 };
             };
-            /* //Need to figure this out
-            if (impCantUse != "none") {
-                document.querySelectorAll("[value=" + CSS.escape(impCantUse) + "]").forEach(element => element.disabled = true);
-            };
-            if (impUnique != false) {
-                document.querySelectorAll("[value=" + CSS.escape(impName) + "]").forEach(element => element.disabled = true);
-            };
-            */
-        };
+        }
     };
-};
+}
 
 function displayUpdate()
 {
@@ -1822,17 +1742,17 @@ function bonusEntry()
 
 function boostUpdate() 
 {
-    boost["exp"] = +imp1["exp"] + +imp2["exp"] + +imp3["exp"] + +imp4["exp"] + +imp5["exp"] + +imp6["exp"] + +imp7["exp"] + +imp8["exp"] + +imp9["exp"] + +imp10["exp"] + +imp11["exp"] + +imp12["exp"] + +imp13["exp"] + +imp14["exp"] + +imp15["exp"] + +imp16["exp"] + +ub["exp"] + +gm["exp"] + +clan["exp"];
-    boost["pvp"] = +imp1["pvp"] + +imp2["pvp"] + +imp3["pvp"] + +imp4["pvp"] + +imp5["pvp"] + +imp6["pvp"] + +imp7["pvp"] + +imp8["pvp"] + +imp9["pvp"] + +imp10["pvp"] + +imp11["pvp"] + +imp12["pvp"] + +imp13["pvp"] + +imp14["pvp"] + +imp15["pvp"] + +imp16["pvp"] + +ub["pvp"] + +gm["pvp"] + +clan["pvp"];
-    boost["damage"] = +imp1["damage"] + +imp2["damage"] + +imp3["damage"] + +imp4["damage"] + +imp5["damage"] + +imp6["damage"] + +imp7["damage"] + +imp8["damage"] + +imp9["damage"] + +imp10["damage"] + +imp11["damage"] + +imp12["damage"] + +imp13["damage"] + +imp14["damage"] + +imp15["damage"] + +imp16["damage"] + +ub["damage"] + +gm["damage"] + +clan["damage"];
-    boost["speed"] = +imp1["speed"] + +imp2["speed"] + +imp3["speed"] + +imp4["speed"] + +imp5["speed"] + +imp6["speed"] + +imp7["speed"] + +imp8["speed"] + +imp9["speed"] + +imp10["speed"] + +imp11["speed"] + +imp12["speed"] + +imp13["speed"] + +imp14["speed"] + +imp15["speed"] + +imp16["speed"] + +ub["speed"] + +gm["speed"] + +clan["speed"];
-    boost["idr"] = +imp1["idr"] + +imp2["idr"] + +imp3["idr"] + +imp4["idr"] + +imp5["idr"] + +imp6["idr"] + +imp7["idr"] + +imp8["idr"] + +imp9["idr"] + +imp10["idr"] + +imp11["idr"] + +imp12["idr"] + +imp13["idr"] + +imp14["idr"] + +imp15["idr"] + +imp16["idr"] + +ub["idr"] + +gm["idr"] + +clan["idr"];
-    boost["weapon"] = +imp1["weapon"] + +imp2["weapon"] + +imp3["weapon"] + +imp4["weapon"] + +imp5["weapon"] + +imp6["weapon"] + +imp7["weapon"] + +imp8["weapon"] + +imp9["weapon"] + +imp10["weapon"] + +imp11["weapon"] + +imp12["weapon"] + +imp13["weapon"] + +imp14["weapon"] + +imp15["weapon"] + +imp16["weapon"] + +ub["weapon"] + +gm["weapon"] + +clan["weapon"];
-    boost["armor"] = +imp1["armor"] + +imp2["armor"] + +imp3["armor"] + +imp4["armor"] + +imp5["armor"] + +imp6["armor"] + +imp7["armor"] + +imp8["armor"] + +imp9["armor"] + +imp10["armor"] + +imp11["armor"] + +imp12["armor"] + +imp13["armor"] + +imp14["armor"] + +imp15["armor"] + +imp16["armor"] + +ub["armor"] + +gm["armor"] + +clan["armor"];
-    boost["cash"] = +imp1["cash"] + +imp2["cash"] + +imp3["cash"] + +imp4["cash"] + +imp5["cash"] + +imp6["cash"] + +imp7["cash"] + +imp8["cash"] + +imp9["cash"] + +imp10["cash"] + +imp11["cash"] + +imp12["cash"] + +imp13["cash"] + +imp14["cash"] + +imp15["cash"] + +imp16["cash"] + +ub["cash"] + +gm["cash"] + +clan["cash"];
-    boost["ammo"] = +imp1["ammo"] + +imp2["ammo"] + +imp3["ammo"] + +imp4["ammo"] + +imp5["ammo"] + +imp6["ammo"] + +imp7["ammo"] + +imp8["ammo"] + +imp9["ammo"] + +imp10["ammo"] + +imp11["ammo"] + +imp12["ammo"] + +imp13["ammo"] + +imp14["ammo"] + +imp15["ammo"] + +imp16["ammo"] + +ub["ammo"] + +gm["ammo"] + +clan["ammo"];
-    boost["sSpeed"] = +imp1["sSpeed"] + +imp2["sSpeed"] + +imp3["sSpeed"] + +imp4["sSpeed"] + +imp5["sSpeed"] + +imp6["sSpeed"] + +imp7["sSpeed"] + +imp8["sSpeed"] + +imp9["sSpeed"] + +imp10["sSpeed"] + +imp11["sSpeed"] + +imp12["sSpeed"] + +imp13["sSpeed"] + +imp14["sSpeed"] + +imp15["sSpeed"] + +imp16["sSpeed"] + +ub["sSpeed"] + +gm["sSpeed"] + +clan["sSpeed"];
-    boost["spots"] = +imp1["spots"] + +imp2["spots"] + +imp3["spots"] + +imp4["spots"] + +imp5["spots"] + +imp6["spots"] + +imp7["spots"] + +imp8["spots"] + +imp9["spots"] + +imp10["spots"] + +imp11["spots"] + +imp12["spots"] + +imp13["spots"] + +imp14["spots"] + +imp15["spots"] + +imp16["spots"] + +ub["spots"] + +gm["spots"] + +clan["spots"];
+    boost["exp"] = +imp[0]["exp"] + +imp[1]["exp"] + +imp[2]["exp"] + +imp[3]["exp"] + +imp[4]["exp"] + +imp[5]["exp"] + +imp[6]["exp"] + +imp[7]["exp"] + +imp[8]["exp"] + +imp[9]["exp"] + +imp[10]["exp"] + +imp[11]["exp"] + +imp[12]["exp"] + +imp[13]["exp"] + +imp[14]["exp"] + +imp[15]["exp"] + +ub["exp"] + +gm["exp"] + +clan["exp"];
+    boost["pvp"] = +imp[0]["pvp"] + +imp[1]["pvp"] + +imp[2]["pvp"] + +imp[3]["pvp"] + +imp[4]["pvp"] + +imp[5]["pvp"] + +imp[6]["pvp"] + +imp[7]["pvp"] + +imp[8]["pvp"] + +imp[9]["pvp"] + +imp[10]["pvp"] + +imp[11]["pvp"] + +imp[12]["pvp"] + +imp[13]["pvp"] + +imp[14]["pvp"] + +imp[15]["pvp"] + +ub["pvp"] + +gm["pvp"] + +clan["pvp"];
+    boost["damage"] = +imp[0]["damage"] + +imp[1]["damage"] + +imp[2]["damage"] + +imp[3]["damage"] + +imp[4]["damage"] + +imp[5]["damage"] + +imp[6]["damage"] + +imp[7]["damage"] + +imp[8]["damage"] + +imp[9]["damage"] + +imp[10]["damage"] + +imp[11]["damage"] + +imp[12]["damage"] + +imp[13]["damage"] + +imp[14]["damage"] + +imp[15]["damage"] + +ub["damage"] + +gm["damage"] + +clan["damage"];
+    boost["speed"] = +imp[0]["speed"] + +imp[1]["speed"] + +imp[2]["speed"] + +imp[3]["speed"] + +imp[4]["speed"] + +imp[5]["speed"] + +imp[6]["speed"] + +imp[7]["speed"] + +imp[8]["speed"] + +imp[9]["speed"] + +imp[10]["speed"] + +imp[11]["speed"] + +imp[12]["speed"] + +imp[13]["speed"] + +imp[14]["speed"] + +imp[15]["speed"] + +ub["speed"] + +gm["speed"] + +clan["speed"];
+    boost["idr"] = +imp[0]["idr"] + +imp[1]["idr"] + +imp[2]["idr"] + +imp[3]["idr"] + +imp[4]["idr"] + +imp[5]["idr"] + +imp[6]["idr"] + +imp[7]["idr"] + +imp[8]["idr"] + +imp[9]["idr"] + +imp[10]["idr"] + +imp[11]["idr"] + +imp[12]["idr"] + +imp[13]["idr"] + +imp[14]["idr"] + +imp[15]["idr"] + +ub["idr"] + +gm["idr"] + +clan["idr"];
+    boost["weapon"] = +imp[0]["weapon"] + +imp[1]["weapon"] + +imp[2]["weapon"] + +imp[3]["weapon"] + +imp[4]["weapon"] + +imp[5]["weapon"] + +imp[6]["weapon"] + +imp[7]["weapon"] + +imp[8]["weapon"] + +imp[9]["weapon"] + +imp[10]["weapon"] + +imp[11]["weapon"] + +imp[12]["weapon"] + +imp[13]["weapon"] + +imp[14]["weapon"] + +imp[15]["weapon"] + +ub["weapon"] + +gm["weapon"] + +clan["weapon"];
+    boost["armor"] = +imp[0]["armor"] + +imp[1]["armor"] + +imp[2]["armor"] + +imp[3]["armor"] + +imp[4]["armor"] + +imp[5]["armor"] + +imp[6]["armor"] + +imp[7]["armor"] + +imp[8]["armor"] + +imp[9]["armor"] + +imp[10]["armor"] + +imp[11]["armor"] + +imp[12]["armor"] + +imp[13]["armor"] + +imp[14]["armor"] + +imp[15]["armor"] + +ub["armor"] + +gm["armor"] + +clan["armor"];
+    boost["cash"] = +imp[0]["cash"] + +imp[1]["cash"] + +imp[2]["cash"] + +imp[3]["cash"] + +imp[4]["cash"] + +imp[5]["cash"] + +imp[6]["cash"] + +imp[7]["cash"] + +imp[8]["cash"] + +imp[9]["cash"] + +imp[10]["cash"] + +imp[11]["cash"] + +imp[12]["cash"] + +imp[13]["cash"] + +imp[14]["cash"] + +imp[15]["cash"] + +ub["cash"] + +gm["cash"] + +clan["cash"];
+    boost["ammo"] = +imp[0]["ammo"] + +imp[1]["ammo"] + +imp[2]["ammo"] + +imp[3]["ammo"] + +imp[4]["ammo"] + +imp[5]["ammo"] + +imp[6]["ammo"] + +imp[7]["ammo"] + +imp[8]["ammo"] + +imp[9]["ammo"] + +imp[10]["ammo"] + +imp[11]["ammo"] + +imp[12]["ammo"] + +imp[13]["ammo"] + +imp[14]["ammo"] + +imp[15]["ammo"] + +ub["ammo"] + +gm["ammo"] + +clan["ammo"];
+    boost["sSpeed"] = +imp[0]["sSpeed"] + +imp[1]["sSpeed"] + +imp[2]["sSpeed"] + +imp[3]["sSpeed"] + +imp[4]["sSpeed"] + +imp[5]["sSpeed"] + +imp[6]["sSpeed"] + +imp[7]["sSpeed"] + +imp[8]["sSpeed"] + +imp[9]["sSpeed"] + +imp[10]["sSpeed"] + +imp[11]["sSpeed"] + +imp[12]["sSpeed"] + +imp[13]["sSpeed"] + +imp[14]["sSpeed"] + +imp[15]["sSpeed"] + +ub["sSpeed"] + +gm["sSpeed"] + +clan["sSpeed"];
+    boost["spots"] = +imp[0]["spots"] + +imp[1]["spots"] + +imp[2]["spots"] + +imp[3]["spots"] + +imp[4]["spots"] + +imp[5]["spots"] + +imp[6]["spots"] + +imp[7]["spots"] + +imp[8]["spots"] + +imp[9]["spots"] + +imp[10]["spots"] + +imp[11]["spots"] + +imp[12]["spots"] + +imp[13]["spots"] + +imp[14]["spots"] + +imp[15]["spots"] + +ub["spots"] + +gm["spots"] + +clan["spots"];
 };
 //#endregion
 
@@ -1862,8 +1782,9 @@ for(let i = 0; i < selectColl.length; i++)
     selectColl[i].addEventListener("change", function()
     {
         buildUpdate.call(this);
-        selectUpdate();
+        impUpdate();
         boostUpdate();
+        selectUpdate();
         bonusEntry();
         statEntry();
         displayUpdate();

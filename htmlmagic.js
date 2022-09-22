@@ -106,6 +106,10 @@ for(i = 0; i < buttonColl.length; i++)
         };
         impLock = true;
       };
+      impUpdate();
+      boostUpdate();
+      selectUpdate();
+      displayUpdate();
     };
   });
 };
