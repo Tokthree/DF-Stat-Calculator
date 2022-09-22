@@ -18,33 +18,36 @@ let w1 = {spread: false, explosive: false, burst: false, crit: false, sAngle: 0,
 let w2 = {spread: false, explosive: false, burst: false, crit: false, sAngle: 0, pellets: 0, cleave: 0, pDph: 0, dph: 0, exploDph: 0, cleaveDph: 0, critF: 0, critS: 0, reload: 0, accuracy: 0, pen: 0, dps: 0, exploDps: 0, cleaveDps: 0};
 let w3 = {spread: false, explosive: false, burst: false, crit: false, sAngle: 0, pellets: 0, cleave: 0, pDph: 0, dph: 0, exploDph: 0, cleaveDph: 0, critF: 0, critS: 0, reload: 0, accuracy: 0, pen: 0, dps: 0, exploDps: 0, cleaveDps: 0};
 let imp = 
-[
-    {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0},
-    {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0},
-    {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0},
-    {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0},
-    {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0},
-    {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0},
-    {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0},
-    {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0},
-    {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0},
-    {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0},
-    {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0},
-    {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0},
-    {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0},
-    {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0},
-    {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0},
-    {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0},
+[ //exp, pvp, damage, speed, idr, weapon, armor, cash, ammo, sSpeed, spots
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], //imp1 ...
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], //... imp16
 ];
 let impBlock =
-[
-    ["none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none"],
-    ["none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none"]
+[ //imp1 ... imp16
+    ["none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none"], //Exclusive implants
+    ["none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none"] //Unique implants
 ];
-let ub = {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0};
-let gm = {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0};
-let clan = {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0};
-let boost = {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0};
+let boosts =
+[ //exp, pvp, damage, speed, idr, weapon, armor, cash, ammo, sSpeed, spots
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], //ub
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], //gm
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], //clan
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] //total
+]
 //#endregion
 
 //#region Functions
@@ -344,22 +347,22 @@ function selectUpdate()
             let sAngle = elem.options[elem.selectedIndex].dataset.sAngle;
             let pellets = elem.options[elem.selectedIndex].dataset.pellets;
             let cleave = parseInt(elem.options[elem.selectedIndex].dataset.cleave);
-            let pelletDph = elem.options[elem.selectedIndex].dataset.dph * (1 + (boost["damage"] / 100));
+            let pelletDph = elem.options[elem.selectedIndex].dataset.dph * (1 + (boosts[3][2] / 100));
             let rawDph = parseFloat(elem.options[elem.selectedIndex].dataset.dph)
             let dph = 0;
             if(spread == true)
             {
-                dph = (rawDph * pellets) * (1 + (boost["damage"] / 100));
+                dph = (rawDph * pellets) * (1 + (boosts[3][2] / 100));
             } else
             {
-                dph = rawDph * (1 + (boost["damage"] / 100));
+                dph = rawDph * (1 + (boosts[3][2] / 100));
             };
-            let exploDph = (rawDph * 5) * (1 + (boost["damage"] / 100));
+            let exploDph = (rawDph * 5) * (1 + (boosts[3][2] / 100));
             let cleaveDph = 0;
             if(cleave > 0)
             {
                 let cleaveMod = parseFloat(elem.options[elem.selectedIndex].dataset.cleaveMod);
-                cleaveDph = (rawDph + ((rawDph * cleaveMod) * cleave)) * (1 + (boost["damage"] / 100));
+                cleaveDph = (rawDph + ((rawDph * cleaveMod) * cleave)) * (1 + (boosts[3][2] / 100));
             };
             let shotTime = elem.options[elem.selectedIndex].dataset.shotTime;
             let capacity = elem.options[elem.selectedIndex].dataset.capacity;
@@ -492,10 +495,10 @@ function impUpdate()
             };
             if(elem.disabled == true)
             {
-                imp[slot] = {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0};
+                imp[slot] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
             } else
             {
-                imp[slot] = {exp: impExp, pvp: impPvp, damage: impDamage, speed: impSpeed, idr: impIdr, weapon: impWeapon, armor: impArmor, cash: impCash, ammo: impAmmo, sSpeed: impSSpeed, spots: impSpots};
+                imp[slot] = [impExp, impPvp, impDamage, impSpeed, impIdr, impWeapon, impArmor, impCash, impAmmo, impSSpeed, impSpots];
             };
             impBlock[0][slot] = impCantUse;
             if(impUnique == true)
@@ -653,20 +656,20 @@ function displayUpdate()
             content.textContent = boostValue + " (" + statValue + " + " + profs["exploBoost"] + ")";
         };
     };
-    expSelector.textContent = boost["exp"] + "%";
-    pvpSelector.textContent = boost["pvp"] + "%";
-    damageSelector.textContent = boost["damage"] + "%";
-    speedSelector.textContent = boost["speed"] + "%";
-    idrSelector.textContent = boost["idr"] + "%";
-    weaponSelector.textContent = boost["weapon"] + "%";
-    armorSelector.textContent = boost["armor"] + "%";
-    cashSelector.textContent = boost["cash"] + "%";
-    ammoSelector.textContent = boost["ammo"] + "%";
-    sSpeedSelector.textContent = boost["sSpeed"] + "%";
-    spotsSelector.textContent = boost["spots"] + "%";
+    expSelector.textContent = boosts[3][0] + "%";
+    pvpSelector.textContent = boosts[3][1] + "%";
+    damageSelector.textContent = boosts[3][2] + "%";
+    speedSelector.textContent = boosts[3][3] + "%";
+    idrSelector.textContent = boosts[3][4] + "%";
+    weaponSelector.textContent = boosts[3][5] + "%";
+    armorSelector.textContent = boosts[3][6] + "%";
+    cashSelector.textContent = boosts[3][7] + "%";
+    ammoSelector.textContent = boosts[3][8] + "%";
+    sSpeedSelector.textContent = boosts[3][9] + "%";
+    spotsSelector.textContent = boosts[3][10] + "%";
     healthSelector.textContent = stats["endBase"] * 2;
-    walkSelector.textContent = (((2.2 * 1.2) * ((stats["agiTotal"] * 0.0043) + 1.1)) * (1 + (boost["speed"] / 100))).toFixed(4);
-    sprintSelector.textContent = (((3.5 * 1.2) * ((stats["agiTotal"] * 0.0043) + 1.1)) * (1 + (boost["speed"] / 100))).toFixed(4);
+    walkSelector.textContent = (((2.2 * 1.2) * ((stats["agiTotal"] * 0.0043) + 1.1)) * (1 + (boosts[3][3] / 100))).toFixed(4);
+    sprintSelector.textContent = (((3.5 * 1.2) * ((stats["agiTotal"] * 0.0043) + 1.1)) * (1 + (boosts[3][3] / 100))).toFixed(4);
     durationSelector.textContent = ((stats["endTotal"] - 25) / 6.1875 + 24).toFixed(0) + " s";
     regenSelector.textContent = ((stats["endTotal"] - 25) / 6.1875 + 24).toFixed(0) + " s";
     //duraSelector.textContent = (durability + (durability * absorption))+" ("+durability+" + "+durability+" * "+absorption+")"; //Need to figure this out
@@ -1595,140 +1598,140 @@ function bonusEntry()
             if(inputValue > 10)
             {
                 elem.value = 10;
-                clan["exp"] = 10
+                boosts[2][0] = 10
             } else if(inputValue < 0)
             {
                 elem.value = 0;
-                clan["exp"] = 0;
+                boosts[2][0] = 0;
             } else
             {
-                clan["exp"] = inputValue;
+                boosts[2][0] = inputValue;
             };
         } else if(elem.id == "clanPVP")
         {
             if(inputValue > 10)
             {
                 elem.value = 10;
-                clan["pvp"] = 10
+                boosts[2][1] = 10
             } else if(inputValue < 0)
             {
                 elem.value = 0;
-                clan["pvp"] = 0;
+                boosts[2][1] = 0;
             } else
             {
-                clan["pvp"] = inputValue;
+                boosts[2][1] = inputValue;
             };
         } else if(elem.id == "clanDamage")
         {
             if(inputValue > 10)
             {
                 elem.value = 10;
-                clan["damage"] = 10
+                boosts[2][2] = 10
             } else if(inputValue < 0)
             {
                 elem.value = 0;
-                clan["damage"] = 0;
+                boosts[2][2] = 0;
             } else
             {
-                clan["damage"] = inputValue;
+                boosts[2][2] = inputValue;
             };
         } else if(elem.id == "clanIDR")
         {
             if(inputValue > 10)
             {
                 elem.value = 10;
-                clan["idr"] = 10
+                boosts[2][4] = 10
             } else if(inputValue < 0)
             {
                 elem.value = 0;
-                clan["idr"] = 0;
+                boosts[2][4] = 0;
             } else
             {
-                clan["idr"] = inputValue;
+                boosts[2][4] = inputValue;
             };
         } else if(elem.id == "clanWeapon")
         {
             if(inputValue > 30)
             {
                 elem.value = 30;
-                clan["weapon"] = 30
+                boosts[2][5] = 30
             } else if(inputValue < 0)
             {
                 elem.value = 0;
-                clan["weapon"] = 0;
+                boosts[2][5] = 0;
             } else
             {
-                clan["weapon"] = inputValue;
+                boosts[2][5] = inputValue;
             };
         } else if(elem.id == "clanArmor")
         {
             if(inputValue > 30)
             {
                 elem.value = 30;
-                clan["armor"] = 30
+                boosts[2][6] = 30
             } else if(inputValue < 0)
             {
                 elem.value = 0;
-                clan["armor"] = 0;
+                boosts[2][6] = 0;
             } else
             {
-                clan["armor"] = inputValue;
+                boosts[2][6] = inputValue;
             };
         } else if(elem.id == "clanCash")
         {
             if(inputValue > 50)
             {
                 elem.value = 50;
-                clan["cash"] = 50
+                boosts[2][7] = 50
             } else if(inputValue < 0)
             {
                 elem.value = 0;
-                clan["cash"] = 0;
+                boosts[2][7] = 0;
             } else
             {
-                clan["cash"] = inputValue;
+                boosts[2][7] = inputValue;
             };
         } else if(elem.id == "clanAmmo")
         {
             if(inputValue > 50)
             {
                 elem.value = 50;
-                clan["ammo"] = 50
+                boosts[2][8] = 50
             } else if(inputValue < 0)
             {
                 elem.value = 0;
-                clan["ammo"] = 0;
+                boosts[2][8] = 0;
             } else
             {
-                clan["ammo"] = inputValue;
+                boosts[2][8] = inputValue;
             };
         } else if(elem.id == "clanSSpeed")
         {
             if(inputValue > 15)
             {
                 elem.value = 15;
-                clan["sSpeed"] = 15
+                boosts[2][9] = 15
             } else if(inputValue < 0)
             {
                 elem.value = 0;
-                clan["sSpeed"] = 0;
+                boosts[2][9] = 0;
             } else
             {
-                clan["sSpeed"] = inputValue;
+                boosts[2][9] = inputValue;
             };
         } else if(elem.id == "clanSpots")
         {
             if(inputValue > 10)
             {
                 elem.value = 10;
-                clan["spots"] = 10
+                boosts[2][10] = 10
             } else if(inputValue < 0)
             {
                 elem.value = 0;
-                clan["spots"] = 0;
+                boosts[2][10] = 0;
             } else
             {
-                clan["spots"] = inputValue;
+                boosts[2][10] = inputValue;
             };
         };
     };
@@ -1742,17 +1745,15 @@ function bonusEntry()
 
 function boostUpdate() 
 {
-    boost["exp"] = +imp[0]["exp"] + +imp[1]["exp"] + +imp[2]["exp"] + +imp[3]["exp"] + +imp[4]["exp"] + +imp[5]["exp"] + +imp[6]["exp"] + +imp[7]["exp"] + +imp[8]["exp"] + +imp[9]["exp"] + +imp[10]["exp"] + +imp[11]["exp"] + +imp[12]["exp"] + +imp[13]["exp"] + +imp[14]["exp"] + +imp[15]["exp"] + +ub["exp"] + +gm["exp"] + +clan["exp"];
-    boost["pvp"] = +imp[0]["pvp"] + +imp[1]["pvp"] + +imp[2]["pvp"] + +imp[3]["pvp"] + +imp[4]["pvp"] + +imp[5]["pvp"] + +imp[6]["pvp"] + +imp[7]["pvp"] + +imp[8]["pvp"] + +imp[9]["pvp"] + +imp[10]["pvp"] + +imp[11]["pvp"] + +imp[12]["pvp"] + +imp[13]["pvp"] + +imp[14]["pvp"] + +imp[15]["pvp"] + +ub["pvp"] + +gm["pvp"] + +clan["pvp"];
-    boost["damage"] = +imp[0]["damage"] + +imp[1]["damage"] + +imp[2]["damage"] + +imp[3]["damage"] + +imp[4]["damage"] + +imp[5]["damage"] + +imp[6]["damage"] + +imp[7]["damage"] + +imp[8]["damage"] + +imp[9]["damage"] + +imp[10]["damage"] + +imp[11]["damage"] + +imp[12]["damage"] + +imp[13]["damage"] + +imp[14]["damage"] + +imp[15]["damage"] + +ub["damage"] + +gm["damage"] + +clan["damage"];
-    boost["speed"] = +imp[0]["speed"] + +imp[1]["speed"] + +imp[2]["speed"] + +imp[3]["speed"] + +imp[4]["speed"] + +imp[5]["speed"] + +imp[6]["speed"] + +imp[7]["speed"] + +imp[8]["speed"] + +imp[9]["speed"] + +imp[10]["speed"] + +imp[11]["speed"] + +imp[12]["speed"] + +imp[13]["speed"] + +imp[14]["speed"] + +imp[15]["speed"] + +ub["speed"] + +gm["speed"] + +clan["speed"];
-    boost["idr"] = +imp[0]["idr"] + +imp[1]["idr"] + +imp[2]["idr"] + +imp[3]["idr"] + +imp[4]["idr"] + +imp[5]["idr"] + +imp[6]["idr"] + +imp[7]["idr"] + +imp[8]["idr"] + +imp[9]["idr"] + +imp[10]["idr"] + +imp[11]["idr"] + +imp[12]["idr"] + +imp[13]["idr"] + +imp[14]["idr"] + +imp[15]["idr"] + +ub["idr"] + +gm["idr"] + +clan["idr"];
-    boost["weapon"] = +imp[0]["weapon"] + +imp[1]["weapon"] + +imp[2]["weapon"] + +imp[3]["weapon"] + +imp[4]["weapon"] + +imp[5]["weapon"] + +imp[6]["weapon"] + +imp[7]["weapon"] + +imp[8]["weapon"] + +imp[9]["weapon"] + +imp[10]["weapon"] + +imp[11]["weapon"] + +imp[12]["weapon"] + +imp[13]["weapon"] + +imp[14]["weapon"] + +imp[15]["weapon"] + +ub["weapon"] + +gm["weapon"] + +clan["weapon"];
-    boost["armor"] = +imp[0]["armor"] + +imp[1]["armor"] + +imp[2]["armor"] + +imp[3]["armor"] + +imp[4]["armor"] + +imp[5]["armor"] + +imp[6]["armor"] + +imp[7]["armor"] + +imp[8]["armor"] + +imp[9]["armor"] + +imp[10]["armor"] + +imp[11]["armor"] + +imp[12]["armor"] + +imp[13]["armor"] + +imp[14]["armor"] + +imp[15]["armor"] + +ub["armor"] + +gm["armor"] + +clan["armor"];
-    boost["cash"] = +imp[0]["cash"] + +imp[1]["cash"] + +imp[2]["cash"] + +imp[3]["cash"] + +imp[4]["cash"] + +imp[5]["cash"] + +imp[6]["cash"] + +imp[7]["cash"] + +imp[8]["cash"] + +imp[9]["cash"] + +imp[10]["cash"] + +imp[11]["cash"] + +imp[12]["cash"] + +imp[13]["cash"] + +imp[14]["cash"] + +imp[15]["cash"] + +ub["cash"] + +gm["cash"] + +clan["cash"];
-    boost["ammo"] = +imp[0]["ammo"] + +imp[1]["ammo"] + +imp[2]["ammo"] + +imp[3]["ammo"] + +imp[4]["ammo"] + +imp[5]["ammo"] + +imp[6]["ammo"] + +imp[7]["ammo"] + +imp[8]["ammo"] + +imp[9]["ammo"] + +imp[10]["ammo"] + +imp[11]["ammo"] + +imp[12]["ammo"] + +imp[13]["ammo"] + +imp[14]["ammo"] + +imp[15]["ammo"] + +ub["ammo"] + +gm["ammo"] + +clan["ammo"];
-    boost["sSpeed"] = +imp[0]["sSpeed"] + +imp[1]["sSpeed"] + +imp[2]["sSpeed"] + +imp[3]["sSpeed"] + +imp[4]["sSpeed"] + +imp[5]["sSpeed"] + +imp[6]["sSpeed"] + +imp[7]["sSpeed"] + +imp[8]["sSpeed"] + +imp[9]["sSpeed"] + +imp[10]["sSpeed"] + +imp[11]["sSpeed"] + +imp[12]["sSpeed"] + +imp[13]["sSpeed"] + +imp[14]["sSpeed"] + +imp[15]["sSpeed"] + +ub["sSpeed"] + +gm["sSpeed"] + +clan["sSpeed"];
-    boost["spots"] = +imp[0]["spots"] + +imp[1]["spots"] + +imp[2]["spots"] + +imp[3]["spots"] + +imp[4]["spots"] + +imp[5]["spots"] + +imp[6]["spots"] + +imp[7]["spots"] + +imp[8]["spots"] + +imp[9]["spots"] + +imp[10]["spots"] + +imp[11]["spots"] + +imp[12]["spots"] + +imp[13]["spots"] + +imp[14]["spots"] + +imp[15]["spots"] + +ub["spots"] + +gm["spots"] + +clan["spots"];
+    for(let i = 0; i < boosts[3].length; i++)
+    {
+        let total = 0;
+        for(let j = 0; j < imp.length; j++)
+        {
+            total = total + parseInt(imp[j][i]);
+        };
+        boosts[3][i] = total + boosts[0][i] + boosts[1][i] + boosts[2][i];
+    };
 };
 //#endregion
 
@@ -1772,6 +1773,7 @@ for(let i = 0; i < numColl.length; i++)
     numColl[i].addEventListener("input", function()
     {
         bonusEntry();
+        boostUpdate();
         selectUpdate();
         displayUpdate();
     });
@@ -1799,19 +1801,19 @@ for(let i = 0; i < checkColl.length; i++)
         {
             if(this.checked == true)
             {
-                gm = {exp: 100, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 100, armor: 100, cash: 100, ammo: 100, sSpeed: 0, spots: 60};
+                boosts[1] = [100, 0, 0, 0, 0, 100, 100, 100, 100, 0, 60];
             } else if(this.checked == false)
             {
-                gm = {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0};
+                boosts[1] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
             };
         } else if(this.id == "ubCheck")
         {
             if(this.checked == true)
             {
-                ub = {exp: 50, pvp: 0, damage: 35, speed: 35, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0};
+                boosts[0] = [50, 0, 35, 35, 0, 0, 0, 0, 0, 0, 0];
             } else if(this.checked == false)
             {
-                ub = {exp: 0, pvp: 0, damage: 0, speed: 0, idr: 0, weapon: 0, armor: 0, cash: 0, ammo: 0, sSpeed: 0, spots: 0};
+                boosts[0] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
             };
         };
         boostUpdate();
