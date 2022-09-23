@@ -9,11 +9,31 @@ const levelReqSel = document.getElementById('reqLevel');
 //#endregion
 
 //#region Global Variables
+//Array maybe?
 let charInfo = {level: 1, levelReq: 1, statTotal: 150, pointsTotal: 0, pointsReq: 0, profTotal: 10, pointsPTotal: 0, pointsPReq: 0};
-let stats = {strBase: 25, strBoost: 0, strClass: 0, strTotal: 25, endBase: 25, endBoost: 0, endClass: 0, endTotal: 25, agiBase: 25, agiBoost: 0, agiClass: 0, agiTotal: 25, accBase: 25, accBoost: 0, accClass: 0, accTotal: 25, critBase: 25, critBoost: 0, critClass: 0, critTotal: 25, relBase: 25, relBoost: 0, relClass: 0, relTotal: 25};
-let profs = {meleeBase: 5, meleeBoost: 0, pistolBase: 5, pistolBoost: 0, rifleBase: 0, rifleBoost: 0, shotgunBase: 0, shotgunBoost: 0, mgBase: 0, mgBoost: 0, exploBase: 0, exploBoost: 0};
+let stat =
+[ //base, boost, class, total
+    [25, 0, 0, 25], //str
+    [25, 0, 0, 25], //end
+    [25, 0, 0, 25], //agi
+    [25, 0, 0, 25], //acc
+    [25, 0, 0, 25], //crit
+    [25, 0, 0, 25] //rel
+];
+let prof =
+[ //base, boost
+    [5, 0], //melee
+    [5, 0], //pistol
+    [0, 0], //rifle
+    [0, 0], //shotgun
+    [0, 0], //mg
+    [0, 0] //explo
+];
+//Array needed
 let bonus = {end: 0, agi: 0, w1Acc: 0, w1Crit: 0, w1Rel: 0, w2Acc: 0, w2Crit: 0, w2Rel: 0, w3Acc: 0, w3Crit: 0, w3Rel: 0,};
+//Probably not worth an array
 let armor = {durability: 0, absoption: 0};
+//Array needed
 let w1 = {spread: false, explosive: false, burst: false, crit: false, sAngle: 0, pellets: 0, cleave: 0, pDph: 0, dph: 0, exploDph: 0, cleaveDph: 0, critF: 0, critS: 0, reload: 0, accuracy: 0, pen: 0, dps: 0, exploDps: 0, cleaveDps: 0};
 let w2 = {spread: false, explosive: false, burst: false, crit: false, sAngle: 0, pellets: 0, cleave: 0, pDph: 0, dph: 0, exploDph: 0, cleaveDph: 0, critF: 0, critS: 0, reload: 0, accuracy: 0, pen: 0, dps: 0, exploDps: 0, cleaveDps: 0};
 let w3 = {spread: false, explosive: false, burst: false, crit: false, sAngle: 0, pellets: 0, cleave: 0, pDph: 0, dph: 0, exploDph: 0, cleaveDph: 0, critF: 0, critS: 0, reload: 0, accuracy: 0, pen: 0, dps: 0, exploDps: 0, cleaveDps: 0};
@@ -246,7 +266,7 @@ makeForeignRequest("weapons.json", parseOutWeaponArray);
 makeForeignRequest("implants.json", parseOutImplantArray);
 makeForeignRequest("builds.json", parseOutBuildArray);
 
-function buildUpdate()
+function buildUpdate() //Savings maybe? - refactor tertiary priority
 {
     if(this.id == "buildSelect")
     {
@@ -310,31 +330,31 @@ function buildUpdate()
     };
 };
 
-function selectUpdate()
+function selectUpdate() //Refactored to Rebekah levels
 {
     for(let i = 0; i < selectColl.length; i++)
     { 
         let elem = selectColl[i];
         if(elem.id == "classSelect")
         {
-            stats["strClass"] = parseInt(elem.options[elem.selectedIndex].dataset.str); //Set values
-            stats["endClass"] = parseInt(elem.options[elem.selectedIndex].dataset.end);
-            stats["agiClass"] = parseInt(elem.options[elem.selectedIndex].dataset.agi);
-            stats["accClass"] = parseInt(elem.options[elem.selectedIndex].dataset.acc);
-            stats["critClass"] = parseInt(elem.options[elem.selectedIndex].dataset.crit);
-            stats["relClass"] = parseInt(elem.options[elem.selectedIndex].dataset.rel);
-            profs["meleeBoost"] = parseInt(elem.options[elem.selectedIndex].dataset.melee);
-            profs["pistolBoost"] = parseInt(elem.options[elem.selectedIndex].dataset.pistol);
-            profs["rifleBoost"] = parseInt(elem.options[elem.selectedIndex].dataset.rifle);
-            profs["shotgunBoost"] = parseInt(elem.options[elem.selectedIndex].dataset.shotgun);
-            profs["mgBoost"] = parseInt(elem.options[elem.selectedIndex].dataset.mg);
-            profs["exploBoost"] = parseInt(elem.options[elem.selectedIndex].dataset.explo);
-            stats["strBoost"] = stats["strClass"];
-            stats["endBoost"] = stats["endClass"] + bonus["end"];
-            stats["agiBoost"] = stats["agiClass"] + bonus["agi"];
-            stats["accBoost"] = stats["accClass"] + bonus["w1Acc"] + bonus["w2Acc"] + bonus["w3Acc"];
-            stats["critBoost"] = stats["critClass"] + bonus["w1Crit"] + bonus["w2Crit"] + bonus["w3Rel"];
-            stats["relBoost"] = stats["relClass"] + bonus["w1Rel"] + bonus["w2Rel"] + bonus["w3Rel"];
+            stat[0][2] = parseInt(elem.options[elem.selectedIndex].dataset.str); //Set values
+            stat[1][2] = parseInt(elem.options[elem.selectedIndex].dataset.end);
+            stat[2][2] = parseInt(elem.options[elem.selectedIndex].dataset.agi);
+            stat[3][2] = parseInt(elem.options[elem.selectedIndex].dataset.acc);
+            stat[4][2] = parseInt(elem.options[elem.selectedIndex].dataset.crit);
+            stat[5][2] = parseInt(elem.options[elem.selectedIndex].dataset.rel);
+            prof[0][1] = parseInt(elem.options[elem.selectedIndex].dataset.melee);
+            prof[1][1] = parseInt(elem.options[elem.selectedIndex].dataset.pistol);
+            prof[2][1] = parseInt(elem.options[elem.selectedIndex].dataset.rifle);
+            prof[3][1] = parseInt(elem.options[elem.selectedIndex].dataset.shotgun);
+            prof[4][1] = parseInt(elem.options[elem.selectedIndex].dataset.mg);
+            prof[5][1] = parseInt(elem.options[elem.selectedIndex].dataset.explo);
+            stat[0][1] = stat[0][2];
+            stat[1][1] = stat[1][2] + bonus["end"];
+            stat[2][1] = stat[2][2] + bonus["agi"];
+            stat[3][1] = stat[3][2] + bonus["w1Acc"] + bonus["w2Acc"] + bonus["w3Acc"];
+            stat[4][1] = stat[4][2] + bonus["w1Crit"] + bonus["w2Crit"] + bonus["w3Crit"];
+            stat[5][1] = stat[5][2] + bonus["w1Rel"] + bonus["w2Rel"] + bonus["w3Rel"];
         } else if(elem.id == "armorSelect")
         {
             armor["durability"] = parseInt(elem.options[elem.selectedIndex].dataset.durability);
@@ -367,7 +387,7 @@ function selectUpdate()
             let shotTime = elem.options[elem.selectedIndex].dataset.shotTime;
             let capacity = elem.options[elem.selectedIndex].dataset.capacity;
             let weaponCrit = elem.options[elem.selectedIndex].dataset.weaponCrit;
-            let baseCrit = (5 + Math.round((stats["critTotal"] - 25) / 2.5)) * weaponCrit;
+            let baseCrit = (5 + Math.round((stat[4][3] - 25) / 2.5)) * weaponCrit;
             if(baseCrit > 80)
             {
                 baseCrit = 80;
@@ -392,7 +412,7 @@ function selectUpdate()
             let critFail = Math.ceil((100 - baseCrit) / divisor);
             let critSuccess = Math.floor(baseCrit / divisor);
             let weaponReload = elem.options[elem.selectedIndex].dataset.weaponReload;
-            let reloadFrame = 15 + (((124 - stats["relTotal"]) * weaponReload) / 100);
+            let reloadFrame = 15 + (((124 - stat[5][3]) * weaponReload) / 100);
             let reloadTime = reloadFrame / 60;
             let accuracy = elem.options[elem.selectedIndex].dataset.accuracy;
             let pen = parseInt(elem.options[elem.selectedIndex].dataset.pen);
@@ -459,7 +479,7 @@ function selectUpdate()
     };
 };
 
-function impUpdate()
+function impUpdate() //Refactored to Rebekah levels
 {
     for(let i = 0; i < impSlots.length; i++)
     {
@@ -526,7 +546,7 @@ function impUpdate()
     };
 }
 
-function displayUpdate()
+function displayUpdate() //The big saving - refactor priority
 {
     const healthSelector = document.getElementById('healthValue');
     const walkSelector = document.getElementById('walkValue');
@@ -594,68 +614,6 @@ function displayUpdate()
     const ammoSelector = document.getElementById('ammoValue');
     const sSpeedSelector = document.getElementById('sSpeedValue');
     const spotsSelector = document.getElementById('spotsValue');
-    for(let i = 0; i < rangeColl.length; i++)
-    {
-        let elem = rangeColl[i];
-        const content = elem.nextElementSibling;
-        var statValue = parseInt(elem.value);
-        var boostValue;
-        if(elem.id == "str")
-        {
-            boostValue = statValue + stats["strBoost"];
-            stats["strTotal"] = boostValue;
-            content.textContent = boostValue + " (" + statValue + " + " + stats["strBoost"] + ")";
-        } else if(elem.id == "end")
-        {
-            boostValue = statValue + stats["endBoost"];
-            stats["endTotal"] = boostValue;
-            content.textContent = boostValue + " (" + statValue + " + " + stats["endBoost"] + ")";
-        } else if(elem.id == "agi")
-        {
-            boostValue = statValue + stats["agiBoost"];
-            stats["agiTotal"] = boostValue;
-            content.textContent = boostValue + " (" + statValue + " + " + stats["agiBoost"] + ")";
-        } else if(elem.id == "acc")
-        {
-            boostValue = statValue + stats["accBoost"];
-            stats["accTotal"] = boostValue;
-            content.textContent = boostValue + " (" + statValue + " + " + stats["accBoost"] + ")";
-        } else if(elem.id == "crit")
-        {
-            boostValue = statValue + stats["critBoost"];
-            stats["critTotal"] = boostValue;
-            content.textContent = boostValue + " (" + statValue + " + " + stats["critBoost"] + ")";
-        } else if(elem.id == "rel")
-        {
-            boostValue = statValue + stats["relBoost"];
-            stats["relTotal"] = boostValue;
-            content.textContent = boostValue + " (" + statValue + " + " + stats["relBoost"] + ")";
-        } else if(elem.id == "melee")
-        {
-            boostValue = statValue + profs["meleeBoost"];
-            content.textContent = boostValue + " (" + statValue + " + " + profs["meleeBoost"] + ")";
-        } else if(elem.id == "pistol")
-        {
-            boostValue = statValue + profs["pistolBoost"];
-            content.textContent = boostValue + " (" + statValue + " + " + profs["pistolBoost"] + ")";
-        } else if(elem.id == "rifle")
-        {
-            boostValue = statValue + profs["rifleBoost"];
-            content.textContent = boostValue + " (" + statValue + " + " + profs["rifleBoost"] + ")";
-        } else if(elem.id == "shotgun")
-        {
-            boostValue = statValue + profs["shotgunBoost"];
-            content.textContent = boostValue + " (" + statValue + " + " + profs["shotgunBoost"] + ")";
-        } else if(elem.id == "mg")
-        {
-            boostValue = statValue + profs["mgBoost"];
-            content.textContent = boostValue + " (" + statValue + " + " + profs["mgBoost"] + ")";
-        } else if(elem.id == "explo")
-        {
-            boostValue = statValue + profs["exploBoost"];
-            content.textContent = boostValue + " (" + statValue + " + " + profs["exploBoost"] + ")";
-        };
-    };
     expSelector.textContent = boosts[3][0] + "%";
     pvpSelector.textContent = boosts[3][1] + "%";
     damageSelector.textContent = boosts[3][2] + "%";
@@ -667,11 +625,11 @@ function displayUpdate()
     ammoSelector.textContent = boosts[3][8] + "%";
     sSpeedSelector.textContent = boosts[3][9] + "%";
     spotsSelector.textContent = boosts[3][10] + "%";
-    healthSelector.textContent = stats["endBase"] * 2;
-    walkSelector.textContent = (((2.2 * 1.2) * ((stats["agiTotal"] * 0.0043) + 1.1)) * (1 + (boosts[3][3] / 100))).toFixed(4);
-    sprintSelector.textContent = (((3.5 * 1.2) * ((stats["agiTotal"] * 0.0043) + 1.1)) * (1 + (boosts[3][3] / 100))).toFixed(4);
-    durationSelector.textContent = ((stats["endTotal"] - 25) / 6.1875 + 24).toFixed(0) + " s";
-    regenSelector.textContent = ((stats["endTotal"] - 25) / 6.1875 + 24).toFixed(0) + " s";
+    healthSelector.textContent = stat[1][1] * 2;
+    walkSelector.textContent = (((2.2 * 1.2) * ((stat[2][3] * 0.0043) + 1.1)) * (1 + (boosts[3][3] / 100))).toFixed(4);
+    sprintSelector.textContent = (((3.5 * 1.2) * ((stat[2][3] * 0.0043) + 1.1)) * (1 + (boosts[3][3] / 100))).toFixed(4);
+    durationSelector.textContent = ((stat[1][3] - 25) / 6.1875 + 24).toFixed(0) + " s";
+    regenSelector.textContent = ((stat[1][3] - 25) / 6.1875 + 24).toFixed(0) + " s";
     //duraSelector.textContent = (durability + (durability * absorption))+" ("+durability+" + "+durability+" * "+absorption+")"; //Need to figure this out
     if(document.getElementById("armorSelect").value != "Please Select an Option")
     {
@@ -1127,179 +1085,59 @@ function displayUpdate()
     };
 };
 
-function statEntry()
+function statEntry() //Refactored to Rebekah levels
 {
     for(let i = 0; i < rangeColl.length; i++)
     {
         let elem = rangeColl[i];
         const content = elem.nextElementSibling;
-        var statValue = parseInt(elem.value);
-        var boostValue;
+        let statValue = parseInt(elem.value);
+        let boostValue;
         let maxAdjust;
-        if(elem.id == "str")
+        if(elem.id.includes("Stat"))
         {
-            if(stats["strBoost"] > 0)
+            if(elem.id == "strStat")
             {
-                maxAdjust = 100 - stats["strBoost"];
-                elem.setAttribute("max", maxAdjust);
+                if(stat[i][1] > 0)
+                {
+                    maxAdjust = 100 - stat[i][1];
+                    elem.setAttribute("max", maxAdjust);
+                } else
+                {
+                    elem.setAttribute("max", 100);
+                }
             } else
             {
-                elem.setAttribute("max", 100);
+                if(stat[i][1] > 24)
+                {
+                    maxAdjust = 124 - stat[i][1];
+                    elem.setAttribute("max", maxAdjust);
+                } else
+                {
+                    elem.setAttribute("max", 100);
+                }
             };
-            stats["strBase"] = statValue;
-            boostValue = statValue + stats["strBoost"];
-            stats["strTotal"] = boostValue;
-            content.textContent = boostValue + " (" + statValue + " + " + stats["strBoost"] + ")";
-        } else if(elem.id == "end")
-        {
-            if(stats["endBoost"] > 24)
-            {
-                maxAdjust = 100 - (stats["endBoost"] - 24);
-                elem.setAttribute("max", maxAdjust);
-            } else
-            {
-                elem.setAttribute("max", 100);
-            };
-            stats["endBase"] = statValue;
-            boostValue = statValue + stats["endBoost"];
-            stats["endTotal"] = boostValue;
-            content.textContent = boostValue + " (" + statValue + " + " + stats["endBoost"] + ")";
-        } else if(elem.id == "agi")
-        {
-            if(stats["agiBoost"] > 24)
-            {
-                maxAdjust = 100 - (stats["agiBoost"] - 24);
-                elem.setAttribute("max", maxAdjust);
-            } else
-            {
-                elem.setAttribute("max", 100);
-            };
-            stats["agiBase"] = statValue;
-            boostValue = statValue + stats["agiBoost"];
-            stats["agiTotal"] = boostValue;
-            content.textContent = boostValue + " (" + statValue + " + " + stats["agiBoost"] + ")";
-        } else if(elem.id == "acc")
-        {
-            if(stats["accBoost"] > 24)
-            {
-                maxAdjust = 100 - (stats["accBoost"] - 24);
-                elem.setAttribute("max", maxAdjust);
-            } else
-            {
-                elem.setAttribute("max", 100);
-            };
-            stats["accBase"] = statValue;
-            boostValue = statValue + stats["accBoost"];
-            stats["accTotal"] = boostValue;
-            content.textContent = boostValue + " (" + statValue + " + " + stats["accBoost"] + ")";
-        } else if(elem.id == "crit")
-        {
-            if(stats["critBoost"] > 24)
-            {
-                maxAdjust = 100 - (stats["critBoost"] - 24);
-                elem.setAttribute("max", maxAdjust);
-            } else
-            {
-                elem.setAttribute("max", 100);
-            };
-            stats["critBase"] = statValue;
-            boostValue = statValue + stats["critBoost"];
-            stats["critTotal"] = boostValue;
-            content.textContent = boostValue + " (" + statValue + " + " + stats["critBoost"] + ")";
-        } else if(elem.id == "rel")
-        {
-            if(stats["relBoost"] > 24)
-            {
-                maxAdjust = 100 - (stats["relBoost"] - 24);
-                elem.setAttribute("max", maxAdjust);
-            } else
-            {
-                elem.setAttribute("max", 100);
-            };
-            stats["relBase"] = statValue;
-            boostValue = statValue + stats["relBoost"];
-            stats["relTotal"] = boostValue;
-            content.textContent = boostValue + " (" + statValue + " + " + stats["relBoost"] + ")";
-        } else if(elem.id == "melee")
-        {
-            if(profs["meleeBoost"] > 0)
-            {
-                maxAdjust = 120 - profs["meleeBoost"];
-                elem.setAttribute("max", maxAdjust);
-            } else
-            {
-                elem.setAttribute("max", 120);
-            };
-            profs["meleeBase"] = statValue;
-            boostValue = statValue + profs["meleeBoost"];
-            content.textContent = boostValue + " (" + statValue + " + " + profs["meleeBoost"] + ")";
-        } else if(elem.id == "pistol")
-        {
-            if(profs["pistolBoost"] > 0)
-            {
-                maxAdjust = 120 - profs["pistolBoost"];
-                elem.setAttribute("max", maxAdjust);
-            } else
-            {
-                elem.setAttribute("max", 120);
-            };
-            profs["pistolBase"] = statValue;
-            boostValue = statValue + profs["pistolBoost"];
-            content.textContent = boostValue + " (" + statValue + " + " + profs["pistolBoost"] + ")";
-        } else if(elem.id == "rifle")
-        {
-            if(profs["rifleBoost"] > 0)
-            {
-                maxAdjust = 120 - profs["rifleBoost"];
-                elem.setAttribute("max", maxAdjust);
-            } else
-            {
-                elem.setAttribute("max", 120);
-            };
-            profs["rifleBase"] = statValue;
-            boostValue = statValue + profs["rifleBoost"];
-            content.textContent = boostValue + " (" + statValue + " + " + profs["rifleBoost"] + ")";
-        } else if(elem.id == "shotgun")
-        {
-            if(profs["shotgunBoost"] > 0)
-            {
-                maxAdjust = 120 - profs["shotgunBoost"];
-                elem.setAttribute("max", maxAdjust);
-            } else
-            {
-                elem.setAttribute("max", 120);
-            };
-            profs["shotgunBase"] = statValue;
-            boostValue = statValue + profs["shotgunBoost"];
-            content.textContent = boostValue + " (" + statValue + " + " + profs["shotgunBoost"] + ")";
-        } else if(elem.id == "mg")
-        {
-            if(profs["mgBoost"] > 0)
-            {
-                maxAdjust = 120 - profs["mgBoost"];
-                elem.setAttribute("max", maxAdjust);
-            } else
-            {
-                elem.setAttribute("max", 120);
-            };
-            profs["mgBase"] = statValue;
-            boostValue = statValue + profs["mgBoost"];
-            content.textContent = boostValue + " (" + statValue + " + " + profs["mgBoost"] + ")";
-        } else if(elem.id == "explo")
-        {
-            if(profs["exploBoost"] > 0)
-            {
-                maxAdjust = 120 - profs["exploBoost"];
-                elem.setAttribute("max", maxAdjust);
-            } else
-            {
-                elem.setAttribute("max", 120);
-            };
-            profs["exploBase"] = statValue;
-            boostValue = statValue + profs["exploBoost"];
-            content.textContent = boostValue + " (" + statValue + " + " + profs["exploBoost"] + ")";
+            stat[i][0] = statValue;
+            boostValue = statValue + stat[i][1];
+            stat[i][3] = boostValue;
+            content.textContent = boostValue + " (" + statValue + " + " + stat[i][1] + ")";
         };
-        charInfo["statTotal"] = stats["strBase"] + stats["endBase"] + stats["agiBase"] + stats["accBase"] + stats["critBase"] + stats["relBase"];
+        let i2 = i - 6;
+        if(elem.id.includes("Prof"))
+        {
+            if(prof[i2][1] > 24)
+            {
+                maxAdjust = 124 - prof[i2][1];
+                elem.setAttribute("max", maxAdjust);
+            } else
+            {
+                elem.setAttribute("max", 100);
+            };
+            prof[i2][0] = statValue;
+            boostValue = statValue + prof[i2][1];
+            content.textContent = boostValue + " (" + statValue + " + " + prof[i2][1] + ")";
+        };
+        charInfo["statTotal"] = stat[0][0] + stat[1][0] + stat[2][0] + stat[3][0] + stat[4][0] + stat[5][0];
         charInfo["pointsReq"] = charInfo["statTotal"] - 150;
         if(50 >= charInfo["level"] > 0)
         {
@@ -1314,7 +1152,7 @@ function statEntry()
         {
             charInfo["pointsTotal"] = 0;
         };
-        charInfo["profTotal"] = profs["meleeBase"] + profs["pistolBase"] + profs["rifleBase"] + profs["shotgunBase"] + profs["mgBase"] + profs["exploBase"];
+        charInfo["profTotal"] = prof[0][0] + prof[1][0] + prof[2][0] + prof[3][0] + prof[4][0] + prof[5][0];
         charInfo["pointsPReq"] = charInfo["profTotal"] - 10;
         if(50 >= charInfo["level"] > 0)
         {
@@ -1377,7 +1215,7 @@ function statEntry()
     };
 };
 
-function bonusEntry()
+function bonusEntry() //The small saving - refactor secondary priority
 {
     for (let i = 0; i < numColl.length; i++)
     {
@@ -1735,15 +1573,15 @@ function bonusEntry()
             };
         };
     };
-    stats["strBoost"] = stats["strClass"];
-    stats["endBoost"] = stats["endClass"] + bonus["end"];
-    stats["agiBoost"] = stats["agiClass"] + bonus["agi"];
-    stats["accBoost"] = stats["accClass"] + bonus["w1Acc"] + bonus["w2Acc"] + bonus["w3Acc"];
-    stats["critBoost"] = stats["critClass"] + bonus["w1Crit"] + bonus["w2Crit"] + bonus["w3Crit"];
-    stats["relBoost"] = stats["relClass"] + bonus["w1Rel"] + bonus["w2Rel"] + bonus["w3Rel"];
+    stat[0][1] = stat[0][2];
+    stat[1][1] = stat[1][2] + bonus["end"];
+    stat[2][1] = stat[2][2] + bonus["agi"];
+    stat[3][1] = stat[3][2] + bonus["w1Acc"] + bonus["w2Acc"] + bonus["w3Acc"];
+    stat[4][1] = stat[4][2] + bonus["w1Crit"] + bonus["w2Crit"] + bonus["w3Crit"];
+    stat[5][1] = stat[5][2] + bonus["w1Rel"] + bonus["w2Rel"] + bonus["w3Rel"];
 };
 
-function boostUpdate() 
+function boostUpdate() //Rebekah's magnum opus refactor
 {
     for(let i = 0; i < boosts[3].length; i++)
     {
@@ -1762,6 +1600,7 @@ for(let i = 0; i < rangeColl.length; i++)
 {
     rangeColl[i].addEventListener("input", function()
     {
+        bonusEntry();
         selectUpdate();
         statEntry();
         displayUpdate();
@@ -1775,6 +1614,7 @@ for(let i = 0; i < numColl.length; i++)
         bonusEntry();
         boostUpdate();
         selectUpdate();
+        statEntry();
         displayUpdate();
     });
 };
