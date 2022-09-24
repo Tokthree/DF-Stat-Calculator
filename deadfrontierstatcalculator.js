@@ -30,7 +30,19 @@ let prof =
     [0, 0] //explo
 ];
 //Array needed
-let bonus = {end: 0, agi: 0, w1Acc: 0, w1Crit: 0, w1Rel: 0, w2Acc: 0, w2Crit: 0, w2Rel: 0, w3Acc: 0, w3Crit: 0, w3Rel: 0,};
+let aBonus =
+[ //agi, end
+    0, 0
+];
+let wBonus =
+[ //acc, rel, crit
+    [0, 0, 0], //w1
+    [0, 0, 0], //w2
+    [0, 0, 0] //w3
+];
+/*
+let bonus = {end: 0, agi: 0, w1Acc: 0, w1Crit: 0, w1Rel: 0, w2Acc: 0, w2Crit: 0, w2Rel: 0, w3Acc: 0, w3Crit: 0, w3Rel: 0};
+*/
 //Probably not worth an array
 let armor = {durability: 0, absoption: 0};
 //Array needed
@@ -330,7 +342,7 @@ function buildUpdate() //Savings maybe? - refactor tertiary priority
     };
 };
 
-function selectUpdate() //Refactored to Rebekah levels
+function selectUpdate() //Refactored to Rebekah levels - Burst dps calculation is way wrong
 {
     for(let i = 0; i < selectColl.length; i++)
     { 
@@ -349,12 +361,12 @@ function selectUpdate() //Refactored to Rebekah levels
             prof[3][1] = parseInt(elem.options[elem.selectedIndex].dataset.shotgun);
             prof[4][1] = parseInt(elem.options[elem.selectedIndex].dataset.mg);
             prof[5][1] = parseInt(elem.options[elem.selectedIndex].dataset.explo);
-            stat[0][1] = stat[0][2];
-            stat[1][1] = stat[1][2] + bonus["end"];
-            stat[2][1] = stat[2][2] + bonus["agi"];
-            stat[3][1] = stat[3][2] + bonus["w1Acc"] + bonus["w2Acc"] + bonus["w3Acc"];
-            stat[4][1] = stat[4][2] + bonus["w1Crit"] + bonus["w2Crit"] + bonus["w3Crit"];
-            stat[5][1] = stat[5][2] + bonus["w1Rel"] + bonus["w2Rel"] + bonus["w3Rel"];
+            stat[0][1] = stat[0][2]; //str
+            stat[1][1] = stat[1][2] + aBonus[1]; //end
+            stat[2][1] = stat[2][2] + aBonus[0]; //agi
+            stat[3][1] = stat[3][2] + wBonus[0][0] + wBonus[1][0] + wBonus[2][0]; //acc
+            stat[4][1] = stat[4][2] + wBonus[0][2] + wBonus[1][2] + wBonus[2][2]; //crit
+            stat[5][1] = stat[5][2] + wBonus[0][1] + wBonus[1][1] + wBonus[2][1]; //rel
         } else if(elem.id == "armorSelect")
         {
             armor["durability"] = parseInt(elem.options[elem.selectedIndex].dataset.durability);
@@ -546,7 +558,7 @@ function impUpdate() //Refactored to Rebekah levels
     };
 }
 
-function displayUpdate() //The big saving - refactor priority
+function displayUpdate() //The big saving - refactor priority - Reload duration being updated one step behind equipment bonus
 {
     const healthSelector = document.getElementById('healthValue');
     const walkSelector = document.getElementById('walkValue');
@@ -662,83 +674,83 @@ function displayUpdate() //The big saving - refactor priority
             w1AccuracySelector.textContent = "Skill Issue";
         } else if(w1["accuracy"] == "1")
         {
-            if(stats["accTotal"] < 124)
+            if(stat[3][3] < 124)
             {
                 w1AccuracySelector.style.backgroundColor = "lightcoral";
                 w1AccuracySelector.textContent = "Inaccurate";
-            } else if(stats["accTotal"] >= 124)
+            } else if(stat[3][3] >= 124)
             {
                 w1AccuracySelector.style.backgroundColor = "khaki";
                 w1AccuracySelector.textContent = "Reliable Onscreen";
             };
         } else if(w1["accuracy"] == "2")
         {
-            if(stats["accTotal"] < 100)
+            if(stat[3][3] < 100)
             {
                 w1AccuracySelector.style.backgroundColor = "lightcoral";
                 w1AccuracySelector.textContent = "Inaccurate";
-            } else if(stats["accTotal"] < 124)
+            } else if(stat[3][3] < 124)
             {
                 w1AccuracySelector.style.backgroundColor = "khaki";
                 w1AccuracySelector.textContent = "Reliable Onscreen";
-            } else if(stats["accTotal"] >= 124)
+            } else if(stat[3][3] >= 124)
             {
                 w1AccuracySelector.style.backgroundColor = "lightgreen";
                 w1AccuracySelector.textContent = "Reliable Offscreen";
             };
         } else if(w1["accuracy"] == "3")
         {
-            if(stats["accTotal"] < 80)
+            if(stat[3][3] < 80)
             {
                 w1AccuracySelector.style.backgroundColor = "lightcoral";
                 w1AccuracySelector.textContent = "Inaccurate";
-            } else if(stats["accTotal"] < 100)
+            } else if(stat[3][3] < 100)
             {
                 w1AccuracySelector.style.backgroundColor = "coral";
                 w1AccuracySelector.textContent = "Reliable Onscreen";
-            } else if(stats["accTotal"] < 119)
+            } else if(stat[3][3] < 119)
             {
                 w1AccuracySelector.style.backgroundColor = "khaki";
                 w1AccuracySelector.textContent = "Reliable Offscreen";
-            } else if(stats["accTotal"] >= 119)
+            } else if(stat[3][3] >= 119)
             {
                 w1AccuracySelector.style.backgroundColor = "lightgreen";
                 w1AccuracySelector.textContent = "Pinpoint";
             };
         } else if(w1["accuracy"] == "4")
         {
-            if(stats["accTotal"] < 60)
+            if(stat[3][3] < 60)
             {
                 w1AccuracySelector.style.backgroundColor = "lightcoral";
                 w1AccuracySelector.textContent = "Inaccurate";
-            } else if(stats["accTotal"] < 70)
+            } else if(stat[3][3] < 70)
             {
                 w1AccuracySelector.style.backgroundColor = "coral";
                 w1AccuracySelector.textContent = "Reliable Onscreen";
-            } else if(stats["accTotal"] < 79)
+            } else if(stat[3][3] < 79)
             {
                 w1AccuracySelector.style.backgroundColor = "khaki";
                 w1AccuracySelector.textContent = "Reliable Offscreen";
-            } else if(stats["accTotal"] >= 79)
+            } else if(stat[3][3] >= 79)
             {
                 w1AccuracySelector.style.backgroundColor = "lightgreen";
                 w1AccuracySelector.textContent = "Pinpoint";
             };
         } else if(w1["accuracy"] == "5")
         {
-            if(stats["accTotal"] < 35)
+            if(stat[3][3] < 35)
             {
                 w1AccuracySelector.style.backgroundColor = "lightcoral";
                 w1AccuracySelector.textContent = "Inaccurate";
-            } else if(stats["accTotal"] < 40)
+            } else if(stat[3][3] < 40)
             {
                 w1AccuracySelector.style.backgroundColor = "coral";
                 w1AccuracySelector.textContent = "Reliable Onscreen";
-            } else if(stats["accTotal"] < 44)
+            } else if(stat[3][3] < 44)
             {
                 w1AccuracySelector.style.backgroundColor = "khaki";
                 w1AccuracySelector.textContent = "Reliable Offscreen";
-            } else if(stats["accTotal"] >= 44)
+            } else if(stat[3][3] >= 44)
             {
                 w1AccuracySelector.style.backgroundColor = "lightgreen";
                 w1AccuracySelector.textContent = "Pinpoint";
@@ -811,83 +823,83 @@ function displayUpdate() //The big saving - refactor priority
             w2AccuracySelector.textContent = "Skill Issue";
         } else if(w2["accuracy"] == "1")
         {
-            if(stats["accTotal"] < 124)
+            if(stat[3][3] < 124)
             {
                 w2AccuracySelector.style.backgroundColor = "lightcoral";
                 w2AccuracySelector.textContent = "Inaccurate";
-            } else if(stats["accTotal"] >= 124)
+            } else if(stat[3][3] >= 124)
             {
                 w2AccuracySelector.style.backgroundColor = "khaki";
                 w2AccuracySelector.textContent = "Reliable Onscreen";
             };
         } else if(w2["accuracy"] == "2")
         {
-            if(stats["accTotal"] < 100)
+            if(stat[3][3] < 100)
             {
                 w2AccuracySelector.style.backgroundColor = "lightcoral";
                 w2AccuracySelector.textContent = "Inaccurate";
-            } else if(stats["accTotal"] < 124)
+            } else if(stat[3][3] < 124)
             {
                 w2AccuracySelector.style.backgroundColor = "khaki";
                 w2AccuracySelector.textContent = "Reliable Onscreen";
-            } else if(stats["accTotal"] >= 124)
+            } else if(stat[3][3] >= 124)
             {
                 w2AccuracySelector.style.backgroundColor = "lightgreen";
                 w2AccuracySelector.textContent = "Reliable Offscreen";
             };
         } else if(w2["accuracy"] == "3")
         {
-            if(stats["accTotal"] < 80)
+            if(stat[3][3] < 80)
             {
                 w2AccuracySelector.style.backgroundColor = "lightcoral";
                 w2AccuracySelector.textContent = "Inaccurate";
-            } else if(stats["accTotal"] < 100)
+            } else if(stat[3][3] < 100)
             {
                 w2AccuracySelector.style.backgroundColor = "coral";
                 w2AccuracySelector.textContent = "Reliable Onscreen";
-            } else if(stats["accTotal"] < 119)
+            } else if(stat[3][3] < 119)
             {
                 w2AccuracySelector.style.backgroundColor = "khaki";
                 w2AccuracySelector.textContent = "Reliable Offscreen";
-            } else if(stats["accTotal"] >= 119)
+            } else if(stat[3][3] >= 119)
             {
                 w2AccuracySelector.style.backgroundColor = "lightgreen";
                 w2AccuracySelector.textContent = "Pinpoint";
             };
         } else if(w2["accuracy"] == "4")
         {
-            if(stats["accTotal"] < 60)
+            if(stat[3][3] < 60)
             {
                 w2AccuracySelector.style.backgroundColor = "lightcoral";
                 w2AccuracySelector.textContent = "Inaccurate";
-            } else if(stats["accTotal"] < 70)
+            } else if(stat[3][3] < 70)
             {
                 w2AccuracySelector.style.backgroundColor = "coral";
                 w2AccuracySelector.textContent = "Reliable Onscreen";
-            } else if(stats["accTotal"] < 79)
+            } else if(stat[3][3] < 79)
             {
                 w2AccuracySelector.style.backgroundColor = "khaki";
                 w2AccuracySelector.textContent = "Reliable Offscreen";
-            } else if(stats["accTotal"] >= 79)
+            } else if(stat[3][3] >= 79)
             {
                 w2AccuracySelector.style.backgroundColor = "lightgreen";
                 w2AccuracySelector.textContent = "Pinpoint";
             };
         } else if(w2["accuracy"] == "5")
         {
-            if(stats["accTotal"] < 35)
+            if(stat[3][3] < 35)
             {
                 w2AccuracySelector.style.backgroundColor = "lightcoral";
                 w2AccuracySelector.textContent = "Inaccurate";
-            } else if(stats["accTotal"] < 40)
+            } else if(stat[3][3] < 40)
             {
                 w2AccuracySelector.style.backgroundColor = "coral";
                 w2AccuracySelector.textContent = "Reliable Onscreen";
-            } else if(stats["accTotal"] < 44)
+            } else if(stat[3][3] < 44)
             {
                 w2AccuracySelector.style.backgroundColor = "khaki";
                 w2AccuracySelector.textContent = "Reliable Offscreen";
-            } else if(stats["accTotal"] >= 44)
+            } else if(stat[3][3] >= 44)
             {
                 w2AccuracySelector.style.backgroundColor = "lightgreen";
                 w2AccuracySelector.textContent = "Pinpoint";
@@ -960,83 +972,83 @@ function displayUpdate() //The big saving - refactor priority
             w3AccuracySelector.textContent = "Skill Issue";
         } else if(w3["accuracy"] == "1")
         {
-            if(stats["accTotal"] < 124)
+            if(stat[3][3] < 124)
             {
                 w3AccuracySelector.style.backgroundColor = "lightcoral";
                 w3AccuracySelector.textContent = "Inaccurate";
-            } else if(stats["accTotal"] >= 124)
+            } else if(stat[3][3] >= 124)
             {
                 w3AccuracySelector.style.backgroundColor = "khaki";
                 w3AccuracySelector.textContent = "Reliable Onscreen";
             };
         } else if(w3["accuracy"] == "2")
         {
-            if(stats["accTotal"] < 100)
+            if(stat[3][3] < 100)
             {
                 w3AccuracySelector.style.backgroundColor = "lightcoral";
                 w3AccuracySelector.textContent = "Inaccurate";
-            } else if(stats["accTotal"] < 124)
+            } else if(stat[3][3] < 124)
             {
                 w3AccuracySelector.style.backgroundColor = "khaki";
                 w3AccuracySelector.textContent = "Reliable Onscreen";
-            } else if(stats["accTotal"] >= 124)
+            } else if(stat[3][3] >= 124)
             {
                 w3AccuracySelector.style.backgroundColor = "lightgreen";
                 w3AccuracySelector.textContent = "Reliable Offscreen";
             };
         } else if(w3["accuracy"] == "3")
         {
-            if(stats["accTotal"] < 80)
+            if(stat[3][3] < 80)
             {
                 w3AccuracySelector.style.backgroundColor = "lightcoral";
                 w3AccuracySelector.textContent = "Inaccurate";
-            } else if(stats["accTotal"] < 100)
+            } else if(stat[3][3] < 100)
             {
                 w3AccuracySelector.style.backgroundColor = "coral";
                 w3AccuracySelector.textContent = "Reliable Onscreen";
-            } else if(stats["accTotal"] < 119)
+            } else if(stat[3][3] < 119)
             {
                 w3AccuracySelector.style.backgroundColor = "khaki";
                 w3AccuracySelector.textContent = "Reliable Offscreen";
-            } else if(stats["accTotal"] >= 119)
+            } else if(stat[3][3] >= 119)
             {
                 w3AccuracySelector.style.backgroundColor = "lightgreen";
                 w3AccuracySelector.textContent = "Pinpoint";
             };
         } else if(w3["accuracy"] == "4")
         {
-            if(stats["accTotal"] < 60)
+            if(stat[3][3] < 60)
             {
                 w3AccuracySelector.style.backgroundColor = "lightcoral";
                 w3AccuracySelector.textContent = "Inaccurate";
-            } else if(stats["accTotal"] < 70)
+            } else if(stat[3][3] < 70)
             {
                 w3AccuracySelector.style.backgroundColor = "coral";
                 w3AccuracySelector.textContent = "Reliable Onscreen";
-            } else if(stats["accTotal"] < 79)
+            } else if(stat[3][3] < 79)
             {
                 w3AccuracySelector.style.backgroundColor = "khaki";
                 w3AccuracySelector.textContent = "Reliable Offscreen";
-            } else if(stats["accTotal"] >= 79)
+            } else if(stat[3][3] >= 79)
             {
                 w3AccuracySelector.style.backgroundColor = "lightgreen";
                 w3AccuracySelector.textContent = "Pinpoint";
             };
         } else if(w3["accuracy"] == "5")
         {
-            if(stats["accTotal"] < 35)
+            if(stat[3][3] < 35)
             {
                 w3AccuracySelector.style.backgroundColor = "lightcoral";
                 w3AccuracySelector.textContent = "Inaccurate";
-            } else if(stats["accTotal"] < 40)
+            } else if(stat[3][3] < 40)
             {
                 w3AccuracySelector.style.backgroundColor = "coral";
                 w3AccuracySelector.textContent = "Reliable Onscreen";
-            } else if(stats["accTotal"] < 44)
+            } else if(stat[3][3] < 44)
             {
                 w3AccuracySelector.style.backgroundColor = "khaki";
                 w3AccuracySelector.textContent = "Reliable Offscreen";
-            } else if(stats["accTotal"] >= 44)
+            } else if(stat[3][3] >= 44)
             {
                 w3AccuracySelector.style.backgroundColor = "lightgreen";
                 w3AccuracySelector.textContent = "Pinpoint";
@@ -1058,7 +1070,6 @@ function displayUpdate() //The big saving - refactor priority
             w3PDphSelector.textContent = "No Pellets";
             w3PelletSelector.textContent = "No Pellets";
             w3SpreadSelector.textContent = "No Pellets";
-            w3ReloadSelector.textContent = "Doesn't Reload";
             w3ExploDphSelector.textContent = w3["exploDph"].toFixed(2)
             w3ExploDpsSelector.textContent = w3["exploDps"].toFixed(2)
         } else if(w3["cleave"] > 0)
@@ -1066,6 +1077,7 @@ function displayUpdate() //The big saving - refactor priority
             w3PDphSelector.textContent = "No Pellets";
             w3PelletSelector.textContent = "No Pellets";
             w3SpreadSelector.textContent = "No Pellets";
+            w3ReloadSelector.textContent = "Doesn't Reload";
             w3CleaveDphSelector.textContent = w3["cleaveDph"].toFixed(2);
             w3CleaveCritDphSelector.textContent = (w3["cleaveDph"] * 5).toFixed(2);
             w3CleaveDpsSelector.textContent = w3["cleaveDps"].toFixed(2);
@@ -1215,7 +1227,7 @@ function statEntry() //Refactored to Rebekah levels
     };
 };
 
-function bonusEntry() //The small saving - refactor secondary priority
+function bonusEntry() //Refactored to Rebekah levels
 {
     for (let i = 0; i < numColl.length; i++)
     {
@@ -1227,14 +1239,14 @@ function bonusEntry() //The small saving - refactor secondary priority
         };
         if(elem.id == "level")
         {
-            if(inputValue < 1)
+            if(inputValue < elem.min)
             {
-                elem.value = 1;
-                charInfo["level"] = 1;
-            } else if(inputValue > 325)
+                elem.value = parseInt(elem.min);
+                charInfo["level"] = parseInt(elem.min);
+            } else if(inputValue > elem.max)
             {
-                elem.value = 325;
-                charInfo["level"] = 325;
+                elem.value = parseInt(elem.max);
+                charInfo["level"] = parseInt(elem.max);
             } else
             {
                 charInfo["level"] = inputValue;
@@ -1261,324 +1273,93 @@ function bonusEntry() //The small saving - refactor secondary priority
             let openSlots = 0;
             if(impLock)
             {
-              for(i = 0; i < impSlots.length; i++)
+              for(let i2 = 0; i2 < impSlots.length; i2++)
               {
-                impSlots[i].disabled = true;
+                impSlots[i2].disabled = true;
               };
-              for(i = 0; i < slotLevel.length; i++)
+              for(let i2 = 0; i2 < slotLevel.length; i2++)
               {
-                if(charInfo["level"] >= slotLevel[i])
+                if(charInfo["level"] >= slotLevel[i2])
                 {
-                  openSlots = i + 1;
+                  openSlots = i2 + 1;
                 };
               };
-              for(i = 0; i < openSlots; i++)
+              for(let i2 = 0; i2 < openSlots; i2++)
               {
-                impSlots[i].disabled = false;
+                impSlots[i2].disabled = false;
               };
             };
-        } else if(elem.id == "armAgi")
+        } else if(elem.id.includes("arm"))
         {
+            let i2 = i - 1
+
             if(inputValue > 24)
             {
                 elem.value = 24;
-                bonus["agi"] = 24;
+                aBonus[i2] = 24;
             } else if(inputValue < 0)
             {
                 elem.value = 0;
-                bonus["agi"] = 0;
+                aBonus[i2] = 0;
             } else
             {
-                bonus["agi"] = inputValue;
+                aBonus[i2] = inputValue;
             };
-        } else if(elem.id == "armEnd")
+        } else if(elem.id.includes("w"))
         {
-            if(inputValue > 24)
+            let i2 = 0;
+            let i3 = 0;
+            if(i >= 9)
             {
-                elem.value = 24;
-                bonus["end"] = 24;
-            } else if(inputValue < 0)
+                i2 = i - 9;
+                i3 = 2;
+            } else if(i >= 6)
             {
-                elem.value = 0;
-                bonus["end"] = 0;
-            } else
+                i2 = i - 6;
+                i3 = 1;
+            } else if(i >= 3)
             {
-                bonus["end"] = inputValue;
+                i2 = i - 3;
             };
-        } else if(elem.id == "w1Acc")
+            if(inputValue > elem.max)
+            {
+                elem.value = parseInt(elem.max);
+                inputValue = parseInt(elem.max);
+            } else if(inputValue < elem.min)
+            {
+                elem.value = parseInt(elem.min);
+                inputValue = parseInt(elem.min);
+            };
+            wBonus[i3][i2] = inputValue;
+            console.log(wBonus);
+        } else if(elem.id.includes("clan"))
         {
-            if(inputValue > 8)
+            let i2 = 0;
+            if(i >= 15) //Remove if clan speed boost becomes public, replace let i2 = 0; with let i2 = i - 12;
             {
-                elem.value = 8;
-                bonus["w1Acc"] = 8;
-            } else if(inputValue < 0)
-            {
-                elem.value = 0;
-                bonus["w1Acc"] = 0;
+                i2 = i - 11;
             } else
             {
-                bonus["w1Acc"] = inputValue;
+                i2 = i - 12;
             };
-        } else if(elem.id == "w1Rel")
-        {
-            if(inputValue > 8)
+            if(inputValue > elem.max)
             {
-                elem.value = 8;
-                bonus["w1Rel"] = 8;
-            } else if(inputValue < 0)
+                elem.value = parseInt(elem.max);
+                inputValue = parseInt(elem.max)
+            } else if(inputValue < elem.min)
             {
-                elem.value = 0;
-                bonus["w1Rel"] = 0;
-            } else
-            {
-                bonus["w1Rel"] = inputValue;
+                elem.value = parseInt(elem.min);
+                inputValue = parseInt(elem.min)
             };
-        } else if(elem.id == "w1Crit")
-        {
-            if(inputValue > 8)
-            {
-                elem.value = 8;
-                bonus["w1Crit"] = 8;
-            } else if(inputValue < 0)
-            {
-                elem.value = 0;
-                bonus["w1Crit"] = 0;
-            } else
-            {
-                bonus["w1Crit"] = inputValue;
-            };
-        } else if(elem.id == "w2Acc")
-        {
-            if(inputValue > 8)
-            {
-                elem.value = 8;
-                bonus["w2Acc"] = 8;
-            } else if(inputValue < 0)
-            {
-                elem.value = 0;
-                bonus["w2Acc"] = 0;
-            } else
-            {
-                bonus["w2Acc"] = inputValue;
-            };
-        } else if(elem.id == "w2Rel")
-        {
-            if(inputValue > 8)
-            {
-                elem.value = 8;
-                bonus["w2Rel"] = 8;
-            } else if(inputValue < 0)
-            {
-                elem.value = 0;
-                bonus["w2Rel"] = 0;
-            } else
-            {
-                bonus["w2Rel"] = inputValue;
-            };
-        } else if(elem.id == "w2Crit")
-        {
-            if(inputValue > 8)
-            {
-                elem.value = 8;
-                bonus["w2Crit"] = 8;
-            } else if(inputValue < 0)
-            {
-                elem.value = 0;
-                bonus["w2Crit"] = 0;
-            } else
-            {
-                bonus["w2Crit"] = inputValue;
-            };
-        } else if(elem.id == "w3Acc")
-        {
-            if(inputValue > 8)
-            {
-                elem.value = 8;
-                bonus["w3Acc"] = 8;
-            } else if(inputValue < 0)
-            {
-                elem.value = 0;
-                bonus["w3Acc"] = 0;
-            } else
-            {
-                bonus["w3Acc"] = inputValue;
-            };
-        } else if(elem.id == "w3Rel")
-        {
-            if(inputValue > 8)
-            {
-                elem.value = 8;
-                bonus["w3Rel"] = 8;
-            } else if(inputValue < 0)
-            {
-                elem.value = 0;
-                bonus["w3Rel"] = 0;
-            } else
-            {
-                bonus["w3Rel"] = inputValue;
-            };
-        } else if(elem.id == "w3Crit")
-        {
-            if(inputValue > 8)
-            {
-                elem.value = 8;
-                bonus["w3Crit"] = 8;
-            } else if(inputValue < 0)
-            {
-                elem.value = 0;
-                bonus["w3Crit"] = 0;
-            } else
-            {
-                bonus["w3Crit"] = inputValue;
-            };
-        } else if(elem.id == "clanEXP")
-        {
-            if(inputValue > 10)
-            {
-                elem.value = 10;
-                boosts[2][0] = 10
-            } else if(inputValue < 0)
-            {
-                elem.value = 0;
-                boosts[2][0] = 0;
-            } else
-            {
-                boosts[2][0] = inputValue;
-            };
-        } else if(elem.id == "clanPVP")
-        {
-            if(inputValue > 10)
-            {
-                elem.value = 10;
-                boosts[2][1] = 10
-            } else if(inputValue < 0)
-            {
-                elem.value = 0;
-                boosts[2][1] = 0;
-            } else
-            {
-                boosts[2][1] = inputValue;
-            };
-        } else if(elem.id == "clanDamage")
-        {
-            if(inputValue > 10)
-            {
-                elem.value = 10;
-                boosts[2][2] = 10
-            } else if(inputValue < 0)
-            {
-                elem.value = 0;
-                boosts[2][2] = 0;
-            } else
-            {
-                boosts[2][2] = inputValue;
-            };
-        } else if(elem.id == "clanIDR")
-        {
-            if(inputValue > 10)
-            {
-                elem.value = 10;
-                boosts[2][4] = 10
-            } else if(inputValue < 0)
-            {
-                elem.value = 0;
-                boosts[2][4] = 0;
-            } else
-            {
-                boosts[2][4] = inputValue;
-            };
-        } else if(elem.id == "clanWeapon")
-        {
-            if(inputValue > 30)
-            {
-                elem.value = 30;
-                boosts[2][5] = 30
-            } else if(inputValue < 0)
-            {
-                elem.value = 0;
-                boosts[2][5] = 0;
-            } else
-            {
-                boosts[2][5] = inputValue;
-            };
-        } else if(elem.id == "clanArmor")
-        {
-            if(inputValue > 30)
-            {
-                elem.value = 30;
-                boosts[2][6] = 30
-            } else if(inputValue < 0)
-            {
-                elem.value = 0;
-                boosts[2][6] = 0;
-            } else
-            {
-                boosts[2][6] = inputValue;
-            };
-        } else if(elem.id == "clanCash")
-        {
-            if(inputValue > 50)
-            {
-                elem.value = 50;
-                boosts[2][7] = 50
-            } else if(inputValue < 0)
-            {
-                elem.value = 0;
-                boosts[2][7] = 0;
-            } else
-            {
-                boosts[2][7] = inputValue;
-            };
-        } else if(elem.id == "clanAmmo")
-        {
-            if(inputValue > 50)
-            {
-                elem.value = 50;
-                boosts[2][8] = 50
-            } else if(inputValue < 0)
-            {
-                elem.value = 0;
-                boosts[2][8] = 0;
-            } else
-            {
-                boosts[2][8] = inputValue;
-            };
-        } else if(elem.id == "clanSSpeed")
-        {
-            if(inputValue > 15)
-            {
-                elem.value = 15;
-                boosts[2][9] = 15
-            } else if(inputValue < 0)
-            {
-                elem.value = 0;
-                boosts[2][9] = 0;
-            } else
-            {
-                boosts[2][9] = inputValue;
-            };
-        } else if(elem.id == "clanSpots")
-        {
-            if(inputValue > 10)
-            {
-                elem.value = 10;
-                boosts[2][10] = 10
-            } else if(inputValue < 0)
-            {
-                elem.value = 0;
-                boosts[2][10] = 0;
-            } else
-            {
-                boosts[2][10] = inputValue;
-            };
+            boosts[2][i2] = inputValue;
         };
     };
-    stat[0][1] = stat[0][2];
-    stat[1][1] = stat[1][2] + bonus["end"];
-    stat[2][1] = stat[2][2] + bonus["agi"];
-    stat[3][1] = stat[3][2] + bonus["w1Acc"] + bonus["w2Acc"] + bonus["w3Acc"];
-    stat[4][1] = stat[4][2] + bonus["w1Crit"] + bonus["w2Crit"] + bonus["w3Crit"];
-    stat[5][1] = stat[5][2] + bonus["w1Rel"] + bonus["w2Rel"] + bonus["w3Rel"];
+    stat[0][1] = stat[0][2]; //str
+    stat[1][1] = stat[1][2] + aBonus[1]; //end
+    stat[2][1] = stat[2][2] + aBonus[0]; //agi
+    stat[3][1] = stat[3][2] + wBonus[0][0] + wBonus[1][0] + wBonus[2][0]; //acc
+    stat[4][1] = stat[4][2] + wBonus[0][2] + wBonus[1][2] + wBonus[2][2]; //crit
+    stat[5][1] = stat[5][2] + wBonus[0][1] + wBonus[1][1] + wBonus[2][1]; //rel
 };
 
 function boostUpdate() //Rebekah's magnum opus refactor
