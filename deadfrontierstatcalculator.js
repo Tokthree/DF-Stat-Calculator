@@ -616,173 +616,173 @@ function armorDisplay() //Part of above refactor
     };
 };
 
-function weaponDisplay() //Part of above refactor, needs stress testing. Need to reset values when "Please Select an Option" chosen.
+function weaponDisplay() //Part of above refactor, needs stress testing, re-refactored, should be more efficient.
 {
-    const wColl = document.querySelectorAll("p[id^='w']")
-    const w1 = document.querySelectorAll("p[id^='w1Val']")
-    const w2 = document.querySelectorAll("p[id^='w2Val']")
-    const w3 = document.querySelectorAll("p[id^='w3Val']")
+    const wColl =
+    [
+        document.querySelectorAll("p[id^='w1Val']"),
+        document.querySelectorAll("p[id^='w2Val']"),
+        document.querySelectorAll("p[id^='w3Val']")
+    ];
     for(let i = 0; i < wColl.length; i++)
     {
-        let elem = wColl[i];
-        let coll;
-        let w;
-        if(elem.id.includes("w1") && document.getElementById("weaponSelect1").value != "Please Select an Option")
+        if(weapon[i][2] == true) //Burst dph
         {
-            coll = w1;
-            w = weapon[0];
-        } else if(elem.id.includes("w2") && document.getElementById("weaponSelect2").value != "Please Select an Option")
-        {
-            coll = w2;
-            w = weapon[1];
-        } else if(elem.id.includes("w3") && document.getElementById("weaponSelect3").value != "Please Select an Option")
-        {
-            coll = w3;
-            w = weapon[2];
-        } else
-        {
-            break;
-        };
-        if(w[2] == true) //Burst dph
-        {
-            coll[0].textContent = (w[8] * 0.12).toFixed(2) + " + " + (w[8] * 0.28).toFixed(2) + " + " + (w[8] * 0.60).toFixed(2);
+            wColl[i][0].textContent = (weapon[i][8] * 0.12).toFixed(2) + " + " + (weapon[i][8] * 0.28).toFixed(2) + " + " + (weapon[i][8] * 0.60).toFixed(2);
         } else //dph
         {
-            coll[0].textContent = w[8].toFixed(2);
+            wColl[i][0].textContent = weapon[i][8].toFixed(2);
         };
-        coll[1].textContent = w[9].toFixed(2); //exploDph
-        coll[2].textContent = w[10].toFixed(2); //cleaveDph
-        coll[3].textContent = w[7].toFixed(2); //pDph
-        coll[4].textContent = w[5]; //pellets
-        coll[5].textContent = w[6]; //cleave
-        if(w[0] != true) //Spread check
+        wColl[i][1].textContent = weapon[i][9].toFixed(2); //exploDph
+        wColl[i][2].textContent = weapon[i][10].toFixed(2); //cleaveDph
+        wColl[i][3].textContent = weapon[i][7].toFixed(2); //pDph
+        wColl[i][4].textContent = weapon[i][5]; //pellets
+        wColl[i][5].textContent = weapon[i][6]; //cleave
+        if(weapon[i][0] != true) //Spread check
         {
-            if(w[2] == true) //Burst critDph
+            if(weapon[i][2] == true) //Burst critDph
             {
-                coll[6].textContent = ((w[8] * 0.12) * 5).toFixed(2) + " + " + ((w[8] * 0.28) * 5).toFixed(2) + " + " + ((w[8] * 0.60) * 5).toFixed(2);
+                wColl[i][6].textContent = ((weapon[i][8] * 0.12) * 5).toFixed(2) + " + " + ((weapon[i][8] * 0.28) * 5).toFixed(2) + " + " + ((weapon[i][8] * 0.60) * 5).toFixed(2);
             } else //critDph
             {
-                coll[6].textContent = w[8] * 5;
+                wColl[i][6].textContent = weapon[i][8] * 5;
             };
-            coll[7].textContent = w[10] * 5; //cleaveCrit
-            if(w[12] < 1) //critPattern
+            wColl[i][7].textContent = weapon[i][10] * 5; //cleaveCrit
+            if(weapon[i][12] < 1) //critPattern
             {
-                coll[8].textContent = w[11] + " NC";
+                wColl[i][8].textContent = weapon[i][11] + " NC";
             } else
             {
-                coll[8].textContent = w[11] + " NC > " + w[12] + " C";
+                wColl[i][8].textContent = weapon[i][11] + " NC > " + weapon[i][12] + " C";
             };
-        } else if(w[3] == true) //Heat Pit check
+        } else if(weapon[i][3] == true) //Heat Pit check
         {
-            coll[6].textContent = w[8] * 5;
+            wColl[i][6].textContent = weapon[i][8] * 5;
         };
-        coll[9].textContent = w[16].toFixed(2); //dps
-        coll[10].textContent = w[17].toFixed(2); //exploDps
-        coll[11].textContent = w[18].toFixed(2); //cleaveDps
-        coll[12].textContent = w[15] + "%"; //pen
-        coll[13].textContent = w[13].toFixed(2) + " s"; //reload
-        if(w[14] != "melee") //accuracy
+        wColl[i][9].textContent = weapon[i][16].toFixed(2); //dps
+        wColl[i][10].textContent = weapon[i][17].toFixed(2); //exploDps
+        wColl[i][11].textContent = weapon[i][18].toFixed(2); //cleaveDps
+        wColl[i][12].textContent = weapon[i][15] + "%"; //pen
+        wColl[i][13].textContent = weapon[i][13].toFixed(2) + " s"; //reload
+        if(weapon[i][14] != "melee") //accuracy
         {
-            if(w[14] == "Skill Issue")
+            if(weapon[i][14] == "Skill Issue")
             {
-                coll[14].textContent = w[14];
-            } else if(w[14] == "1")
+                wColl[i][14].textContent = weapon[i][14];
+            } else if(weapon[i][14] == "1")
             {
                 if(stat[3][3] < 124)
                 {
-                    coll[14].style.backgroundColor = "lightcoral";
-                    coll[14].textContent = "Inaccurate";
+                    wColl[i][14].style.backgroundColor = "lightcoral";
+                    wColl[i][14].textContent = "Inaccurate";
                 } else if(stat[3][3] >= 124)
                 {
-                    coll[14].style.backgroundColor = "khaki";
-                    coll[14].textContent = "Reliable Onscreen";
+                    wColl[i][14].style.backgroundColor = "khaki";
+                    wColl[i][14].textContent = "Reliable Onscreen";
                 };
-            } else if(w[14] == "2")
+            } else if(weapon[i][14] == "2")
             {
                 if(stat[3][3] < 100)
                 {
-                    coll[14].style.backgroundColor = "lightcoral";
-                    coll[14].textContent = "Inaccurate";
+                    wColl[i][14].style.backgroundColor = "lightcoral";
+                    wColl[i][14].textContent = "Inaccurate";
                 } else if(stat[3][3] < 124)
                 {
-                    coll[14].style.backgroundColor = "khaki";
-                    coll[14].textContent = "Reliable Onscreen";
+                    wColl[i][14].style.backgroundColor = "khaki";
+                    wColl[i][14].textContent = "Reliable Onscreen";
                 } else if(stat[3][3] >= 124)
                 {
-                    coll[14].style.backgroundColor = "lightgreen";
-                    coll[14].textContent = "Reliable Offscreen";
+                    wColl[i][14].style.backgroundColor = "lightgreen";
+                    wColl[i][14].textContent = "Reliable Offscreen";
                 };
-            } else if(w[14] == "3")
+            } else if(weapon[i][14] == "3")
             {
                 if(stat[3][3] < 80)
                 {
-                    coll[14].style.backgroundColor = "lightcoral";
-                    coll[14].textContent = "Inaccurate";
+                    wColl[i][14].style.backgroundColor = "lightcoral";
+                    wColl[i][14].textContent = "Inaccurate";
                 } else if(stat[3][3] < 100)
                 {
-                    coll[14].style.backgroundColor = "coral";
-                    coll[14].textContent = "Reliable Onscreen";
+                    wColl[i][14].style.backgroundColor = "coral";
+                    wColl[i][14].textContent = "Reliable Onscreen";
                 } else if(stat[3][3] < 119)
                 {
-                    coll[14].style.backgroundColor = "khaki";
-                    coll[14].textContent = "Reliable Offscreen";
+                    wColl[i][14].style.backgroundColor = "khaki";
+                    wColl[i][14].textContent = "Reliable Offscreen";
                 } else if(stat[3][3] >= 119)
                 {
-                    coll[14].style.backgroundColor = "lightgreen";
-                    coll[14].textContent = "Pinpoint";
+                    wColl[i][14].style.backgroundColor = "lightgreen";
+                    wColl[i][14].textContent = "Pinpoint";
                 };
-            } else if(w[14] == "4")
+            } else if(weapon[i][14] == "4")
             {
                 if(stat[3][3] < 60)
                 {
-                    coll[14].style.backgroundColor = "lightcoral";
-                    coll[14].textContent = "Inaccurate";
+                    wColl[i][14].style.backgroundColor = "lightcoral";
+                    wColl[i][14].textContent = "Inaccurate";
                 } else if(stat[3][3] < 70)
                 {
-                    coll[14].style.backgroundColor = "coral";
-                    coll[14].textContent = "Reliable Onscreen";
+                    wColl[i][14].style.backgroundColor = "coral";
+                    wColl[i][14].textContent = "Reliable Onscreen";
                 } else if(stat[3][3] < 79)
                 {
-                    coll[14].style.backgroundColor = "khaki";
-                    coll[14].textContent = "Reliable Offscreen";
+                    wColl[i][14].style.backgroundColor = "khaki";
+                    wColl[i][14].textContent = "Reliable Offscreen";
                 } else if(stat[3][3] >= 79)
                 {
-                    coll[14].style.backgroundColor = "lightgreen";
-                    coll[14].textContent = "Pinpoint";
+                    wColl[i][14].style.backgroundColor = "lightgreen";
+                    wColl[i][14].textContent = "Pinpoint";
                 };
-            } else if(w[14] == "5")
+            } else if(weapon[i][14] == "5")
             {
                 if(stat[3][3] < 35)
                 {
-                    coll[14].style.backgroundColor = "lightcoral";
-                    coll[14].textContent = "Inaccurate";
+                    wColl[i][14].style.backgroundColor = "lightcoral";
+                    wColl[i][14].textContent = "Inaccurate";
                 } else if(stat[3][3] < 40)
                 {
-                    coll[14].style.backgroundColor = "coral";
-                    coll[14].textContent = "Reliable Onscreen";
+                    wColl[i][14].style.backgroundColor = "coral";
+                    wColl[i][14].textContent = "Reliable Onscreen";
                 } else if(stat[3][3] < 44)
                 {
-                    coll[14].style.backgroundColor = "khaki";
-                    coll[14].textContent = "Reliable Offscreen";
+                    wColl[i][14].style.backgroundColor = "khaki";
+                    wColl[i][14].textContent = "Reliable Offscreen";
                 } else if(stat[3][3] >= 44)
                 {
-                    coll[14].style.backgroundColor = "lightgreen";
-                    coll[14].textContent = "Pinpoint";
+                    wColl[i][14].style.backgroundColor = "lightgreen";
+                    wColl[i][14].textContent = "Pinpoint";
                 };
+            } else
+            {
+                wColl[i][14].textContent = "";
             };
         } else
         {
-            coll[14].textContent = "";
+            wColl[i][14].textContent = "";
         };
-        coll[15].textContent = w[4] + "\xB0"; //spread
-        if(elem.textContent == "" || elem.textContent == "0" || elem.textContent == "0.00" || elem.textContent == "0.00 s" || elem.textContent == "0%" || elem.textContent == "NaN" || elem.textContent == "undefined\xB0")
+        wColl[i][15].textContent = weapon[i][4] + "\xB0"; //spread
+        let i3 = 0;
+        for(let i2 = 0; i2 < wColl[i].length; i2++)
         {
-            wColl[i].style.display = "none";
-            wColl[i].previousElementSibling.style.display = "none";
+            let elem = wColl[i][i2];
+            if(elem.textContent == "" || elem.textContent == "0" || elem.textContent.includes("0.00") || elem.textContent == "0%" || elem.textContent.includes("NaN") || elem.textContent.includes("undefined"))
+            {
+                wColl[i][i2].style.display = "none";
+                wColl[i][i2].previousElementSibling.style.display = "none";
+                i3++;
+            } else
+            {
+                wColl[i][i2].style.display = "block";
+                wColl[i][i2].previousElementSibling.style.display = "block";
+            };
+        };
+        let p = "none" + i;
+        if(i3 == wColl[i].length)
+        {
+            document.getElementById(p).style.display = "block";
         } else
         {
-            wColl[i].style.display = "block";
-            wColl[i].previousElementSibling.style.display = "block";
+            document.getElementById(p).style.display = "none";
         };
     };
 };
