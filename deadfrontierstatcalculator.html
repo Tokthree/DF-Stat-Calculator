@@ -257,11 +257,13 @@
                             <div class="collapseContent">
                                 <div class="gridContent">
                                     <p class="gridCenter" id="none" style="grid-area: auto / 1 / auto / 3;">No Armor Selected</p>
-                                    <p class="gridStart" style="grid-area: auto / 1; display: none;">Durability:</p>
+                                    <p class="gridStart" title="Base durability of the selected armor" style="grid-area: auto / 1; display: none;">Durability:</p>
                                     <p class="gridEnd" id="aVal1" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" style="grid-area: auto / 1; display: none;">Absorption:</p>
-                                    <p class="gridEnd" id="aVal2" style="grid-area: auto / 2; display: none;">0%</p>
-                                </div>              
+                                    <p class="gridStart" title="How much total damage it will take to break the armor. This is calculated as baseDura = dura / absorb; baseDura * (baseDura / (baseDura * idr))" style="grid-area: auto / 1; display: none;">Effective Durability:</p>
+                                    <p class="gridEnd" id="aVal2" style="grid-area: auto / 2; display: none;">0</p>
+                                    <p class="gridStart" title="Absorption percentage of the selected armor. Absorption is how much of a hit is taken by the armor" style="grid-area: auto / 1; display: none;">Absorption:</p>
+                                    <p class="gridEnd" id="aVal3" style="grid-area: auto / 2; display: none;">0%</p>
+                                </div>
                             </div>
                         </div>
                         <div>

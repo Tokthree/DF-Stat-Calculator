@@ -29,7 +29,6 @@ let prof =
     [0, 0], //mg
     [0, 0] //explo
 ];
-//Array needed
 let aBonus =
 [ //agi, end
     0, 0
@@ -83,7 +82,7 @@ let boosts =
 ]
 //#endregion
 
-//#region Functions
+//#region Startup
 function makeForeignRequest(url, callback) //JSON pull function (credit to awoo, tyvm fren)
 {
     let xhr = new XMLHttpRequest();
@@ -278,7 +277,9 @@ makeForeignRequest("armors.json", parseOutArmorArray);
 makeForeignRequest("weapons.json", parseOutWeaponArray);
 makeForeignRequest("implants.json", parseOutImplantArray);
 makeForeignRequest("builds.json", parseOutBuildArray);
+//#endregion
 
+//#region Functions
 function buildUpdate() //Savings maybe? - refactor tertiary priority
 {
     if(this.id == "buildSelect")
@@ -601,14 +602,14 @@ function armorDisplay() //Part of above refactor
     const armorColl = document.querySelectorAll("p[id^='aVal']");
     if(document.getElementById("armorSelect").value != "Please Select an Option")
     {
-        /*
-        let healthDmg = armor[0] * (1 - armor[1]);
+        //Need to figure this out
+        let baseDura = armor[0] / armor[1];
         let idr = parseFloat((boosts[3][4] / 100).toFixed(2));
-        let effDura = parseInt(armor[0] + healthDmg) * (1 + (idr * 2));
-        armorColl[0].textContent = effDura+" ("+armor[0]+" + ("+(armor[0] + healthDmg)+" * "+(1 + (idr * 2)).toFixed(2)+")"; //Need to figure this out
-        */
+        let baseDmg = baseDura * (1 - idr);
+        let effDura = parseFloat((baseDura * (baseDura / baseDmg)).toFixed(2));
         armorColl[0].textContent = armor[0];
-        armorColl[1].textContent = (armor[1] * 100) + "%";
+        armorColl[1].textContent = effDura;
+        armorColl[2].textContent = (armor[1] * 100) + "%";
         armorColl.forEach(element => element.style.display = "block");
         armorColl.forEach(element => element.previousElementSibling.style.display = "block");
         document.getElementById("none").style.display = "none";

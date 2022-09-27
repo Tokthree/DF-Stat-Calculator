@@ -2853,7 +2853,7 @@
                 "explosive": true,
                 "burst": false,
                 "dph": 14,
-                "shotTime": 9,
+                "shotTime": 12,
                 "capacity": 50,
                 "weaponCrit": 0,
                 "weaponReload": 180,
