@@ -40,10 +40,6 @@ let wBonus =
     [0, 0, 0], //w2
     [0, 0, 0] //w3
 ];
-/*
-let bonus = {end: 0, agi: 0, w1Acc: 0, w1Crit: 0, w1Rel: 0, w2Acc: 0, w2Crit: 0, w2Rel: 0, w3Acc: 0, w3Crit: 0, w3Rel: 0};
-*/
-//Probably not worth an array
 let armor = 
 [ //durability, absorption
     0, 0
@@ -54,11 +50,6 @@ let weapon =
     [false, false, false, false, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], //w2
     [false, false, false, false, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] //w3
 ];
-/*
-let w1 = {spread: false, explosive: false, burst: false, crit: false, sAngle: 0, pellets: 0, cleave: 0, pDph: 0, dph: 0, exploDph: 0, cleaveDph: 0, critF: 0, critS: 0, reload: 0, accuracy: 0, pen: 0, dps: 0, exploDps: 0, cleaveDps: 0};
-let w2 = {spread: false, explosive: false, burst: false, crit: false, sAngle: 0, pellets: 0, cleave: 0, pDph: 0, dph: 0, exploDph: 0, cleaveDph: 0, critF: 0, critS: 0, reload: 0, accuracy: 0, pen: 0, dps: 0, exploDps: 0, cleaveDps: 0};
-let w3 = {spread: false, explosive: false, burst: false, crit: false, sAngle: 0, pellets: 0, cleave: 0, pDph: 0, dph: 0, exploDph: 0, cleaveDph: 0, critF: 0, critS: 0, reload: 0, accuracy: 0, pen: 0, dps: 0, exploDps: 0, cleaveDps: 0};
-*/
 let imp = 
 [ //exp, pvp, damage, speed, idr, weapon, armor, cash, ammo, sSpeed, spots
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], //imp1 ...
@@ -352,7 +343,7 @@ function buildUpdate() //Savings maybe? - refactor tertiary priority
     };
 };
 
-function selectUpdate() //Refactored to Rebekah levels - Burst dps calculation is way wrong
+function selectUpdate() //Refactored to Rebekah levels
 {
     for(let i = 0; i < selectColl.length; i++)
     { 
@@ -610,9 +601,22 @@ function armorDisplay() //Part of above refactor
     const armorColl = document.querySelectorAll("p[id^='aVal']");
     if(document.getElementById("armorSelect").value != "Please Select an Option")
     {
-        //duraSelector.textContent = (durability + (durability * absorption))+" ("+durability+" + "+durability+" * "+absorption+")"; //Need to figure this out
+        /*
+        let healthDmg = armor[0] * (1 - armor[1]);
+        let idr = parseFloat((boosts[3][4] / 100).toFixed(2));
+        let effDura = parseInt(armor[0] + healthDmg) * (1 + (idr * 2));
+        armorColl[0].textContent = effDura+" ("+armor[0]+" + ("+(armor[0] + healthDmg)+" * "+(1 + (idr * 2)).toFixed(2)+")"; //Need to figure this out
+        */
         armorColl[0].textContent = armor[0];
         armorColl[1].textContent = (armor[1] * 100) + "%";
+        armorColl.forEach(element => element.style.display = "block");
+        armorColl.forEach(element => element.previousElementSibling.style.display = "block");
+        document.getElementById("none").style.display = "none";
+    } else
+    {
+        armorColl.forEach(element => element.style.display = "none");
+        armorColl.forEach(element => element.previousElementSibling.style.display = "none");
+        document.getElementById("none").style.display = "block";
     };
 };
 
@@ -1093,8 +1097,8 @@ for(let i = 0; i < numColl.length; i++)
     {
         bonusEntry();
         boostUpdate();
-        selectUpdate();
         statEntry();
+        selectUpdate();
         displayUpdate();
     });
 };
