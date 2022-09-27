@@ -7,6 +7,7 @@ Current Implemented Features:
   - Stat Point, Proficiency Point and Level Requirement display.
   - Armor and Weapon selection.
   - Detailed information regarding Character, Armor and Weapon statistics (Health, Speed, DPS, etc.)
+  - Armor Effective Durability display based on IDR and Absorption (currently only base durability is shown).
   - DPH stat for Explosive weapons when hitting max targets.
   - Cleave information for Melee weapons.
   - Implant, GM, UB and Clan Boost selection/entry.
@@ -20,7 +21,14 @@ Current Implemented Features:
   - Build guides which provide an explaination for the stats the user sees when using a build.
 
 Current Missing & Planned Features:
-  - Armor Effective Durability display based on IDR and Absorption (currently only base durability is shown).
+  - Ability to reset a specific panel's values, or reset all values without reefreshing the page.
+  - Session storage so that values are not lost between page loads. Dependant on above being implemented.
+  - Ability to export current build values as a formatted text file.
   
-Current Best Implementation Features:
-  - DPS for Burst Weapons (no publically available formulae for how it is calculated, currently assuming it is calculated the same as normal Weapons. Aware of the burst_duration stat on the allstats page, but not sure how to add it to the formulae).
+Current Known Issues:
+  - UI lacking responsiveness to certain changes.
+  - UI lacking responsiveness overall.
+  
+Current Focus:
+  - Code refactoring.
+  - UI overall styling & design.
