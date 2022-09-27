@@ -21,7 +21,7 @@ Current Implemented Features:
   - Build guides which provide an explaination for the stats the user sees when using a build.
 
 Current Missing & Planned Features:
-  - Ability to reset a specific panel's values, or reset all values without reefreshing the page.
+  - Ability to reset a specific panel's values, or reset all values without refreshing the page.
   - Session storage so that values are not lost between page loads. Dependant on above being implemented.
   - Ability to export current build values as a formatted text file.
   
