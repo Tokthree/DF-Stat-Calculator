@@ -1,0 +1,4 @@
+--!-- The following information, while as accurate as possible, is a subjective assessment of the class in question. Changing your class later is extremely expensive and picking the wrong class can be a painful mistake. If you are using this tool to make a new character, please do your own research and ask questions in the Dead Frontier Discord to make sure you pick the right class for your needs. --!--
+
+The Boxer class is a great choice for players who wish to use a build which requires strength.
+Though at first glance it might seem like it's pushing you towards using melee with the +10 bonus to your character's melee profession, this is not the case. The +20 bonus to your character's strength stat is substantial, being the equivalent of 20 levels worth of stats after level 50. With those 20 extra stat points, your machinegun/shotgun character will have more reloading or accuracy to work with than any other class at the same level.

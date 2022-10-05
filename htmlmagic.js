@@ -12,6 +12,52 @@ for(i = 0; i < impSlots.length; i++)
 };
 const slotLevel = [15, 25, 35, 50, 65, 80, 95, 120, 145, 170, 195, 220, 245, 270, 295, 325];
 
+//#region Functions
+function reset()
+{
+  switch(dialogueOpen)
+  {
+    case 'allReset':
+      window.location.reload();
+      break;
+    default:
+      let parent = document.getElementById(dialogueOpen).nextElementSibling;
+      if(parent == null)
+      {
+        let grandparent = document.getElementById(dialogueOpen).parentElement;
+        parent = grandparent.nextElementSibling;
+      };
+      let elem = parent.querySelectorAll("*");
+      for(let i = 0; i < elem.length; i++)
+      {
+        let type = elem[i].nodeName;
+        switch(type)
+        {
+          case 'INPUT':
+            switch(elem[i].type)
+            {
+              case 'number':
+                elem[i].value = "";
+                break;
+              case 'range':
+                elem[i].value = elem[i].min;
+                break;
+            };
+          case 'SELECT':
+            elem[i].selectedIndex = 0;
+            break;
+        };
+      };
+  };
+  impUpdate();
+  boostUpdate();
+  selectUpdate();
+  bonusEntry();
+  statEntry();
+  displayUpdate();
+}
+//#endregion
+
 for(i = 0; i < collapseColl.length; i++)
 {
   collapseColl[i].addEventListener("click", function()
@@ -27,10 +73,9 @@ for(i = 0; i < collapseColl.length; i++)
     };
   });
 };
-
 for(i = 0; i < buttonColl.length; i++)
 {
-  buttonColl[i].addEventListener("click", function() 
+  buttonColl[i].addEventListener("click", function()
   {
     if(this.id == "buildHelpOpen")
     {
@@ -68,7 +113,7 @@ for(i = 0; i < buttonColl.length; i++)
       classOpen = false;
     } else if(this.id.includes("Reset"))
     {
-      dialogueOpen = toString(this.id);
+      dialogueOpen = this.id;
       document.getElementById("dialogue").style.visibility = "visible";
     } else if(this.id == "dialogueCancel")
     {
@@ -76,7 +121,7 @@ for(i = 0; i < buttonColl.length; i++)
     } else if(this.id == "dialogueConfirm")
     {
       document.getElementById("dialogue").style.visibility = "collapse";
-      //Call reset function.
+      reset();
     } else if(this.id == "impLock")
     {
       let openSlots = 0;

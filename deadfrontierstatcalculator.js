@@ -39,7 +39,7 @@ let wBonus =
     [0, 0, 0], //w2
     [0, 0, 0] //w3
 ];
-let armor = 
+let armor =
 [ //durability, absorption
     0, 0
 ];
@@ -49,7 +49,7 @@ let weapon =
     [false, false, false, false, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], //w2
     [false, false, false, false, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] //w3
 ];
-let imp = 
+let imp =
 [ //exp, pvp, damage, speed, idr, weapon, armor, cash, ammo, sSpeed, spots
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], //imp1 ...
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -122,6 +122,7 @@ function parseOutClassArray(data) //Class parse function (Credit to Awoo 2: Cred
         option.dataset.shotgun = val["shotgun"];
         option.dataset.mg = val["mg"];
         option.dataset.explo = val["explo"];
+        option.dataset.desc = val["desc"];
         mainSelect.appendChild(option);
     });
 }
@@ -285,7 +286,7 @@ function buildUpdate() //Savings maybe? - refactor tertiary priority
     if(this.id == "buildSelect")
     {
         const request = new XMLHttpRequest(); //Needs to be moved so it runs once the page loads.
-        request.open("GET","description.json", false);
+        request.open("GET","builddescription.json", false);
         request.send(null);
         const descArr = JSON.parse(request.responseText);
 
@@ -317,18 +318,18 @@ function buildUpdate() //Savings maybe? - refactor tertiary priority
         let desc = parseInt(this.options[this.selectedIndex].dataset.desc);
         document.getElementById("level").value = level;
         document.getElementById("classSelect").selectedIndex = profession;
-        document.getElementById("str").value = str;
-        document.getElementById("end").value = end;
-        document.getElementById("agi").value = agi;
-        document.getElementById("acc").value = acc;
-        document.getElementById("crit").value = crit;
-        document.getElementById("rel").value = rel;
-        document.getElementById("melee").value = melee;
-        document.getElementById("pistol").value = pistol;
-        document.getElementById("rifle").value = rifle;
-        document.getElementById("shotgun").value = shotgun;
-        document.getElementById("mg").value = mg;
-        document.getElementById("explo").value = explo;
+        document.getElementById("strStat").value = str;
+        document.getElementById("endStat").value = end;
+        document.getElementById("agiStat").value = agi;
+        document.getElementById("accStat").value = acc;
+        document.getElementById("critStat").value = crit;
+        document.getElementById("relStat").value = rel;
+        document.getElementById("meleeProf").value = melee;
+        document.getElementById("pistolProf").value = pistol;
+        document.getElementById("rifleProf").value = rifle;
+        document.getElementById("shotgunProf").value = shotgun;
+        document.getElementById("mgProf").value = mg;
+        document.getElementById("exploProf").value = explo;
         document.getElementById("armEnd").value = armEnd;
         document.getElementById("armAgi").value = armAgi;
         document.getElementById("w1Acc").value = w1Acc;
@@ -347,10 +348,14 @@ function buildUpdate() //Savings maybe? - refactor tertiary priority
 function selectUpdate() //Refactored to Rebekah levels
 {
     for(let i = 0; i < selectColl.length; i++)
-    { 
+    {
         let elem = selectColl[i];
         if(elem.id == "classSelect")
         {
+            const request = new XMLHttpRequest(); //Needs to be moved so it runs once the page loads.
+            request.open("GET","classdescription.json", false);
+            request.send(null);
+            const descArr = JSON.parse(request.responseText);
             stat[0][2] = parseInt(elem.options[elem.selectedIndex].dataset.str); //Set values
             stat[1][2] = parseInt(elem.options[elem.selectedIndex].dataset.end);
             stat[2][2] = parseInt(elem.options[elem.selectedIndex].dataset.agi);
@@ -369,6 +374,8 @@ function selectUpdate() //Refactored to Rebekah levels
             stat[3][1] = stat[3][2] + wBonus[0][0] + wBonus[1][0] + wBonus[2][0]; //acc
             stat[4][1] = stat[4][2] + wBonus[0][2] + wBonus[1][2] + wBonus[2][2]; //crit
             stat[5][1] = stat[5][2] + wBonus[0][1] + wBonus[1][1] + wBonus[2][1]; //rel
+            let desc = elem.options[elem.selectedIndex].dataset.desc;
+            document.getElementById("classHelpText").innerText = descArr[0][desc];
         } else if(elem.id == "armorSelect")
         {
             armor[0] = parseInt(elem.options[elem.selectedIndex].dataset.durability);
@@ -519,7 +526,7 @@ function impUpdate() //Refactored to Rebekah levels
         impSlots[i].querySelectorAll("option").forEach(element => element.disabled = false);
     };
     for(let i = 0; i < selectColl.length; i++)
-    { 
+    {
         let elem = selectColl[i];
         if(elem.id.includes("implantSelect"))
         {

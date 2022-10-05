@@ -1,0 +1,62 @@
+Production/Service classes are professions capable of either producing items or providing services to other players.
+Production/Service classes have level breakpoints which determine what tier of goods or services they provide. These are as follows:
+
+Production Classes:
+Level 1
+Level 10
+Level 20
+Level 30
+Level 40
+Level 50
+Level 75
+
+Service Classes:
+Level 5
+Level 15
+Level 25
+Level 35
+Level 45
+Level 75
+
+
+The goods produced by production classes differ by class and are as follows:
+
+Farmer:
+Level 1 - 9: 100% Millet
+Level 10 - 19: 60% Seeds, 40% Millet
+Level 20 - 29: 40% Potatoes, 40% Seeds, 20% Rice
+Level 30 - 39: 60% Eggs, 20% Potatoes, 20% Rice
+Level 40 - 49: 60% Eggs, 20% Fresh Vegetables, 20% Fresh Meat
+Level 50 - 74: 60% Fresh Meat, 40% Fresh Vegetables
+Level 75: 40% Fresh Milk, 40% Quinoa, 20% Fresh Meat
+
+Scientist:
+Level 1 - 9: 60% Steri Strips, 40% Plasters
+Level 10 - 19: 40% Antibiotics, 20% Antiseptic Spray, 20% Plasters, 20% Steri Strips
+Level 20 - 29: 60% Bandages, 40% Antiseptic Spray
+Level 30 - 39: 60% Morphine, 40% Bandages
+Level 40 - 49: 60% Nerotonin-2, 40% Morphine
+Level 50 - 74: 80% Nerotonin-2, 20% Morphine
+Level 75: 60% Nerotonin 8B, 20% Steroids, 20% Nerotonin-2
+
+
+The services provided by service classes are based on the item's level. Your level must be equal to or greater than the required level.
+The service classes can only be used on certain items, these are as follows:
+
+Doctor:
+Administering healing items, improving how much healing they provide
+
+Chef:
+Cooking food items, improving the hunger they recover
+
+Engineer:
+Repairing armour, recovering armour durability to 100%
+
+
+Neither production nor service classes can perform their roles if the character is starving. Additionally, production classes are also unable to produce items if their health is critical.
+
+Production classes produce items after 24 hours have passed since the last production. However, items will only be produced once the player logs in after those 24 hours have passed, meaning that even if you log in 48+ hours after the previous production only one set of items will be produced. Items will not be produced if you have no free inventory spaces. Production classes produce 2-4 items from those available at their level each time production is triggered in this manner.
+Service classes can provide their services by listing them on the marketplace via the "selling" tab. Each time their services are used by another player it will cost your character 8% hunger (10% for engineers), and your services can be used so long as they are listed on the marketplace, even when you are logged out. Your services cannot be sold for free as there is a minimum service price of $100 from levels 1-14, and from level 15 breakpoint * 10, e.g a level 46 engineer cannot set their prices lower than $450 (level 45 breakpoint * 10).
+
+
+All information sourced from the Dead Frontier 3D Wiki with clarification from braeden, eric dietz and IYNH of the Dead Frontier Discord.
