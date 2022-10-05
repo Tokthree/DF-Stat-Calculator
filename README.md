@@ -23,7 +23,7 @@ Current Implemented Features:
   - Ability to reset a specific panel's values, or reset all values.
 
 Current Missing & Planned Features:
-  - Session storage so that values are not lost between page loads. Dependant on above being implemented.
+  - Session storage so that values are not lost between page loads.
   - Ability to export current build values as a formatted text file.
   
 Current Known Issues:
