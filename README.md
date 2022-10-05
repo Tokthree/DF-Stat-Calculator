@@ -7,7 +7,7 @@ Current Implemented Features:
   - Stat Point, Proficiency Point and Level Requirement display.
   - Armor and Weapon selection.
   - Detailed information regarding Character, Armor and Weapon statistics (Health, Speed, DPS, etc.)
-  - Armor Effective Durability display based on IDR and Absorption (currently only base durability is shown).
+  - Armor Effective Durability display based on IDR and Absorption.
   - DPH stat for Explosive weapons when hitting max targets.
   - Cleave information for Melee weapons.
   - Implant, GM, UB and Clan Boost selection/entry.
@@ -19,7 +19,7 @@ Current Implemented Features:
   - Real-time calculation of all displayed values.
   - Build selection, allowing the user to select from a range of pre-made builds submitted by the community.
   - Build guides which provide an explaination for the stats the user sees when using a build.
-  - Proffesion descriptions which provide an explaination of a profession's pros and cons, as well as mechanics for production/service professions.
+  - Profession descriptions which provide an explaination of a profession's pros and cons, as well as mechanics for production/service professions.
   - Ability to reset a specific panel's values, or reset all values.
 
 Current Missing & Planned Features:
