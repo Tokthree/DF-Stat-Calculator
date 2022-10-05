@@ -19,15 +19,19 @@ Current Implemented Features:
   - Real-time calculation of all displayed values.
   - Build selection, allowing the user to select from a range of pre-made builds submitted by the community.
   - Build guides which provide an explaination for the stats the user sees when using a build.
+  - Proffesion descriptions which provide an explaination of a profession's pros and cons, as well as mechanics for production/service professions.
+  - Ability to reset a specific panel's values, or reset all values.
 
 Current Missing & Planned Features:
-  - Ability to reset a specific panel's values, or reset all values without refreshing the page.
   - Session storage so that values are not lost between page loads. Dependant on above being implemented.
   - Ability to export current build values as a formatted text file.
   
 Current Known Issues:
   - UI lacking responsiveness to certain changes.
   - UI lacking responsiveness overall.
+  
+Current Best Implementation Features:
+  - Resetting all values forces a page refresh, no cheap way to do so otherwise.
   
 Current Focus:
   - Code refactoring.
