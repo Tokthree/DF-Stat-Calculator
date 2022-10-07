@@ -7,8 +7,14 @@ const pointsReqSel = document.getElementById('freePoints');
 const pointsPReqSel = document.getElementById('freePPoints');
 const levelReqSel = document.getElementById('reqLevel');
 //#endregion
-
 //#region Global Variables
+let sessionValues =
+[
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],     //Numbers
+    [25, 25, 25, 25, 25, 25, 5, 5, 0, 0, 0, 0],                             //Ranges
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],     //Selects
+    [false, false]                                                          //Checkboxes
+];
 //Array maybe?
 let charInfo = {level: 1, levelReq: 1, statTotal: 150, pointsTotal: 0, pointsReq: 0, profTotal: 10, pointsPTotal: 0, pointsPReq: 0};
 let stat =
@@ -18,7 +24,7 @@ let stat =
     [25, 0, 0, 25], //agi
     [25, 0, 0, 25], //acc
     [25, 0, 0, 25], //crit
-    [25, 0, 0, 25] //rel
+    [25, 0, 0, 25]  //rel
 ];
 let prof =
 [ //base, boost
@@ -27,7 +33,7 @@ let prof =
     [0, 0], //rifle
     [0, 0], //shotgun
     [0, 0], //mg
-    [0, 0] //explo
+    [0, 0]  //explo
 ];
 let aBonus =
 [ //agi, end
@@ -37,7 +43,7 @@ let wBonus =
 [ //acc, rel, crit
     [0, 0, 0], //w1
     [0, 0, 0], //w2
-    [0, 0, 0] //w3
+    [0, 0, 0]   //w3
 ];
 let armor =
 [ //durability, absorption
@@ -47,7 +53,7 @@ let weapon =
 [ //spread, explosive, burst, crit, sAngle, pellets, cleave, pDph, dph, exploDph, cleaveDph, critF, critS, reload, accuracy, pen, dps, exploDps, cleaveDps
     [false, false, false, false, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], //w1
     [false, false, false, false, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], //w2
-    [false, false, false, false, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] //w3
+    [false, false, false, false, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  //w3
 ];
 let imp =
 [ //exp, pvp, damage, speed, idr, weapon, armor, cash, ammo, sSpeed, spots
@@ -66,22 +72,21 @@ let imp =
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], //... imp16
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  //... imp16
 ];
 let impBlock =
 [ //imp1 ... imp16
     ["none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none"], //Exclusive implants
-    ["none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none"] //Unique implants
+    ["none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none", "none"]  //Unique implants
 ];
 let boosts =
 [ //exp, pvp, damage, speed, idr, weapon, armor, cash, ammo, sSpeed, spots
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], //ub
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], //gm
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], //clan
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] //total
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  //total
 ]
 //#endregion
-
 //#region Startup
 function makeForeignRequest(url, callback) //JSON pull function (credit to awoo, tyvm fren)
 {
@@ -99,7 +104,6 @@ function makeForeignRequest(url, callback) //JSON pull function (credit to awoo,
     xhr.open('GET', url, true);
     xhr.send();
 }
-
 function parseOutClassArray(data) //Class parse function (Credit to Awoo 2: Credit Harder)
 {
     let jsonData = JSON.parse(data);
@@ -126,7 +130,6 @@ function parseOutClassArray(data) //Class parse function (Credit to Awoo 2: Cred
         mainSelect.appendChild(option);
     });
 }
-
 function parseOutArmorArray(data) //Armors parse function (Credit to Awoo 3: Credit Harderer)
 {
     let jsonData = JSON.parse(data);
@@ -148,7 +151,6 @@ function parseOutArmorArray(data) //Armors parse function (Credit to Awoo 3: Cre
         });
     });
 };
-
 function parseOutWeaponArray(data) //Weapons parse function (Credit to Awoo 4: Sorry Awoo, I Can't Give Credit)
 {
     let jsonData = JSON.parse(data);
@@ -188,7 +190,6 @@ function parseOutWeaponArray(data) //Weapons parse function (Credit to Awoo 4: S
         });
     };
 };
-
 function parseOutImplantArray(data) //Weapons parse function (Credit to Awoo 5: Come Back When You're a Little Mmmm... Awooier!)
 {
     let jsonData = JSON.parse(data);
@@ -225,7 +226,6 @@ function parseOutImplantArray(data) //Weapons parse function (Credit to Awoo 5: 
         });
     };
 };
-
 function parseOutBuildArray(data) //Build parse function (Credit to Awoo 6: Is this my code yet?)
 {
     let jsonData = JSON.parse(data);
@@ -272,50 +272,118 @@ function parseOutBuildArray(data) //Build parse function (Credit to Awoo 6: Is t
         });
     });
 };
-
 makeForeignRequest("classes.json", parseOutClassArray); //Pull JSON & parse
 makeForeignRequest("armors.json", parseOutArmorArray);
 makeForeignRequest("weapons.json", parseOutWeaponArray);
 makeForeignRequest("implants.json", parseOutImplantArray);
 makeForeignRequest("builds.json", parseOutBuildArray);
+setTimeout(function() //Need a better way to do this, was firing before above was complete
+{
+    getStorage();
+}, 250);
 //#endregion
-
 //#region Functions
+function getStorage() //Gets values from localStorage, defaults to setStorage if empty
+{
+    console.log(`Getting stored values`);
+    if(JSON.parse(localStorage.getItem('df3dStatCalc_userSettings')))
+    {
+        console.log(`Stored values OK; setting global values`);
+        sessionValues = JSON.parse(localStorage.getItem('df3dStatCalc_userSettings'));
+    } else
+    {
+        console.log(`No stored values; defaulting`);
+        setStorage();
+    };
+    setValues();
+};
+function setStorage() //Sets values in localStorage, uses variable declaration if defaulted
+{
+    console.log(`Setting stored values`);
+    localStorage.setItem('df3dStatCalc_userSettings', JSON.stringify(sessionValues));
+};
+function getValues() //Gets values from elements then calls setStorage
+{
+    for(let i = 0; i < numColl.length; i++)
+    {
+       sessionValues[0][i] = numColl[i].value;
+    };
+    for(let i = 0; i < rangeColl.length; i++)
+    {
+       sessionValues[1][i] = rangeColl[i].value;
+    };
+    for(let i = 0; i < selectColl.length; i++)
+    {
+       sessionValues[2][i] = selectColl[i].selectedIndex;
+    };
+    for(let i = 0; i < checkColl.length; i++)
+    {
+       sessionValues[3][i] = checkColl[i].checked;
+    };
+    setStorage();
+};
+function setValues() //Sets element values then calls all update functions
+{
+ for(let i = 0; i < numColl.length; i++)
+ {
+    numColl[i].value = sessionValues[0][i];
+ };
+ for(let i = 0; i < rangeColl.length; i++)
+ {
+    rangeColl[i].value = sessionValues[1][i];
+ };
+ for(let i = 0; i < selectColl.length; i++)
+ {
+    selectColl[i].selectedIndex = sessionValues[2][i];
+ };
+ for(let i = 0; i < checkColl.length; i++)
+ {
+    checkColl[i].checked = sessionValues[3][i];
+ };
+ buildUpdate();
+ impUpdate();
+ specialEntry();
+ bonusEntry();
+ boostUpdate();
+ statEntry();
+ selectUpdate();
+ displayUpdate();
+};
 function buildUpdate() //Savings maybe? - refactor tertiary priority
 {
-    if(this.id == "buildSelect")
+    const request = new XMLHttpRequest(); //Needs to be moved so it runs once the page loads.
+    request.open("GET","builddescription.json", false);
+    request.send(null);
+    const descArr = JSON.parse(request.responseText);
+    let elem = document.getElementById("buildSelect");
+    if(elem.selectedIndex != 0)
     {
-        const request = new XMLHttpRequest(); //Needs to be moved so it runs once the page loads.
-        request.open("GET","builddescription.json", false);
-        request.send(null);
-        const descArr = JSON.parse(request.responseText);
-
-        let level = parseInt(this.options[this.selectedIndex].dataset.level);
-        let profession = parseInt(this.options[this.selectedIndex].dataset.class);
-        let str = parseInt(this.options[this.selectedIndex].dataset.str);
-        let end = parseInt(this.options[this.selectedIndex].dataset.end);
-        let agi = parseInt(this.options[this.selectedIndex].dataset.agi);
-        let acc = parseInt(this.options[this.selectedIndex].dataset.acc);
-        let crit = parseInt(this.options[this.selectedIndex].dataset.crit);
-        let rel = parseInt(this.options[this.selectedIndex].dataset.rel);
-        let melee = parseInt(this.options[this.selectedIndex].dataset.melee);
-        let pistol = parseInt(this.options[this.selectedIndex].dataset.pistol);
-        let rifle = parseInt(this.options[this.selectedIndex].dataset.rifle);
-        let shotgun = parseInt(this.options[this.selectedIndex].dataset.shotgun);
-        let mg = parseInt(this.options[this.selectedIndex].dataset.mg);
-        let explo = parseInt(this.options[this.selectedIndex].dataset.explo);
-        let armEnd = parseInt(this.options[this.selectedIndex].dataset.armEnd);
-        let armAgi = parseInt(this.options[this.selectedIndex].dataset.armAgi);
-        let w1Acc = parseInt(this.options[this.selectedIndex].dataset.w1Acc);
-        let w1Crit = parseInt(this.options[this.selectedIndex].dataset.w1Crit);
-        let w1Rel = parseInt(this.options[this.selectedIndex].dataset.w1Rel);
-        let w2Acc = parseInt(this.options[this.selectedIndex].dataset.w2Acc);
-        let w2Crit = parseInt(this.options[this.selectedIndex].dataset.w2Crit);
-        let w2Rel = parseInt(this.options[this.selectedIndex].dataset.w2Rel);
-        let w3Acc = parseInt(this.options[this.selectedIndex].dataset.w3Acc);
-        let w3Crit = parseInt(this.options[this.selectedIndex].dataset.w3Crit);
-        let w3Rel = parseInt(this.options[this.selectedIndex].dataset.w3Rel);
-        let desc = parseInt(this.options[this.selectedIndex].dataset.desc);
+        let level = parseInt(elem.options[elem.selectedIndex].dataset.level);
+        let profession = parseInt(elem.options[elem.selectedIndex].dataset.class);
+        let str = parseInt(elem.options[elem.selectedIndex].dataset.str);
+        let end = parseInt(elem.options[elem.selectedIndex].dataset.end);
+        let agi = parseInt(elem.options[elem.selectedIndex].dataset.agi);
+        let acc = parseInt(elem.options[elem.selectedIndex].dataset.acc);
+        let crit = parseInt(elem.options[elem.selectedIndex].dataset.crit);
+        let rel = parseInt(elem.options[elem.selectedIndex].dataset.rel);
+        let melee = parseInt(elem.options[elem.selectedIndex].dataset.melee);
+        let pistol = parseInt(elem.options[elem.selectedIndex].dataset.pistol);
+        let rifle = parseInt(elem.options[elem.selectedIndex].dataset.rifle);
+        let shotgun = parseInt(elem.options[elem.selectedIndex].dataset.shotgun);
+        let mg = parseInt(elem.options[elem.selectedIndex].dataset.mg);
+        let explo = parseInt(elem.options[elem.selectedIndex].dataset.explo);
+        let armEnd = parseInt(elem.options[elem.selectedIndex].dataset.armEnd);
+        let armAgi = parseInt(elem.options[elem.selectedIndex].dataset.armAgi);
+        let w1Acc = parseInt(elem.options[elem.selectedIndex].dataset.w1Acc);
+        let w1Crit = parseInt(elem.options[elem.selectedIndex].dataset.w1Crit);
+        let w1Rel = parseInt(elem.options[elem.selectedIndex].dataset.w1Rel);
+        let w2Acc = parseInt(elem.options[elem.selectedIndex].dataset.w2Acc);
+        let w2Crit = parseInt(elem.options[elem.selectedIndex].dataset.w2Crit);
+        let w2Rel = parseInt(elem.options[elem.selectedIndex].dataset.w2Rel);
+        let w3Acc = parseInt(elem.options[elem.selectedIndex].dataset.w3Acc);
+        let w3Crit = parseInt(elem.options[elem.selectedIndex].dataset.w3Crit);
+        let w3Rel = parseInt(elem.options[elem.selectedIndex].dataset.w3Rel);
+        let desc = parseInt(elem.options[elem.selectedIndex].dataset.desc);
         document.getElementById("level").value = level;
         document.getElementById("classSelect").selectedIndex = profession;
         document.getElementById("strStat").value = str;
@@ -344,7 +412,6 @@ function buildUpdate() //Savings maybe? - refactor tertiary priority
         document.getElementById("buildHelpText").innerText = descArr[0][desc];
     };
 };
-
 function selectUpdate() //Refactored to Rebekah levels
 {
     for(let i = 0; i < selectColl.length; i++)
@@ -518,7 +585,6 @@ function selectUpdate() //Refactored to Rebekah levels
         };
     };
 };
-
 function impUpdate() //Refactored to Rebekah levels
 {
     for(let i = 0; i < impSlots.length; i++)
@@ -584,8 +650,7 @@ function impUpdate() //Refactored to Rebekah levels
             };
         }
     };
-}
-
+};
 function displayUpdate() //Refactored to Rebekah levels
 {
     boostDisplay();
@@ -593,7 +658,6 @@ function displayUpdate() //Refactored to Rebekah levels
     armorDisplay();
     weaponDisplay();
 };
-
 function charDisplay() //Part of above refactor
 {
     const char = document.querySelectorAll("p[id^='charVal']");
@@ -603,7 +667,6 @@ function charDisplay() //Part of above refactor
     char[3].textContent = ((stat[1][3] - 25) / 6.1875 + 24).toFixed(0) + " s";
     char[4].textContent = ((stat[1][3] - 25) / 6.1875 + 24).toFixed(0) + " s";
 };
-
 function armorDisplay() //Part of above refactor
 {
     const armorColl = document.querySelectorAll("p[id^='aVal']");
@@ -627,7 +690,6 @@ function armorDisplay() //Part of above refactor
         document.getElementById("none").style.display = "block";
     };
 };
-
 function weaponDisplay() //Part of above refactor, needs stress testing, re-refactored, should be more efficient.
 {
     const wColl =
@@ -798,7 +860,6 @@ function weaponDisplay() //Part of above refactor, needs stress testing, re-refa
         };
     };
 };
-
 function boostDisplay() //Part of above refactor
 {
     const boost = document.querySelectorAll("p[id^='boostVal']");
@@ -808,7 +869,6 @@ function boostDisplay() //Part of above refactor
         elem.textContent = boosts[3][i] + "%";
     };
 };
-
 function statEntry() //Refactored to Rebekah levels
 {
     for(let i = 0; i < rangeColl.length; i++)
@@ -938,7 +998,6 @@ function statEntry() //Refactored to Rebekah levels
         };
     };
 };
-
 function bonusEntry() //Refactored to Rebekah levels
 {
     for (let i = 0; i < numColl.length; i++)
@@ -1072,7 +1131,32 @@ function bonusEntry() //Refactored to Rebekah levels
     stat[4][1] = stat[4][2] + wBonus[0][2] + wBonus[1][2] + wBonus[2][2]; //crit
     stat[5][1] = stat[5][2] + wBonus[0][1] + wBonus[1][1] + wBonus[2][1]; //rel
 };
-
+function specialEntry() //Moved checkbox code here
+{
+    for(let i = 0; i < checkColl.length; i++)
+    {
+        let elem = checkColl[i];
+        if(elem.id == "gmCheck")
+        {
+            if(elem.checked == true)
+            {
+                boosts[1] = [100, 0, 0, 0, 0, 100, 100, 100, 100, 0, 60];
+            } else if(elem.checked == false)
+            {
+                boosts[1] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+            };
+        } else if(elem.id == "ubCheck")
+        {
+            if(elem.checked == true)
+            {
+                boosts[0] = [50, 0, 35, 35, 0, 0, 0, 0, 0, 0, 0];
+            } else if(elem.checked == false)
+            {
+                boosts[0] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+            };
+        };
+    };
+}
 function boostUpdate() //Rebekah's magnum opus refactor
 {
     for(let i = 0; i < boosts[3].length; i++)
@@ -1086,7 +1170,6 @@ function boostUpdate() //Rebekah's magnum opus refactor
     };
 };
 //#endregion
-
 //#region Listeners
 for(let i = 0; i < rangeColl.length; i++)
 {
@@ -1096,9 +1179,9 @@ for(let i = 0; i < rangeColl.length; i++)
         selectUpdate();
         statEntry();
         displayUpdate();
+        getValues();
     });
 };
-
 for(let i = 0; i < numColl.length; i++)
 {
     numColl[i].addEventListener("input", function()
@@ -1108,49 +1191,32 @@ for(let i = 0; i < numColl.length; i++)
         statEntry();
         selectUpdate();
         displayUpdate();
+        getValues();
     });
 };
-
 for(let i = 0; i < selectColl.length; i++)
 {
     selectColl[i].addEventListener("change", function()
     {
-        buildUpdate.call(this);
+        buildUpdate();
         impUpdate();
         boostUpdate();
         selectUpdate();
         bonusEntry();
         statEntry();
         displayUpdate();
+        getValues();
     });
 };
-
 for(let i = 0; i < checkColl.length; i++)
 {
     checkColl[i].addEventListener("change", function()
     {
-        if(this.id == "gmCheck")
-        {
-            if(this.checked == true)
-            {
-                boosts[1] = [100, 0, 0, 0, 0, 100, 100, 100, 100, 0, 60];
-            } else if(this.checked == false)
-            {
-                boosts[1] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-            };
-        } else if(this.id == "ubCheck")
-        {
-            if(this.checked == true)
-            {
-                boosts[0] = [50, 0, 35, 35, 0, 0, 0, 0, 0, 0, 0];
-            } else if(this.checked == false)
-            {
-                boosts[0] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-            };
-        };
+        specialEntry();
         boostUpdate();
         selectUpdate();
         displayUpdate();
+        getValues();
     });
 };
 //#endregion
