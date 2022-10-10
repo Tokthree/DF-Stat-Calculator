@@ -117,7 +117,9 @@ function imps()
 };
 function resetHandler()
 {
-  switch (this.id)
+  let title = "";
+  let content = "";
+  switch(this.id)
   {
     case 'dialogueCancel':
       document.getElementById("dialogue").style.visibility = "collapse";
@@ -131,6 +133,31 @@ function resetHandler()
       document.getElementById("dialogue").style.visibility = "visible";
       break;
   };
+  switch(dialogueOpen)
+  {
+    case `statsReset`:
+      title = "Reset Stats?";
+      content = "Please note that this will reset the 'Stats' panel.";
+      break;
+    case `equipmentReset`:
+      title = "Reset Equipment?";
+      content = "Please note that this will reset the 'Equipment' panel.";
+      break;
+    case `impReset`:
+      title = "Reset Implants?";
+      content = "Please note that this will reset the 'Implants' panel.";
+      break;
+    case `boostReset`:
+      title = "Reset Boosts?";
+      content = "Please note that this will reset the 'Boost Values' panel.";
+      break;
+    case `allReset`:
+      title = "Reset Everything?";
+      content = "Please note that this will reset everything and clear your session storage.";
+      break;
+  };
+  document.getElementById("dialogueTitle").textContent = title;
+  document.getElementById("dialogueContent").textContent = content;
 };
 function reset()
 {
