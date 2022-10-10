@@ -23,8 +23,8 @@ Current Implemented Features:
   - Ability to reset a specific panel's values, or reset all values.
   - Session storage which allows users to refresh the page without losing their build. Can be reset via the "reset everything" button
   - Ability to export current build values as a formatted text file. But...
-
-Current Missing & Planned Features:
+  
+  ![image](https://user-images.githubusercontent.com/12038028/194787394-569a39a3-ea36-4db0-9714-391be327249c.png)
 
 Current Known Issues:
   - UI lacking responsiveness to certain changes.
