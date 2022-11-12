@@ -17,10 +17,10 @@ for(let i = 0; i < impSlots.length; i++)
 };
 //#endregion
 //#region Functions
-function collapse()
+function collapse(elem)
 {
-  this.classList.toggle("active");
-  const content = this.nextElementSibling;
+  elem.classList.toggle("active");
+  const content = elem.nextElementSibling;
   if(content.style.maxHeight)
   {
     content.style.maxHeight = null;
@@ -29,9 +29,9 @@ function collapse()
     content.style.maxHeight = content.scrollHeight + "px";
   };
 };
-function buildHelp()
+function buildHelp(elem)
 {
-  switch(this.id)
+  switch(elem.id)
   {
     case 'buildHelpOpen':
       switch(buildOpen)
@@ -54,9 +54,9 @@ function buildHelp()
       break;
   };
 };
-function classHelp()
+function classHelp(elem)
 {
-  switch(this.id)
+  switch(elem.id)
   {
     case 'classHelpOpen':
       switch(classOpen)
@@ -115,11 +115,11 @@ function imps()
   selectUpdate();
   displayUpdate();
 };
-function resetHandler()
+function resetHandler(elem)
 {
   let title = "";
   let content = "";
-  switch(this.id)
+  switch(elem.id)
   {
     case 'dialogueCancel':
       document.getElementById("dialogue").style.visibility = "collapse";
@@ -129,7 +129,7 @@ function resetHandler()
       reset();
       break;
     default:
-      dialogueOpen = this.id;
+      dialogueOpen = elem.id;
       document.getElementById("dialogue").style.visibility = "visible";
       break;
   };
@@ -297,7 +297,7 @@ for(let i = 0; i < collapseColl.length; i++)
 {
   collapseColl[i].addEventListener("click", function()
   {
-    collapse.call(this);
+    collapse(this);
   });
 };
 for(let i = 0; i < buttonColl.length; i++)
@@ -306,13 +306,13 @@ for(let i = 0; i < buttonColl.length; i++)
   {
     if(this.id == "buildHelpOpen" || this.id == "buildHelpClose")
     {
-      buildHelp.call(this);
+      buildHelp(this);
     } else if(this.id == "classHelpOpen" || this.id == "classHelpClose")
     {
-      classHelp.call(this);
+      classHelp(this);
     } else if(this.id.includes("Reset") || this.id == "dialogueCancel" || this.id == "dialogueConfirm")
     {
-      resetHandler.call(this);
+      resetHandler(this);
     } else if(this.id == "impLock")
     {
       imps();

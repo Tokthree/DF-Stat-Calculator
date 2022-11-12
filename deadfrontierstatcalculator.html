@@ -161,8 +161,6 @@
                             <div class="collapseContent">
                                 <div class="gridContent">
                                     <select class="gridCenter" id="armorSelect">
-                                        <option data-name="noArmor">Please Select an Option</option>
-                                        <optgroup></optgroup>
                                     </select>
                                 </div>
                             </div>
@@ -172,8 +170,6 @@
                             <div class="collapseContent">
                                 <div class="gridContent">
                                     <select class="gridCenter" id="weaponSelect1">
-                                        <option data-name="noWeapon">Please Select an Option</option>
-                                        <optgroup></optgroup>
                                     </select>
                                 </div>
                             </div>
@@ -183,8 +179,6 @@
                             <div class="collapseContent">
                                 <div class="gridContent">
                                     <select class="gridCenter" id="weaponSelect2">
-                                        <option data-name="noWeapon">Please Select an Option</option>
-                                        <optgroup></optgroup>
                                     </select>
                                 </div>
                             </div>
@@ -194,8 +188,6 @@
                             <div class="collapseContent">
                                 <div class="gridContent">
                                     <select class="gridCenter" id="weaponSelect3">
-                                        <option data-name="noWeapon">Please Select an Option</option>
-                                        <optgroup></optgroup>
                                     </select>
                                 </div>
                             </div>
@@ -208,7 +200,9 @@
                     <h3>Totals</h3>
                 </div>
                 <div class="gridContentEnd" style="grid-area: 1 / 1; z-index: 1;">
+                    <!-- Currently Disabled
                     <input class="gridCenter" id="save" type="button" value="&#128190" title="Save your build as a text file" style="grid-area: 1 / 1;">
+                    -->
                     <input class="gridContentEnd" id="allReset" type="button" value="&#8635" title="Reset Everything" style="grid-area: 1 / 2;">
                 </div>
                 <div class="contentScroll">
@@ -247,120 +241,231 @@
                         <div>
                             <button type="button" class="collapsible">Weapon 1:</button>
                             <div class="collapseContent">
-                                <div class="gridContent">
-                                    <p class="gridCenter" id="none0" style="grid-area: auto / 1 / auto / 3;">No Weapon Selected</p>
-                                    <p class="gridStart" title="Base damage per hit" style="grid-area: auto / 1; display: none;">Damage per Hit:</p>
-                                    <p class="gridEnd" id="w1Val1" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Total DPH when hitting 5+ enemies with an explosive weapon" style="grid-area: auto / 1; display: none;">Explosion max DPH:</p>
-                                    <p class="gridEnd" id="w1Val2" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Total DPH when hitting all melee cleave targets" style="grid-area: auto / 1; display: none;">Melee max DPH:</p>
-                                    <p class="gridEnd" id="w1Val3" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Base damage per pellet" style="grid-area: auto / 1; display: none;">Damage per Pellet:</p>
-                                    <p class="gridEnd" id="w1Val4" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Number of pellets in the spread" style="grid-area: auto / 1; display: none;">Pellets:</p>
-                                    <p class="gridEnd" id="w1Val5" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Additional cleave targets when using melee" style="grid-area: auto / 1; display: none;">Cleave max Targets:</p>
-                                    <p class="gridEnd" id="w1Val6" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Base damage per hit on critical" style="grid-area: auto / 1; display: none;">Critical Damage:</p>
-                                    <p class="gridEnd" id="w1Val7" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Total crit DPH when hitting all melee cleave targets" style="grid-area: auto / 1; display: none;">Melee max Crit:</p>
-                                    <p class="gridEnd" id="w1Val8" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Critical pattern, pattern follows a cycle of Non-Crit (NC) then Crit (C)" style="grid-area: auto / 1; display: none;">Critical Pattern:</p>
-                                    <p class="gridEnd" id="w1Val9" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Effective DPS on a single target, accounting for crits and reloads" style="grid-area: auto / 1; display: none;">Effective DPS:</p>
-                                    <p class="gridEnd" id="w1Val10" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Total DPS when hitting 5+ enemies with an explosive weapon, accounting for reloads" style="grid-area: auto / 1; display: none;">Explosion max DPS:</p>
-                                    <p class="gridEnd" id="w1Val11" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Total DPS when hitting all melee cleave targets" style="grid-area: auto / 1; display: none;">Melee max DPS:</p>
-                                    <p class="gridEnd" id="w1Val12" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Percentage of damage which will completely ignore any armor and hit health directly" style="grid-area: auto / 1; display: none;">Armor Penetration:</p>
-                                    <p class="gridEnd" id="w1Val13" style="grid-area: auto / 2; display: none;">0%</p>
-                                    <p class="gridStart" title="Amount of time it takes to complete a reload" style="grid-area: auto / 1; display: none;">Reload Duration:</p>
-                                    <p class="gridEnd" id="w1Val14" style="grid-area: auto / 2; display: none;">0 s</p>
-                                    <p class="gridStart" title="Rough indication of how frequently shots will land where you aim" style="grid-area: auto / 1; display: none;">Accuracy:</p>
-                                    <p class="gridEnd" id="w1Val15" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Angle of pellet spread in degrees" style="grid-area: auto / 1; display: none;">Pellet Spread:</p>
-                                    <p class="gridEnd" id="w1Val16" style="grid-area: auto / 2; display: none;">0&#xB0</p>
+                                <div class="gridContent" style="grid-template-columns: auto auto;">
+                                    <div id="w1None" style="grid-area: auto / 1 / auto / 3; justify-self: center;">
+                                        <h4>No Weapon Selected</h3>
+                                    </div>
+                                    <div id="w1Some" style="grid-area: auto / 1 / auto / 3; justify-self: center;">
+                                        <h4>Info Card Stats:</h3>
+                                    </div>
+                                    <p>Name:</p>
+                                    <p id="w1Val">none</p>
+                                    <p>Ammo Type:</p>
+                                    <p id="w1Val">none</p>
+                                    <p>Ammo Capacity:</p>
+                                    <p id="w1Val">none</p>
+                                    <p>Reload Speed:</p>
+                                    <p id="w1Val">none</p>
+                                    <p>Attack Speed:</p>
+                                    <p id="w1Val">none</p>
+                                    <p>Accuracy:</p>
+                                    <p id="w1Val">none</p>
+                                    <p>Critical Chance:</p>
+                                    <p id="w1Val">none</p>
+                                    <p>Proficiency Required:</p>
+                                    <p id="w1Val">none</p>
+                                    <p>Armor Penetration:</p>
+                                    <p id="w1Val">none</p>
+                                    <p>Ability:</p>
+                                    <p id="w1Val">none</p>
+                                    <div id="w1Some" style="grid-area: auto / 1 / auto / 3; justify-self: center;">
+                                        <h4>Damage Stats:</h3>
+                                    </div>
+                                    <p>DPH:</p>
+                                    <p id="w1Val">none</p>
+                                    <p>Crit DPH:</p>
+                                    <p id="w1Val">none</p>
+                                    <p>DPS:</p>
+                                    <p id="w1Val">none</p>
+                                    <div id="w1Some" style="grid-area: auto / 1 / auto / 3; justify-self: center;">
+                                        <h4>Type Specific Stats:</h3>
+                                    </div>
+                                    <p>Pellet DPH:</p>
+                                    <p id="w1Val">none</p>
+                                    <p>Cleave DPH:</p>
+                                    <p id="w1Val">none</p>
+                                    <p>Cleave Crit DPH:</p>
+                                    <p id="w1Val">none</p>
+                                    <p>Cleave DPS:</p>
+                                    <p id="w1Val">none</p>
+                                    <p>Explosive DPH:</p>
+                                    <p id="w1Val">none</p>
+                                    <p>Explosive DPS:</p>
+                                    <p id="w1Val">none</p>
+                                    <div id="w1Some" style="grid-area: auto / 1 / auto / 3; justify-self: center;">
+                                        <h4>Soft Stats:</h3>
+                                    </div>
+                                    <p>Effective Accuracy:</p>
+                                    <p id="w1Val">none</p>
+                                    <p>Hit(s) Per Second:</p>
+                                    <p id="w1Val">none</p>
+                                    <p>Max Crit Pattern:</p>
+                                    <p id="w1Val">none</p>
+                                    <p>Spread:</p>
+                                    <p id="w1Val">none</p>
+                                    <div id="w1Some" style="grid-area: auto / 1 / auto / 3; justify-self: center;">
+                                        <h4>Knockback Stats:</h3>
+                                    </div>
+                                    <p>Knockback per Hit:</p>
+                                    <p id="w1Val">none</p>
+                                    <p>Knockback per Pellet:</p>
+                                    <p id="w1Val">none</p>
+                                    <p>Knockback per Second:</p>
+                                    <p id="w1Val">none</p>
                                 </div>
                             </div>
                         </div>
                         <div>
                             <button type="button" class="collapsible">Weapon 2:</button>
                             <div class="collapseContent">
-                                <div class="gridContent">
-                                    <p class="gridCenter" id="none1" style="grid-area: auto / 1 / auto / 3;">No Weapon Selected</p>
-                                    <p class="gridStart" title="Base damage per hit" style="grid-area: auto / 1; display: none;">Damage per Hit:</p>
-                                    <p class="gridEnd" id="w2Val1" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Total DPH when hitting 5+ enemies with an explosive weapon" style="grid-area: auto / 1; display: none;">Explosion max DPH:</p>
-                                    <p class="gridEnd" id="w2Val2" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Total DPH when hitting all melee cleave targets" style="grid-area: auto / 1; display: none;">Melee max DPH:</p>
-                                    <p class="gridEnd" id="w2Val3" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Base damage per pellet" style="grid-area: auto / 1; display: none;">Damage per Pellet:</p>
-                                    <p class="gridEnd" id="w2Val4" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Number of pellets in the spread" style="grid-area: auto / 1; display: none;">Pellets:</p>
-                                    <p class="gridEnd" id="w2Val5" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Additional cleave targets when using melee" style="grid-area: auto / 1; display: none;">Cleave max Targets:</p>
-                                    <p class="gridEnd" id="w2Val6" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Base damage per hit on critical" style="grid-area: auto / 1; display: none;">Critical Damage:</p>
-                                    <p class="gridEnd" id="w2Val7" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Total crit DPH when hitting all melee cleave targets" style="grid-area: auto / 1; display: none;">Melee max Crit:</p>
-                                    <p class="gridEnd" id="w2Val8" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Critical pattern, pattern follows a cycle of Non-Crit (NC) then Crit (C)" style="grid-area: auto / 1; display: none;">Critical Pattern:</p>
-                                    <p class="gridEnd" id="w2Val9" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Effective DPS on a single target, accounting for crits and reloads" style="grid-area: auto / 1; display: none;">Effective DPS:</p>
-                                    <p class="gridEnd" id="w2Val10" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Total DPS when hitting 5+ enemies with an explosive weapon, accounting for reloads" style="grid-area: auto / 1; display: none;">Explosion max DPS:</p>
-                                    <p class="gridEnd" id="w2Val11" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Total DPS when hitting all melee cleave targets" style="grid-area: auto / 1; display: none;">Melee max DPS:</p>
-                                    <p class="gridEnd" id="w2Val12" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Percentage of damage which will completely ignore any armor and hit health directly" style="grid-area: auto / 1; display: none;">Armor Penetration:</p>
-                                    <p class="gridEnd" id="w2Val13" style="grid-area: auto / 2; display: none;">0%</p>
-                                    <p class="gridStart" title="Amount of time it takes to complete a reload" style="grid-area: auto / 1; display: none;">Reload Duration:</p>
-                                    <p class="gridEnd" id="w2Val14" style="grid-area: auto / 2; display: none;">0 s</p>
-                                    <p class="gridStart" title="Rough indication of how frequently shots will land where you aim" style="grid-area: auto / 1; display: none;">Accuracy:</p>
-                                    <p class="gridEnd" id="w2Val15" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Angle of pellet spread in degrees" style="grid-area: auto / 1; display: none;">Pellet Spread:</p>
-                                    <p class="gridEnd" id="w2Val16" style="grid-area: auto / 2; display: none;">0&#xB0</p>
+                                <div class="gridContent" style="grid-template-columns: auto auto;">
+                                    <div id="w2None" style="grid-area: auto / 1 / auto / 3; justify-self: center;">
+                                        <h4>No Weapon Selected</h3>
+                                    </div>
+                                    <div id="w2Some" style="grid-area: auto / 1 / auto / 3; justify-self: center;">
+                                        <h4>Info Card Stats:</h3>
+                                    </div>
+                                    <p>Name:</p>
+                                    <p id="w2Val">none</p>
+                                    <p>Ammo Type:</p>
+                                    <p id="w2Val">none</p>
+                                    <p>Ammo Capacity:</p>
+                                    <p id="w2Val">none</p>
+                                    <p>Reload Speed:</p>
+                                    <p id="w2Val">none</p>
+                                    <p>Attack Speed:</p>
+                                    <p id="w2Val">none</p>
+                                    <p>Accuracy:</p>
+                                    <p id="w2Val">none</p>
+                                    <p>Critical Chance:</p>
+                                    <p id="w2Val">none</p>
+                                    <p>Proficiency Required:</p>
+                                    <p id="w2Val">none</p>
+                                    <p>Armor Penetration:</p>
+                                    <p id="w2Val">none</p>
+                                    <p>Ability:</p>
+                                    <p id="w2Val">none</p>
+                                    <div id="w2Some" style="grid-area: auto / 1 / auto / 3; justify-self: center;">
+                                        <h4>Damage Stats:</h3>
+                                    </div>
+                                    <p>DPH:</p>
+                                    <p id="w2Val">none</p>
+                                    <p>Crit DPH:</p>
+                                    <p id="w2Val">none</p>
+                                    <p>DPS:</p>
+                                    <p id="w2Val">none</p>
+                                    <div id="w2Some" style="grid-area: auto / 1 / auto / 3; justify-self: center;">
+                                        <h4>Type Specific Stats:</h3>
+                                    </div>
+                                    <p>Pellet DPH:</p>
+                                    <p id="w2Val">none</p>
+                                    <p>Cleave DPH:</p>
+                                    <p id="w2Val">none</p>
+                                    <p>Cleave Crit DPH:</p>
+                                    <p id="w2Val">none</p>
+                                    <p>Cleave DPS:</p>
+                                    <p id="w2Val">none</p>
+                                    <p>Explosive DPH:</p>
+                                    <p id="w2Val">none</p>
+                                    <p>Explosive DPS:</p>
+                                    <p id="w2Val">none</p>
+                                    <div id="w2Some" style="grid-area: auto / 1 / auto / 3; justify-self: center;">
+                                        <h4>Soft Stats:</h3>
+                                    </div>
+                                    <p>Effective Accuracy:</p>
+                                    <p id="w2Val">none</p>
+                                    <p>Hit(s) Per Second:</p>
+                                    <p id="w2Val">none</p>
+                                    <p>Max Crit Pattern:</p>
+                                    <p id="w2Val">none</p>
+                                    <p>Spread:</p>
+                                    <p id="w2Val">none</p>
+                                    <div id="w2Some" style="grid-area: auto / 1 / auto / 3; justify-self: center;">
+                                        <h4>Knockback Stats:</h3>
+                                    </div>
+                                    <p>Knockback per Hit:</p>
+                                    <p id="w2Val">none</p>
+                                    <p>Knockback per Pellet:</p>
+                                    <p id="w2Val">none</p>
+                                    <p>Knockback per Second:</p>
+                                    <p id="w2Val">none</p>
                                 </div>
                             </div>
                         </div>
                         <div>
                             <button type="button" class="collapsible">Weapon 3:</button>
                             <div class="collapseContent">
-                                <div class="gridContent">
-                                    <p class="gridCenter" id="none2" style="grid-area: auto / 1 / auto / 3;">No Weapon Selected</p>
-                                    <p class="gridStart" title="Base damage per hit" style="grid-area: auto / 1; display: none;">Damage per Hit:</p>
-                                    <p class="gridEnd" id="w3Val1" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Total DPH when hitting 5+ enemies with an explosive weapon" style="grid-area: auto / 1; display: none;">Explosion max DPH:</p>
-                                    <p class="gridEnd" id="w3Val2" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Total DPH when hitting all melee cleave targets" style="grid-area: auto / 1; display: none;">Melee max DPH:</p>
-                                    <p class="gridEnd" id="w3Val3" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Base damage per pellet" style="grid-area: auto / 1; display: none;">Damage per Pellet:</p>
-                                    <p class="gridEnd" id="w3Val4" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Number of pellets in the spread" style="grid-area: auto / 1; display: none;">Pellets:</p>
-                                    <p class="gridEnd" id="w3Val5" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Additional cleave targets when using melee" style="grid-area: auto / 1; display: none;">Cleave max Targets:</p>
-                                    <p class="gridEnd" id="w3Val6" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Base damage per hit on critical" style="grid-area: auto / 1; display: none;">Critical Damage:</p>
-                                    <p class="gridEnd" id="w3Val7" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Total crit DPH when hitting all melee cleave targets" style="grid-area: auto / 1; display: none;">Melee max Crit:</p>
-                                    <p class="gridEnd" id="w3Val8" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Critical pattern, pattern follows a cycle of Non-Crit (NC) then Crit (C)" style="grid-area: auto / 1; display: none;">Critical Pattern:</p>
-                                    <p class="gridEnd" id="w3Val9" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Effective DPS on a single target, accounting for crits and reloads" style="grid-area: auto / 1; display: none;">Effective DPS:</p>
-                                    <p class="gridEnd" id="w3Val10" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Total DPS when hitting 5+ enemies with an explosive weapon, accounting for reloads" style="grid-area: auto / 1; display: none;">Explosion max DPS:</p>
-                                    <p class="gridEnd" id="w3Val11" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Total DPS when hitting all melee cleave targets" style="grid-area: auto / 1; display: none;">Melee max DPS:</p>
-                                    <p class="gridEnd" id="w3Val12" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Percentage of damage which will completely ignore any armor and hit health directly" style="grid-area: auto / 1; display: none;">Armor Penetration:</p>
-                                    <p class="gridEnd" id="w3Val13" style="grid-area: auto / 2; display: none;">0%</p>
-                                    <p class="gridStart" title="Amount of time it takes to complete a reload" style="grid-area: auto / 1; display: none;">Reload Duration:</p>
-                                    <p class="gridEnd" id="w3Val14" style="grid-area: auto / 2; display: none;">0 s</p>
-                                    <p class="gridStart" title="Rough indication of how frequently shots will land where you aim" style="grid-area: auto / 1; display: none;">Accuracy:</p>
-                                    <p class="gridEnd" id="w3Val15" style="grid-area: auto / 2; display: none;">0</p>
-                                    <p class="gridStart" title="Angle of pellet spread in degrees" style="grid-area: auto / 1; display: none;">Pellet Spread:</p>
-                                    <p class="gridEnd" id="w3Val16" style="grid-area: auto / 2; display: none;">0&#xB0</p>
+                                <div class="gridContent" style="grid-template-columns: auto auto;">
+                                    <div id="w3None" style="grid-area: auto / 1 / auto / 3; justify-self: center;">
+                                        <h4>No Weapon Selected</h3>
+                                    </div>
+                                    <div id="w3Some" style="grid-area: auto / 1 / auto / 3; justify-self: center;">
+                                        <h4>Info Card Stats:</h3>
+                                    </div>
+                                    <p>Name:</p>
+                                    <p id="w3Val">none</p>
+                                    <p>Ammo Type:</p>
+                                    <p id="w3Val">none</p>
+                                    <p>Ammo Capacity:</p>
+                                    <p id="w3Val">none</p>
+                                    <p>Reload Speed:</p>
+                                    <p id="w3Val">none</p>
+                                    <p>Attack Speed:</p>
+                                    <p id="w3Val">none</p>
+                                    <p>Accuracy:</p>
+                                    <p id="w3Val">none</p>
+                                    <p>Critical Chance:</p>
+                                    <p id="w3Val">none</p>
+                                    <p>Proficiency Required:</p>
+                                    <p id="w3Val">none</p>
+                                    <p>Armor Penetration:</p>
+                                    <p id="w3Val">none</p>
+                                    <p>Ability:</p>
+                                    <p id="w3Val">none</p>
+                                    <div id="w3Some" style="grid-area: auto / 1 / auto / 3; justify-self: center;">
+                                        <h4>Damage Stats:</h3>
+                                    </div>
+                                    <p>DPH:</p>
+                                    <p id="w3Val">none</p>
+                                    <p>Crit DPH:</p>
+                                    <p id="w3Val">none</p>
+                                    <p>DPS:</p>
+                                    <p id="w3Val">none</p>
+                                    <div id="w3Some" style="grid-area: auto / 1 / auto / 3; justify-self: center;">
+                                        <h4>Type Specific Stats:</h3>
+                                    </div>
+                                    <p>Pellet DPH:</p>
+                                    <p id="w3Val">none</p>
+                                    <p>Cleave DPH:</p>
+                                    <p id="w3Val">none</p>
+                                    <p>Cleave Crit DPH:</p>
+                                    <p id="w3Val">none</p>
+                                    <p>Cleave DPS:</p>
+                                    <p id="w3Val">none</p>
+                                    <p>Explosive DPH:</p>
+                                    <p id="w3Val">none</p>
+                                    <p>Explosive DPS:</p>
+                                    <p id="w3Val">none</p>
+                                    <div id="w3Some" style="grid-area: auto / 1 / auto / 3; justify-self: center;">
+                                        <h4>Soft Stats:</h3>
+                                    </div>
+                                    <p>Effective Accuracy:</p>
+                                    <p id="w3Val">none</p>
+                                    <p>Hit(s) Per Second:</p>
+                                    <p id="w3Val">none</p>
+                                    <p>Max Crit Pattern:</p>
+                                    <p id="w3Val">none</p>
+                                    <p>Spread:</p>
+                                    <p id="w3Val">none</p>
+                                    <div id="w3Some" style="grid-area: auto / 1 / auto / 3; justify-self: center;">
+                                        <h4>Knockback Stats:</h3>
+                                    </div>
+                                    <p>Knockback per Hit:</p>
+                                    <p id="w3Val">none</p>
+                                    <p>Knockback per Pellet:</p>
+                                    <p id="w3Val">none</p>
+                                    <p>Knockback per Second:</p>
+                                    <p id="w3Val">none</p>
                                 </div>
                             </div>
                         </div>
@@ -406,83 +511,51 @@
                 <div class="gridContentNoMarginMin">
                     <label class="gridCenter" style="grid-area: 1 / 1">Slot 1:</label>
                     <select class="gridCenter" id="implantSelect1" style="grid-area: 2 / 1">
-                        <option value="No Implant" data-exp="0" data-pvp="0" data-damage="0" data-speed="0" data-idr="0" data-weapon="0" data-armor="0" data-cash="0" data-ammo="0" data-s-speed="0" data-spots="0" data-cant-use="none" data-unique="false">No Implant</option>
-                        <optgroup></optgroup>
                     </select>
                     <label class="gridCenter" style="grid-area: 1 / 2">Slot 2:</label>
                     <select class="gridCenter" id="implantSelect2" style="grid-area: 2 / 2">
-                        <option value="No Implant" data-exp="0" data-pvp="0" data-damage="0" data-speed="0" data-idr="0" data-weapon="0" data-armor="0" data-cash="0" data-ammo="0" data-s-speed="0" data-spots="0" data-cant-use="none" data-unique="false">No Implant</option>
-                        <optgroup></optgroup>
                     </select>
                     <label class="gridCenter" style="grid-area: 1 / 3">Slot 3:</label>
                     <select class="gridCenter" id="implantSelect3" style="grid-area: 2 / 3">
-                        <option value="No Implant" data-exp="0" data-pvp="0" data-damage="0" data-speed="0" data-idr="0" data-weapon="0" data-armor="0" data-cash="0" data-ammo="0" data-s-speed="0" data-spots="0" data-cant-use="none" data-unique="false">No Implant</option>
-                        <optgroup></optgroup>
                     </select>
                     <label class="gridCenter" style="grid-area: 1 / 4">Slot 4:</label>
                     <select class="gridCenter" id="implantSelect4" style="grid-area: 2 / 4">
-                        <option value="No Implant" data-exp="0" data-pvp="0" data-damage="0" data-speed="0" data-idr="0" data-weapon="0" data-armor="0" data-cash="0" data-ammo="0" data-s-speed="0" data-spots="0" data-cant-use="none" data-unique="false">No Implant</option>
-                        <optgroup></optgroup>
                     </select>
                     <label class="gridCenter" style="grid-area: 3 / 1">Slot 5:</label>
                     <select class="gridCenter" id="implantSelect5" style="grid-area: 4 / 1">
-                        <option value="No Implant" data-exp="0" data-pvp="0" data-damage="0" data-speed="0" data-idr="0" data-weapon="0" data-armor="0" data-cash="0" data-ammo="0" data-s-speed="0" data-spots="0" data-cant-use="none" data-unique="false">No Implant</option>
-                        <optgroup></optgroup>
                     </select>
                     <label class="gridCenter" style="grid-area: 3 / 2">Slot 6:</label>
                     <select class="gridCenter" id="implantSelect6" style="grid-area: 4 / 2">
-                        <option value="No Implant" data-exp="0" data-pvp="0" data-damage="0" data-speed="0" data-idr="0" data-weapon="0" data-armor="0" data-cash="0" data-ammo="0" data-s-speed="0" data-spots="0" data-cant-use="none" data-unique="false">No Implant</option>
-                        <optgroup></optgroup>
                     </select>
                     <label class="gridCenter" style="grid-area: 3 / 3">Slot 7:</label>
                     <select class="gridCenter" id="implantSelect7" style="grid-area: 4 / 3">
-                        <option value="No Implant" data-exp="0" data-pvp="0" data-damage="0" data-speed="0" data-idr="0" data-weapon="0" data-armor="0" data-cash="0" data-ammo="0" data-s-speed="0" data-spots="0" data-cant-use="none" data-unique="false">No Implant</option>
-                        <optgroup></optgroup>
                     </select>
                     <label class="gridCenter" style="grid-area: 3 / 4">Slot 8:</label>
                     <select class="gridCenter" id="implantSelect8" style="grid-area: 4 / 4">
-                        <option value="No Implant" data-exp="0" data-pvp="0" data-damage="0" data-speed="0" data-idr="0" data-weapon="0" data-armor="0" data-cash="0" data-ammo="0" data-s-speed="0" data-spots="0" data-cant-use="none" data-unique="false">No Implant</option>
-                        <optgroup></optgroup>
                     </select>
                     <label class="gridCenter" style="grid-area: 5 / 1">Slot 9:</label>
                     <select class="gridCenter" id="implantSelect9" style="grid-area: 6 / 1">
-                        <option value="No Implant" data-exp="0" data-pvp="0" data-damage="0" data-speed="0" data-idr="0" data-weapon="0" data-armor="0" data-cash="0" data-ammo="0" data-s-speed="0" data-spots="0" data-cant-use="none" data-unique="false">No Implant</option>
-                        <optgroup></optgroup>
                     </select>
                     <label class="gridCenter" style="grid-area: 5 / 2">Slot 10:</label>
                     <select class="gridCenter" id="implantSelect10" style="grid-area: 6 / 2">
-                        <option value="No Implant" data-exp="0" data-pvp="0" data-damage="0" data-speed="0" data-idr="0" data-weapon="0" data-armor="0" data-cash="0" data-ammo="0" data-s-speed="0" data-spots="0" data-cant-use="none" data-unique="false">No Implant</option>
-                        <optgroup></optgroup>
                     </select>
                     <label class="gridCenter" style="grid-area: 5 / 3">Slot 11:</label>
                     <select class="gridCenter" id="implantSelect11" style="grid-area: 6 / 3">
-                        <option value="No Implant" data-exp="0" data-pvp="0" data-damage="0" data-speed="0" data-idr="0" data-weapon="0" data-armor="0" data-cash="0" data-ammo="0" data-s-speed="0" data-spots="0" data-cant-use="none" data-unique="false">No Implant</option>
-                        <optgroup></optgroup>
                     </select>
                     <label class="gridCenter" style="grid-area: 5 / 4">Slot 12:</label>
                     <select class="gridCenter" id="implantSelect12" style="grid-area: 6 / 4">
-                        <option value="No Implant" data-exp="0" data-pvp="0" data-damage="0" data-speed="0" data-idr="0" data-weapon="0" data-armor="0" data-cash="0" data-ammo="0" data-s-speed="0" data-spots="0" data-cant-use="none" data-unique="false">No Implant</option>
-                        <optgroup></optgroup>
                     </select>
                     <label class="gridCenter" style="grid-area: 7 / 1">Slot 13:</label>
                     <select class="gridCenter" id="implantSelect13" style="grid-area: 8 / 1">
-                        <option value="No Implant" data-exp="0" data-pvp="0" data-damage="0" data-speed="0" data-idr="0" data-weapon="0" data-armor="0" data-cash="0" data-ammo="0" data-s-speed="0" data-spots="0" data-cant-use="none" data-unique="false">No Implant</option>
-                        <optgroup></optgroup>
                     </select>
                     <label class="gridCenter" style="grid-area: 7 / 2">Slot 14:</label>
                     <select class="gridCenter" id="implantSelect14" style="grid-area: 8 / 2">
-                        <option value="No Implant" data-exp="0" data-pvp="0" data-damage="0" data-speed="0" data-idr="0" data-weapon="0" data-armor="0" data-cash="0" data-ammo="0" data-s-speed="0" data-spots="0" data-cant-use="none" data-unique="false">No Implant</option>
-                        <optgroup></optgroup>
                     </select>
                     <label class="gridCenter" style="grid-area: 7 / 3">Slot 15:</label>
                     <select class="gridCenter" id="implantSelect15" style="grid-area: 8 / 3">
-                        <option value="No Implant" data-exp="0" data-pvp="0" data-damage="0" data-speed="0" data-idr="0" data-weapon="0" data-armor="0" data-cash="0" data-ammo="0" data-s-speed="0" data-spots="0" data-cant-use="none" data-unique="false">No Implant</option>
-                        <optgroup></optgroup>
                     </select>
                     <label class="gridCenter" style="grid-area: 7 / 4">Slot 16:</label>
                     <select class="gridCenter" id="implantSelect16" style="grid-area: 8 / 4">
-                        <option value="No Implant" data-exp="0" data-pvp="0" data-damage="0" data-speed="0" data-idr="0" data-weapon="0" data-armor="0" data-cash="0" data-ammo="0" data-s-speed="0" data-spots="0" data-cant-use="none" data-unique="false">No Implant</option>
-                        <optgroup></optgroup>
                     </select>
                 </div>
             </div>
