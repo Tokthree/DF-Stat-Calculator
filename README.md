@@ -22,9 +22,6 @@ Current Implemented Features:
   - Profession descriptions which provide an explaination of a profession's pros and cons, as well as mechanics for production/service professions.
   - Ability to reset a specific panel's values, or reset all values.
   - Session storage which allows users to refresh the page without losing their build. Can be reset via the "reset everything" button
-  - Ability to export current build values as a formatted text file. But...
-  
-  ![image](https://user-images.githubusercontent.com/12038028/194787394-569a39a3-ea36-4db0-9714-391be327249c.png)
 
 Current Known Issues:
   - UI lacking responsiveness to certain changes.
@@ -32,6 +29,11 @@ Current Known Issues:
 
 Current Best Implementation Features:
   - Resetting all values forces a page refresh, no cheap way to do so otherwise.
+  
+Cancelled Features:
+  - (Maybe Temporarily) Ability to export current build values as a formatted text file. Causes too many issues and isn't supported natively by most browsers:
+  
+  ![image](https://user-images.githubusercontent.com/12038028/194787394-569a39a3-ea36-4db0-9714-391be327249c.png)
 
 Current Focus:
   - Code refactoring.
